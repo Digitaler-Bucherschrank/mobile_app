@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import 'gmap.dart';
+import 'drawer.dart';
+//import 'scanner_page.dart';
+
 
 import 'scanner_pageablegen.dart';
 import 'scanner_pageaufheben.dart';
@@ -7,8 +13,9 @@ void main() {
   runApp(MyApp());
 }
 
+void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,6 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -57,6 +65,52 @@ class _MyHomePageState extends State<MyHomePage> {
     )
   ];
 
+
+  @override
+  void initState() {
+    super.initState();
+    _getLocationPermission();
+  }
+
+  void _getLocationPermission() async {
+    var location = new Location();
+    try {
+      location.requestPermission();
+    } on Exception catch (_) {
+      print('There was a problem allowing location access');
+    }
+  }
+
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    Container(
+      child: Text(
+        'Scanner',
+        style: optionStyle,
+      ),
+    ),
+    Container(
+      child: GMap(),
+    ),
+    Container(
+      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
+      child: Text(
+        'Buch aufheben',
+        style: optionStyle,
+      ),
+    ),
+    Container(
+      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
+      child: Text(
+        'Suchen',
+        style: optionStyle,
+      ),
+    )
+  ];
+
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -67,7 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('DigiBü')),
+
+
+        appBar: AppBar(title: const Text('DigiBooks')),
+
         body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -76,6 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.arrow_circle_up_outlined),
               label: 'Buch ablegen',
+
+              //onTap: () => ScannerWindow(),
+
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
@@ -94,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
           selectedItemColor: Colors.white,
           onTap: _onItemTapped,
         ),
+        drawer: AppDrawer(),
       ),
     );
   }
