@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'gmap.dart';
+import 'drawer.dart';
+//import 'scanner_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,10 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //debugShowCheckedModeBanner: false,
-      home: MyHomePage(
-        title: "Digi",
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: MyHomePage(),
     );
   }
 }
@@ -42,27 +45,74 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    Container(
+      child: Text(
+        'Scanner',
+        style: optionStyle,
+      ),
+    ),
+    Container(
+      child: GMap(),
+    ),
+    Container(
+      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
+      child: Text(
+        'Buch aufheben',
+        style: optionStyle,
+      ),
+    ),
+    Container(
+      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
+      child: Text(
+        'Suchen',
+        style: optionStyle,
+      ),
+    )
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[],
-          ),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('DigiBooks')),
+        body: _widgetOptions.elementAt(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.blue,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.arrow_circle_up_outlined),
+              label: 'Buch ablegen',
+              //onTap: () => ScannerWindow(),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.map),
+              label: 'Karte',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.arrow_circle_down_outlined),
+              label: 'Buch aufheben',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Suchen',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          onTap: _onItemTapped,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Increment',
-        child: Icon(Icons.map),
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => GMap()),
-        ),
+        drawer: AppDrawer(),
       ),
     );
   }

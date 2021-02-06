@@ -1,6 +1,7 @@
-import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'markers2.dart';
+import 'dart:convert';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -8,7 +9,106 @@ class GMap extends StatefulWidget {
   _GMapState createState() => _GMapState();
 }
 
+class Places {
+  Id iId;
+  String address;
+  Null bcz;
+  String comment;
+  String contact;
+  String deactivated;
+  String deactreason;
+  Null digital;
+  String entrytype;
+  String homepage;
+  String icontype;
+  String lat;
+  String lon;
+  String open;
+  String title;
+  String type;
+
+  Places(
+      {this.iId,
+      this.address,
+      this.bcz,
+      this.comment,
+      this.contact,
+      this.deactivated,
+      this.deactreason,
+      this.digital,
+      this.entrytype,
+      this.homepage,
+      this.icontype,
+      this.lat,
+      this.lon,
+      this.open,
+      this.title,
+      this.type});
+
+  Places.fromJson(Map<String, dynamic> json) {
+    iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
+    address = json['address'];
+    bcz = json['bcz'];
+    comment = json['comment'];
+    contact = json['contact'];
+    deactivated = json['deactivated'];
+    deactreason = json['deactreason'];
+    digital = json['digital'];
+    entrytype = json['entrytype'];
+    homepage = json['homepage'];
+    icontype = json['icontype'];
+    lat = json['lat'];
+    lon = json['lon'];
+    open = json['open'];
+    title = json['title'];
+    type = json['type'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.iId != null) {
+      data['_id'] = this.iId.toJson();
+    }
+    data['address'] = this.address;
+    data['bcz'] = this.bcz;
+    data['comment'] = this.comment;
+    data['contact'] = this.contact;
+    data['deactivated'] = this.deactivated;
+    data['deactreason'] = this.deactreason;
+    data['digital'] = this.digital;
+    data['entrytype'] = this.entrytype;
+    data['homepage'] = this.homepage;
+    data['icontype'] = this.icontype;
+    data['lat'] = this.lat;
+    data['lon'] = this.lon;
+    data['open'] = this.open;
+    data['title'] = this.title;
+    data['type'] = this.type;
+    return data;
+  }
+}
+
+class Id {
+  String oid;
+
+  Id({this.oid});
+
+  Id.fromJson(Map<String, dynamic> json) {
+    oid = json['$oid'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['$oid'] = this.oid;
+    return data;
+  }
+}
+
 class _GMapState extends State<GMap> {
+  String jsonData = "assets/markers.json";
+  var parsedJson = json.decode('${jsonData}');
+  var markers = Places.fromJson(json.decode('jsonData'));
+
   //Set<Marker> _markers = HashSet<Marker>();
   Set<Marker> _markers = {};
   //GoogleMapController _mapController;
@@ -16,24 +116,16 @@ class _GMapState extends State<GMap> {
     setState(() {
       _markers.add(
         Marker(
-          markerId: MarkerId("0"),
-          position: LatLng(50.109326, 8.671547),
-          infoWindow: InfoWindow(
-            title: "Englisches Theater",
-            snippet: "-",
+          markerId: MarkerId('${markers.iId}'),
+          position: LatLng(
+            double.parse('${markers.lat}'),
+            double.parse(
+              '${markers.lon}',
+            ),
           ),
-        ),
-      );
-    });
-
-    setState(() {
-      _markers.add(
-        Marker(
-          markerId: MarkerId("1"),
-          position: LatLng(50.16702201577, 8.6181255255342),
           infoWindow: InfoWindow(
-            title: "Frankfurt-Niederursel",
-            snippet: "-",
+            title: '${markers.title}',
+            snippet: '${markers.address}' '${markers.comment}',
           ),
         ),
       );
@@ -43,17 +135,16 @@ class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Map')),
       body: Stack(
         children: <Widget>[
           GoogleMap(
             onMapCreated: _onMapCreated,
+            myLocationEnabled: true,
             initialCameraPosition: CameraPosition(
               target: LatLng(50.1109, 8.6821),
               zoom: 12,
             ),
-            markers: _markers,
-            myLocationEnabled: true,
+            markers: Set<Marker>.of(_markers),
           ),
         ],
       ),
