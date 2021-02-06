@@ -8,10 +8,18 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION" />
+   <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="digitaler_buecherschrank"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCL98rztnTR79Y5aX7YZHqJASgWwa1GvwI"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
