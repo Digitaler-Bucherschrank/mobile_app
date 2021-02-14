@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'markers2.dart';
 import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -12,12 +13,12 @@ class GMap extends StatefulWidget {
 class Places {
   Id iId;
   String address;
-  Null bcz;
+  String bcz;
   String comment;
   String contact;
   String deactivated;
   String deactreason;
-  Null digital;
+  String digital;
   String entrytype;
   String homepage;
   String icontype;
@@ -94,42 +95,51 @@ class Id {
   Id({this.oid});
 
   Id.fromJson(Map<String, dynamic> json) {
-    oid = json['$oid'];
+    oid = json[r"$oid"];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['$oid'] = this.oid;
+    data[r'$oid'] = this.oid;
     return data;
   }
 }
 
+// TODO: Change Icon of Markers
 class _GMapState extends State<GMap> {
-  String jsonData = "assets/markers.json";
-  var parsedJson = json.decode('${jsonData}');
+<<<<<<< HEAD
+  //String jsonData = "assets/markers.json";
+  //var parsedJson = json.decode('${jsonData}');
   var markers = Places.fromJson(json.decode('jsonData'));
 
   //Set<Marker> _markers = HashSet<Marker>();
   Set<Marker> _markers = {};
+=======
+>>>>>>> e7857952959b474f5f5863b711043d32f4247953
   //GoogleMapController _mapController;
-  void _onMapCreated(GoogleMapController controller) {
-    setState(() {
+  Set<Marker> _markers = {};
+  void _onMapCreated(GoogleMapController controller) async{
+    debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context).loadString("assets/markers.json"))[0]));
+    var markers = jsonDecode(await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
+    for(final e in markers){
+      var tempMarker = Places.fromJson(e);
       _markers.add(
         Marker(
-          markerId: MarkerId('${markers.iId}'),
+          markerId: MarkerId('${tempMarker.iId.oid}'),
           position: LatLng(
-            double.parse('${markers.lat}'),
+            double.parse('${tempMarker.lat}'),
             double.parse(
-              '${markers.lon}',
+              '${tempMarker.lon}',
             ),
           ),
           infoWindow: InfoWindow(
-            title: '${markers.title}',
-            snippet: '${markers.address}' '${markers.comment}',
+            title: '${tempMarker.title}',
+            snippet: '${tempMarker.address}' '${tempMarker.comment}',
           ),
         ),
       );
-    });
+    }
+    setState(() => null);
   }
 
   @override

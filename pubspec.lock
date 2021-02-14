@@ -42,7 +42,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.1"
+    version: "1.6.2"
   build_config:
     dependency: transitive
     description:
@@ -56,28 +56,28 @@ packages:
       name: build_daemon
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   build_resolvers:
     dependency: transitive
     description:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.2"
+    version: "1.5.3"
   build_runner:
     dependency: "direct dev"
     description:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.6"
+    version: "6.1.7"
   built_collection:
     dependency: transitive
     description:
@@ -195,16 +195,24 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   flutter_barcode_scanner:
     dependency: "direct main"
     description:
       name: flutter_barcode_scanner
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.0.1"
 =======
->>>>>>> karte
+    version: "1.0.2"
+  flutter_displaymode:
+    dependency: "direct main"
+    description:
+      name: flutter_displaymode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
+>>>>>>> e7857952959b474f5f5863b711043d32f4247953
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -235,14 +243,14 @@ packages:
       name: google_maps_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
       name: google_maps_flutter_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.0"
   graphs:
     dependency: transitive
     description:
@@ -250,6 +258,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -537,9 +552,14 @@ packages:
     version: "2.2.1"
 sdks:
 <<<<<<< HEAD
+<<<<<<< Updated upstream
+  dart: ">=2.10.0 <2.11.0"
+  flutter: ">=1.22.0 <2.0.0"
+=======
   dart: ">=2.10.0-110 <2.11.0"
   flutter: ">=1.12.13+hotfix.5 <2.0.0"
+>>>>>>> Stashed changes
 =======
   dart: ">=2.10.0 <2.11.0"
   flutter: ">=1.22.0 <2.0.0"
->>>>>>> karte
+>>>>>>> e7857952959b474f5f5863b711043d32f4247953

@@ -1,4 +1,4 @@
-import 'package:digitaler_buecherschrank/scanner.dart';
+import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
 class ScannerPageaufheben extends StatefulWidget {

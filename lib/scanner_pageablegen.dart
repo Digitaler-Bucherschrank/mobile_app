@@ -1,4 +1,4 @@
-import 'package:digitaler_buecherschrank/scanner.dart';
+import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
 class ScannerPageablegen extends StatefulWidget {
@@ -175,6 +175,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           OutlineButton(
                             onPressed: () {
                               print(formular);
+                              postIsbn(formular['isbn']);
                             },
                             child: Text("Bestätigen"),
                           )

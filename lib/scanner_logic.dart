@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:http/http.dart' as http;
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -24,4 +26,20 @@ Future scanBarcodeNormal() async {
   scanBarcode = barcodeScanRes;
 
   return (scanBarcode);
+}
+
+Future getInfo() async {
+  const _url = "";
+  return;
+}
+
+Future postIsbn(String isbn) async {
+  const _url =
+      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/";
+  var response = await http.post(_url,
+      body: json.encode({
+        'isbn': isbn,
+      }));
+  print(response);
+  return;
 }
