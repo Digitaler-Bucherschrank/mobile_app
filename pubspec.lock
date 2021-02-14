@@ -201,9 +201,7 @@ packages:
       name: flutter_barcode_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.0.1"
-=======
     version: "1.0.2"
   flutter_displaymode:
     dependency: "direct main"
@@ -212,7 +210,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
->>>>>>> e7857952959b474f5f5863b711043d32f4247953
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -551,15 +548,7 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-<<<<<<< HEAD
-<<<<<<< Updated upstream
   dart: ">=2.10.0 <2.11.0"
   flutter: ">=1.22.0 <2.0.0"
-=======
-  dart: ">=2.10.0-110 <2.11.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
->>>>>>> Stashed changes
-=======
-  dart: ">=2.10.0 <2.11.0"
-  flutter: ">=1.22.0 <2.0.0"
->>>>>>> e7857952959b474f5f5863b711043d32f4247953
+
+
