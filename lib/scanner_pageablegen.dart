@@ -9,6 +9,11 @@ class ScannerPageablegen extends StatefulWidget {
 class _ScannerPageState extends State<ScannerPageablegen> {
   int selectedRadio;
   int selectedSchrank;
+  var txt = TextEditingController();
+  Map bookInfo = {
+    'name': 'Titel',
+  };
+
   Map formular = {
     'a': 'ablegen',
     'isbn': 'leer',
@@ -70,16 +75,36 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                             width: 200,
                             child: TextField(
                               onSubmitted: (String str) {
-                                setState(() {
+                                setState(() async {
                                   formular.update('isbn', (v) {
                                     print('old value of isbn before update: ' +
                                         v);
                                     return str;
                                   });
+                                  bookInfo = await getInfo(formular['isbn']);
+                                  txt.text = bookInfo['name'] as String;
                                 });
+                                print(bookInfo);
                                 print('updated formular: ' + formular['isbn']);
                               },
                             ),
+                          ),
+                          Container(
+                            child: Text('Buchinformationen:'),
+                          ),
+                          Container(
+                            child: TextField(
+                              controller: txt,
+                              decoration: InputDecoration(
+                                labelText: "Titel",
+                              ),
+                            ),
+                            width: 200,
+                          ),
+                          Container(
+                            width: 200,
+                            child: Text(
+                                'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
                           ),
                         ],
                       ),
