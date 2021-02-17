@@ -96,7 +96,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                             child: TextField(
                               controller: txt,
                               decoration: InputDecoration(
-                                labelText: "Titel",
+                                labelText: bookInfo['name'],
                               ),
                             ),
                             width: 200,

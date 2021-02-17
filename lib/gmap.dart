@@ -107,13 +107,7 @@ class Id {
 
 // TODO: Change Icon of Markers
 class _GMapState extends State<GMap> {
-  //String jsonData = "assets/markers.json";
-  //var parsedJson = json.decode('${jsonData}');
-  var markers = Places.fromJson(json.decode('jsonData'));
-
-  //Set<Marker> _markers = HashSet<Marker>();
   Set<Marker> _markers = {};
-
   //GoogleMapController _mapController;
   void _onMapCreated(GoogleMapController controller) async {
     debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
