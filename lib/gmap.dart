@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'markers2.dart';
 import 'dart:convert';
+// ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
 
 class GMap extends StatefulWidget {
@@ -109,10 +110,12 @@ class Id {
 class _GMapState extends State<GMap> {
   //GoogleMapController _mapController;
   Set<Marker> _markers = {};
-  void _onMapCreated(GoogleMapController controller) async{
-    debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context).loadString("assets/markers.json"))[0]));
-    var markers = jsonDecode(await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
-    for(final e in markers){
+  void _onMapCreated(GoogleMapController controller) async {
+    debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
+        .loadString("assets/markers.json"))[0]));
+    var markers = jsonDecode(
+        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
+    for (final e in markers) {
       var tempMarker = Places.fromJson(e);
       _markers.add(
         Marker(
