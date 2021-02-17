@@ -108,7 +108,6 @@ class Id {
 
 // TODO: Change Icon of Markers
 class _GMapState extends State<GMap> {
-  //GoogleMapController _mapController;
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
     debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
