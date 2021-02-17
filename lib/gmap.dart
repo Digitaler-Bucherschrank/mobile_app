@@ -105,31 +105,31 @@ class Id {
 }
 
 class _GMapState extends State<GMap> {
-  String jsonData = "assets/markers.json";
-  var parsedJson = json.decode('${jsonData}');
-  var markers = Places.fromJson(json.decode('jsonData'));
-
-  //Set<Marker> _markers = HashSet<Marker>();
   Set<Marker> _markers = {};
-  //GoogleMapController _mapController;
-  void _onMapCreated(GoogleMapController controller) {
-    setState(() {
+  void _onMapCreated(GoogleMapController controller) async {
+    debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
+        .loadString("assets/markers.json"))[0]));
+    var markers = jsonDecode(
+        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
+    for (final e in markers) {
+      var tempMarker = Places.fromJson(e);
       _markers.add(
         Marker(
-          markerId: MarkerId('${markers.iId}'),
+          markerId: MarkerId('${tempMarker.iId.oid}'),
           position: LatLng(
-            double.parse('${markers.lat}'),
+            double.parse('${tempMarker.lat}'),
             double.parse(
-              '${markers.lon}',
+              '${tempMarker.lon}',
             ),
           ),
           infoWindow: InfoWindow(
-            title: '${markers.title}',
-            snippet: '${markers.address}' '${markers.comment}',
+            title: '${tempMarker.title}',
+            snippet: '${tempMarker.address}' '${tempMarker.comment}',
           ),
         ),
       );
-    });
+    }
+    setState(() => null);
   }
 
   @override

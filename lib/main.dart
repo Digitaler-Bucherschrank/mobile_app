@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_displaymode/flutter_displaymode.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'gmap.dart';
 import 'drawer.dart';
 //import 'scanner_page.dart';
-
-
 import 'scanner_pageablegen.dart';
 import 'scanner_pageaufheben.dart';
 
 void main() {
   runApp(MyApp());
 }
-
-void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -38,38 +35,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static List<Widget> _widgetOptions = <Widget>[
-    Container(
-      child: ScannerPageablegen(),
-    ),
-    Container(
-      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
-      child: Text(
-        'Karte',
-        style: optionStyle,
-      ),
-    ),
-    Container(
-      child: ScannerPageaufheben(),
-    ),
-    Container(
-      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
-      child: Text(
-        'Suchen',
-        style: optionStyle,
-      ),
-    )
-  ];
-
-
   @override
   void initState() {
     super.initState();
     _getLocationPermission();
+    FlutterDisplayMode.setDeviceDefault();
   }
 
   void _getLocationPermission() async {
@@ -86,20 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Container(
-      child: Text(
-        'Scanner',
-        style: optionStyle,
-      ),
+      child: ScannerPageablegen(),
     ),
     Container(
       child: GMap(),
     ),
     Container(
-      margin: new EdgeInsets.only(left: 15.0, top: 5.0),
-      child: Text(
-        'Buch aufheben',
-        style: optionStyle,
-      ),
+      child: ScannerPageaufheben(),
     ),
     Container(
       margin: new EdgeInsets.only(left: 15.0, top: 5.0),
@@ -109,7 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     )
   ];
-
 
   void _onItemTapped(int index) {
     setState(() {
@@ -121,10 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
-
         appBar: AppBar(title: const Text('DigiBooks')),
-
         body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -133,9 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.arrow_circle_up_outlined),
               label: 'Buch ablegen',
-
               //onTap: () => ScannerWindow(),
-
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
@@ -159,3 +116,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+//kommentar

@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   json_annotation: ^3.0.1
+  flutter_displaymode: 0.1.1
   flutter:
     sdk: flutter
     
@@ -31,6 +32,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   flutter_barcode_scanner: ^1.0.1
+  http: ^0.12.2
 
   google_maps_flutter: ^1.0.6
   location: ^3.0.2
