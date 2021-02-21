@@ -37,17 +37,6 @@ class _ScannerPageState extends State<ScannerPageablegen> {
     });
   }
 
-  setSelectedSchrank(int val, String schrank) {
-    setState(() {
-      selectedSchrank = val;
-      formular.update('schrank', (v) {
-        print('old value of schrank before update: ' + v);
-        print('updated formular: ' + schrank);
-        return schrank;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -131,31 +120,12 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                     children: [
                       Column(
                         children: [
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 1,
-                              groupValue: selectedSchrank,
-                              title: Text("Test"),
-                              subtitle: Text("Entfernung"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedSchrank(val, "Test");
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 2,
-                              groupValue: selectedSchrank,
-                              title: Text("Test2"),
-                              subtitle: Text("Entfernung"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedSchrank(val, "Test2");
-                              },
-                            ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [Schraenke(formular)],
+                              ),
+                            ],
                           ),
                         ],
                       ),

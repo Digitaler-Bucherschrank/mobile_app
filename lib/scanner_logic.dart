@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
@@ -58,6 +60,94 @@ Future postIsbn(String isbn) async {
       .then((response) {
     print(json.decode(response.body));
   });
+}
 
-  return;
+class SchrankListe {
+  String title;
+  String address;
+  String id;
+  var lat;
+  var lon;
+  SchrankListe(this.title, this.address, this.lat, this.lon, this.id);
+}
+
+class Schraenke extends StatefulWidget {
+  Map formular;
+  Schraenke(this.formular);
+  @override
+  _SchraenkeState createState() => _SchraenkeState(formular);
+}
+
+class _SchraenkeState extends State<Schraenke> {
+  var result;
+  Map formular;
+  int selectedSchrank;
+  _SchraenkeState(this.formular);
+
+  setSelectedSchrank(int val, String schrank) {
+    setState(() {
+      selectedSchrank = val;
+      formular.update('schrank', (v) {
+        print('old value of schrank before update: ' + v);
+        print('updated formular: ' + schrank);
+        return schrank;
+      });
+    });
+  }
+
+  Future<List<SchrankListe>> getSchranke() async {
+    var data = jsonDecode(
+        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
+    List<SchrankListe> schraenke = [];
+    for (var i in data) {
+      SchrankListe sch = SchrankListe(
+        i["title"],
+        i["address"],
+        i["lat"],
+        i["lon"],
+        i["_id"]["\$oid"],
+      );
+      schraenke.add(sch);
+    }
+    print(schraenke.length);
+
+    return schraenke;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+        future: getSchranke(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.data == null) {
+            return Container(
+              child: Center(
+                child: Text("Loading..."),
+              ),
+            );
+          } else {
+            return Container(
+              height: 400,
+              width: 300,
+              child: ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return RadioListTile(
+                        value: index,
+                        groupValue: selectedSchrank,
+                        title: Text(snapshot.data[index].title),
+                        subtitle: Container(
+                            child: Text("${snapshot.data[index].address}")),
+                        activeColor: Colors.blue,
+                        onChanged: (val) {
+                          setSelectedSchrank(val, snapshot.data[index].id);
+                        });
+                  }),
+            );
+          }
+        },
+      ),
+    );
+  }
 }
