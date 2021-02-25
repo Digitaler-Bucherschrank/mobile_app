@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
@@ -71,6 +72,7 @@ class SchrankListe {
   SchrankListe(this.title, this.address, this.lat, this.lon, this.id);
 }
 
+// ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
   Map formular;
   Schraenke(this.formular);
