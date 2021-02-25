@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:convert';
 // ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
+import 'BuchAnzeigen.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -109,6 +110,7 @@ class Id {
 // TODO: Change Icon of Markers
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
+
   void _onMapCreated(GoogleMapController controller) async {
     debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
         .loadString("assets/markers.json"))[0]));
@@ -116,8 +118,7 @@ class _GMapState extends State<GMap> {
         await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
     for (final e in markers) {
       var tempMarker = Places.fromJson(e);
-      _markers.add(
-        Marker(
+      _markers.add(Marker(
           markerId: MarkerId('${tempMarker.iId.oid}'),
           position: LatLng(
             double.parse('${tempMarker.lat}'),
@@ -125,12 +126,48 @@ class _GMapState extends State<GMap> {
               '${tempMarker.lon}',
             ),
           ),
-          infoWindow: InfoWindow(
-            title: '${tempMarker.title}',
-            snippet: '${tempMarker.address}' '${tempMarker.comment}',
-          ),
-        ),
-      );
+          onTap: () {
+            //_settingModalBottomSheet(context);
+            showModalBottomSheet(
+                context: context,
+                builder: (builder) {
+                  return Container(
+                      color: Color(0xff757575),
+                      child: Container(
+                          padding: EdgeInsets.all(20.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              topRight: Radius.circular(20.0),
+                            ),
+                          ),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text('${tempMarker.title}'),
+                                ),
+                                ListTile(
+                                  title: Text('${tempMarker.address}'),
+                                ),
+                                ElevatedButton(
+                                    child: const Text("Siehe Bücher"),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BuchAnzeigen()),
+                                      );
+                                    }),
+                                ElevatedButton(
+                                  child: const Text('Close BottomSheet'),
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                              ])));
+                });
+          }));
     }
     setState(() => null);
   }
