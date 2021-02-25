@@ -127,7 +127,6 @@ class _GMapState extends State<GMap> {
             ),
           ),
           onTap: () {
-            //_settingModalBottomSheet(context);
             showModalBottomSheet(
                 context: context,
                 builder: (builder) {
