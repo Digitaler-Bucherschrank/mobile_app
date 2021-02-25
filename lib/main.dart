@@ -91,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.arrow_circle_up_outlined),
               label: 'Buch ablegen',
-              //onTap: () => ScannerWindow(),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),

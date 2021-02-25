@@ -1,4 +1,4 @@
-import 'package:digitaler_buecherschrank/scanner.dart';
+import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
 class ScannerPageaufheben extends StatefulWidget {
@@ -27,17 +27,6 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
         print('old value of von before update: ' + v);
         print('updated formular: ' + von);
         return von;
-      });
-    });
-  }
-
-  setSelectedSchrank(int val, String schrank) {
-    setState(() {
-      selectedSchrank = val;
-      formular.update('schrank', (v) {
-        print('old value of schrank before update: ' + v);
-        print('updated formular: ' + schrank);
-        return schrank;
       });
     });
   }
@@ -99,34 +88,7 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
                 Row(
                   children: [
                     Column(
-                      children: [
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 1,
-                            groupValue: selectedSchrank,
-                            title: Text("Test"),
-                            subtitle: Text("Entfernung"),
-                            activeColor: Colors.blue,
-                            onChanged: (val) {
-                              setSelectedSchrank(val, "Test");
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 2,
-                            groupValue: selectedSchrank,
-                            title: Text("Test2"),
-                            subtitle: Text("Entfernung"),
-                            activeColor: Colors.blue,
-                            onChanged: (val) {
-                              setSelectedSchrank(val, "Test2");
-                            },
-                          ),
-                        ),
-                      ],
+                      children: [Schraenke(formular)],
                     ),
                   ],
                 ),

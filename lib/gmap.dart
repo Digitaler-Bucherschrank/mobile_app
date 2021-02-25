@@ -107,13 +107,9 @@ class Id {
   }
 }
 
-// TODO: Change Icon of Markers
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
-
   void _onMapCreated(GoogleMapController controller) async {
-    debugPrint(jsonEncode(jsonDecode(await DefaultAssetBundle.of(context)
-        .loadString("assets/markers.json"))[0]));
     var markers = jsonDecode(
         await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
     for (final e in markers) {
@@ -126,6 +122,8 @@ class _GMapState extends State<GMap> {
               '${tempMarker.lon}',
             ),
           ),
+          icon: await BitmapDescriptor.fromAssetImage(
+              ImageConfiguration(devicePixelRatio: 5), 'assets/book.png'),
           onTap: () {
             showModalBottomSheet(
                 context: context,

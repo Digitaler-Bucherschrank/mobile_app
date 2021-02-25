@@ -1,4 +1,4 @@
-import 'package:digitaler_buecherschrank/scanner.dart';
+import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
 class ScannerPageablegen extends StatefulWidget {
@@ -9,6 +9,11 @@ class ScannerPageablegen extends StatefulWidget {
 class _ScannerPageState extends State<ScannerPageablegen> {
   int selectedRadio;
   int selectedSchrank;
+  var txt = TextEditingController();
+  Map bookInfo = {
+    'name': 'Titel',
+  };
+
   Map formular = {
     'a': 'ablegen',
     'isbn': 'leer',
@@ -28,17 +33,6 @@ class _ScannerPageState extends State<ScannerPageablegen> {
         print('old value of von before update: ' + v);
         print('updated formular: ' + von);
         return von;
-      });
-    });
-  }
-
-  setSelectedSchrank(int val, String schrank) {
-    setState(() {
-      selectedSchrank = val;
-      formular.update('schrank', (v) {
-        print('old value of schrank before update: ' + v);
-        print('updated formular: ' + schrank);
-        return schrank;
       });
     });
   }
@@ -70,16 +64,36 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                             width: 200,
                             child: TextField(
                               onSubmitted: (String str) {
-                                setState(() {
+                                setState(() async {
                                   formular.update('isbn', (v) {
                                     print('old value of isbn before update: ' +
                                         v);
                                     return str;
                                   });
+                                  bookInfo = await getInfo(formular['isbn']);
+                                  txt.text = bookInfo['name'] as String;
                                 });
+                                print(bookInfo);
                                 print('updated formular: ' + formular['isbn']);
                               },
                             ),
+                          ),
+                          Container(
+                            child: Text('Buchinformationen:'),
+                          ),
+                          Container(
+                            child: TextField(
+                              controller: txt,
+                              decoration: InputDecoration(
+                                labelText: bookInfo['name'],
+                              ),
+                            ),
+                            width: 200,
+                          ),
+                          Container(
+                            width: 200,
+                            child: Text(
+                                'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
                           ),
                         ],
                       ),
@@ -106,31 +120,12 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                     children: [
                       Column(
                         children: [
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 1,
-                              groupValue: selectedSchrank,
-                              title: Text("Test"),
-                              subtitle: Text("Entfernung"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedSchrank(val, "Test");
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 2,
-                              groupValue: selectedSchrank,
-                              title: Text("Test2"),
-                              subtitle: Text("Entfernung"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedSchrank(val, "Test2");
-                              },
-                            ),
+                          Row(
+                            children: [
+                              Column(
+                                children: [Schraenke(formular)],
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -175,6 +170,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           OutlineButton(
                             onPressed: () {
                               print(formular);
+                              postIsbn(formular['isbn']);
                             },
                             child: Text("Bestätigen"),
                           )
