@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
@@ -72,7 +71,7 @@ class SchrankListe {
 }
 
 class Schraenke extends StatefulWidget {
-  Map formular;
+  final formular;
   Schraenke(this.formular);
   @override
   _SchraenkeState createState() => _SchraenkeState(formular);
@@ -131,19 +130,22 @@ class _SchraenkeState extends State<Schraenke> {
               height: 400,
               width: 300,
               child: ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return RadioListTile(
-                        value: index,
-                        groupValue: selectedSchrank,
-                        title: Text(snapshot.data[index].title),
-                        subtitle: Container(
-                            child: Text("${snapshot.data[index].address}")),
-                        activeColor: Colors.blue,
-                        onChanged: (val) {
-                          setSelectedSchrank(val, snapshot.data[index].id);
-                        });
-                  }),
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return RadioListTile(
+                    value: index,
+                    groupValue: selectedSchrank,
+                    title: Text(snapshot.data[index].title),
+                    subtitle: Container(
+                      child: Text("${snapshot.data[index].address}"),
+                    ),
+                    activeColor: Colors.blue,
+                    onChanged: (val) {
+                      setSelectedSchrank(val, snapshot.data[index].id);
+                    },
+                  );
+                },
+              ),
             );
           }
         },
