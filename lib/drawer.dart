@@ -61,5 +61,3 @@ class AppDrawer extends StatelessWidget {
         ]));
   }
 }
-
-//irgendwas

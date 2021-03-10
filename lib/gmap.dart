@@ -129,40 +129,54 @@ class _GMapState extends State<GMap> {
                 context: context,
                 builder: (builder) {
                   return Container(
-                      color: Color(0xff757575),
-                      child: Container(
-                          padding: EdgeInsets.all(20.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                            ),
+                    color: Color(0xff757575),
+                    child: Container(
+                      padding: EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          topRight: Radius.circular(20.0),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          ListTile(
+                            title: Text('${tempMarker.title}'),
                           ),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                                ListTile(
-                                  title: Text('${tempMarker.title}'),
+                          ListTile(
+                            title: Text('${tempMarker.address}'),
+                          ),
+                          ElevatedButton(
+                              child: const Text("Siehe Bücher"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BuchAnzeigen()),
+                                );
+                              }),
+                          ElevatedButton(
+                            child: const Text('Close BottomSheet'),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Expanded(
+                                child: ListTile(
+                                  title: Text("text"),
                                 ),
-                                ListTile(
-                                  title: Text('${tempMarker.address}'),
-                                ),
-                                ElevatedButton(
-                                    child: const Text("Siehe Bücher"),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                BuchAnzeigen()),
-                                      );
-                                    }),
-                                ElevatedButton(
-                                  child: const Text('Close BottomSheet'),
-                                  onPressed: () => Navigator.pop(context),
-                                ),
-                              ])));
+                              ),
+                              ElevatedButton(
+                                  child: const Text("text"), onPressed: () {}),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 });
           }));
     }
