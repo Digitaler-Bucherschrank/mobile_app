@@ -55,13 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     Container(
-      child: ScannerPageablegen(),
+      child: ScannerPageablegen(""),
     ),
     Container(
       child: GMap(),
     ),
     Container(
-      child: ScannerPageaufheben(),
+      child: ScannerPageaufheben(""),
     ),
     Container(
       margin: new EdgeInsets.only(left: 15.0, top: 5.0),

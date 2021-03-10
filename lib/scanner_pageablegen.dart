@@ -1,7 +1,10 @@
 import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ScannerPageablegen extends StatefulWidget {
+  String markersId;
+  ScannerPageablegen(this.markersId);
   @override
   _ScannerPageState createState() => _ScannerPageState();
 }

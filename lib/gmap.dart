@@ -5,6 +5,8 @@ import 'dart:convert';
 // ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
 import 'BuchAnzeigen.dart';
+import 'scanner_pageablegen.dart';
+import 'scanner_pageaufheben.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -164,13 +166,29 @@ class _GMapState extends State<GMap> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Expanded(
-                                child: ListTile(
-                                  title: Text("text"),
-                                ),
-                              ),
                               ElevatedButton(
-                                  child: const Text("text"), onPressed: () {}),
+                                  child: const Text("Buch ablegen"),
+                                  onPressed: () {
+                                    print('${tempMarker.iId.oid}');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ScannerPageablegen(
+                                                  '${tempMarker.iId.oid}')),
+                                    );
+                                  }),
+                              ElevatedButton(
+                                  child: const Text("Buch aufheben"),
+                                  onPressed: () {
+                                    print('${tempMarker.iId.oid}');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ScannerPageaufheben(
+                                                    '${tempMarker.iId.oid}')));
+                                  }),
                             ],
                           ),
                         ],
