@@ -13,7 +13,10 @@ class AppDrawer extends StatelessWidget {
             text: 'Contacts',
           ),
           Divider(),
-          _createDrawerItem(icon: Icons.collections_bookmark, text: 'Steps'),
+          _createDrawerItem(
+            icon: Icons.collections_bookmark,
+            text: 'Steps',
+          ),
           ListTile(
             title: Text('0.0.1'),
             onTap: () {},

@@ -70,6 +70,7 @@ class SchrankListe {
   SchrankListe(this.title, this.address, this.lat, this.lon, this.id);
 }
 
+// ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
   final formular;
   Schraenke(this.formular);

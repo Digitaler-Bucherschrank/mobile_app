@@ -2,6 +2,8 @@ import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
 class ScannerPageaufheben extends StatefulWidget {
+  String markersId;
+  ScannerPageaufheben(this.markersId);
   @override
   _ScannerPageState createState() => _ScannerPageState();
 }
