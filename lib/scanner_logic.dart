@@ -48,17 +48,28 @@ Future getInfo(String isbn) async {
   return response;
 }
 
-Future postIsbn(String isbn) async {
+Future postIsbnAndSchrank(String isbn, String schrank) async {
   const _url =
       "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json";
   http
       .post(_url,
           body: json.encode({
             'isbn': isbn,
+            'schrank': schrank,
           }))
       .then((response) {
     print(json.decode(response.body));
   });
+}
+
+setSchrank(String markersId, Map formular) {
+  if (markersId != "") {
+    formular.update('schrank', (v) {
+      print('old value of schrank before update: ' + v);
+      print('updated formular: ' + markersId);
+      return markersId;
+    });
+  }
 }
 
 class SchrankListe {
@@ -73,16 +84,19 @@ class SchrankListe {
 // ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
   final formular;
-  Schraenke(this.formular);
+  String markersId;
+  Schraenke(this.formular, this.markersId);
+
   @override
-  _SchraenkeState createState() => _SchraenkeState(formular);
+  _SchraenkeState createState() => _SchraenkeState(formular, markersId);
 }
 
 class _SchraenkeState extends State<Schraenke> {
   var result;
   Map formular;
   int selectedSchrank;
-  _SchraenkeState(this.formular);
+  String markersId;
+  _SchraenkeState(this.formular, this.markersId);
 
   setSelectedSchrank(int val, String schrank) {
     setState(() {
@@ -118,39 +132,56 @@ class _SchraenkeState extends State<Schraenke> {
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-        future: getSchranke(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return Container(
-              child: Center(
-                child: Text("Loading..."),
-              ),
-            );
-          } else {
-            return Container(
-              height: 400,
-              width: 300,
-              child: ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return RadioListTile(
-                    value: index,
-                    groupValue: selectedSchrank,
-                    title: Text(snapshot.data[index].title),
-                    subtitle: Container(
-                      child: Text("${snapshot.data[index].address}"),
+          future: getSchranke(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return Container(
+                child: Center(
+                  child: Text("Loading..."),
+                ),
+              );
+            } else if (markersId == "") {
+              return Container(
+                height: 400,
+                width: 300,
+                child: ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return RadioListTile(
+                      value: 0,
+                      groupValue: selectedSchrank,
+                      title: Text(snapshot.data[index].title),
+                      subtitle: Container(
+                        child: Text("${snapshot.data[index].address}"),
+                      ),
+                      activeColor: Colors.blue,
+                      onChanged: (val) {
+                        setSelectedSchrank(val, snapshot.data[index].id);
+                      },
+                    );
+                  },
+                ),
+              );
+            } else {
+              for (int i = 0; i < snapshot.data.length; i++) {
+                if (snapshot.data[i].id == markersId) {
+                  return Container(
+                    height: 100,
+                    width: 300,
+                    child: Card(
+                      child: ListTile(
+                        title: Text(snapshot.data[i].title),
+                        subtitle: Container(
+                          child: Text("${snapshot.data[i].address}"),
+                        ),
+                      ),
                     ),
-                    activeColor: Colors.blue,
-                    onChanged: (val) {
-                      setSelectedSchrank(val, snapshot.data[index].id);
-                    },
                   );
-                },
-              ),
-            );
-          }
-        },
-      ),
+                }
+              }
+            }
+            return Container(child: Text(""));
+          }),
     );
   }
 }

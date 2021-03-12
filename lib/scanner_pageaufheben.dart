@@ -5,10 +5,12 @@ class ScannerPageaufheben extends StatefulWidget {
   String markersId;
   ScannerPageaufheben(this.markersId);
   @override
-  _ScannerPageState createState() => _ScannerPageState();
+  _ScannerPageState createState() => _ScannerPageState(markersId);
 }
 
 class _ScannerPageState extends State<ScannerPageaufheben> {
+  String markersId;
+  _ScannerPageState(this.markersId);
   int selectedRadio;
   int selectedSchrank;
   Map formular = {
@@ -90,7 +92,7 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
                 Row(
                   children: [
                     Column(
-                      children: [Schraenke(formular)],
+                      children: [Schraenke(formular, markersId)],
                     ),
                   ],
                 ),
@@ -98,9 +100,14 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
                   children: [
                     Column(
                       children: [
-                        OutlineButton(
+                        OutlinedButton(
                           onPressed: () {
+                            setSchrank(markersId, formular);
                             print(formular);
+                            postIsbnAndSchrank(
+                              formular['isbn'],
+                              formular['schrank'],
+                            );
                           },
                           child: Text("Bestätigen"),
                         )
