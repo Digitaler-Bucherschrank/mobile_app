@@ -15,8 +15,10 @@ class _ScannerPageState extends State<ScannerPageablegen> {
   int selectedRadio;
   int selectedSchrank;
   var txt = TextEditingController();
+  var txt2 = TextEditingController();
   Map bookInfo = {
     'name': 'Titel',
+    'author': 'Autor',
   };
 
   Map formular = {
@@ -50,145 +52,158 @@ class _ScannerPageState extends State<ScannerPageablegen> {
       ),
       body: SingleChildScrollView(
         child: new Container(
-          child: Row(
+          child: Column(
             children: [
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        child: Text('Barcode scannen oder ISBN eingeben!'),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: 200,
-                            child: TextField(
-                              onSubmitted: (String str) {
-                                setState(() async {
-                                  formular.update('isbn', (v) {
-                                    print('old value of isbn before update: ' +
-                                        v);
-                                    return str;
-                                  });
-                                  bookInfo = await getInfo(formular['isbn']);
-                                  txt.text = bookInfo['name'] as String;
+              Card(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Text('Barcode scannen oder ISBN eingeben!'),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 200,
+                          height: 100,
+                          child: TextField(
+                            onSubmitted: (String str) {
+                              setState(() async {
+                                formular.update('isbn', (v) {
+                                  print(
+                                      'old value of isbn before update: ' + v);
+                                  return str;
                                 });
-                                print(bookInfo);
-                                print('updated formular: ' + formular['isbn']);
-                              },
-                            ),
+                                bookInfo = await getInfo(formular['isbn']);
+                                txt.text = bookInfo['name'] as String;
+                              });
+                              print(bookInfo);
+                              print('updated formular: ' + formular['isbn']);
+                            },
                           ),
-                          Container(
-                            child: Text('Buchinformationen:'),
-                          ),
-                          Container(
-                            child: TextField(
-                              controller: txt,
-                              decoration: InputDecoration(
-                                labelText: bookInfo['name'],
-                              ),
-                            ),
-                            width: 200,
-                          ),
-                          Container(
-                            width: 200,
-                            child: Text(
-                                'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
-                          ),
-                        ],
-                      ),
-                      Column(children: [
+                        ),
                         IconButton(
                           icon: Icon(Icons.qr_code_scanner),
                           tooltip: "Scannen",
                           onPressed: () {
-                            setState(() {
-                              Future text = scanBarcodeNormal();
-                              text.then((value) => formular.update('isbn', (v) {
-                                    print('old value of isbn before update: ' +
-                                        v);
-                                    print('updated formular: ' + value);
-                                    return value;
-                                  }));
-                            });
+                            setState(
+                              () {
+                                Future text = scanBarcodeNormal();
+                                text.then(
+                                  (value) => formular.update(
+                                    'isbn',
+                                    (v) {
+                                      print(
+                                          'old value of isbn before update: ' +
+                                              v);
+                                      print('updated formular: ' + value);
+                                      return value;
+                                    },
+                                  ),
+                                );
+                              },
+                            );
                           },
                         ),
-                      ]),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                children: [Schraenke(formular, markersId)],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 1,
-                              groupValue: selectedRadio,
-                              title: Text("Buch aus Inventar ablegen"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedRadio(val, "inv");
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 300,
-                            child: RadioListTile(
-                              value: 2,
-                              groupValue: selectedRadio,
-                              title: Text("Neues Buch ablegen"),
-                              activeColor: Colors.blue,
-                              onChanged: (val) {
-                                setSelectedRadio(val, "neu");
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          OutlinedButton(
-                            onPressed: () {
-                              setSchrank(markersId, formular);
-                              print(formular);
-                              postIsbnAndSchrank(
-                                formular['isbn'],
-                                formular['schrank'],
-                              );
-                            },
-                            child: Text("Bestätigen"),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          child: Text('Buchinformationen:'),
+                        ),
+                        Container(
+                          child: TextField(
+                            controller: txt,
+                            decoration: InputDecoration(
+                              labelText: bookInfo['name'],
+                            ),
+                          ),
+                          width: 200,
+                        ),
+                        Container(
+                          child: TextField(
+                            controller: txt2,
+                            decoration: InputDecoration(
+                              labelText: bookInfo['author'],
+                            ),
+                          ),
+                          width: 200,
+                        ),
+                        Container(
+                          width: 200,
+                          child: Text(
+                              'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [Schraenke(formular, markersId)],
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text("Von wo soll das Buch hinzugefügt werden?"),
+                        Container(
+                          width: 300,
+                          child: RadioListTile(
+                            value: 1,
+                            groupValue: selectedRadio,
+                            title: Text("Buch aus Inventar ablegen"),
+                            activeColor: Colors.blue,
+                            onChanged: (val) {
+                              setSelectedRadio(val, "inv");
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: 300,
+                          child: RadioListTile(
+                            value: 2,
+                            groupValue: selectedRadio,
+                            title: Text("Neues Buch ablegen"),
+                            activeColor: Colors.blue,
+                            onChanged: (val) {
+                              setSelectedRadio(val, "neu");
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  setSchrank(markersId, formular);
+                  print(formular);
+                  postIsbnAndSchrank(
+                    formular['isbn'],
+                    formular['schrank'],
+                  );
+                },
+                child: Text("Bestätigen"),
+              )
             ],
           ),
         ),

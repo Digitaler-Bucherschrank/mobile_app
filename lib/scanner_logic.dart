@@ -148,7 +148,7 @@ class _SchraenkeState extends State<Schraenke> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
                     return RadioListTile(
-                      value: 0,
+                      value: index,
                       groupValue: selectedSchrank,
                       title: Text(snapshot.data[index].title),
                       subtitle: Container(
@@ -165,17 +165,23 @@ class _SchraenkeState extends State<Schraenke> {
             } else {
               for (int i = 0; i < snapshot.data.length; i++) {
                 if (snapshot.data[i].id == markersId) {
-                  return Container(
-                    height: 100,
-                    width: 300,
-                    child: Card(
-                      child: ListTile(
-                        title: Text(snapshot.data[i].title),
-                        subtitle: Container(
-                          child: Text("${snapshot.data[i].address}"),
+                  return Column(
+                    children: [
+                      Text("Bücherschrank"),
+                      Container(
+                        height: 100,
+                        width: 300,
+                        child: ListTile(
+                          leading: Image(
+                            image: AssetImage('book.png'),
+                          ),
+                          title: Text(snapshot.data[i].title),
+                          subtitle: Container(
+                            child: Text("${snapshot.data[i].address}"),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   );
                 }
               }

@@ -13,6 +13,12 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
   _ScannerPageState(this.markersId);
   int selectedRadio;
   int selectedSchrank;
+  var txt = TextEditingController();
+  var txt2 = TextEditingController();
+  Map bookInfo = {
+    'name': 'Titel',
+    'author': 'Autor',
+  };
   Map formular = {
     'a': 'aufheben',
     'isbn': 'leer',
@@ -39,85 +45,128 @@ class _ScannerPageState extends State<ScannerPageaufheben> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Buch aufheben"),
+        title: new Text("Buch ablegen"),
       ),
-      body: new Container(
-        child: Row(
-          children: [
-            Column(
-              children: [
-                Container(
-                  child: Text('Barcode scannen oder ISBN eingeben!'),
-                ),
-                Row(
+      body: SingleChildScrollView(
+        child: new Container(
+          child: Column(
+            children: [
+              Card(
+                child: Column(
                   children: [
-                    Column(
+                    Container(
+                      child: Text('Barcode scannen oder ISBN eingeben!'),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           width: 200,
+                          height: 100,
                           child: TextField(
                             onSubmitted: (String str) {
-                              setState(() {
+                              setState(() async {
                                 formular.update('isbn', (v) {
                                   print(
                                       'old value of isbn before update: ' + v);
                                   return str;
                                 });
+                                bookInfo = await getInfo(formular['isbn']);
+                                txt.text = bookInfo['name'] as String;
                               });
+                              print(bookInfo);
                               print('updated formular: ' + formular['isbn']);
                             },
                           ),
                         ),
+                        IconButton(
+                          icon: Icon(Icons.qr_code_scanner),
+                          tooltip: "Scannen",
+                          onPressed: () {
+                            setState(
+                              () {
+                                Future text = scanBarcodeNormal();
+                                text.then(
+                                  (value) => formular.update(
+                                    'isbn',
+                                    (v) {
+                                      print(
+                                          'old value of isbn before update: ' +
+                                              v);
+                                      print('updated formular: ' + value);
+                                      return value;
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
                       ],
                     ),
-                    Column(children: [
-                      IconButton(
-                        icon: Icon(Icons.qr_code_scanner),
-                        tooltip: "Scannen",
-                        onPressed: () {
-                          setState(() {
-                            Future text = scanBarcodeNormal();
-                            text.then((value) => formular.update('isbn', (v) {
-                                  print(
-                                      'old value of isbn before update: ' + v);
-                                  print('updated formular: ' + value);
-                                  return value;
-                                }));
-                          });
-                        },
-                      ),
-                    ]),
                   ],
                 ),
-                Row(
+              ),
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          child: Text('Buchinformationen:'),
+                        ),
+                        Container(
+                          child: TextField(
+                            controller: txt,
+                            decoration: InputDecoration(
+                              labelText: bookInfo['name'],
+                            ),
+                          ),
+                          width: 200,
+                        ),
+                        Container(
+                          child: TextField(
+                            controller: txt2,
+                            decoration: InputDecoration(
+                              labelText: bookInfo['author'],
+                            ),
+                          ),
+                          width: 200,
+                        ),
+                        Container(
+                          width: 200,
+                          child: Text(
+                              'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       children: [Schraenke(formular, markersId)],
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {
-                            setSchrank(markersId, formular);
-                            print(formular);
-                            postIsbnAndSchrank(
-                              formular['isbn'],
-                              formular['schrank'],
-                            );
-                          },
-                          child: Text("Bestätigen"),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  setSchrank(markersId, formular);
+                  print(formular);
+                  postIsbnAndSchrank(
+                    formular['isbn'],
+                    formular['schrank'],
+                  );
+                },
+                child: Text("Bestätigen"),
+              )
+            ],
+          ),
         ),
       ),
     );
