@@ -64,29 +64,6 @@ class Places {
     title = json['title'];
     type = json['type'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.iId != null) {
-      data['_id'] = this.iId.toJson();
-    }
-    data['address'] = this.address;
-    data['bcz'] = this.bcz;
-    data['comment'] = this.comment;
-    data['contact'] = this.contact;
-    data['deactivated'] = this.deactivated;
-    data['deactreason'] = this.deactreason;
-    data['digital'] = this.digital;
-    data['entrytype'] = this.entrytype;
-    data['homepage'] = this.homepage;
-    data['icontype'] = this.icontype;
-    data['lat'] = this.lat;
-    data['lon'] = this.lon;
-    data['open'] = this.open;
-    data['title'] = this.title;
-    data['type'] = this.type;
-    return data;
-  }
 }
 
 class Id {
@@ -96,12 +73,6 @@ class Id {
 
   Id.fromJson(Map<String, dynamic> json) {
     oid = json[r"$oid"];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data[r'$oid'] = this.oid;
-    return data;
   }
 }
 
