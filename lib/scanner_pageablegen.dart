@@ -1,12 +1,17 @@
 import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ScannerPageablegen extends StatefulWidget {
+  String markersId;
+  ScannerPageablegen(this.markersId);
   @override
-  _ScannerPageState createState() => _ScannerPageState();
+  _ScannerPageState createState() => _ScannerPageState(markersId);
 }
 
 class _ScannerPageState extends State<ScannerPageablegen> {
+  String markersId;
+  _ScannerPageState(this.markersId);
   int selectedRadio;
   int selectedSchrank;
   var txt = TextEditingController();
@@ -123,7 +128,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           Row(
                             children: [
                               Column(
-                                children: [Schraenke(formular)],
+                                children: [Schraenke(formular, markersId)],
                               ),
                             ],
                           ),
@@ -167,10 +172,14 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                     children: [
                       Column(
                         children: [
-                          OutlineButton(
+                          OutlinedButton(
                             onPressed: () {
+                              setSchrank(markersId, formular);
                               print(formular);
-                              postIsbn(formular['isbn']);
+                              postIsbnAndSchrank(
+                                formular['isbn'],
+                                formular['schrank'],
+                              );
                             },
                             child: Text("Bestätigen"),
                           )

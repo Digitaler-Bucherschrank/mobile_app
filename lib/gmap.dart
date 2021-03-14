@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'markers2.dart';
 import 'dart:convert';
+// ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
+import 'BuchAnzeigen.dart';
+import 'scanner_pageablegen.dart';
+import 'scanner_pageaufheben.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -77,14 +81,13 @@ class Id {
 }
 
 class _GMapState extends State<GMap> {
-  //GoogleMapController _mapController;
   Set<Marker> _markers = {};
-  void _onMapCreated(GoogleMapController controller) async{
-    var markers = jsonDecode(await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
-    for(final e in markers){
+  void _onMapCreated(GoogleMapController controller) async {
+    var markers = jsonDecode(
+        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
+    for (final e in markers) {
       var tempMarker = Places.fromJson(e);
-      _markers.add(
-        Marker(
+      _markers.add(Marker(
           markerId: MarkerId('${tempMarker.iId.oid}'),
           position: LatLng(
             double.parse('${tempMarker.lat}'),
@@ -92,15 +95,79 @@ class _GMapState extends State<GMap> {
               '${tempMarker.lon}',
             ),
           ),
-          infoWindow: InfoWindow(
-            title: '${tempMarker.title}',
-            snippet: '${tempMarker.address}' '${tempMarker.comment}',
-          ),
           icon: await BitmapDescriptor.fromAssetImage(
-              ImageConfiguration(devicePixelRatio: 5),
-              'assets/book.png')
-        ),
-      );
+              ImageConfiguration(devicePixelRatio: 5), 'assets/book.png'),
+          onTap: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (builder) {
+                  return Container(
+                    color: Color(0xff757575),
+                    child: Container(
+                      padding: EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.0),
+                          topRight: Radius.circular(20.0),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          ListTile(
+                            title: Text('${tempMarker.title}'),
+                          ),
+                          ListTile(
+                            title: Text('${tempMarker.address}'),
+                          ),
+                          ElevatedButton(
+                              child: const Text("Siehe Bücher"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BuchAnzeigen()),
+                                );
+                              }),
+                          ElevatedButton(
+                            child: const Text('Close BottomSheet'),
+                            onPressed: () => Navigator.pop(context),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              ElevatedButton(
+                                  child: const Text("Buch ablegen"),
+                                  onPressed: () {
+                                    print('${tempMarker.iId.oid}');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ScannerPageablegen(
+                                                  '${tempMarker.iId.oid}')),
+                                    );
+                                  }),
+                              ElevatedButton(
+                                  child: const Text("Buch aufheben"),
+                                  onPressed: () {
+                                    print('${tempMarker.iId.oid}');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ScannerPageaufheben(
+                                                    '${tempMarker.iId.oid}')));
+                                  }),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                });
+          }));
     }
     setState(() => null);
   }
