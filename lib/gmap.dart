@@ -180,10 +180,17 @@ class _GMapState extends State<GMap> {
           GoogleMap(
             onMapCreated: _onMapCreated,
             myLocationEnabled: true,
+            scrollGesturesEnabled: true,
+            tiltGesturesEnabled: true,
             initialCameraPosition: CameraPosition(
               target: LatLng(50.1109, 8.6821),
               zoom: 12,
             ),
+            //            cameraTargetBounds: new CameraTargetBounds(new LatLngBounds(
+            //     southwest: LatLng(50.009300, 8.450364),
+            //     northeast: LatLng(51.181890, 13.537366),
+            //   )),
+            //.setLatLngBoundsForCameraTarget(CameraTargetBounds),
             markers: Set<Marker>.of(_markers),
           ),
         ],
