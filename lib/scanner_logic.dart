@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
+import 'package:location/location.dart';
+import 'package:maps_toolkit/maps_toolkit.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -27,6 +29,22 @@ Future scanBarcodeNormal() async {
   scanBarcode = barcodeScanRes;
 
   return (scanBarcode);
+}
+
+Future getDistance(String lat2, String lng2) async {
+  String out;
+  LocationData _locationData;
+  Location location = new Location();
+  double lng2db = double.parse(lng2);
+  double lat2db = double.parse(lat2);
+  _locationData = await location.getLocation();
+  print(_locationData);
+  var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+      LatLng(_locationData.latitude, _locationData.longitude),
+      LatLng(lat2db, lng2db));
+  out = (distanceBetweenPoints / 1000).toStringAsFixed(2);
+  print(out);
+  return out;
 }
 
 Future getInfo(String isbn) async {
@@ -78,7 +96,9 @@ class SchrankListe {
   String id;
   var lat;
   var lon;
-  SchrankListe(this.title, this.address, this.lat, this.lon, this.id);
+  var entfernung;
+  SchrankListe(
+      this.title, this.address, this.lat, this.lon, this.id, this.entfernung);
 }
 
 // ignore: must_be_immutable
@@ -120,6 +140,7 @@ class _SchraenkeState extends State<Schraenke> {
         i["lat"],
         i["lon"],
         i["_id"]["\$oid"],
+        await getDistance(i["lat"], i["lon"]),
       );
       schraenke.add(sch);
     }
@@ -177,7 +198,12 @@ class _SchraenkeState extends State<Schraenke> {
                           ),
                           title: Text(snapshot.data[i].title),
                           subtitle: Container(
-                            child: Text("${snapshot.data[i].address}"),
+                            child: Column(
+                              children: [
+                                Text(
+                                    "Entfernung: ${snapshot.data[i].entfernung}km"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
