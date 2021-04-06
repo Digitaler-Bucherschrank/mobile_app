@@ -4,7 +4,7 @@ import 'package:maps_toolkit/maps_toolkit.dart';
 import 'dart:convert';
 import 'dart:async';
 
-List<SchrankListe> schraenke;
+List<SchrankListe> _schraenke;
 
 Future getDistance(String lat2, String lng2) async {
   String out;
@@ -34,7 +34,7 @@ class SchrankListe {
 }
 
 Future<void> getSchraenke() async {
-  schraenke = [];
+  _schraenke = [];
   var _data = jsonDecode(await rootBundle.loadString("assets/markers.json"));
 
   for (var i in _data) {
@@ -46,21 +46,21 @@ Future<void> getSchraenke() async {
       i["_id"]["\$oid"],
       await getDistance(i["lat"], i["lon"]),
     );
-    schraenke.add(sch);
+    _schraenke.add(sch);
   }
-  print(schraenke.length);
+  print(_schraenke.length);
 }
 
 Future<List<SchrankListe>> schrankeFuture() async {
-  if (schraenke != null) {
-    print("schraenke1$schraenke");
-    return schraenke;
+  if (_schraenke != null) {
+    print("schraenke1 $_schraenke");
+    return _schraenke;
   } else {
     return getSchraenke().then((v) {
       print("${v as String}");
-      print("schraenke2$schraenke");
-      while (schraenke == null) {}
-      return schraenke;
+      print("schraenke2 $_schraenke");
+      while (_schraenke == null) {}
+      return _schraenke;
     });
   }
 }

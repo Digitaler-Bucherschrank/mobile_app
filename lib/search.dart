@@ -9,20 +9,23 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   Future<List<String>> search(String search) async {
-    String test = "test";
-    await Future.delayed(Duration(seconds: 2));
-    return List.generate(
-      search.length,
-      (int index) {
-        if (search.length != test.length) {
-          return "nein";
-        } else if (search.contains(test)) {
-          return "Title : $search $index";
-        } else {
-          return "Nichts gefunden!";
-        }
-      },
-    );
+    var schraenke = await schrankeFuture();
+    print("schraenke in search: $schraenke");
+    List<String> result = [];
+    int i = 0;
+    while (result.length < 5 && i < 112) {
+      if (schraenke[i].title.contains(search)) {
+        print("schraenke[i].title: ${schraenke[i].title}");
+        result.add("Bücherschrank: ${schraenke[i].title}");
+      }
+      i++;
+    }
+    print("result: $result");
+    if (result.length != 0) {
+      return result;
+    } else {
+      return ["Nichts gefunden!"];
+    }
   }
 
   @override
