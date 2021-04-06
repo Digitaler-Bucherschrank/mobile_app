@@ -1,6 +1,7 @@
-import 'package:digitaler_buecherschrank/scanner_logic.dart';
+import 'scanner_logic.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ScannerPageaufheben extends StatefulWidget {
   String markersId;
   ScannerPageaufheben(this.markersId);
