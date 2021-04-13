@@ -68,17 +68,19 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           height: 100,
                           child: TextField(
                             onSubmitted: (String str) {
-                              setState(() async {
-                                formular.update('isbn', (v) {
-                                  print(
-                                      'old value of isbn before update: ' + v);
-                                  return str;
+                              getInfo(formular['isbn']).then((value) {
+                                setState(() {
+                                  bookInfo['name'] = value['name'];
+                                  print(bookInfo);
+                                  txt.text = bookInfo['name'];
                                 });
-                                bookInfo = await getInfo(formular['isbn']);
-                                txt.text = bookInfo['name'] as String;
                               });
-                              print(bookInfo);
-                              print('updated formular: ' + formular['isbn']);
+                              setState(() {
+                                print('old value of isbn before update: ' +
+                                    formular['isbn']);
+                                formular['isbn'] = str;
+                                print('updated formular: ' + formular['isbn']);
+                              });
                             },
                           ),
                         ),
@@ -88,19 +90,20 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           onPressed: () {
                             setState(
                               () {
-                                Future text = scanBarcodeNormal();
-                                text.then(
-                                  (value) => formular.update(
-                                    'isbn',
-                                    (v) {
-                                      print(
-                                          'old value of isbn before update: ' +
-                                              v);
-                                      print('updated formular: ' + value);
-                                      return value;
-                                    },
-                                  ),
-                                );
+                                scanBarcodeNormal().then((value) {
+                                  print('old value of isbn before update: ' +
+                                      formular['isbn']);
+                                  formular['isbn'] = value;
+                                  print(
+                                      'updated formular: ' + formular['isbn']);
+                                  getInfo(formular['isbn']).then((value) {
+                                    setState(() {
+                                      bookInfo['name'] = value['name'];
+                                      print(bookInfo);
+                                      txt.text = bookInfo['name'];
+                                    });
+                                  });
+                                });
                               },
                             );
                           },
@@ -123,7 +126,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           child: TextField(
                             controller: txt,
                             decoration: InputDecoration(
-                              labelText: bookInfo['name'],
+                              labelText: "Titel",
                             ),
                           ),
                           width: 200,
@@ -132,7 +135,7 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                           child: TextField(
                             controller: txt2,
                             decoration: InputDecoration(
-                              labelText: bookInfo['author'],
+                              labelText: "Autor",
                             ),
                           ),
                           width: 200,

@@ -4,7 +4,8 @@ import 'package:maps_toolkit/maps_toolkit.dart';
 import 'dart:convert';
 import 'dart:async';
 
-List<SchrankListe> _schraenke;
+List<SchrankData> _schraenke;
+List _data;
 
 Future getDistance(String lat2, String lng2) async {
   String out;
@@ -22,44 +23,113 @@ Future getDistance(String lat2, String lng2) async {
   return out;
 }
 
-class SchrankListe {
-  String title;
+class Id {
+  String oid;
+
+  Id({this.oid});
+
+  Id.fromJson(Map<String, dynamic> json) {
+    oid = json[r"$oid"];
+  }
+}
+
+class SchrankData {
+  Id iId;
   String address;
-  String id;
-  var lat;
-  var lon;
+  String bcz;
+  String comment;
+  String contact;
+  String deactivated;
+  String deactreason;
+  String digital;
+  String entrytype;
+  String homepage;
+  String icontype;
+  String lat;
+  String lon;
+  String open;
+  String title;
+  String type;
   var entfernung;
-  SchrankListe(
-      this.title, this.address, this.lat, this.lon, this.id, this.entfernung);
+
+  SchrankData(
+    this.iId,
+    this.address,
+    this.bcz,
+    this.comment,
+    this.contact,
+    this.deactivated,
+    this.deactreason,
+    this.digital,
+    this.entrytype,
+    this.homepage,
+    this.icontype,
+    this.lat,
+    this.lon,
+    this.open,
+    this.title,
+    this.type,
+    this.entfernung,
+  );
+  SchrankData.fromJson(Map<String, dynamic> json) {
+    iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
+    address = json['address'];
+    bcz = json['bcz'];
+    comment = json['comment'];
+    contact = json['contact'];
+    deactivated = json['deactivated'];
+    deactreason = json['deactreason'];
+    digital = json['digital'];
+    entrytype = json['entrytype'];
+    homepage = json['homepage'];
+    icontype = json['icontype'];
+    lat = json['lat'];
+    lon = json['lon'];
+    open = json['open'];
+    title = json['title'];
+    type = json['type'];
+    entfernung = -1000;
+  }
+}
+
+Future<void> parseJSON() async {
+  _data = jsonDecode(await rootBundle.loadString("assets/markers.json"));
+}
+
+Future<List> jsonFuture() async {
+  if (_data != null) {
+    return _data;
+  } else {
+    return parseJSON().then((v) {
+      print("${v as String}");
+      while (_data == null) {}
+      return _data;
+    });
+  }
 }
 
 Future<void> getSchraenke() async {
   _schraenke = [];
-  var _data = jsonDecode(await rootBundle.loadString("assets/markers.json"));
-
-  for (var i in _data) {
-    SchrankListe sch = SchrankListe(
-      i["title"],
-      i["address"],
-      i["lat"],
-      i["lon"],
-      i["_id"]["\$oid"],
-      await getDistance(i["lat"], i["lon"]),
-    );
-    _schraenke.add(sch);
+  if (_data == null) {
+    await parseJSON();
+  }
+  for (final i in _data) {
+    var tempMarker = SchrankData.fromJson(i);
+    tempMarker.entfernung = await getDistance(tempMarker.lat, tempMarker.lon);
+    _schraenke.add(tempMarker);
   }
   print(_schraenke.length);
 }
 
-Future<List<SchrankListe>> schrankeFuture() async {
-  if (_schraenke != null) {
+Future<List<SchrankData>> schrankeFuture() async {
+  if (_schraenke.length != 0) {
     print("schraenke1 $_schraenke");
     return _schraenke;
   } else {
     return getSchraenke().then((v) {
       print("${v as String}");
       print("schraenke2 $_schraenke");
-      while (_schraenke == null) {}
+      while (_schraenke.length == 0) {}
       return _schraenke;
     });
   }

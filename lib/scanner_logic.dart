@@ -140,8 +140,9 @@ class _SchraenkeState extends State<Schraenke> {
               print("snapshot.data.length ${snapshot.data.length}");
               print("markersId $markersId");
               for (int i = 0; i < snapshot.data.length; i++) {
-                if (snapshot.data[i].id == markersId) {
-                  print("snapshot.data[i].id ${snapshot.data[i].id}");
+                if (snapshot.data[i].iId.oid == markersId) {
+                  print(
+                      "snapshot.data[$i].iId.oid ${snapshot.data[i].iId.oid}");
                   return Column(
                     children: [
                       Text("Bücherschrank"),
