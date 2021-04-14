@@ -1,3 +1,4 @@
+import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'markers2.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'BuchAnzeigen.dart';
 import 'scanner_pageablegen.dart';
 import 'scanner_pageaufheben.dart';
+
+import 'Schraenke.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -83,10 +86,10 @@ class Id {
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
-    var markers = jsonDecode(
-        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
-    for (final e in markers) {
-      var tempMarker = Places.fromJson(e);
+    var schraenke = await schrankeFuture();
+    print("blabla${schraenke.length}");
+    for (int i = 0; i < schraenke.length; i++) {
+      var tempMarker = schraenke[i];
       _markers.add(Marker(
           markerId: MarkerId('${tempMarker.iId.oid}'),
           position: LatLng(

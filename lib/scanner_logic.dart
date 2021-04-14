@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
-import 'package:location/location.dart';
-import 'package:maps_toolkit/maps_toolkit.dart';
+
+import 'Schraenke.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -29,22 +29,6 @@ Future scanBarcodeNormal() async {
   scanBarcode = barcodeScanRes;
 
   return (scanBarcode);
-}
-
-Future getDistance(String lat2, String lng2) async {
-  String out;
-  LocationData _locationData;
-  Location location = new Location();
-  double lng2db = double.parse(lng2);
-  double lat2db = double.parse(lat2);
-  _locationData = await location.getLocation();
-  print(_locationData);
-  var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-      LatLng(_locationData.latitude, _locationData.longitude),
-      LatLng(lat2db, lng2db));
-  out = (distanceBetweenPoints / 1000).toStringAsFixed(2);
-  print(out);
-  return out;
 }
 
 Future getInfo(String isbn) async {
@@ -90,17 +74,6 @@ setSchrank(String markersId, Map formular) {
   }
 }
 
-class SchrankListe {
-  String title;
-  String address;
-  String id;
-  var lat;
-  var lon;
-  var entfernung;
-  SchrankListe(
-      this.title, this.address, this.lat, this.lon, this.id, this.entfernung);
-}
-
 // ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
   final formular;
@@ -129,31 +102,11 @@ class _SchraenkeState extends State<Schraenke> {
     });
   }
 
-  Future<List<SchrankListe>> getSchranke() async {
-    var data = jsonDecode(
-        await DefaultAssetBundle.of(context).loadString("assets/markers.json"));
-    List<SchrankListe> schraenke = [];
-    for (var i in data) {
-      SchrankListe sch = SchrankListe(
-        i["title"],
-        i["address"],
-        i["lat"],
-        i["lon"],
-        i["_id"]["\$oid"],
-        await getDistance(i["lat"], i["lon"]),
-      );
-      schraenke.add(sch);
-    }
-    print(schraenke.length);
-
-    return schraenke;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-          future: getSchranke(),
+          future: schrankeFuture(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Container(
@@ -161,7 +114,7 @@ class _SchraenkeState extends State<Schraenke> {
                   child: Text("Loading..."),
                 ),
               );
-            } else if (markersId == "") {
+              /*} else if (markersId == "") {
               return Container(
                 height: 400,
                 width: 300,
@@ -182,10 +135,14 @@ class _SchraenkeState extends State<Schraenke> {
                     );
                   },
                 ),
-              );
+              );*/
             } else {
+              print("snapshot.data.length ${snapshot.data.length}");
+              print("markersId $markersId");
               for (int i = 0; i < snapshot.data.length; i++) {
-                if (snapshot.data[i].id == markersId) {
+                if (snapshot.data[i].iId.oid == markersId) {
+                  print(
+                      "snapshot.data[$i].iId.oid ${snapshot.data[i].iId.oid}");
                   return Column(
                     children: [
                       Text("Bücherschrank"),
