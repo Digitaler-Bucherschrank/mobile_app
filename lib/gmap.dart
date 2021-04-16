@@ -1,7 +1,9 @@
+// ignore: unused_import
 import 'package:digitaler_buecherschrank/scanner_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'markers2.dart';
+// ignore: unused_import
 import 'dart:convert';
 // ignore: unused_import
 import 'package:flutter/services.dart' show rootBundle;
@@ -83,7 +85,11 @@ class Id {
   }
 }
 
-class _GMapState extends State<GMap> {
+class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
+  @override
+  bool get wantKeepAlive => true;
+//doesnt restart map
+
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
     var schraenke = await schrankeFuture();
@@ -130,7 +136,8 @@ class _GMapState extends State<GMap> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BuchAnzeigen()),
+                                      builder: (context) => BuchAnzeigen(
+                                          '${tempMarker.iId.oid}')),
                                 );
                               }),
                           ElevatedButton(
@@ -177,6 +184,7 @@ class _GMapState extends State<GMap> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -189,11 +197,6 @@ class _GMapState extends State<GMap> {
               target: LatLng(50.1109, 8.6821),
               zoom: 12,
             ),
-            //            cameraTargetBounds: new CameraTargetBounds(new LatLngBounds(
-            //     southwest: LatLng(50.009300, 8.450364),
-            //     northeast: LatLng(51.181890, 13.537366),
-            //   )),
-            //.setLatLngBoundsForCameraTarget(CameraTargetBounds),
             markers: Set<Marker>.of(_markers),
           ),
         ],

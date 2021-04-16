@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'DetailPage.dart';
 
+// ignore: must_be_immutable
 class BuchAnzeigen extends StatefulWidget {
-  BuchAnzeigen({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+  String markersId;
+  BuchAnzeigen(this.markersId);
   @override
-  _BuchAnzeigen createState() => new _BuchAnzeigen();
+  _BuchAnzeigen createState() => _BuchAnzeigen(markersId);
 }
 
 class _BuchAnzeigen extends State<BuchAnzeigen> {
+  String markersId;
+  _BuchAnzeigen(this.markersId);
   Future<List<Book>> _getBooks() async {
     var data = await http
         .get("http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2");
@@ -30,6 +32,19 @@ class _BuchAnzeigen extends State<BuchAnzeigen> {
     print(books.length);
 
     return books;
+  }
+
+  Future postMarkersId(String markersId) async {
+    const _url =
+        "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2";
+    http
+        .post(_url,
+            body: json.encode({
+              'markersId': markersId,
+            }))
+        .then((response) {
+      print(json.decode(response.body));
+    });
   }
 
   @override
@@ -52,12 +67,15 @@ class _BuchAnzeigen extends State<BuchAnzeigen> {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
                     subtitle: Text(snapshot.data[index].email),
+                    //  leading: Image.network(-) ,
+                    trailing: Icon(Icons.arrow_forward_rounded),
                     onTap: () {
                       Navigator.push(
                           context,
                           new MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailPage(snapshot.data[index])));
+                              builder: (context) => DetailPage(
+                                  snapshot.data[index].name,
+                                  snapshot.data[index].email)));
 
                       //   child: ElevatedButton(
                       //   onPressed: () {
@@ -76,20 +94,6 @@ class _BuchAnzeigen extends State<BuchAnzeigen> {
         ),
       ),
     );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  final Book book;
-
-  DetailPage(this.book);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-      title: Text(book.name),
-    ));
   }
 }
 

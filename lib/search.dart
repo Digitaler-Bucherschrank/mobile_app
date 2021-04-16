@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'Schraenke.dart';
+//import 'gmap.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -60,6 +61,11 @@ class _SearchState extends State<Search> {
             onItemFound: (String post, int index) {
               return ListTile(
                 title: Text(post),
+                onTap: () {
+                  //   Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => GMap(index)));
+                  //  _gotoLocation(lat, long);
+                },
               );
             },
           ),
