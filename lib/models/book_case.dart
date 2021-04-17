@@ -109,11 +109,12 @@ Future<List> jsonFuture() async {
   }
 }
 
-Future<void> getBookCases() async {
+Future<void> loadBookCases() async {
   _bookcases = [];
   if (_data == null) {
     await parseJSON();
   }
+
   for (final i in _data) {
     var tempMarker = BookCase.fromJson(i);
     tempMarker.entfernung = await getDistance(tempMarker.lat, tempMarker.lon);
@@ -122,12 +123,12 @@ Future<void> getBookCases() async {
   print(_bookcases.length);
 }
 
-Future<List<BookCase>> schrankeFuture() async {
+Future<List<BookCase>> getBookCases() async {
   if (_bookcases.length != 0) {
     print("schraenke1 $_bookcases");
     return _bookcases;
   } else {
-    return getBookCases().then((v) {
+    return loadBookCases().then((v) {
       print("${v as String}");
       print("schraenke2 $_bookcases");
       while (_bookcases.length == 0) {}

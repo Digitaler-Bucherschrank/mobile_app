@@ -13,7 +13,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   Future<List<String>> search(String search) async {
-    var bookCases = await schrankeFuture();
+    var bookCases = await getBookCases();
     print("bookCases in search: $bookCases");
     List<String> result = [];
     int i = 0;

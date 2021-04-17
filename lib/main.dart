@@ -7,6 +7,7 @@ import 'gmap.dart';
 import 'models/book_case.dart';
 import 'search.dart';
 
+// TODO: Add Localization
 void main() {
   runApp(MyApp());
 }
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setDeviceDefault();
-    getBookCases();
+    loadBookCases();
   }
 
   void _getLocationPermission() async {
