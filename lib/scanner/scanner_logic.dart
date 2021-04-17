@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
-import 'Schraenke.dart';
+import '../models/book_case.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -106,7 +107,7 @@ class _SchraenkeState extends State<Schraenke> {
   Widget build(BuildContext context) {
     return Container(
       child: FutureBuilder(
-          future: schrankeFuture(),
+          future: getBookCases(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Container(

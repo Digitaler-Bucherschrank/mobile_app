@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BuchAnzeigen extends StatelessWidget {
+class BookInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,12 +1,11 @@
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'BuchAnzeigen.dart';
-import 'scanner_pageablegen.dart';
-import 'scanner_pageaufheben.dart';
-
-import 'Schraenke.dart';
 import 'search.dart';
+import 'models/book_case.dart';
+import 'models/book_info.dart';
+import 'scanner/scanner_drop_form.dart';
+import 'scanner/scanner_pickup_form.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -14,76 +13,11 @@ class GMap extends StatefulWidget {
   _GMapState createState() => _GMapState();
 }
 
-class Places {
-  Id iId;
-  String address;
-  String bcz;
-  String comment;
-  String contact;
-  String deactivated;
-  String deactreason;
-  String digital;
-  String entrytype;
-  String homepage;
-  String icontype;
-  String lat;
-  String lon;
-  String open;
-  String title;
-  String type;
-
-  Places(
-      {this.iId,
-      this.address,
-      this.bcz,
-      this.comment,
-      this.contact,
-      this.deactivated,
-      this.deactreason,
-      this.digital,
-      this.entrytype,
-      this.homepage,
-      this.icontype,
-      this.lat,
-      this.lon,
-      this.open,
-      this.title,
-      this.type});
-
-  Places.fromJson(Map<String, dynamic> json) {
-    iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
-    address = json['address'];
-    bcz = json['bcz'];
-    comment = json['comment'];
-    contact = json['contact'];
-    deactivated = json['deactivated'];
-    deactreason = json['deactreason'];
-    digital = json['digital'];
-    entrytype = json['entrytype'];
-    homepage = json['homepage'];
-    icontype = json['icontype'];
-    lat = json['lat'];
-    lon = json['lon'];
-    open = json['open'];
-    title = json['title'];
-    type = json['type'];
-  }
-}
-
-class Id {
-  String oid;
-
-  Id({this.oid});
-
-  Id.fromJson(Map<String, dynamic> json) {
-    oid = json[r"$oid"];
-  }
-}
-
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
-    var schraenke = await schrankeFuture();
+    var schraenke = await getBookCases();
+    print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(
@@ -126,7 +60,7 @@ class _GMapState extends State<GMap> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BuchAnzeigen()),
+                                      builder: (context) => BookInfo()),
                                 );
                               }),
                           ElevatedButton(
@@ -143,9 +77,8 @@ class _GMapState extends State<GMap> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ScannerPageablegen(
-                                                  '${tempMarker.iId.oid}')),
+                                          builder: (context) => ScannerDropForm(
+                                              '${tempMarker.iId.oid}')),
                                     );
                                   }),
                               ElevatedButton(
@@ -156,7 +89,7 @@ class _GMapState extends State<GMap> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ScannerPageaufheben(
+                                                ScannerPickupForm(
                                                     '${tempMarker.iId.oid}')));
                                   }),
                             ],
