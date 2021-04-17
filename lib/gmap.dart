@@ -1,15 +1,12 @@
-import 'package:digitaler_buecherschrank/scanner_logic.dart';
+import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'markers2.dart';
-import 'dart:convert';
-// ignore: unused_import
-import 'package:flutter/services.dart' show rootBundle;
 import 'BuchAnzeigen.dart';
 import 'scanner_pageablegen.dart';
 import 'scanner_pageaufheben.dart';
 
 import 'Schraenke.dart';
+import 'search.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -87,7 +84,6 @@ class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
     var schraenke = await schrankeFuture();
-    print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(
@@ -188,6 +184,37 @@ class _GMapState extends State<GMap> {
               zoom: 12,
             ),
             markers: Set<Marker>.of(_markers),
+          ),
+          Positioned(
+            top: 10,
+            right: 15,
+            left: 15,
+            child: Container(
+              color: Colors.white,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: OutlinedButton(
+                        child: Text("Suchen..."),
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Search();
+                          }));
+                        }),
+                    width: 300,
+                    height: 80,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.deepPurple,
+                      child: Text('JK'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

@@ -22,8 +22,7 @@ class _SearchState extends State<Search> {
       }
       i++;
     }
-    print("result: $result");
-    result.add(await getBook(search));
+    //result.add(await getBook(search));
     print("result: $result");
     if (result.length != 0) {
       return result;
