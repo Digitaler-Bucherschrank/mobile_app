@@ -1,17 +1,11 @@
-// ignore: unused_import
-import 'package:digitaler_buecherschrank/scanner_logic.dart';
+import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'markers2.dart';
-// ignore: unused_import
-import 'dart:convert';
-// ignore: unused_import
-import 'package:flutter/services.dart' show rootBundle;
-import 'BuchAnzeigen.dart';
-import 'scanner_pageablegen.dart';
-import 'scanner_pageaufheben.dart';
-
-import 'Schraenke.dart';
+import 'search.dart';
+import 'models/book_case.dart';
+import 'models/book_info.dart';
+import 'scanner/scanner_drop_form.dart';
+import 'scanner/scanner_pickup_form.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key key}) : super(key: key);
@@ -92,7 +86,7 @@ class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
 
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
-    var schraenke = await schrankeFuture();
+    var schraenke = await getBookCases();
     print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
@@ -136,8 +130,8 @@ class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BuchAnzeigen(
-                                          '${tempMarker.iId.oid}')),
+                                      builder: (context) =>
+                                          BookInfo('${tempMarker.iId.oid}')),
                                 );
                               }),
                           ElevatedButton(
@@ -154,9 +148,8 @@ class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ScannerPageablegen(
-                                                  '${tempMarker.iId.oid}')),
+                                          builder: (context) => ScannerDropForm(
+                                              '${tempMarker.iId.oid}')),
                                     );
                                   }),
                               ElevatedButton(
@@ -167,7 +160,7 @@ class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ScannerPageaufheben(
+                                                ScannerPickupForm(
                                                     '${tempMarker.iId.oid}')));
                                   }),
                             ],
@@ -198,6 +191,37 @@ class _GMapState extends State<GMap> with AutomaticKeepAliveClientMixin<GMap> {
               zoom: 12,
             ),
             markers: Set<Marker>.of(_markers),
+          ),
+          Positioned(
+            top: 10,
+            right: 15,
+            left: 15,
+            child: Container(
+              color: Colors.white,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: OutlinedButton(
+                        child: Text("Suchen..."),
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return Search();
+                          }));
+                        }),
+                    width: 300,
+                    height: 80,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.deepPurple,
+                      child: Text('JK'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

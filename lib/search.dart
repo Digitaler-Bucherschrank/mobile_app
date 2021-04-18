@@ -1,9 +1,10 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'Schraenke.dart';
-//import 'gmap.dart';
+import 'package:http/http.dart' as http;
+
+import 'models/book_case.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -12,19 +13,18 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   Future<List<String>> search(String search) async {
-    var schraenke = await schrankeFuture();
-    print("schraenke in search: $schraenke");
+    var bookCases = await getBookCases();
+    print("bookCases in search: $bookCases");
     List<String> result = [];
     int i = 0;
     while (i < 112) {
-      if (schraenke[i].title.contains(search)) {
-        print("schraenke[i].title: ${schraenke[i].title}");
-        result.add("Bücherschrank: ${schraenke[i].title}");
+      if (bookCases[i].title.contains(search)) {
+        print("bookCases[i].title: ${bookCases[i].title}");
+        result.add("Bücherschrank: ${bookCases[i].title}");
       }
       i++;
     }
-    print("result: $result");
-    result.add(await getBook(search));
+    //result.add(await getBook(search));
     print("result: $result");
     if (result.length != 0) {
       return result;

@@ -1,15 +1,16 @@
-import 'scanner_logic.dart';
 import 'package:flutter/material.dart';
 
+import 'scanner_logic.dart';
+
 // ignore: must_be_immutable
-class ScannerPageablegen extends StatefulWidget {
+class ScannerPickupForm extends StatefulWidget {
   String markersId;
-  ScannerPageablegen(this.markersId);
+  ScannerPickupForm(this.markersId);
   @override
   _ScannerPageState createState() => _ScannerPageState(markersId);
 }
 
-class _ScannerPageState extends State<ScannerPageablegen> {
+class _ScannerPageState extends State<ScannerPickupForm> {
   String markersId;
   _ScannerPageState(this.markersId);
   int selectedRadio;
@@ -20,11 +21,9 @@ class _ScannerPageState extends State<ScannerPageablegen> {
     'name': 'Titel',
     'author': 'Autor',
   };
-
   Map formular = {
-    'a': 'ablegen',
+    'a': 'aufheben',
     'isbn': 'leer',
-    'von': 'leer',
     'schrank': 'leer',
   };
   @override
@@ -156,42 +155,6 @@ class _ScannerPageState extends State<ScannerPageablegen> {
                   children: [
                     Column(
                       children: [Schraenke(formular, markersId)],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Text("Von wo soll das Buch hinzugefügt werden?"),
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 1,
-                            groupValue: selectedRadio,
-                            title: Text("Buch aus Inventar ablegen"),
-                            activeColor: Colors.blue,
-                            onChanged: (val) {
-                              setSelectedRadio(val, "inv");
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 2,
-                            groupValue: selectedRadio,
-                            title: Text("Neues Buch ablegen"),
-                            activeColor: Colors.blue,
-                            onChanged: (val) {
-                              setSelectedRadio(val, "neu");
-                            },
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),

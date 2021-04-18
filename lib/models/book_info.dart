@@ -5,14 +5,14 @@ import 'dart:convert';
 import 'DetailPage.dart';
 
 // ignore: must_be_immutable
-class BuchAnzeigen extends StatefulWidget {
+class BookInfo extends StatefulWidget {
   String markersId;
-  BuchAnzeigen(this.markersId);
+  BookInfo(this.markersId);
   @override
-  _BuchAnzeigen createState() => _BuchAnzeigen(markersId);
+  _BookInfo createState() => _BookInfo(markersId);
 }
 
-class _BuchAnzeigen extends State<BuchAnzeigen> {
+class _BookInfo extends State<BuchAnzeigen> {
   String markersId;
   _BuchAnzeigen(this.markersId);
   Future<List<Book>> _getBooks() async {
@@ -47,6 +47,7 @@ class _BuchAnzeigen extends State<BuchAnzeigen> {
     });
   }
 
+class BookInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

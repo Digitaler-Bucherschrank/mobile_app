@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:location/location.dart';
-import 'gmap.dart';
-import 'drawer.dart';
-import 'search.dart';
-import 'Schraenke.dart';
-//import 'scanner_page.dart';
 
+import 'drawer.dart';
+import 'gmap.dart';
+import 'models/book_case.dart';
+import 'search.dart';
+
+// TODO: Add Localization
 void main() {
   runApp(MyApp());
 }
@@ -40,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setDeviceDefault();
-    getSchraenke();
+    loadBookCases();
   }
 
   void _getLocationPermission() async {

@@ -1,10 +1,11 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
-import 'dart:convert';
-import 'dart:async';
 
-List<SchrankData> _schraenke;
+List<BookCase> _bookcases;
 List _data;
 
 Future getDistance(String lat2, String lng2) async {
@@ -33,7 +34,7 @@ class Id {
   }
 }
 
-class SchrankData {
+class BookCase {
   Id iId;
   String address;
   String bcz;
@@ -52,7 +53,7 @@ class SchrankData {
   String type;
   var entfernung;
 
-  SchrankData(
+  BookCase(
     this.iId,
     this.address,
     this.bcz,
@@ -71,7 +72,7 @@ class SchrankData {
     this.type,
     this.entfernung,
   );
-  SchrankData.fromJson(Map<String, dynamic> json) {
+  BookCase.fromJson(Map<String, dynamic> json) {
     iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
     address = json['address'];
     bcz = json['bcz'];
@@ -108,29 +109,30 @@ Future<List> jsonFuture() async {
   }
 }
 
-Future<void> getSchraenke() async {
-  _schraenke = [];
+Future<void> loadBookCases() async {
+  _bookcases = [];
   if (_data == null) {
     await parseJSON();
   }
+
   for (final i in _data) {
-    var tempMarker = SchrankData.fromJson(i);
+    var tempMarker = BookCase.fromJson(i);
     tempMarker.entfernung = await getDistance(tempMarker.lat, tempMarker.lon);
-    _schraenke.add(tempMarker);
+    _bookcases.add(tempMarker);
   }
-  print(_schraenke.length);
+  print(_bookcases.length);
 }
 
-Future<List<SchrankData>> schrankeFuture() async {
-  if (_schraenke.length != 0) {
-    print("schraenke1 $_schraenke");
-    return _schraenke;
+Future<List<BookCase>> getBookCases() async {
+  if (_bookcases.length != 0) {
+    print("schraenke1 $_bookcases");
+    return _bookcases;
   } else {
-    return getSchraenke().then((v) {
+    return loadBookCases().then((v) {
       print("${v as String}");
-      print("schraenke2 $_schraenke");
-      while (_schraenke.length == 0) {}
-      return _schraenke;
+      print("schraenke2 $_bookcases");
+      while (_bookcases.length == 0) {}
+      return _bookcases;
     });
   }
 }
