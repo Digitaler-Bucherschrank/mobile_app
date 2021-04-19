@@ -18,25 +18,32 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">2.10.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  json_annotation: ^3.0.1
-  flutter_displaymode: 0.1.1
+  json_annotation: ^4.0.1
+  flutter_displaymode: ^0.3.1-nullsafety.0
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.0
-  flutter_barcode_scanner: ^1.0.1
-  google_maps_flutter: ^1.0.6
-  google_maps_cluster_manager: ^0.2.1
-  location: ^3.0.2
-  http: ^0.12.0
-  maps_toolkit: ^1.1.0+2
-  flappy_search_bar: 1.4.1
+  cupertino_icons: ^1.0.2
+  flutter_barcode_scanner: ^2.0.0
+  google_maps_flutter: ^2.0.3
+  google_maps_cluster_manager: ^1.0.0
+  location: ^4.1.1
+  http: ^0.13.1
+  material_floating_search_bar: ^0.3.4
+  maps_toolkit:
+    git:
+      url: git://github.com/edgarfroes/maps_toolkit.git
+  intl: ^0.17.0
+  intl_utils: ^2.1.0
+  flutter_localizations:
+    sdk: flutter
+
 
 dev_dependencies:
-  build_runner: ^1.0.0
-  json_serializable: ^3.3.0
+  build_runner: ^1.12.2
+  json_serializable: ^4.1.0
   flutter_test:
     sdk: flutter
 
@@ -56,11 +63,7 @@ flutter:
      - assets/
      - markers.json
      - book.png
-   
-   
- 
 
-   
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -87,3 +90,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  main_locale: de
+  enabled: true
+  localizely:
+    project_id: 5989b48b-d779-46f3-b254-74fabfc2aa9e

@@ -1,8 +1,8 @@
 class User {
-  String id;
-  String username;
-  String mail;
-  Tokens tokens;
+  String? id;
+  String? username;
+  String? mail;
+  Tokens? tokens;
 
   User({this.id, this.username, this.mail, this.tokens});
 
@@ -20,16 +20,16 @@ class User {
     data['username'] = this.username;
     data['mail'] = this.mail;
     if (this.tokens != null) {
-      data['tokens'] = this.tokens.toJson();
+      data['tokens'] = this.tokens!.toJson();
     }
     return data;
   }
 }
 
 class Tokens {
-  String client;
-  AccessToken accessToken;
-  RefreshToken refreshToken;
+  String? client;
+  AccessToken? accessToken;
+  RefreshToken? refreshToken;
 
   Tokens({this.client, this.accessToken, this.refreshToken});
 
@@ -47,17 +47,17 @@ class Tokens {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['client'] = this.client;
     if (this.accessToken != null) {
-      data['accessToken'] = this.accessToken.toJson();
+      data['accessToken'] = this.accessToken!.toJson();
     }
     if (this.refreshToken != null) {
-      data['refreshToken'] = this.refreshToken.toJson();
+      data['refreshToken'] = this.refreshToken!.toJson();
     }
     return data;
   }
 }
 
 class AccessToken {
-  String token;
+  String? token;
 
   AccessToken({this.token});
 
@@ -73,7 +73,7 @@ class AccessToken {
 }
 
 class RefreshToken {
-  String token;
+  String? token;
 
   RefreshToken({this.token});
 

@@ -13,8 +13,8 @@ class ScannerDropForm extends StatefulWidget {
 class _ScannerPageState extends State<ScannerDropForm> {
   String markersId;
   _ScannerPageState(this.markersId);
-  int selectedRadio;
-  int selectedSchrank;
+  int? selectedRadio;
+  int? selectedSchrank;
   var txt = TextEditingController();
   var txt2 = TextEditingController();
   Map bookInfo = {
@@ -34,7 +34,7 @@ class _ScannerPageState extends State<ScannerDropForm> {
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val, String von) {
+  setSelectedRadio(int? val, String von) {
     setState(() {
       selectedRadio = val;
       formular.update('von', (v) {
@@ -175,7 +175,7 @@ class _ScannerPageState extends State<ScannerDropForm> {
                             groupValue: selectedRadio,
                             title: Text("Buch aus Inventar ablegen"),
                             activeColor: Colors.blue,
-                            onChanged: (val) {
+                            onChanged: (dynamic val) {
                               setSelectedRadio(val, "inv");
                             },
                           ),
@@ -187,7 +187,7 @@ class _ScannerPageState extends State<ScannerDropForm> {
                             groupValue: selectedRadio,
                             title: Text("Neues Buch ablegen"),
                             activeColor: Colors.blue,
-                            onChanged: (val) {
+                            onChanged: (dynamic val) {
                               setSelectedRadio(val, "neu");
                             },
                           ),

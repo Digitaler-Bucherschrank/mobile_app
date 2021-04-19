@@ -1,6 +1,5 @@
-import 'dart:convert';
+/* import 'dart:convert';
 
-import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,8 +33,8 @@ class _SearchState extends State<Search> {
   }
 
   Future getBook(String bookInfo) async {
-    const _url =
-        "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json";
+    var _url =
+        Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
     Map response = await http
         .post(_url,
             body: json.encode({
@@ -68,4 +67,4 @@ class _SearchState extends State<Search> {
       ),
     );
   }
-}
+} */

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
 
 import 'drawer.dart';
+import 'generated/l10n.dart';
 import 'gmap.dart';
 import 'models/book_case.dart';
 import 'search.dart';
@@ -20,15 +22,22 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -39,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _getLocationPermission();
-    FlutterDisplayMode.setDeviceDefault();
+    FlutterDisplayMode.setHighRefreshRate();
     loadBookCases();
   }
 
@@ -57,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Container(
       child: GMap(),
     ),
-    Container(
+   /* Container(
       child: Search(),
-    )
+    ) */
   ];
 
   void _onItemTapped(int index) {
@@ -72,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('DigiBooks')),
+        appBar: AppBar(title: const Text('Digital Bookcase')),
         body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

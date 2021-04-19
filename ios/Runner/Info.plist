@@ -27,6 +27,12 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 
+	<key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>de</string>
+    </array>
+
 	<key>NSCameraUsageDescription</key>
 	<string>Camera permission is required for QR scanning.</string>
 	

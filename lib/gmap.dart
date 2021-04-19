@@ -1,14 +1,15 @@
-import 'package:flappy_search_bar/flappy_search_bar.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'search.dart';
 import 'models/book_case.dart';
-import 'models/book_info.dart';
+import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
 import 'scanner/scanner_pickup_form.dart';
 
 class GMap extends StatefulWidget {
-  GMap({Key key}) : super(key: key);
+  GMap({Key? key}) : super(key: key);
   @override
   _GMapState createState() => _GMapState();
 }
@@ -16,12 +17,12 @@ class GMap extends StatefulWidget {
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
-    var schraenke = await getBookCases();
+    var schraenke = await (getBookCases() as FutureOr<List<BookCase>>);
     print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(
-          markerId: MarkerId('${tempMarker.iId.oid}'),
+          markerId: MarkerId('${tempMarker.iId!.oid}'),
           position: LatLng(
             double.parse('${tempMarker.lat}'),
             double.parse(
@@ -73,24 +74,24 @@ class _GMapState extends State<GMap> {
                               ElevatedButton(
                                   child: const Text("Buch ablegen"),
                                   onPressed: () {
-                                    print('${tempMarker.iId.oid}');
+                                    print('${tempMarker.iId!.oid}');
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => ScannerDropForm(
-                                              '${tempMarker.iId.oid}')),
+                                              '${tempMarker.iId!.oid}')),
                                     );
                                   }),
                               ElevatedButton(
                                   child: const Text("Buch aufheben"),
                                   onPressed: () {
-                                    print('${tempMarker.iId.oid}');
+                                    print('${tempMarker.iId!.oid}');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 ScannerPickupForm(
-                                                    '${tempMarker.iId.oid}')));
+                                                    '${tempMarker.iId!.oid}')));
                                   }),
                             ],
                           ),
@@ -128,13 +129,14 @@ class _GMapState extends State<GMap> {
                 children: <Widget>[
                   Container(
                     child: OutlinedButton(
+                        onPressed: () {  },
                         child: Text("Suchen..."),
-                        onPressed: () {
+                       /* onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return Search();
+                             return Search();
                           }));
-                        }),
+                        }*/),
                     width: 300,
                     height: 80,
                   ),

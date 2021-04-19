@@ -1,11 +1,11 @@
 class Book {
-  String id;
-  String googleBooksID;
-  String author;
-  String title;
-  String location;
-  String thumbnail;
-  BookData bookData;
+  String? id;
+  String? googleBooksID;
+  String? author;
+  String? title;
+  String? location;
+  String? thumbnail;
+  BookData? bookData;
 
   Book(
       {this.id,
@@ -37,16 +37,16 @@ class Book {
     data['location'] = this.location;
     data['thumbnail'] = this.thumbnail;
     if (this.bookData != null) {
-      data['bookData'] = this.bookData.toJson();
+      data['bookData'] = this.bookData!.toJson();
     }
     return data;
   }
 }
 
 class BookData {
-  String id;
-  String selfLink;
-  VolumeInfo volumeInfo;
+  String? id;
+  String? selfLink;
+  VolumeInfo? volumeInfo;
 
   BookData({this.id, this.selfLink, this.volumeInfo});
 
@@ -63,30 +63,30 @@ class BookData {
     data['id'] = this.id;
     data['selfLink'] = this.selfLink;
     if (this.volumeInfo != null) {
-      data['volumeInfo'] = this.volumeInfo.toJson();
+      data['volumeInfo'] = this.volumeInfo!.toJson();
     }
     return data;
   }
 }
 
 class VolumeInfo {
-  String title;
-  String subtitle;
-  List<String> authors;
-  String publisher;
-  String publishedDate;
-  String description;
-  int pageCount;
-  String mainCategory;
-  List<String> categories;
-  int averageRating;
-  int ratingsCount;
-  String contentVersion;
-  ImageLinks imageLinks;
-  String language;
-  String previewLink;
-  String infoLink;
-  String canonicalVolumeLink;
+  String? title;
+  String? subtitle;
+  List<String>? authors;
+  String? publisher;
+  String? publishedDate;
+  String? description;
+  int? pageCount;
+  String? mainCategory;
+  List<String>? categories;
+  int? averageRating;
+  int? ratingsCount;
+  String? contentVersion;
+  ImageLinks? imageLinks;
+  String? language;
+  String? previewLink;
+  String? infoLink;
+  String? canonicalVolumeLink;
 
   VolumeInfo(
       {this.title,
@@ -144,7 +144,7 @@ class VolumeInfo {
     data['ratingsCount'] = this.ratingsCount;
     data['contentVersion'] = this.contentVersion;
     if (this.imageLinks != null) {
-      data['imageLinks'] = this.imageLinks.toJson();
+      data['imageLinks'] = this.imageLinks!.toJson();
     }
     data['language'] = this.language;
     data['previewLink'] = this.previewLink;
@@ -155,9 +155,9 @@ class VolumeInfo {
 }
 
 class ImageLinks {
-  String thumbnail;
-  String large;
-  String extraLarge;
+  String? thumbnail;
+  String? large;
+  String? extraLarge;
 
   ImageLinks({this.thumbnail, this.large, this.extraLarge});
 
