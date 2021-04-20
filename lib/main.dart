@@ -7,6 +7,7 @@ import 'gmap.dart';
 import 'models/book_case.dart';
 import 'search.dart';
 
+// ignore: todo
 // TODO: Add Localization
 void main() {
   runApp(MyApp());

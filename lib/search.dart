@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +63,7 @@ class _SearchState extends State<Search> {
               return ListTile(
                 title: Text(post),
                 onTap: () {
-                  //   Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => GMap(index)));
-                  //  _gotoLocation(lat, long);
+                  _gotoLocation(lat, long);
                 },
               );
             },
@@ -73,4 +72,12 @@ class _SearchState extends State<Search> {
       ),
     );
   }
+}
+
+Future<void> _gotoLocation(double lat, double long) async {
+  final GoogleMapController controller = await _controller.future;
+  controller.animateCamera(cameraUpdate.newCameraPosition(CameraPosition(
+    target: LatLng(lat, long),
+    zoom: 15,
+  )));
 }

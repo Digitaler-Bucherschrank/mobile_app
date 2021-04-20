@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MeineBuecher extends StatelessWidget {
+class MyBooks extends StatelessWidget {
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {}

@@ -1,8 +1,9 @@
+import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'DetailPage.dart';
+import "./../DetailPage.dart";
 
 // ignore: must_be_immutable
 class BookInfo extends StatefulWidget {
@@ -12,25 +13,24 @@ class BookInfo extends StatefulWidget {
   _BookInfo createState() => _BookInfo(markersId);
 }
 
-class _BookInfo extends State<BuchAnzeigen> {
+class _BookInfo extends State<BookInfo> {
   String markersId;
-  _BuchAnzeigen(this.markersId);
-  Future<List<Book>> _getBooks() async {
-    var data = await http
-        .get("http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2");
+  _BookInfo(this.markersId);
 
-    var jsonData = json.decode(data.body);
+//  List<Book> _books = List<Book>();
 
-    List<Book> books = [];
+  Future<List<Book>> fetchBooks() async {
+    var url = "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2";
+    var response = await http.get(url);
 
-    for (var u in jsonData) {
-      Book book = Book(u["index"], u["about"], u["name"], u["email"]);
+    var books = List<Book>();
 
-      books.add(book);
+    if (response.statusCode == 200) {
+      var booksJson = json.decode(response.body);
+      for (var bookJson in booksJson) {
+        books.add(Book.fromJson(bookJson));
+      }
     }
-
-    print(books.length);
-
     return books;
   }
 
@@ -47,7 +47,7 @@ class _BookInfo extends State<BuchAnzeigen> {
     });
   }
 
-class BookInfo extends StatelessWidget {
+//class BookInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ class BookInfo extends StatelessWidget {
       ),
       body: Container(
         child: FutureBuilder(
-          future: _getBooks(),
+          future: fetchBooks(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             print(snapshot.data);
             if (snapshot.data == null) {
@@ -67,6 +67,7 @@ class BookInfo extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     title: Text(snapshot.data[index].name),
+                    //title: Text(_books[index].title),
                     subtitle: Text(snapshot.data[index].email),
                     //  leading: Image.network(-) ,
                     trailing: Icon(Icons.arrow_forward_rounded),
@@ -75,17 +76,8 @@ class BookInfo extends StatelessWidget {
                           context,
                           new MaterialPageRoute(
                               builder: (context) => DetailPage(
-                                  snapshot.data[index].name,
+                                  snapshot.data[index].title,
                                   snapshot.data[index].email)));
-
-                      //   child: ElevatedButton(
-                      //   onPressed: () {
-                      //   {
-                      //   Navigator.pop(context);
-                      //}
-                      //  },
-                      //   child: Text('Zurück'),
-                      //),
                     },
                   );
                 },
@@ -96,13 +88,4 @@ class BookInfo extends StatelessWidget {
       ),
     );
   }
-}
-
-class Book {
-  final int index;
-  final String about;
-  final String name;
-  final String email;
-
-  Book(this.index, this.about, this.name, this.email);
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MeineBuecher.dart';
+import 'MyBooks.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -15,17 +15,15 @@ class AppDrawer extends StatelessWidget {
           ),
           Divider(),
           _createDrawerItem(
-            icon: Icons.collections_bookmark,
-            text: 'Meine Bücher',
-          ),
-          ListTile(
-              title: Text('0.0.1'),
+              icon: Icons.collections_bookmark,
+              text: 'Meine Bücher',
               onTap: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => MeineBuecher()));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => MyBooks()));
               }),
+          ListTile(
+            title: Text('0.0.1'),
+          ),
         ],
       ),
     );
