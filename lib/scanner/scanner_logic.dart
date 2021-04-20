@@ -20,7 +20,7 @@ Future scanBarcodeNormal() async {
   } on PlatformException {
     barcodeScanRes = 'Failed to get platform version.';
   } catch (e) {
-    barcodeScanRes = e;
+    barcodeScanRes = e.toString();
   }
 
   // If the widget was removed from the tree while the asynchronous platform
@@ -32,28 +32,28 @@ Future scanBarcodeNormal() async {
   return (scanBarcode);
 }
 
-Future getInfo(String isbn) async {
-  const _url =
-      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json";
+Future getInfo(String? isbn) async {
+  var _url =
+      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
   Map response = await http
       .post(_url,
           body: json.encode({
             'isbn': isbn,
           }))
       .then((response) {
-    Map out = {};
+    Map? out = {};
     print(json.decode(response.body));
     out = json.decode(response.body);
-    return out;
+    return out!;
   });
 
   print(response['name']);
   return response;
 }
 
-Future postIsbnAndSchrank(String isbn, String schrank) async {
-  const _url =
-      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json";
+Future postIsbnAndSchrank(String? isbn, String? schrank) async {
+  var _url =
+      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json");
   http
       .post(_url,
           body: json.encode({
@@ -88,7 +88,7 @@ class Schraenke extends StatefulWidget {
 class _SchraenkeState extends State<Schraenke> {
   var result;
   Map formular;
-  int selectedSchrank;
+  int? selectedSchrank;
   String markersId;
   _SchraenkeState(this.formular, this.markersId);
 

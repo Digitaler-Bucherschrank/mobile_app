@@ -30,7 +30,7 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _createDrawerItem(
-      {IconData icon, String text, GestureTapCallback onTap}) {
+      {IconData? icon, required String text, GestureTapCallback? onTap}) {
     return ListTile(
       title: Row(
         children: <Widget>[

@@ -13,8 +13,8 @@ class ScannerPickupForm extends StatefulWidget {
 class _ScannerPageState extends State<ScannerPickupForm> {
   String markersId;
   _ScannerPageState(this.markersId);
-  int selectedRadio;
-  int selectedSchrank;
+  int? selectedRadio;
+  int? selectedSchrank;
   var txt = TextEditingController();
   var txt2 = TextEditingController();
   Map bookInfo = {

@@ -1,7 +1,5 @@
-import 'dart:convert';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+/* import 'dart:convert';
 
-import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,8 +33,8 @@ class _SearchState extends State<Search> {
   }
 
   Future getBook(String bookInfo) async {
-    const _url =
-        "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json";
+    var _url =
+        Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
     Map response = await http
         .post(_url,
             body: json.encode({
@@ -62,9 +60,6 @@ class _SearchState extends State<Search> {
             onItemFound: (String post, int index) {
               return ListTile(
                 title: Text(post),
-                onTap: () {
-                  _gotoLocation(lat, long);
-                },
               );
             },
           ),
@@ -72,12 +67,4 @@ class _SearchState extends State<Search> {
       ),
     );
   }
-}
-
-Future<void> _gotoLocation(double lat, double long) async {
-  final GoogleMapController controller = await _controller.future;
-  controller.animateCamera(cameraUpdate.newCameraPosition(CameraPosition(
-    target: LatLng(lat, long),
-    zoom: 15,
-  )));
-}
+} */

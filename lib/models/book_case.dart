@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
-List<BookCase> _bookcases;
-List _data;
+List<BookCase>? _bookcases;
+List? _data;
 
 Future getDistance(String lat2, String lng2) async {
   String out;
@@ -17,7 +17,7 @@ Future getDistance(String lat2, String lng2) async {
   _locationData = await location.getLocation();
   print(_locationData);
   var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-      LatLng(_locationData.latitude, _locationData.longitude),
+      LatLng(_locationData.latitude!, _locationData.longitude!),
       LatLng(lat2db, lng2db));
   out = (distanceBetweenPoints / 1000).toStringAsFixed(2);
   print(out);
@@ -25,7 +25,7 @@ Future getDistance(String lat2, String lng2) async {
 }
 
 class Id {
-  String oid;
+  String? oid;
 
   Id({this.oid});
 
@@ -35,22 +35,22 @@ class Id {
 }
 
 class BookCase {
-  Id iId;
-  String address;
-  String bcz;
-  String comment;
-  String contact;
-  String deactivated;
-  String deactreason;
-  String digital;
-  String entrytype;
-  String homepage;
-  String icontype;
-  String lat;
-  String lon;
-  String open;
-  String title;
-  String type;
+  Id? iId;
+  String? address;
+  String? bcz;
+  String? comment;
+  String? contact;
+  String? deactivated;
+  String? deactreason;
+  String? digital;
+  String? entrytype;
+  String? homepage;
+  String? icontype;
+  String? lat;
+  String? lon;
+  String? open;
+  String? title;
+  String? type;
   var entfernung;
 
   BookCase(
@@ -97,7 +97,7 @@ Future<void> parseJSON() async {
   _data = jsonDecode(await rootBundle.loadString("assets/markers.json"));
 }
 
-Future<List> jsonFuture() async {
+Future<List?> jsonFuture() async {
   if (_data != null) {
     return _data;
   } else {
@@ -115,23 +115,23 @@ Future<void> loadBookCases() async {
     await parseJSON();
   }
 
-  for (final i in _data) {
+  for (final i in _data!) {
     var tempMarker = BookCase.fromJson(i);
-    tempMarker.entfernung = await getDistance(tempMarker.lat, tempMarker.lon);
-    _bookcases.add(tempMarker);
+    tempMarker.entfernung = await getDistance(tempMarker.lat!, tempMarker.lon!);
+    _bookcases!.add(tempMarker);
   }
-  print(_bookcases.length);
+  print(_bookcases!.length);
 }
 
-Future<List<BookCase>> getBookCases() async {
-  if (_bookcases.length != 0) {
+Future<List<BookCase>?> getBookCases() async {
+  if (_bookcases!.length != 0) {
     print("schraenke1 $_bookcases");
     return _bookcases;
   } else {
     return loadBookCases().then((v) {
       print("${v as String}");
       print("schraenke2 $_bookcases");
-      while (_bookcases.length == 0) {}
+      while (_bookcases!.length == 0) {}
       return _bookcases;
     });
   }
