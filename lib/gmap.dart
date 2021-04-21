@@ -17,8 +17,8 @@ class GMap extends StatefulWidget {
 class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   void _onMapCreated(GoogleMapController controller) async {
-    var schraenke = await (getBookCases() as FutureOr<List<BookCase>>);
-    print("blabla${schraenke.length}");
+    var schraenke = await getBookCases();
+    print("blabla${schraenke!.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(
@@ -129,14 +129,13 @@ class _GMapState extends State<GMap> {
                 children: <Widget>[
                   Container(
                     child: OutlinedButton(
-                        onPressed: () {  },
                         child: Text("Suchen..."),
-                       /* onPressed: () {
+                        onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                              return Search();
                           }));
-                        }*/),
+                        }),
                     width: 300,
                     height: 80,
                   ),
