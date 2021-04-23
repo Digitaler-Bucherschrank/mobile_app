@@ -1,6 +1,17 @@
 {
   "@@locale": "en",
+  "label_bookinfo": "Book-Infos",
+  "@label_bookinfo": {},
+  "label_borrowbook": "Take Book",
+  "@label_borrowbook": {},
+  "label_dropbook": "Return Book",
+  "@label_dropbook": {},
   "label_map": "Map",
+  "@label_map": {},
   "label_search": "Search",
-  "label_bookinfo": "Book Details"
+  "@label_search": {},
+  "label_searchprocess": "Searching...\n",
+  "@label_searchprocess": {},
+  "title": "Digital Bookcase",
+  "@title": {}
 }
