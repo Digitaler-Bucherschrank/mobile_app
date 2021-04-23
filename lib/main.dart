@@ -66,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
     Container(
       child: GMap(),
     ),
-   /* Container(
+    Container(
       child: Search(),
-    ) */
+    )
   ];
 
   void _onItemTapped(int index) {

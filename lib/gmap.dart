@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'search.dart';
 import 'models/book_case.dart';
 import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
@@ -102,55 +99,22 @@ class _GMapState extends State<GMap> {
                 });
           }));
     }
-    setState(() => null);
+    if (mounted) {
+      setState(() => null);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          GoogleMap(
-            onMapCreated: _onMapCreated,
-            myLocationEnabled: true,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(50.1109, 8.6821),
-              zoom: 12,
-            ),
-            markers: Set<Marker>.of(_markers),
-          ),
-          Positioned(
-            top: 10,
-            right: 15,
-            left: 15,
-            child: Container(
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: OutlinedButton(
-                        child: Text("Suchen..."),
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                             return Search();
-                          }));
-                        }),
-                    width: 300,
-                    height: 80,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.deepPurple,
-                      child: Text('JK'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+      body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        myLocationEnabled: true,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(50.1109, 8.6821),
+          zoom: 12,
+        ),
+        markers: Set<Marker>.of(_markers),
       ),
     );
   }

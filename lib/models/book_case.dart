@@ -123,14 +123,15 @@ Future<String?> loadBookCases() async {
   print(_bookcases!.length);
 }
 
- Future<List<BookCase>?> getBookCases() async {
+Future<List<BookCase>?> getBookCases() async {
   if (_bookcases!.length != 0) {
     print("schraenke1 $_bookcases");
     return _bookcases;
   } else {
     return loadBookCases().then((v) {
-
-      print("${v as String}");
+      if (v != null) {
+        print("$v");
+      }
       print("schraenke2 $_bookcases");
       while (_bookcases!.length == 0) {}
       return _bookcases;
