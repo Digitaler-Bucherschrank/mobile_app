@@ -73,7 +73,7 @@ class _SearchState extends State<Search > {
     List<String >  result = [];
     int  i = 0;
     while (i < 112) {
-      if (bookCases![i].title!.contains(search!)) {
+      if (bookCases[i].title!.contains(search!)) {
         print("bookCases[i].title: ${bookCases[i].title}");
         result.add("Bücherschrank: ${bookCases[i].title}");
       }

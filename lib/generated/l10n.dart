@@ -47,11 +47,31 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Digitaler Bücherschrank`
-  String get title {
+  /// `Buch-Infos`
+  String get label_bookinfo {
     return Intl.message(
-      'Digitaler Bücherschrank',
-      name: 'title',
+      'Buch-Infos',
+      name: 'label_bookinfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buch mitnehmen`
+  String get label_borrowbook {
+    return Intl.message(
+      'Buch mitnehmen',
+      name: 'label_borrowbook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buch ablegen`
+  String get label_dropbook {
+    return Intl.message(
+      'Buch ablegen',
+      name: 'label_dropbook',
       desc: '',
       args: [],
     );
@@ -77,21 +97,21 @@ class S {
     );
   }
 
-  /// `Buch-Infos`
-  String get label_bookinfo {
+  /// `Suchen...`
+  String get label_searchprocess {
     return Intl.message(
-      'Buch-Infos',
-      name: 'label_bookinfo',
+      'Suchen...',
+      name: 'label_searchprocess',
       desc: '',
       args: [],
     );
   }
 
-  /// `ff`
-  String get label {
+  /// `Digitaler Bücherschrank`
+  String get title {
     return Intl.message(
-      'ff',
-      name: 'label',
+      'Digitaler Bücherschrank',
+      name: 'title',
       desc: '',
       args: [],
     );

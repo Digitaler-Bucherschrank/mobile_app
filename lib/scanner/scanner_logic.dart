@@ -159,7 +159,7 @@ class _SchraenkeState extends State<Schraenke> {
                             child: Column(
                               children: [
                                 Text(
-                                    "Entfernung: ${snapshot.data[i].entfernung}km"),
+                                    "Entfernung: ${snapshot.data[i].distance}km"),
                               ],
                             ),
                           ),

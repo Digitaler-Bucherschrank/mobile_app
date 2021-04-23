@@ -18,11 +18,12 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   json_annotation: ^4.0.1
   flutter_displaymode: ^0.3.1-nullsafety.0
+  flutter_launcher_icons: ^0.9.0
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
@@ -32,11 +33,12 @@ dependencies:
   location: ^4.1.1
   http: ^0.13.1
   material_floating_search_bar: ^0.3.4
+  rxdart: ^0.26.0
+  animated_splash_screen: 1.1.0-nullsafety.0
+  page_transition: 2.0.1-nullsafety.0
   maps_toolkit:
     git:
       url: git://github.com/edgarfroes/maps_toolkit.git
-  intl: ^0.17.0
-  intl_utils: ^2.1.0
   flutter_localizations:
     sdk: flutter
 
@@ -61,8 +63,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - assets/
-     - markers.json
-     - book.png
+     - assets/icons/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -90,6 +91,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+
 flutter_intl:
   main_locale: de
   enabled: true
