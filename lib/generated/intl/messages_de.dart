@@ -21,10 +21,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "label" : MessageLookupByLibrary.simpleMessage("ff"),
     "label_bookinfo" : MessageLookupByLibrary.simpleMessage("Buch-Infos"),
+    "label_borrowbook" : MessageLookupByLibrary.simpleMessage("Buch mitnehmen"),
+    "label_dropbook" : MessageLookupByLibrary.simpleMessage("Buch ablegen"),
     "label_map" : MessageLookupByLibrary.simpleMessage("Karte"),
     "label_search" : MessageLookupByLibrary.simpleMessage("Suchen"),
+    "label_searchprocess" : MessageLookupByLibrary.simpleMessage("Suchen..."),
     "title" : MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
   };
 }

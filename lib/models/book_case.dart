@@ -1,21 +1,24 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:digitaler_buecherschrank/location.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
-List<BookCase>? _bookcases;
-List? _data;
+List<BookCase> _bookcases = [];
+List _data = [];
+bool finished = false;
 
-Future getDistance(String lat2, String lng2) async {
+
+Future<String> getDistance(String lat2, String lng2) async {
   String out;
   LocationData _locationData;
   Location location = new Location();
   double lng2db = double.parse(lng2);
   double lat2db = double.parse(lat2);
-  _locationData = await location.getLocation();
-  print(_locationData);
+  _locationData = await LocationProvider.getLocation();
   var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
       LatLng(_locationData.latitude!, _locationData.longitude!),
       LatLng(lat2db, lng2db));
@@ -51,7 +54,7 @@ class BookCase {
   String? open;
   String? title;
   String? type;
-  var entfernung;
+  int? distance;
 
   BookCase(
     this.iId,
@@ -70,8 +73,9 @@ class BookCase {
     this.open,
     this.title,
     this.type,
-    this.entfernung,
+    this.distance
   );
+
   BookCase.fromJson(Map<String, dynamic> json) {
     iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
     address = json['address'];
@@ -89,50 +93,58 @@ class BookCase {
     open = json['open'];
     title = json['title'];
     type = json['type'];
-    entfernung = -1000;
+    distance = -1000;
   }
 }
 
-Future<void> parseJSON() async {
-  _data = jsonDecode(await rootBundle.loadString("assets/markers.json"));
+
+List<BookCase> parseBookCaseJSON(String file) {
+  BookCase tempMarker;
+  return jsonDecode(file).cast<Map<String, dynamic>>().map<BookCase>((Map<String, dynamic> json) {
+    tempMarker = BookCase.fromJson(json);
+    return tempMarker;
+}).toList();
 }
 
-Future<List?> jsonFuture() async {
-  if (_data != null) {
-    return _data;
+Future<bool> loadBookCases() async {
+    if (_bookcases.length == 0) {
+      var file = await rootBundle.loadString("assets/markers.json");
+
+      _bookcases = await compute(parseBookCaseJSON, file);
+
+      finished = true;
+    }
+    print(_bookcases.length);
+
+    return true;
+  }
+
+Future<void> _waitUntilDone() async {
+  final completer = Completer();
+  if (!finished) {
+    await Future.delayed(Duration(seconds: 2));
+    return _waitUntilDone();
   } else {
-    return parseJSON().then((v) {
-      print("${v as String}");
-      while (_data == null) {}
-      return _data;
-    });
+    completer.complete();
   }
+  return completer.future;
 }
 
-Future<void> loadBookCases() async {
-  _bookcases = [];
-  if (_data == null) {
-    await parseJSON();
-  }
+Future<List<BookCase>> getBookCases() async {
+  await _waitUntilDone();
 
-  for (final i in _data!) {
-    var tempMarker = BookCase.fromJson(i);
-    tempMarker.entfernung = await getDistance(tempMarker.lat!, tempMarker.lon!);
-    _bookcases!.add(tempMarker);
-  }
-  print(_bookcases!.length);
-}
-
-Future<List<BookCase>?> getBookCases() async {
-  if (_bookcases!.length != 0) {
+  return _bookcases;
+ /* if (_bookcases.length != 0) {
     print("schraenke1 $_bookcases");
     return _bookcases;
   } else {
-    return loadBookCases().then((v) {
-      print("${v as String}");
+    var books = await loadBookCases().then((v) {
       print("schraenke2 $_bookcases");
-      while (_bookcases!.length == 0) {}
       return _bookcases;
+    }, onError: (e) {
+      print("$e");
     });
-  }
+
+    return books;
+  } */
 }

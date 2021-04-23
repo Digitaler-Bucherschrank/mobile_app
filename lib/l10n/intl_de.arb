@@ -1,8 +1,17 @@
 {
   "@@locale": "de",
-  "title": "Digitaler Bücherschrank",
-  "label_map": "Karte",
-  "label_search": "Suchen",
   "label_bookinfo": "Buch-Infos",
-  "label": "ff"
+  "@label_bookinfo": {},
+  "label_borrowbook": "Buch mitnehmen",
+  "@label_borrowbook": {},
+  "label_dropbook": "Buch ablegen",
+  "@label_dropbook": {},
+  "label_map": "Karte",
+  "@label_map": {},
+  "label_search": "Suchen",
+  "@label_search": {},
+  "label_searchprocess": "Suchen...",
+  "@label_searchprocess": {},
+  "title": "Digitaler Bücherschrank",
+  "@title": {}
 }
