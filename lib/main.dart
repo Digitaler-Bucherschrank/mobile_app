@@ -1,13 +1,17 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/location.dart';
+import 'package:digitaler_buecherschrank/search.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
+import 'drawer.dart';
 import 'gmap.dart';
 import 'models/book_case.dart';
 
@@ -80,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setHighRefreshRate();
+
   }
 
   void _getLocationPermission() async {
@@ -93,24 +98,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GMap();
-
-    /*FutureBuilder(
-      // Replace the 3 second delay with your initialization code:
-      future: Future.delayed(Duration(seconds: 3)),
-      builder: (context, AsyncSnapshot snapshot) {
-        // Show splash screen while waiting for app resources to load:
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            backgroundColor: Colors.white,
-            body: Center(
-              child: Image.asset('assets/icons/icon.png'),
-            ),
-          );
-        } else {
-          return GMap();
-        }
-      },
-    ); */
+     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      drawer: AppDrawer(),
+      body: Stack(
+        children: <Widget>[
+          GMap(),
+          Search()
+        ],
+      ),
+    );
   }
 }

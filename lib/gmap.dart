@@ -4,25 +4,73 @@ import 'package:digitaler_buecherschrank/drawer.dart';
 import 'package:digitaler_buecherschrank/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:location/location.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'search.dart';
+
 import 'models/book_case.dart';
 import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
 import 'scanner/scanner_pickup_form.dart';
 
+String _darkMapStyle = "";
+String _lightMapStyle = "";
+Completer<GoogleMapController> _controller = new Completer();
+
 class GMap extends StatefulWidget {
   GMap({Key? key}) : super(key: key);
+
   @override
   _GMapState createState() => _GMapState();
 }
 
-class _GMapState extends State<GMap> {
+class _GMapState extends State<GMap> with WidgetsBindingObserver {
   Set<Marker> _markers = {};
-  Completer<GoogleMapController> _controller = new Completer();
+
+  // Logic for dark/light theme for map
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance!.addObserver(this);
+
+    Future.wait([
+      rootBundle.loadString('assets/map_styles/dark.json'),
+      rootBundle.loadString('assets/map_styles/light.json')
+    ]).then((value) {
+      _darkMapStyle = value.first;
+      _lightMapStyle = value.last;
+
+      _controller.future.then((value) =>
+          MediaQuery.of(context).platformBrightness == Brightness.dark
+              ? value.setMapStyle(_darkMapStyle)
+              : value.setMapStyle(_lightMapStyle));
+    });
+  }
+
+  Future _setMapStyle() async {
+    final controller = await _controller.future;
+    final theme = WidgetsBinding.instance!.window.platformBrightness;
+    if (theme == Brightness.dark)
+      controller.setMapStyle(_darkMapStyle);
+    else
+      controller.setMapStyle(_lightMapStyle);
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    setState(() {
+      _setMapStyle();
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
 
   void _onMapCreated(GoogleMapController controller) async {
     _controller.complete(controller);
@@ -118,88 +166,28 @@ class _GMapState extends State<GMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      drawer: AppDrawer(),
-      body: Stack(
-        children: <Widget>[
-          GoogleMap(
-            onMapCreated: _onMapCreated,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: false,
-            compassEnabled: false,
-            initialCameraPosition: CameraPosition(
-              target: LatLng(50.1109, 8.6821),
-              zoom: 12,
-            ),
-            markers: Set<Marker>.of(_markers),
-          ),
-          buildFloatingSearchBar()
-        ],
+    return GoogleMap(
+      onMapCreated: _onMapCreated,
+      myLocationEnabled: true,
+      myLocationButtonEnabled: false,
+      compassEnabled: false,
+      initialCameraPosition: CameraPosition(
+        target: LatLng(50.1109, 8.6821),
+        zoom: 12,
       ),
+      markers: Set<Marker>.of(_markers),
     );
   }
+}
 
-  void _currentLocation() async {
-    final GoogleMapController controller = await _controller.future;
-    LocationData userLocation = await LocationProvider.getLocation();
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(
-        bearing: 0,
-        target: LatLng(userLocation.latitude!, userLocation.longitude!),
-        zoom: 17.0,
-      ),
-    ));
-  }
-
-  Widget buildFloatingSearchBar() {
-    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-
-    return FloatingSearchBar(
-      hint: 'Search...',
-      scrollPadding: const EdgeInsets.only(top: 16, bottom: 56),
-      transitionDuration: const Duration(milliseconds: 400),
-      transitionCurve: Curves.easeInOut,
-      physics: const BouncingScrollPhysics(),
-      axisAlignment: isPortrait ? 0.0 : -1.0,
-      openAxisAlignment: 0.0,
-      automaticallyImplyDrawerHamburger: true,
-      width: isPortrait ? 600 : 500,
-
-      debounceDelay: const Duration(milliseconds: 500),
-      onQueryChanged: (query) {
-        // TODO: Call your model, bloc, controller here.
-      },
-      // Specify a custom transition to be used for
-      // animating between opened and closed stated.
-      transition: CircularFloatingSearchBarTransition(),
-      actions: [
-        FloatingSearchBarAction(
-          showIfOpened: false,
-          child: CircularButton(
-            icon: const Icon(Icons.place),
-            onPressed: _currentLocation,
-          ),
-        ),
-        FloatingSearchBarAction.searchToClear(
-          showIfClosed: false,
-        ),
-      ],
-      builder: (context, transition) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Material(
-            color: Colors.white,
-            elevation: 4.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: Colors.accents.map((color) {
-                return Container(height: 112, color: color);
-              }).toList(),
-            ),
-          ),
-        );
-      },
-    );
-  }
+void currentLocation() async {
+  final GoogleMapController controller = await _controller.future;
+  LocationData userLocation = await LocationProvider.getLocation();
+  controller.animateCamera(CameraUpdate.newCameraPosition(
+    CameraPosition(
+      bearing: 0,
+      target: LatLng(userLocation.latitude!, userLocation.longitude!),
+      zoom: 17.0,
+    ),
+  ));
 }

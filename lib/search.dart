@@ -18,7 +18,7 @@ class _SearchState extends State<Search > {
   late List<String >  filteredSearchHistory;
   String? selectedTerm;
   FloatingSearchBarController? controller;
-  bool  closeSearch = false;
+  bool closeSearch = false;
 
   List<String >  filterSearchTerms({
     @required String? filter,
@@ -107,146 +107,53 @@ class _SearchState extends State<Search > {
 
   @override
   Widget build(BuildContext  context) {
-    return new Scaffold(
-      body: FloatingSearchBar(
-        controller: controller,
-        body: FloatingSearchBarScrollNotifier(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final size = Size(constraints.maxHeight, constraints.maxWidth);
-              return CachingFutureBuilder<List<String>>(
-                key: ValueKey(size),
-                futureFactory: () => search(selectedTerm),
-                builder: (BuildContext  context, AsyncSnapshot  snapshot) {
-                  if (snapshot.data == null && !closeSearch) {
-                    return GMap();
-                  } else {
-                    final fsb = FloatingSearchBar.of(context)!;
-                    print(snapshot.data.length);
-                    return Column(
-                      children: [
-                        /*OutlinedButton(
-                      onPressed: () {
-                        setState(() {
-                          closeSearch = true;
-                        });
-                        print("closeSearch$closeSearch");
-                      },
-                      child: Text("zurück"),
-                    ),*/
-                        Container(
-                          height: 623,
-                          child: ListView.builder(
-                            padding: EdgeInsets.only(
-                                top: size.height),
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              print("$index" + snapshot.data[index]);
-                              return ListTile(title: Text(snapshot.data[index]));
-                            },
-                          ),
-                        ),
-                      ],
-                    );
-                  }
-                },
-              );
-            },
+    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+
+    return FloatingSearchBar(
+      hint: 'Search...',
+      scrollPadding: const EdgeInsets.only(top: 16, bottom: 56),
+      transitionDuration: const Duration(milliseconds: 400),
+      transitionCurve: Curves.easeInOut,
+      physics: const BouncingScrollPhysics(),
+      axisAlignment: isPortrait ? 0.0 : -1.0,
+      openAxisAlignment: 0.0,
+      automaticallyImplyDrawerHamburger: true,
+      width: isPortrait ? 600 : 500,
+
+      debounceDelay: const Duration(milliseconds: 500),
+      onQueryChanged: (query) {
+        // TODO: Call your model, bloc, controller here.
+      },
+      // Specify a custom transition to be used for
+      // animating between opened and closed stated.
+      transition: CircularFloatingSearchBarTransition(),
+      actions: [
+        FloatingSearchBarAction(
+          showIfOpened: false,
+          child: CircularButton(
+            icon: const Icon(Icons.place),
+            onPressed: currentLocation,
           ),
         ),
-        transition: CircularFloatingSearchBarTransition(),
-        physics: BouncingScrollPhysics(),
-        title: Text(
-          selectedTerm ?? 'Suchen',
-          style: Theme.of(context).textTheme.headline6,
+        FloatingSearchBarAction.searchToClear(
+          showIfClosed: false,
         ),
-        hint: 'Search and find out...',
-        actions: [
-          FloatingSearchBarAction.searchToClear(),
-        ],
-        onQueryChanged: (query) {
-          setState(() {
-            filteredSearchHistory = filterSearchTerms(filter: query);
-          });
-        },
-        onSubmitted: (query) {
-          setState(() {
-            addSearchTerm(query);
-            selectedTerm = query;
-          });
-          controller!.close();
-        },
-        builder: (context, transition) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Material(
-              color: Colors.white,
-              elevation: 4,
-              child: Builder(
-                builder: (context) {
-                  if (filteredSearchHistory.isEmpty &&
-                      controller!.query.isEmpty) {
-                    return Container(
-                      height: 56,
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Start searching',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.caption,
-                      ),
-                    );
-                  } else if (filteredSearchHistory.isEmpty) {
-                    return ListTile(
-                      title: Text(controller!.query),
-                      leading: const Icon(Icons.search),
-                      onTap: () {
-                        setState(() {
-                          addSearchTerm(controller!.query);
-                          selectedTerm = controller!.query;
-                        });
-                        controller!.close();
-                      },
-                    );
-                  } else {
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: filteredSearchHistory
-                          .map(
-                            (term) => ListTile(
-                          title: Text(
-                            term,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          leading: const Icon(Icons.history),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.clear),
-                            onPressed: () {
-                              setState(() {
-                                deleteSearchTerm(term);
-                              });
-                            },
-                          ),
-                          onTap: () {
-                            setState(() {
-                              putSearchTermFirst(term);
-                              selectedTerm = term;
-                            });
-                            controller!.close();
-                          },
-                        ),
-                      )
-                          .toList(),
-                    );
-                  }
-                },
-              ),
+      ],
+      builder: (context, transition) {
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Material(
+            color: Colors.white,
+            elevation: 4.0,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: Colors.accents.map((color) {
+                return Container(height: 112, color: color);
+              }).toList(),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
@@ -279,3 +186,4 @@ class _CachingFutureBuilderState<T> extends State<CachingFutureBuilder<T>> {
     );
   }
 }
+
