@@ -11,11 +11,13 @@ import 'models/book_case.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
-
   runApp(MyApp());
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent));
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   var location = new Location();
 
@@ -39,14 +41,16 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       home: AnimatedSplashScreen.withScreenFunction(
-          duration: 3000,
-          splash: Icons.home,
-          screenFunction: () async {
-            await loadBookCases();
-            return MyHomePage();
-          },
-          splashTransition: SplashTransition.fadeTransition,
-          backgroundColor: Colors.blue),
+        duration: 1500,
+        splash: Image.asset('assets/icons/splash.png', scale: 0.5),
+        screenFunction: () async {
+          await loadBookCases();
+          return MyHomePage();
+        },
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.blue,
+        centered: true,
+      ),
     );
   }
 }
