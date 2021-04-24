@@ -1,2262 +1,2262 @@
 [
     {
-        "_id":{
-            "$oid":"6000c773d055d5093066e079"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"Für Mitarbeiter und Besucher des Bundesamtes für Wirtschaft und Ausfuhrkontrolle (BAFA); Im Eingang des BAFA",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.134315",
-        "lon":"8.570992",
-        "open":"",
-        "title":"Eschborn / BAFA",
-        "type":"Vitrine"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e081"
-        },
-        "address":"Leipziger Straße 54, 60487 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"städtische Amt für Straßenbau und Erschließung, Projektgruppe Nahmobilität",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.122608",
-        "lon":"8.646098",
-        "open":"24 / 7",
-        "title":"Frankfurt-Bockenheim / Leipziger Straße",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e082"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.184478",
-        "lon":"8.665371",
-        "open":"24 / 7",
-        "title":"Frankfurt-Bonames",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e083"
-        },
-        "address":"Alt-Bornheim , 60385 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.128624",
-        "lon":"8.711181",
-        "open":"24 / 7",
-        "title":"Frankfurt-Bornheim / Berger Straße",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e084"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"Gefördert durch das Verkehrsdezernat Frankfurt Entwicklung: Hans-Jürgen Greve",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.139343",
-        "lon":"8.670498",
-        "open":"24 / 7",
-        "title":"Frankfurt-Dornbusch",
-        "type":"BOKX 01"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e085"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"Restaurant Bürgerhaus Ronneburg\n// Herr Boro Celic 069 / 300 595 68",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.150533",
-        "lon":"8.69009",
-        "open":"24 / 7",
-        "title":"Frankfurt-Eckenheim",
-        "type":"BOKX 02"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e086"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.157103",
-        "lon":"8.655504",
-        "open":"24 / 7",
-        "title":"Frankfurt-Eschersheim",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e087"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.122469",
-        "lon":"8.771332",
-        "open":"24 / 7",
-        "title":"Frankfurt-Fechenheim",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e088"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"http://coord.info/GC4CRZ9",
-        "contact":"Ursula und Klaus Böttger (069/547764)",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.17007",
-        "lon":"8.6962",
-        "open":"24 / 7",
-        "title":"Frankfurt am Main / Berkersheim",
-        "type":"BOKX 01"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e089"
-        },
-        "address":"Frankenallee , 60326 Frankfurt am Main",
-        "bcz":null,
-        "comment":"auch fremdsprachige Auswahl",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.103605",
-        "lon":"8.629903",
-        "open":"24 / 7",
-        "title":"Frankfurt-Gallus / Frankenallee",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08a"
-        },
-        "address":"Kurhessenstrasse, Ecke Höhenblick",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.146942",
-        "lon":"8.655004",
-        "open":"24 / 7",
-        "title":"Frankfurt-Ginnheim / Höhenblick",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08b"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.1443290074",
-        "lon":"8.64896535873",
-        "open":"24 / 7",
-        "title":"Frankfurt-Ginnheim / Kirchplatz",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08c"
-        },
-        "address":"Gutleutstraße 145, 60327 Frankfurt am Main",
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.102265",
-        "lon":"8.66121",
-        "open":"24 / 7",
-        "title":"Frankfurt-Gutleutviertel",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08d"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"Schwerpunkt auf Kriminalliteratur / im Brentanobad",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.125955",
-        "lon":"8.619513",
-        "open":"",
-        "title":"Frankfurt-Hausen / Brentanobad",
-        "type":"Bücherschrank"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08e"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.102474",
-        "lon":"8.550044",
-        "open":"24 / 7",
-        "title":"Frankfurt-Höchst",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e08f"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.108038",
-        "lon":"8.584185",
-        "open":"24 / 7",
-        "title":"Frankfurt-Nied",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e090"
-        },
-        "address":"Bruchfeldstraße 65, 60528 Frankfurt am Main",
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.08635",
-        "lon":"8.643456",
-        "open":"24 / 7",
-        "title":"Frankfurt-Niederrad",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e091"
-        },
-        "address":"Weißkirchener Weg , 60439 Frankfurt am Main",
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.16702201577",
-        "lon":"8.6181255255342",
-        "open":"24 / 7",
-        "title":"Frankfurt-Niederursel",
-        "type":"britische Telefonzelle"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e092"
-        },
-        "address":" , 60316 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Gefördert durch das Verkehrsdezernat Frankfurt; Entwicklung: Hans-Jürgen Greve",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.120504",
-        "lon":"8.696124",
-        "open":"24 / 7",
-        "title":"Frankfurt-Bornheim / Merianplatz",
-        "type":"BOKX 01"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e093"
-        },
-        "address":"Oeder Weg 48, 60318 Frankfurt am Main",
-        "bcz":null,
-        "comment":"Gefördert durch das Verkehrsdezernat Frankfurt; Entwurf: Trixy Royeck; Entwicklung: Hans-Jürgen Greve",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.121287",
-        "lon":"8.680304",
-        "open":"24 / 7",
-        "title":"Frankfurt-Nordend / Oeder Weg",
-        "type":"BOKX 01"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e094"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.120229",
-        "lon":"8.714491",
-        "open":"24 / 7",
-        "title":"Frankfurt-Ostend / Parlamentsplatz",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e095"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.110655",
-        "lon":"8.69948",
-        "open":"24 / 7",
-        "title":"Frankfurt-Ostend / Paul-Arnsberg-Platz",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e096"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.155759",
-        "lon":"8.698202",
-        "open":"24 / 7",
-        "title":"Frankfurt-Preungesheim / Gravensteiner Platz",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e097"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.1285",
-        "lon":"8.733984",
-        "open":"24 / 7",
-        "title":"Frankfurt-Riederwald",
-        "type":"?"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e098"
-        },
-        "address":"Dreieichstraße , 60594 Frankfurt am Main",
-        "bcz":null,
-        "comment":"",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":"https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=18991282",
-        "icontype":"",
-        "lat":"50.103538",
-        "lon":"8.691463",
-        "open":"24 / 7",
-        "title":"Frankfurt-Sachsenhausen",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e099"
-        },
-        "address":null,
-        "bcz":null,
-        "comment":"Gefördert durch das Verkehrsdezernat FrankfurtEntwurf: Hans-Jürgen GreveAusstattung der Kunstvitrine durch das Nachbarschaftsbüro Seckbach",
-        "contact":null,
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":null,
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.140969",
-        "lon":"8.720655",
-        "open":"24 / 7",
-        "title":"Frankfurt-Seckbach",
-        "type":"BOKX 02"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e134"
-        },
-        "address":"Kaiserstraße 39, 63065 Offenbach",
-        "bcz":"0",
-        "comment":"im Bürgerbüro",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.1084900789",
-        "lon":"8.76170396805",
-        "open":"Montag ,\tDienstag, Mittwoch, Freitag 08:00 - 13:00 Uhr,  Donnerstag 15:00 - 20:00 Uhr",
-        "title":"Offenbacher Bücherschrank",
-        "type":"Holzregal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e135"
-        },
-        "address":"Weikertsblochstraße 58a, 63069 Offenbach am Main",
-        "bcz":"0",
-        "comment":"vor dem Mehrgenerationenhaus",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.090944",
-        "lon":"8.757171",
-        "open":"nur tagsüber geöffnet",
-        "title":"Bücherschrank W58",
-        "type":"Holzhäuschen mit Holzregalen"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e136"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"in der Schanzenbäckerei",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.105731",
-        "lon":"8.769621",
-        "open":"nur während der Öffnungszeiten zugänglich",
-        "title":"Schanzenbäckerei",
-        "type":"Regal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e1b3"
-        },
-        "address":"Starkenburgring 66, 63069 Offenbach am Main",
-        "bcz":"0",
-        "comment":"im Wartezimmer",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.0958139898",
-        "lon":"8.75563144684",
-        "open":"nur während der Sprechzeiten (vormittags) zugänglich",
-        "title":"Praxis Dr. med J. Veidt",
-        "type":"Regal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e1c5"
-        },
-        "address":"Gallusanlage 7, 60329 Frankfurt Main",
-        "bcz":"0",
-        "comment":"erster Bücherschrank mit ausschließlich englischer Literatur; entworfen vom Kölner Architekten Hans-Jürgen Greve",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.109326",
-        "lon":"8.671547",
-        "open":"24 / 7",
-        "title":"Frankfurt / Englisches Theater",
-        "type":"Bücherschrank"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e26b"
-        },
-        "address":"Kalbacher Hauptstraße 36, 60437 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.18913335",
-        "lon":"8.63925786408",
-        "open":"24 / 7",
-        "title":"Frankfurt-Kalbach / Altes Rathaus",
-        "type":" "
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e26c"
-        },
-        "address":" 3, 60438 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":null,
-        "icontype":"",
-        "lat":"50.176582057",
-        "lon":"8.62937986851",
-        "open":"24 / 7",
-        "title":"Frankfurt-Riedberg",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e298"
-        },
-        "address":"Baumweg 20, Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Daten von http://www.givebox.eu",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"1",
-        "entrytype":"givebox",
-        "homepage":"www.facebook.com/GiveboxFrankfurt",
-        "icontype":"",
-        "lat":"50.1130002232",
-        "lon":"8.70698690414",
-        "open":"",
-        "title":"GiveBox Frankfurt am Main",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e2b9"
-        },
-        "address":" , 61449 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.167804",
-        "lon":"8.571857",
-        "open":"Zurzeit vom Magistrat wegen Corona geschlossen!",
-        "title":"Steinbach (Taunus)",
-        "type":"Telefonzelle"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e2bc"
-        },
-        "address":"Alt-Praunheim/In der Römerstadt, Frankfurt Praunheim",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.151242",
-        "lon":"8.622991",
-        "open":"24 / 7",
-        "title":"Frankfurt Praunheim",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e2bd"
-        },
-        "address":"Karl-Perott-Platz , 60439 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.16025",
-        "lon":"8.64565",
-        "open":"24 / 7 - leider wurde der Schrank in Brand gesetzt und ist derzeit nicht nutzbar!",
-        "title":"Frankfurt-Heddernheim",
-        "type":"BOKX 01 - grauer Stahl"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e32f"
-        },
-        "address":"Bachmannstr. 2-4, 60488 Frankfurt am Main",
-        "bcz":"1",
-        "comment":"Offizielle Bookcrossing Zone (OBCZ)",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.bookcrossing.com/hunt/28/179/31329/73676",
-        "icontype":"",
-        "lat":"50.13137",
-        "lon":"8.626065",
-        "open":"Zu den Öffnungszeiten des KP21",
-        "title":"Brotfabrik / KP21",
-        "type":"Großes Regal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e3b1"
-        },
-        "address":"Kiesstrasse 27, Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Not reachable 24x7 - see opening hours of http://www.cafe-albatros.de because its inside on a cupboard",
-        "contact":"see URL",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.cafe-albatros.de",
-        "icontype":"",
-        "lat":"50.1188933",
-        "lon":"8.648324",
-        "open":"see URL",
-        "title":"Frankfurt-Bockenheim inside Café Albatros",
-        "type":"Open inside a Café on a cupboard"
-    },
-    {
-        "_id":{
-            "$oid":"6000c773d055d5093066e40e"
-        },
-        "address":"Odina-Bott-Platz 1, 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.118306",
-        "lon":"8.663318",
-        "open":"24 / 7",
-        "title":"Westend",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e4e3"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"givebox",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.077717",
-        "lon":"8.75565",
-        "open":"24 / 7",
-        "title":"Givebox Offenbach",
-        "type":"kleines Häuschen"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e505"
-        },
-        "address":" 5, 61118 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.183558905546",
-        "lon":"8.7445416075262",
-        "open":"24 / 7",
-        "title":"Bad Vilbel (Altes Rathaus)",
-        "type":"rote Telefonzelle"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e590"
-        },
-        "address":"Berger Straße 175, 60385 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Bücherregal im Coworking Space in Frankfurt am Main. Für &#34;Residents&#34; auch 24/7 erreichbar",
-        "contact":"siehe Website",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.die-zentrale-ffm.de/",
-        "icontype":"",
-        "lat":"50.125379",
-        "lon":"8.706193",
-        "open":"Mo.-Fr. 09:00 bis 19:00 Uhr (für &#34;Residents&#34; auch 24/7 erreichbar)",
-        "title":"Die Zentrale FFM",
-        "type":"Bücherregal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e7ee"
-        },
-        "address":"Platenstraße 75, 60431 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"frankfurt.de/sixcms/detail.php?id=2778&_ffmpar[_id_inhalt]=26136317",
-        "icontype":"",
-        "lat":"50.137793",
-        "lon":"8.663085",
-        "open":"24 / 7",
-        "title":"Platenstraße / Dornbusch II",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e7ef"
-        },
-        "address":"Malvenweg, 60433 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.166395",
-        "lon":"8.680084",
-        "open":"24 / 7",
-        "title":"Frankfurt / Frankfurter Berg",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e7f0"
-        },
-        "address":"Hartmannsweilerstraße , 65933 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.091708",
-        "lon":"8.607193",
-        "open":"24 / 7",
-        "title":"Frankfurt-Griesheim",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e7f1"
-        },
-        "address":"Offenbacher Landstraße 357, 60599 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.100349",
-        "lon":"8.724228",
-        "open":"24 / 7",
-        "title":"Bücherschrank Buchrainplatz, Frankfurt-Oberrad",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c774d055d5093066e7f2"
-        },
-        "address":"Darmstädter Landstraße 106, 60598 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Seniorenzentrum Taunusblick; nicht städtisch",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.097455",
-        "lon":"8.690797",
-        "open":"",
-        "title":"Bücherschrank am Seniorenzentrum Taunusblick, Frankfurt-Sachensenhausen",
-        "type":"Offenes Regal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066e82e"
-        },
-        "address":"Berliner Str. 27 65760 Eschborn",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.140664152",
-        "lon":"8.56301665306",
-        "open":"24/7",
-        "title":"Eschborn",
-        "type":"Telefonzelle"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066e897"
-        },
-        "address":"Im Vogelsgesang 4",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.136573",
-        "lon":"8.625378",
-        "open":"",
-        "title":"Lehrekooperative",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066e9a6"
-        },
-        "address":"Kleine Nelkenstraße 19, 60488 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.134090087",
-        "lon":"8.62588763237",
-        "open":"24 / 7",
-        "title":"Frankfurt-Hausen",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066e9b7"
-        },
-        "address":"Braubachstr. 16",
-        "bcz":"0",
-        "comment":"Eingerichtet von der Börsenvereinsgruppe. Der Schrank ist für alle Bürger und Besucher der Stadt Frankfurt am Main ein Ort zum Stöbern und Weitergeben von Büchern.Jeden ersten Montag im Monat findet ein besonderes Buch seinen Platz darin, angekündigt auf der Facebookseite des Börsenvereins: http://www.facebook.com/Boersenverein/ ",
-        "contact":"Haus des Buches",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.boersenverein.de",
-        "icontype":"",
-        "lat":"50.111573",
-        "lon":"8.683448",
-        "open":"7/24",
-        "title":"Offener Bücherschrank Haus des Buches",
-        "type":"Metallbücherschrank"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066e9c5"
-        },
-        "address":"Holzhausenstraße, 60322 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"Wird am 1. September 2016 eröffnet",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.127109",
-        "lon":"8.676962",
-        "open":"24 / 7",
-        "title":"Frankfurt am Main / Holzhausenpark",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ebe3"
-        },
-        "address":"Frankfurter Straße 160-166, 63303 ",
-        "bcz":"0",
-        "comment":"Nur während der Öffnungszeiten des Info-Points zugänglich.",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.hll-dreieich.de",
-        "icontype":"",
-        "lat":"50.0322852",
-        "lon":"8.6947194",
-        "open":"Montag bis Freitag, 07.00 Uhr bis 19.30 Uhr",
-        "title":"Bücherschrank im HLL",
-        "type":"Holzregal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ec04"
-        },
-        "address":"Triebstraße 83, 60388 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.143091",
-        "lon":"8.75531",
-        "open":"24 / 7",
-        "title":"Frankfurt am Main / Bergen-Enkheim",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ec07"
-        },
-        "address":"Heinrich-Heine-Straße 26, 63071 Offenbach am Main",
-        "bcz":"0",
-        "comment":"Außerhalb der Öffnungszeiten der Sparkassenfiliale Zugang mit Bankkarte, der Schrank steht im Automatenbereich.",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.sparkasse-offenbach.de/de/home/service/filiale-finden.html?n=true&stref=service_links#details/7619",
-        "icontype":"",
-        "lat":"50.095013019497",
-        "lon":"8.7783765792847",
-        "open":"jederzeit mit Bankkarte",
-        "title":"Tauschregal in der Sparkasse",
-        "type":"Holzregal"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ec08"
-        },
-        "address":"Nordring 129, 63067 Offenbach am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.hafen2.net/",
-        "icontype":"",
-        "lat":"50.11205354955",
-        "lon":"8.740809224546",
-        "open":"Täglich 12-20 Uhr, je nach Wetter auch länger...",
-        "title":"Buchschrank im Foyer des Hafen2",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ec17"
-        },
-        "address":"Friedensstraße, 63165 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.119687",
-        "lon":"8.82623",
-        "open":"24 / 7",
-        "title":"Mühlheim am Main / Friedensstraße",
-        "type":"Telefonzelle"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecb5"
-        },
-        "address":"Buchgasse 2, 60311 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"An der Kreuzung Buchgasse/Alte Mainzer Gasse",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar[_id_inhalt]=32322768",
-        "icontype":"",
-        "lat":"50.109301030246",
-        "lon":"8.6800280213356",
-        "open":"24/7",
-        "title":"Bücherschrank Altstadt Buchgasse",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecb6"
-        },
-        "address":" , 60487 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.125211",
-        "lon":"8.637373",
-        "open":"24 / 7",
-        "title":"Frankfurt-Bockenheim / Kirchplatz",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecb7"
-        },
-        "address":"Funckstraße 14, 60486 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.113158",
-        "lon":"8.631617",
-        "open":"24 / 7",
-        "title":"Bücherschrank Bockenheim - Kuhwaldsiedlung",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecb8"
-        },
-        "address":"Friedberger Warte, Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.140539",
-        "lon":"8.699014",
-        "open":"24 / 7",
-        "title":"Bücherschrank Bornheim - Friedberger Warte",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecc8"
-        },
-        "address":"Siesmayerstraße , 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.126363",
-        "lon":"8.657886",
-        "open":"Montag – Samstag: 9.00 – 18.00 Uhr  Sonn- und Feiertag: 9.00 – 13.00 Uhr",
-        "title":"Frankfurt-Westend / Bücherschrank im Botanischen Garten",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ecc9"
-        },
-        "address":" , 60318 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.122095",
-        "lon":"8.690025",
-        "open":"",
-        "title":"Frankfurt-Nordend / Maria-Ward-Platz",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ed97"
-        },
-        "address":"Hauptstraße 40",
-        "bcz":"0",
-        "comment":"https://goo.gl/maps/TrKxjer3vco",
-        "contact":"Tel.: 06196 93148-23 oder  E-Mail: info@eschbornhaus.de",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.ev-kircheeschborn.de/angebote/offener-b%C3%BCcherschrank/",
-        "icontype":"",
-        "lat":"50.14317",
-        "lon":"8.568338",
-        "open":"",
-        "title":"Evangelisches Gemeindehaus",
-        "type":"Regal im Erdgeschoss"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066eeb4"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.173751",
-        "lon":"8.641112",
-        "open":"",
-        "title":"Air Liquide Engineering & Construction",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066eee0"
-        },
-        "address":"Mailänder Str. 8, 60598 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Ich habe diesen Schrank vor dem tegut-Laden nicht eingerichtet, wollte ihn nur anmelden, da er hier bisher nicht auftauchte",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.091319",
-        "lon":"8.688544",
-        "open":"",
-        "title":"Bücherschrank am tegut, Frankfurt-Sachsenhausen",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066eeea"
-        },
-        "address":"Waldschwimmbad, Alicestraße 118, 63263 Neu-Isenburg",
-        "bcz":"0",
-        "comment":"Die offene Bücherkiste befindet sich im Vorraum des Waldschwimmbades (Hallenbad) Neu-Isenburg. ",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.049875",
-        "lon":"8.675299",
-        "open":"07:00 Uhr - 20:00 Uhr",
-        "title":"Bücherkiste Waldschwimmbad Neu-Isenburg",
-        "type":"Offfene Bücherkiste"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066eeeb"
-        },
-        "address":"Neckarstr. 45, 63263 Neu-Isenburg",
-        "bcz":"0",
-        "comment":"LittleFreeLibrary.org\nTake a Book - Share a Book\nCharter # 80196",
-        "contact":"littlefreelibrary.org/",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"littlefreelibrary.org/",
-        "icontype":"",
-        "lat":"50.049255",
-        "lon":"8.681195",
-        "open":"24/7",
-        "title":"Kleines Bücherhäuschen Neu-Isenburg",
-        "type":"Kleines Bücherhäuschen"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066eeec"
-        },
-        "address":"DLB, Offenbacher Str. 174, 63263 Neu-Isenburg",
-        "bcz":"0",
-        "comment":"Der Bücherschrank befindet sich auf dem Gelände des Wertstoffhofes, gleich rechts an der Anmeldung. \n\nÖffnungszeiten:\nMittwoch\t13:00–16:00\nDonnerstag\t07:30–15:00\nFreitag\tGeschlossen\nSamstag\t08:00–13:00\nSonntag\tGeschlossen\nMontag\tGeschlossen\nDienstag\t07:30–15:00",
-        "contact":"https://www.dlb-aoer.de/",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.dlb-aoer.de/",
-        "icontype":"",
-        "lat":"50.051862",
-        "lon":"8.715076",
-        "open":"Siehe Verschiedenes",
-        "title":"Bücherschrank DLB Neu-Isenburg",
-        "type":"Offener Bücherschrank"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ef09"
-        },
-        "address":"Wiesenbornweg 15, 63150 Heusenstamm",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"www.heusenstamm.de/de/freizeit-und-kultur/kulturangebote/stadtbuecherei#!1746",
-        "icontype":"",
-        "lat":"50.061694218655",
-        "lon":"8.8068877905607",
-        "open":"24/7",
-        "title":"englische Telefonzelle vor dem Schloss Schönborn",
-        "type":"Öffentlicher Bücherschrank"
-    },
-    {
-        "_id":{
-            "$oid":"6000c775d055d5093066ef8a"
-        },
-        "address":"Deuil-La-Barre-Straße 26, 60437 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.198804210366",
-        "lon":"8.671307265061",
-        "open":"24/7",
-        "title":"Frankfurt-Nieder-Eschbach",
-        "type":"BOKX"
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f068"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"Anspacher Strasse, Frankfurt",
-        "icontype":"",
-        "lat":"50.1055",
-        "lon":"8.621623",
-        "open":"",
-        "title":"Bücherschrank Anspacher Strasse Ecke Wallauer Strasse",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f07c"
-        },
-        "address":"",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.127381",
-        "lon":"8.668063",
-        "open":"24/7",
-        "title":"Goethe-Uni, Campus Westend",
-        "type":"wissenschaftliche Bücher"
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f30f"
-        },
-        "address":"Am Dachsberg 19, 60435 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"Ursula und Klaus Böttger (069/547764)",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.169979728719",
-        "lon":"8.6961012305422",
-        "open":"24 / 7",
-        "title":"Frankfurt-Berkersheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f310"
-        },
-        "address":"Gelnhäuser Straße 2, 60435 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.150387290573",
-        "lon":"8.6902054765737",
-        "open":"24 / 7",
-        "title":"Frankfurt-Eckenheim / SAALBAU",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f311"
-        },
-        "address":"Alt-Fechenheim 125, 60386 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.122284992291",
-        "lon":"8.7705970747299",
-        "open":"24 / 7",
-        "title":"Frankfurt-Fechenheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f312"
-        },
-        "address":" , 65929 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.10238799013",
-        "lon":"8.550376836484",
-        "open":"24 / 7",
-        "title":"Frankfurt-Höchst",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f313"
-        },
-        "address":"Bruchfeldstraße 65, 60528 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.086535866792",
-        "lon":"8.6437027632294",
-        "open":"24 / 7",
-        "title":"Frankfurt-Niederrad",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f314"
-        },
-        "address":" , 60435 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.155514726332",
-        "lon":"8.6980368550197",
-        "open":"24 / 7",
-        "title":"Frankfurt-Preungesheim / Gravensteiner Platz",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f33a"
-        },
-        "address":"Wiesenau 1, 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.118473062",
-        "lon":"8.66307377815",
-        "open":"",
-        "title":"Frankfurt-Westend",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f37f"
-        },
-        "address":"Alicestraße , 63263 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.049189177164",
-        "lon":"8.6755675077438",
-        "open":"Schwimmbadöffnungszeiten",
-        "title":"Bücherkiste im Eingangsbereich des Waldschwimmbads",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f3f3"
-        },
-        "address":"Hallgartenstraße 17, 60389 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.130595743011",
-        "lon":"8.6992819234729",
-        "open":"",
-        "title":"Am Bienenturm",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f3fc"
-        },
-        "address":"Walther-von-Cronberg-Platz 7-9, 60594 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"buecherschrank.ffm@gmail.com",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.facebook.com/buecherschrank.ffm/",
-        "icontype":"",
-        "lat":"50.106031510252",
-        "lon":"8.6973588465662",
-        "open":"24h",
-        "title":"Bücherschrank im Deutschherrnviertel",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f45e"
-        },
-        "address":"Friedrich-Naumann-Straße 80, 60486 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.113228342307",
-        "lon":"8.6319516040385",
-        "open":"00:00-24:00",
-        "title":"Frankfurt-Kuhwaldsiedlung",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f471"
-        },
-        "address":"Sebastian-Kneipp-Straße 76, 60439 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.166999271328",
-        "lon":"8.6404245346785",
-        "open":"",
-        "title":"Mertonviertel",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f490"
-        },
-        "address":"Triebstraße 83, 60388 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=31549870",
-        "icontype":"",
-        "lat":"50.143079114723",
-        "lon":"8.7554329633713",
-        "open":"",
-        "title":"Frankfurt-Bergen-Enkheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f659"
-        },
-        "address":"Mauritiusstraße 14, 60529 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.088433758834",
-        "lon":"8.5785583779216",
-        "open":"",
-        "title":"Telefonzelle an der Kirche",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f6c5"
-        },
-        "address":"null, 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
-        "icontype":"",
-        "lat":"50.127508455459",
-        "lon":"8.6681465059519",
-        "open":"",
-        "title":"Goethe&#39;s Book Xchange",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f6c6"
-        },
-        "address":", 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
-        "icontype":"",
-        "lat":"50.127508455459",
-        "lon":"8.6681465059519",
-        "open":"",
-        "title":"Goethe&#39;s Book Xchange",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f715"
-        },
-        "address":" , 60489 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=34198404",
-        "icontype":"",
-        "lat":"50.124030267462",
-        "lon":"8.6066772177988",
-        "open":"",
-        "title":"Frankfurt-Rödelheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f734"
-        },
-        "address":"Reinhardstraße , 60433 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.150561366965",
-        "lon":"8.6699506267905",
-        "open":"24/7",
-        "title":"Frankfurt-Eschersheim / Andreas-Gemeinde",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f8b0"
-        },
-        "address":"Gutzkowstraße , 60594 Frankfurt",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.102045385778",
-        "lon":"8.680998980999",
-        "open":"24 / 7",
-        "title":"Bücherschrank am Schweizer Platz",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f963"
-        },
-        "address":"Herxheimerstraße 17, 60326 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.098841840749",
-        "lon":"8.6264643073082",
-        "open":"24/7",
-        "title":"Frankfurt-Gallus / Ackermannstrasse",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f98a"
-        },
-        "address":"Glauburgstraße 62, 60318 Frankfurt",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.126586170978",
-        "lon":"8.6855694651604",
-        "open":"",
-        "title":"Frankfurt am Main / Glauburgstr.",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f9b0"
-        },
-        "address":"Im Geeren 12, 60433 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.16257690594",
-        "lon":"8.6624623804586",
-        "open":"24/7",
-        "title":"Frankfurt-Eschersheim / Im Geeren",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f9b3"
-        },
-        "address":"Dreiherrnsteinplatz , 63263 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.059945189906",
-        "lon":"8.7509992718697",
-        "open":"Mo bis Fr 8.00 Uhr bis ca. 17 Uhr",
-        "title":"Evangelische Kirche, ehemals Bücherei",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f9c4"
-        },
-        "address":"Morgensternstraße , 60596 Frankfurt",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.stadtpost.de/sachsenhaeuser-wochenblatt/neuer-oeffentlicher-buecherschrank-lukaskirche-id47784.html",
-        "icontype":"",
-        "lat":"50.101762775892",
-        "lon":"8.6765304207802",
-        "open":"",
-        "title":"Bücherschrank an der Lukaskirche",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066f9d2"
-        },
-        "address":"Sossenheimer Riedstraße 1, 65936 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=31038305",
-        "icontype":"",
-        "lat":"50.1219907056",
-        "lon":"8.5687016325016",
-        "open":"24h",
-        "title":"Frankfurt-Sossenheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fa3d"
-        },
-        "address":"In der Römerstadt 272, 60488 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.151210624633",
-        "lon":"8.6231008172035",
-        "open":"24/7",
-        "title":"Frankfurt-Praunheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066faa5"
-        },
-        "address":"Sigmund-Freud-Straße 78, 60435 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.154318506502",
-        "lon":"8.6843570420956",
-        "open":"",
-        "title":"Frankfurt-Eckenheim / Adolf-Leweke-Straße",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fae8"
-        },
-        "address":" , 60437 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.182390104961",
-        "lon":"8.6929462448636",
-        "open":"24/7",
-        "title":"Frankfurt-Harheim",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fbb6"
-        },
-        "address":"In der Römerstadt 118, 60439 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.153465227057",
-        "lon":"8.6351868510246",
-        "open":"24/7",
-        "title":"70. Bücherschrank",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fbdb"
-        },
-        "address":"Anspacher Straße 25, 60326 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.105483080055",
-        "lon":"8.621378839016",
-        "open":"24/7",
-        "title":"Platz vor Anspacher Straße 1-7",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fbdc"
-        },
-        "address":"Kollwitzstraße 9, 60488 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.136215066624",
-        "lon":"8.6091586947441",
-        "open":"24/7",
-        "title":"Frankfurt-Hausen / Siedlung Westhausen",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fbdd"
-        },
-        "address":"Goldsteinstraße 314, 60529 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.082618211245",
-        "lon":"8.6093571782112",
-        "open":"24/7",
-        "title":"Frankfurt-Goldstein / Bürgerhaus",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fc5d"
-        },
-        "address":"Niedwiesenstraße 45, 60431 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.155300724052",
-        "lon":"8.6511209889503",
-        "open":"24/7",
-        "title":"Frankfurt-Heddernheim  / Niedwiesenstraße",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fc5e"
-        },
-        "address":"Am Weißen Stein , 60431 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.15659062584",
-        "lon":"8.657030072579",
-        "open":"",
-        "title":"Frankfurt-Eschersheim  / Weißer  Stein",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fc5f"
-        },
-        "address":" , 61440 ",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.182127876475",
-        "lon":"8.5963626684646",
-        "open":"24/7",
-        "title":"Oberursel-Weiskirchen",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fc74"
-        },
-        "address":"Porthstraße 1-3, 60435 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"Adresse ist wohl ein Studentenwohnheim - ist der Schrank im öffentlichen Raum oder irgendwo drinnen?",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.143038075842",
-        "lon":"8.6834927437942",
-        "open":"",
-        "title":"Frankfurt-Eckenheim / Porthstraße",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fc82"
-        },
-        "address":"Alter Flugplatz Bonames , 60437 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.177742692547",
-        "lon":"8.6603817415538",
-        "open":"24/7",
-        "title":"Frankfurt -Bonames / Alter Flugplatz",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fd4d"
-        },
-        "address":"Am Bürgerbrunnen , 60437 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.202735370575",
-        "lon":"8.7091779336333",
-        "open":"24/7",
-        "title":"Frankfurt- Nieder-Erlenbach",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c777d055d5093066fe0c"
-        },
-        "address":"Ricarda-Huch-Straße 2, 60431 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"",
-        "icontype":"",
-        "lat":"50.143157124838",
-        "lon":"8.6624499977583",
-        "open":"",
-        "title":"Bücherschrank",
-        "type":""
+        "_id": {
+            "$oid": "6000c773d055d5093066e079"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "Für Mitarbeiter und Besucher des Bundesamtes für Wirtschaft und Ausfuhrkontrolle (BAFA); Im Eingang des BAFA",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.134315",
+        "lon": "8.570992",
+        "open": "",
+        "title": "Eschborn / BAFA",
+        "type": "Vitrine"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e081"
+        },
+        "address": "Leipziger Straße 54, 60487 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "städtische Amt für Straßenbau und Erschließung, Projektgruppe Nahmobilität",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.122608",
+        "lon": "8.646098",
+        "open": "24 / 7",
+        "title": "Frankfurt-Bockenheim / Leipziger Straße",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e082"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.184478",
+        "lon": "8.665371",
+        "open": "24 / 7",
+        "title": "Frankfurt-Bonames",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e083"
+        },
+        "address": "Alt-Bornheim , 60385 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.128624",
+        "lon": "8.711181",
+        "open": "24 / 7",
+        "title": "Frankfurt-Bornheim / Berger Straße",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e084"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "Gefördert durch das Verkehrsdezernat Frankfurt Entwicklung: Hans-Jürgen Greve",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.139343",
+        "lon": "8.670498",
+        "open": "24 / 7",
+        "title": "Frankfurt-Dornbusch",
+        "type": "BOKX 01"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e085"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "Restaurant Bürgerhaus Ronneburg\n// Herr Boro Celic 069 / 300 595 68",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.150533",
+        "lon": "8.69009",
+        "open": "24 / 7",
+        "title": "Frankfurt-Eckenheim",
+        "type": "BOKX 02"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e086"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.157103",
+        "lon": "8.655504",
+        "open": "24 / 7",
+        "title": "Frankfurt-Eschersheim",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e087"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.122469",
+        "lon": "8.771332",
+        "open": "24 / 7",
+        "title": "Frankfurt-Fechenheim",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e088"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "http://coord.info/GC4CRZ9",
+        "contact": "Ursula und Klaus Böttger (069/547764)",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.17007",
+        "lon": "8.6962",
+        "open": "24 / 7",
+        "title": "Frankfurt am Main / Berkersheim",
+        "type": "BOKX 01"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e089"
+        },
+        "address": "Frankenallee , 60326 Frankfurt am Main",
+        "bcz": null,
+        "comment": "auch fremdsprachige Auswahl",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.103605",
+        "lon": "8.629903",
+        "open": "24 / 7",
+        "title": "Frankfurt-Gallus / Frankenallee",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08a"
+        },
+        "address": "Kurhessenstrasse, Ecke Höhenblick",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.146942",
+        "lon": "8.655004",
+        "open": "24 / 7",
+        "title": "Frankfurt-Ginnheim / Höhenblick",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08b"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.1443290074",
+        "lon": "8.64896535873",
+        "open": "24 / 7",
+        "title": "Frankfurt-Ginnheim / Kirchplatz",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08c"
+        },
+        "address": "Gutleutstraße 145, 60327 Frankfurt am Main",
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.102265",
+        "lon": "8.66121",
+        "open": "24 / 7",
+        "title": "Frankfurt-Gutleutviertel",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08d"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "Schwerpunkt auf Kriminalliteratur / im Brentanobad",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.125955",
+        "lon": "8.619513",
+        "open": "",
+        "title": "Frankfurt-Hausen / Brentanobad",
+        "type": "Bücherschrank"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08e"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.102474",
+        "lon": "8.550044",
+        "open": "24 / 7",
+        "title": "Frankfurt-Höchst",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e08f"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.108038",
+        "lon": "8.584185",
+        "open": "24 / 7",
+        "title": "Frankfurt-Nied",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e090"
+        },
+        "address": "Bruchfeldstraße 65, 60528 Frankfurt am Main",
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.08635",
+        "lon": "8.643456",
+        "open": "24 / 7",
+        "title": "Frankfurt-Niederrad",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e091"
+        },
+        "address": "Weißkirchener Weg , 60439 Frankfurt am Main",
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.16702201577",
+        "lon": "8.6181255255342",
+        "open": "24 / 7",
+        "title": "Frankfurt-Niederursel",
+        "type": "britische Telefonzelle"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e092"
+        },
+        "address": " , 60316 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Gefördert durch das Verkehrsdezernat Frankfurt; Entwicklung: Hans-Jürgen Greve",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.120504",
+        "lon": "8.696124",
+        "open": "24 / 7",
+        "title": "Frankfurt-Bornheim / Merianplatz",
+        "type": "BOKX 01"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e093"
+        },
+        "address": "Oeder Weg 48, 60318 Frankfurt am Main",
+        "bcz": null,
+        "comment": "Gefördert durch das Verkehrsdezernat Frankfurt; Entwurf: Trixy Royeck; Entwicklung: Hans-Jürgen Greve",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.121287",
+        "lon": "8.680304",
+        "open": "24 / 7",
+        "title": "Frankfurt-Nordend / Oeder Weg",
+        "type": "BOKX 01"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e094"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.120229",
+        "lon": "8.714491",
+        "open": "24 / 7",
+        "title": "Frankfurt-Ostend / Parlamentsplatz",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e095"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.110655",
+        "lon": "8.69948",
+        "open": "24 / 7",
+        "title": "Frankfurt-Ostend / Paul-Arnsberg-Platz",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e096"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.155759",
+        "lon": "8.698202",
+        "open": "24 / 7",
+        "title": "Frankfurt-Preungesheim / Gravensteiner Platz",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e097"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.1285",
+        "lon": "8.733984",
+        "open": "24 / 7",
+        "title": "Frankfurt-Riederwald",
+        "type": "?"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e098"
+        },
+        "address": "Dreieichstraße , 60594 Frankfurt am Main",
+        "bcz": null,
+        "comment": "",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": "https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=18991282",
+        "icontype": "",
+        "lat": "50.103538",
+        "lon": "8.691463",
+        "open": "24 / 7",
+        "title": "Frankfurt-Sachsenhausen",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e099"
+        },
+        "address": null,
+        "bcz": null,
+        "comment": "Gefördert durch das Verkehrsdezernat FrankfurtEntwurf: Hans-Jürgen GreveAusstattung der Kunstvitrine durch das Nachbarschaftsbüro Seckbach",
+        "contact": null,
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": null,
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.140969",
+        "lon": "8.720655",
+        "open": "24 / 7",
+        "title": "Frankfurt-Seckbach",
+        "type": "BOKX 02"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e134"
+        },
+        "address": "Kaiserstraße 39, 63065 Offenbach",
+        "bcz": "0",
+        "comment": "im Bürgerbüro",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.1084900789",
+        "lon": "8.76170396805",
+        "open": "Montag ,\tDienstag, Mittwoch, Freitag 08:00 - 13:00 Uhr,  Donnerstag 15:00 - 20:00 Uhr",
+        "title": "Offenbacher Bücherschrank",
+        "type": "Holzregal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e135"
+        },
+        "address": "Weikertsblochstraße 58a, 63069 Offenbach am Main",
+        "bcz": "0",
+        "comment": "vor dem Mehrgenerationenhaus",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.090944",
+        "lon": "8.757171",
+        "open": "nur tagsüber geöffnet",
+        "title": "Bücherschrank W58",
+        "type": "Holzhäuschen mit Holzregalen"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e136"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "in der Schanzenbäckerei",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.105731",
+        "lon": "8.769621",
+        "open": "nur während der Öffnungszeiten zugänglich",
+        "title": "Schanzenbäckerei",
+        "type": "Regal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e1b3"
+        },
+        "address": "Starkenburgring 66, 63069 Offenbach am Main",
+        "bcz": "0",
+        "comment": "im Wartezimmer",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.0958139898",
+        "lon": "8.75563144684",
+        "open": "nur während der Sprechzeiten (vormittags) zugänglich",
+        "title": "Praxis Dr. med J. Veidt",
+        "type": "Regal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e1c5"
+        },
+        "address": "Gallusanlage 7, 60329 Frankfurt Main",
+        "bcz": "0",
+        "comment": "erster Bücherschrank mit ausschließlich englischer Literatur; entworfen vom Kölner Architekten Hans-Jürgen Greve",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.109326",
+        "lon": "8.671547",
+        "open": "24 / 7",
+        "title": "Frankfurt / Englisches Theater",
+        "type": "Bücherschrank"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e26b"
+        },
+        "address": "Kalbacher Hauptstraße 36, 60437 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.18913335",
+        "lon": "8.63925786408",
+        "open": "24 / 7",
+        "title": "Frankfurt-Kalbach / Altes Rathaus",
+        "type": " "
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e26c"
+        },
+        "address": " 3, 60438 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": null,
+        "icontype": "",
+        "lat": "50.176582057",
+        "lon": "8.62937986851",
+        "open": "24 / 7",
+        "title": "Frankfurt-Riedberg",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e298"
+        },
+        "address": "Baumweg 20, Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Daten von http://www.givebox.eu",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "1",
+        "entrytype": "givebox",
+        "homepage": "www.facebook.com/GiveboxFrankfurt",
+        "icontype": "",
+        "lat": "50.1130002232",
+        "lon": "8.70698690414",
+        "open": "",
+        "title": "GiveBox Frankfurt am Main",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e2b9"
+        },
+        "address": " , 61449 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.167804",
+        "lon": "8.571857",
+        "open": "Zurzeit vom Magistrat wegen Corona geschlossen!",
+        "title": "Steinbach (Taunus)",
+        "type": "Telefonzelle"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e2bc"
+        },
+        "address": "Alt-Praunheim/In der Römerstadt, Frankfurt Praunheim",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.151242",
+        "lon": "8.622991",
+        "open": "24 / 7",
+        "title": "Frankfurt Praunheim",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e2bd"
+        },
+        "address": "Karl-Perott-Platz , 60439 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.16025",
+        "lon": "8.64565",
+        "open": "24 / 7 - leider wurde der Schrank in Brand gesetzt und ist derzeit nicht nutzbar!",
+        "title": "Frankfurt-Heddernheim",
+        "type": "BOKX 01 - grauer Stahl"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e32f"
+        },
+        "address": "Bachmannstr. 2-4, 60488 Frankfurt am Main",
+        "bcz": "1",
+        "comment": "Offizielle Bookcrossing Zone (OBCZ)",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.bookcrossing.com/hunt/28/179/31329/73676",
+        "icontype": "",
+        "lat": "50.13137",
+        "lon": "8.626065",
+        "open": "Zu den Öffnungszeiten des KP21",
+        "title": "Brotfabrik / KP21",
+        "type": "Großes Regal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e3b1"
+        },
+        "address": "Kiesstrasse 27, Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Not reachable 24x7 - see opening hours of http://www.cafe-albatros.de because its inside on a cupboard",
+        "contact": "see URL",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.cafe-albatros.de",
+        "icontype": "",
+        "lat": "50.1188933",
+        "lon": "8.648324",
+        "open": "see URL",
+        "title": "Frankfurt-Bockenheim inside Café Albatros",
+        "type": "Open inside a Café on a cupboard"
+    },
+    {
+        "_id": {
+            "$oid": "6000c773d055d5093066e40e"
+        },
+        "address": "Odina-Bott-Platz 1, 60323 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.118306",
+        "lon": "8.663318",
+        "open": "24 / 7",
+        "title": "Westend",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e4e3"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "givebox",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.077717",
+        "lon": "8.75565",
+        "open": "24 / 7",
+        "title": "Givebox Offenbach",
+        "type": "kleines Häuschen"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e505"
+        },
+        "address": " 5, 61118 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.183558905546",
+        "lon": "8.7445416075262",
+        "open": "24 / 7",
+        "title": "Bad Vilbel (Altes Rathaus)",
+        "type": "rote Telefonzelle"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e590"
+        },
+        "address": "Berger Straße 175, 60385 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Bücherregal im Coworking Space in Frankfurt am Main. Für &#34;Residents&#34; auch 24/7 erreichbar",
+        "contact": "siehe Website",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.die-zentrale-ffm.de/",
+        "icontype": "",
+        "lat": "50.125379",
+        "lon": "8.706193",
+        "open": "Mo.-Fr. 09:00 bis 19:00 Uhr (für &#34;Residents&#34; auch 24/7 erreichbar)",
+        "title": "Die Zentrale FFM",
+        "type": "Bücherregal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e7ee"
+        },
+        "address": "Platenstraße 75, 60431 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "frankfurt.de/sixcms/detail.php?id=2778&_ffmpar[_id_inhalt]=26136317",
+        "icontype": "",
+        "lat": "50.137793",
+        "lon": "8.663085",
+        "open": "24 / 7",
+        "title": "Platenstraße / Dornbusch II",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e7ef"
+        },
+        "address": "Malvenweg, 60433 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.166395",
+        "lon": "8.680084",
+        "open": "24 / 7",
+        "title": "Frankfurt / Frankfurter Berg",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e7f0"
+        },
+        "address": "Hartmannsweilerstraße , 65933 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.091708",
+        "lon": "8.607193",
+        "open": "24 / 7",
+        "title": "Frankfurt-Griesheim",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e7f1"
+        },
+        "address": "Offenbacher Landstraße 357, 60599 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.100349",
+        "lon": "8.724228",
+        "open": "24 / 7",
+        "title": "Bücherschrank Buchrainplatz, Frankfurt-Oberrad",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c774d055d5093066e7f2"
+        },
+        "address": "Darmstädter Landstraße 106, 60598 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Seniorenzentrum Taunusblick; nicht städtisch",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.097455",
+        "lon": "8.690797",
+        "open": "",
+        "title": "Bücherschrank am Seniorenzentrum Taunusblick, Frankfurt-Sachensenhausen",
+        "type": "Offenes Regal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066e82e"
+        },
+        "address": "Berliner Str. 27 65760 Eschborn",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.140664152",
+        "lon": "8.56301665306",
+        "open": "24/7",
+        "title": "Eschborn",
+        "type": "Telefonzelle"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066e897"
+        },
+        "address": "Im Vogelsgesang 4",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.136573",
+        "lon": "8.625378",
+        "open": "",
+        "title": "Lehrekooperative",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066e9a6"
+        },
+        "address": "Kleine Nelkenstraße 19, 60488 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.134090087",
+        "lon": "8.62588763237",
+        "open": "24 / 7",
+        "title": "Frankfurt-Hausen",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066e9b7"
+        },
+        "address": "Braubachstr. 16",
+        "bcz": "0",
+        "comment": "Eingerichtet von der Börsenvereinsgruppe. Der Schrank ist für alle Bürger und Besucher der Stadt Frankfurt am Main ein Ort zum Stöbern und Weitergeben von Büchern.Jeden ersten Montag im Monat findet ein besonderes Buch seinen Platz darin, angekündigt auf der Facebookseite des Börsenvereins: http://www.facebook.com/Boersenverein/ ",
+        "contact": "Haus des Buches",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.boersenverein.de",
+        "icontype": "",
+        "lat": "50.111573",
+        "lon": "8.683448",
+        "open": "7/24",
+        "title": "Offener Bücherschrank Haus des Buches",
+        "type": "Metallbücherschrank"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066e9c5"
+        },
+        "address": "Holzhausenstraße, 60322 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "Wird am 1. September 2016 eröffnet",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.127109",
+        "lon": "8.676962",
+        "open": "24 / 7",
+        "title": "Frankfurt am Main / Holzhausenpark",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ebe3"
+        },
+        "address": "Frankfurter Straße 160-166, 63303 ",
+        "bcz": "0",
+        "comment": "Nur während der Öffnungszeiten des Info-Points zugänglich.",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.hll-dreieich.de",
+        "icontype": "",
+        "lat": "50.0322852",
+        "lon": "8.6947194",
+        "open": "Montag bis Freitag, 07.00 Uhr bis 19.30 Uhr",
+        "title": "Bücherschrank im HLL",
+        "type": "Holzregal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ec04"
+        },
+        "address": "Triebstraße 83, 60388 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.143091",
+        "lon": "8.75531",
+        "open": "24 / 7",
+        "title": "Frankfurt am Main / Bergen-Enkheim",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ec07"
+        },
+        "address": "Heinrich-Heine-Straße 26, 63071 Offenbach am Main",
+        "bcz": "0",
+        "comment": "Außerhalb der Öffnungszeiten der Sparkassenfiliale Zugang mit Bankkarte, der Schrank steht im Automatenbereich.",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.sparkasse-offenbach.de/de/home/service/filiale-finden.html?n=true&stref=service_links#details/7619",
+        "icontype": "",
+        "lat": "50.095013019497",
+        "lon": "8.7783765792847",
+        "open": "jederzeit mit Bankkarte",
+        "title": "Tauschregal in der Sparkasse",
+        "type": "Holzregal"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ec08"
+        },
+        "address": "Nordring 129, 63067 Offenbach am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.hafen2.net/",
+        "icontype": "",
+        "lat": "50.11205354955",
+        "lon": "8.740809224546",
+        "open": "Täglich 12-20 Uhr, je nach Wetter auch länger...",
+        "title": "Buchschrank im Foyer des Hafen2",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ec17"
+        },
+        "address": "Friedensstraße, 63165 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.119687",
+        "lon": "8.82623",
+        "open": "24 / 7",
+        "title": "Mühlheim am Main / Friedensstraße",
+        "type": "Telefonzelle"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecb5"
+        },
+        "address": "Buchgasse 2, 60311 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "An der Kreuzung Buchgasse/Alte Mainzer Gasse",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar[_id_inhalt]=32322768",
+        "icontype": "",
+        "lat": "50.109301030246",
+        "lon": "8.6800280213356",
+        "open": "24/7",
+        "title": "Bücherschrank Altstadt Buchgasse",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecb6"
+        },
+        "address": " , 60487 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.125211",
+        "lon": "8.637373",
+        "open": "24 / 7",
+        "title": "Frankfurt-Bockenheim / Kirchplatz",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecb7"
+        },
+        "address": "Funckstraße 14, 60486 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.113158",
+        "lon": "8.631617",
+        "open": "24 / 7",
+        "title": "Bücherschrank Bockenheim - Kuhwaldsiedlung",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecb8"
+        },
+        "address": "Friedberger Warte, Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.140539",
+        "lon": "8.699014",
+        "open": "24 / 7",
+        "title": "Bücherschrank Bornheim - Friedberger Warte",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecc8"
+        },
+        "address": "Siesmayerstraße , 60323 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.126363",
+        "lon": "8.657886",
+        "open": "Montag – Samstag: 9.00 – 18.00 Uhr  Sonn- und Feiertag: 9.00 – 13.00 Uhr",
+        "title": "Frankfurt-Westend / Bücherschrank im Botanischen Garten",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ecc9"
+        },
+        "address": " , 60318 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.122095",
+        "lon": "8.690025",
+        "open": "",
+        "title": "Frankfurt-Nordend / Maria-Ward-Platz",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ed97"
+        },
+        "address": "Hauptstraße 40",
+        "bcz": "0",
+        "comment": "https://goo.gl/maps/TrKxjer3vco",
+        "contact": "Tel.: 06196 93148-23 oder  E-Mail: info@eschbornhaus.de",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.ev-kircheeschborn.de/angebote/offener-b%C3%BCcherschrank/",
+        "icontype": "",
+        "lat": "50.14317",
+        "lon": "8.568338",
+        "open": "",
+        "title": "Evangelisches Gemeindehaus",
+        "type": "Regal im Erdgeschoss"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066eeb4"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.173751",
+        "lon": "8.641112",
+        "open": "",
+        "title": "Air Liquide Engineering & Construction",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066eee0"
+        },
+        "address": "Mailänder Str. 8, 60598 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Ich habe diesen Schrank vor dem tegut-Laden nicht eingerichtet, wollte ihn nur anmelden, da er hier bisher nicht auftauchte",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.091319",
+        "lon": "8.688544",
+        "open": "",
+        "title": "Bücherschrank am tegut, Frankfurt-Sachsenhausen",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066eeea"
+        },
+        "address": "Waldschwimmbad, Alicestraße 118, 63263 Neu-Isenburg",
+        "bcz": "0",
+        "comment": "Die offene Bücherkiste befindet sich im Vorraum des Waldschwimmbades (Hallenbad) Neu-Isenburg. ",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.049875",
+        "lon": "8.675299",
+        "open": "07:00 Uhr - 20:00 Uhr",
+        "title": "Bücherkiste Waldschwimmbad Neu-Isenburg",
+        "type": "Offfene Bücherkiste"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066eeeb"
+        },
+        "address": "Neckarstr. 45, 63263 Neu-Isenburg",
+        "bcz": "0",
+        "comment": "LittleFreeLibrary.org\nTake a Book - Share a Book\nCharter # 80196",
+        "contact": "littlefreelibrary.org/",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "littlefreelibrary.org/",
+        "icontype": "",
+        "lat": "50.049255",
+        "lon": "8.681195",
+        "open": "24/7",
+        "title": "Kleines Bücherhäuschen Neu-Isenburg",
+        "type": "Kleines Bücherhäuschen"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066eeec"
+        },
+        "address": "DLB, Offenbacher Str. 174, 63263 Neu-Isenburg",
+        "bcz": "0",
+        "comment": "Der Bücherschrank befindet sich auf dem Gelände des Wertstoffhofes, gleich rechts an der Anmeldung. \n\nÖffnungszeiten:\nMittwoch\t13:00–16:00\nDonnerstag\t07:30–15:00\nFreitag\tGeschlossen\nSamstag\t08:00–13:00\nSonntag\tGeschlossen\nMontag\tGeschlossen\nDienstag\t07:30–15:00",
+        "contact": "https://www.dlb-aoer.de/",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.dlb-aoer.de/",
+        "icontype": "",
+        "lat": "50.051862",
+        "lon": "8.715076",
+        "open": "Siehe Verschiedenes",
+        "title": "Bücherschrank DLB Neu-Isenburg",
+        "type": "Offener Bücherschrank"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ef09"
+        },
+        "address": "Wiesenbornweg 15, 63150 Heusenstamm",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "www.heusenstamm.de/de/freizeit-und-kultur/kulturangebote/stadtbuecherei#!1746",
+        "icontype": "",
+        "lat": "50.061694218655",
+        "lon": "8.8068877905607",
+        "open": "24/7",
+        "title": "englische Telefonzelle vor dem Schloss Schönborn",
+        "type": "Öffentlicher Bücherschrank"
+    },
+    {
+        "_id": {
+            "$oid": "6000c775d055d5093066ef8a"
+        },
+        "address": "Deuil-La-Barre-Straße 26, 60437 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.198804210366",
+        "lon": "8.671307265061",
+        "open": "24/7",
+        "title": "Frankfurt-Nieder-Eschbach",
+        "type": "BOKX"
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f068"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "Anspacher Strasse, Frankfurt",
+        "icontype": "",
+        "lat": "50.1055",
+        "lon": "8.621623",
+        "open": "",
+        "title": "Bücherschrank Anspacher Strasse Ecke Wallauer Strasse",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f07c"
+        },
+        "address": "",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.127381",
+        "lon": "8.668063",
+        "open": "24/7",
+        "title": "Goethe-Uni, Campus Westend",
+        "type": "wissenschaftliche Bücher"
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f30f"
+        },
+        "address": "Am Dachsberg 19, 60435 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "Ursula und Klaus Böttger (069/547764)",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.169979728719",
+        "lon": "8.6961012305422",
+        "open": "24 / 7",
+        "title": "Frankfurt-Berkersheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f310"
+        },
+        "address": "Gelnhäuser Straße 2, 60435 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.150387290573",
+        "lon": "8.6902054765737",
+        "open": "24 / 7",
+        "title": "Frankfurt-Eckenheim / SAALBAU",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f311"
+        },
+        "address": "Alt-Fechenheim 125, 60386 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.122284992291",
+        "lon": "8.7705970747299",
+        "open": "24 / 7",
+        "title": "Frankfurt-Fechenheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f312"
+        },
+        "address": " , 65929 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.10238799013",
+        "lon": "8.550376836484",
+        "open": "24 / 7",
+        "title": "Frankfurt-Höchst",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f313"
+        },
+        "address": "Bruchfeldstraße 65, 60528 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.086535866792",
+        "lon": "8.6437027632294",
+        "open": "24 / 7",
+        "title": "Frankfurt-Niederrad",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f314"
+        },
+        "address": " , 60435 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.155514726332",
+        "lon": "8.6980368550197",
+        "open": "24 / 7",
+        "title": "Frankfurt-Preungesheim / Gravensteiner Platz",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f33a"
+        },
+        "address": "Wiesenau 1, 60323 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.118473062",
+        "lon": "8.66307377815",
+        "open": "",
+        "title": "Frankfurt-Westend",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f37f"
+        },
+        "address": "Alicestraße , 63263 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.049189177164",
+        "lon": "8.6755675077438",
+        "open": "Schwimmbadöffnungszeiten",
+        "title": "Bücherkiste im Eingangsbereich des Waldschwimmbads",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f3f3"
+        },
+        "address": "Hallgartenstraße 17, 60389 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.130595743011",
+        "lon": "8.6992819234729",
+        "open": "",
+        "title": "Am Bienenturm",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f3fc"
+        },
+        "address": "Walther-von-Cronberg-Platz 7-9, 60594 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "buecherschrank.ffm@gmail.com",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.facebook.com/buecherschrank.ffm/",
+        "icontype": "",
+        "lat": "50.106031510252",
+        "lon": "8.6973588465662",
+        "open": "24h",
+        "title": "Bücherschrank im Deutschherrnviertel",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f45e"
+        },
+        "address": "Friedrich-Naumann-Straße 80, 60486 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.113228342307",
+        "lon": "8.6319516040385",
+        "open": "00:00-24:00",
+        "title": "Frankfurt-Kuhwaldsiedlung",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f471"
+        },
+        "address": "Sebastian-Kneipp-Straße 76, 60439 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.166999271328",
+        "lon": "8.6404245346785",
+        "open": "",
+        "title": "Mertonviertel",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f490"
+        },
+        "address": "Triebstraße 83, 60388 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=31549870",
+        "icontype": "",
+        "lat": "50.143079114723",
+        "lon": "8.7554329633713",
+        "open": "",
+        "title": "Frankfurt-Bergen-Enkheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f659"
+        },
+        "address": "Mauritiusstraße 14, 60529 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.088433758834",
+        "lon": "8.5785583779216",
+        "open": "",
+        "title": "Telefonzelle an der Kirche",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f6c5"
+        },
+        "address": "null, 60323 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
+        "icontype": "",
+        "lat": "50.127508455459",
+        "lon": "8.6681465059519",
+        "open": "",
+        "title": "Goethe&#39;s Book Xchange",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f6c6"
+        },
+        "address": ", 60323 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
+        "icontype": "",
+        "lat": "50.127508455459",
+        "lon": "8.6681465059519",
+        "open": "",
+        "title": "Goethe&#39;s Book Xchange",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f715"
+        },
+        "address": " , 60489 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=34198404",
+        "icontype": "",
+        "lat": "50.124030267462",
+        "lon": "8.6066772177988",
+        "open": "",
+        "title": "Frankfurt-Rödelheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c776d055d5093066f734"
+        },
+        "address": "Reinhardstraße , 60433 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.150561366965",
+        "lon": "8.6699506267905",
+        "open": "24/7",
+        "title": "Frankfurt-Eschersheim / Andreas-Gemeinde",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f8b0"
+        },
+        "address": "Gutzkowstraße , 60594 Frankfurt",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.102045385778",
+        "lon": "8.680998980999",
+        "open": "24 / 7",
+        "title": "Bücherschrank am Schweizer Platz",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f963"
+        },
+        "address": "Herxheimerstraße 17, 60326 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.098841840749",
+        "lon": "8.6264643073082",
+        "open": "24/7",
+        "title": "Frankfurt-Gallus / Ackermannstrasse",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f98a"
+        },
+        "address": "Glauburgstraße 62, 60318 Frankfurt",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.126586170978",
+        "lon": "8.6855694651604",
+        "open": "",
+        "title": "Frankfurt am Main / Glauburgstr.",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f9b0"
+        },
+        "address": "Im Geeren 12, 60433 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.16257690594",
+        "lon": "8.6624623804586",
+        "open": "24/7",
+        "title": "Frankfurt-Eschersheim / Im Geeren",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f9b3"
+        },
+        "address": "Dreiherrnsteinplatz , 63263 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.059945189906",
+        "lon": "8.7509992718697",
+        "open": "Mo bis Fr 8.00 Uhr bis ca. 17 Uhr",
+        "title": "Evangelische Kirche, ehemals Bücherei",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f9c4"
+        },
+        "address": "Morgensternstraße , 60596 Frankfurt",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.stadtpost.de/sachsenhaeuser-wochenblatt/neuer-oeffentlicher-buecherschrank-lukaskirche-id47784.html",
+        "icontype": "",
+        "lat": "50.101762775892",
+        "lon": "8.6765304207802",
+        "open": "",
+        "title": "Bücherschrank an der Lukaskirche",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066f9d2"
+        },
+        "address": "Sossenheimer Riedstraße 1, 65936 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "https://www.frankfurt.de/sixcms/detail.php?id=2778&_ffmpar%5B_id_inhalt%5D=31038305",
+        "icontype": "",
+        "lat": "50.1219907056",
+        "lon": "8.5687016325016",
+        "open": "24h",
+        "title": "Frankfurt-Sossenheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fa3d"
+        },
+        "address": "In der Römerstadt 272, 60488 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.151210624633",
+        "lon": "8.6231008172035",
+        "open": "24/7",
+        "title": "Frankfurt-Praunheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066faa5"
+        },
+        "address": "Sigmund-Freud-Straße 78, 60435 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.154318506502",
+        "lon": "8.6843570420956",
+        "open": "",
+        "title": "Frankfurt-Eckenheim / Adolf-Leweke-Straße",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fae8"
+        },
+        "address": " , 60437 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.182390104961",
+        "lon": "8.6929462448636",
+        "open": "24/7",
+        "title": "Frankfurt-Harheim",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fbb6"
+        },
+        "address": "In der Römerstadt 118, 60439 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.153465227057",
+        "lon": "8.6351868510246",
+        "open": "24/7",
+        "title": "70. Bücherschrank",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fbdb"
+        },
+        "address": "Anspacher Straße 25, 60326 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.105483080055",
+        "lon": "8.621378839016",
+        "open": "24/7",
+        "title": "Platz vor Anspacher Straße 1-7",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fbdc"
+        },
+        "address": "Kollwitzstraße 9, 60488 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.136215066624",
+        "lon": "8.6091586947441",
+        "open": "24/7",
+        "title": "Frankfurt-Hausen / Siedlung Westhausen",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fbdd"
+        },
+        "address": "Goldsteinstraße 314, 60529 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.082618211245",
+        "lon": "8.6093571782112",
+        "open": "24/7",
+        "title": "Frankfurt-Goldstein / Bürgerhaus",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fc5d"
+        },
+        "address": "Niedwiesenstraße 45, 60431 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.155300724052",
+        "lon": "8.6511209889503",
+        "open": "24/7",
+        "title": "Frankfurt-Heddernheim  / Niedwiesenstraße",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fc5e"
+        },
+        "address": "Am Weißen Stein , 60431 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.15659062584",
+        "lon": "8.657030072579",
+        "open": "",
+        "title": "Frankfurt-Eschersheim  / Weißer  Stein",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fc5f"
+        },
+        "address": " , 61440 ",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.182127876475",
+        "lon": "8.5963626684646",
+        "open": "24/7",
+        "title": "Oberursel-Weiskirchen",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fc74"
+        },
+        "address": "Porthstraße 1-3, 60435 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "Adresse ist wohl ein Studentenwohnheim - ist der Schrank im öffentlichen Raum oder irgendwo drinnen?",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.143038075842",
+        "lon": "8.6834927437942",
+        "open": "",
+        "title": "Frankfurt-Eckenheim / Porthstraße",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fc82"
+        },
+        "address": "Alter Flugplatz Bonames , 60437 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.177742692547",
+        "lon": "8.6603817415538",
+        "open": "24/7",
+        "title": "Frankfurt-Bonames / Alter Flugplatz",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fd4d"
+        },
+        "address": "Am Bürgerbrunnen , 60437 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.202735370575",
+        "lon": "8.7091779336333",
+        "open": "24/7",
+        "title": "Frankfurt-Nieder-Erlenbach",
+        "type": ""
+    },
+    {
+        "_id": {
+            "$oid": "6000c777d055d5093066fe0c"
+        },
+        "address": "Ricarda-Huch-Straße 2, 60431 Frankfurt am Main",
+        "bcz": "0",
+        "comment": "",
+        "contact": "",
+        "deactivated": "0",
+        "deactreason": "",
+        "digital": "0",
+        "entrytype": "bookcase",
+        "homepage": "",
+        "icontype": "",
+        "lat": "50.143157124838",
+        "lon": "8.6624499977583",
+        "open": "",
+        "title": "Bücherschrank",
+        "type": ""
     }
 ]
