@@ -8,13 +8,11 @@ import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
 List<BookCase> _bookcases = [];
-List _data = [];
 bool finished = false;
 
 Future<String> getDistance(String lat2, String lng2) async {
   String out;
   LocationData _locationData;
-  Location location = new Location();
   double lng2db = double.parse(lng2);
   double lat2db = double.parse(lat2);
   _locationData = await LocationProvider.getLocation();

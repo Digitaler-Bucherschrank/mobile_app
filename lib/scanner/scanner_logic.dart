@@ -33,8 +33,8 @@ Future scanBarcodeNormal() async {
 }
 
 Future getInfo(String? isbn) async {
-  var _url =
-      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
+  var _url = Uri.parse(
+      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
   Map response = await http
       .post(_url,
           body: json.encode({
@@ -52,8 +52,8 @@ Future getInfo(String? isbn) async {
 }
 
 Future postIsbnAndSchrank(String? isbn, String? schrank) async {
-  var _url =
-      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json");
+  var _url = Uri.parse(
+      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json");
   http
       .post(_url,
           body: json.encode({
@@ -152,7 +152,7 @@ class _SchraenkeState extends State<Schraenke> {
                         width: 300,
                         child: ListTile(
                           leading: Image(
-                            image: AssetImage('book.png'),
+                            image: AssetImage('assets/icons/book_case.png'),
                           ),
                           title: Text(snapshot.data[i].title),
                           subtitle: Container(

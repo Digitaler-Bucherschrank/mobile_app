@@ -12,6 +12,8 @@ import 'models/book_case.dart';
 import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
 import 'scanner/scanner_pickup_form.dart';
+import 'search.dart';
+import 'drawer.dart';
 
 class GMap extends StatefulWidget {
   GMap({Key? key}) : super(key: key);
@@ -23,11 +25,18 @@ class _GMapState extends State<GMap> {
   Set<Marker> _markers = {};
   Completer<GoogleMapController> _controller = new Completer();
 
+  Future<void> gotoLocation(double lat, double long) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(lat, long),
+      zoom: 15,
+    )));
+  }
+
   void _onMapCreated(GoogleMapController controller) async {
     _controller.complete(controller);
 
     var schraenke = await getBookCases();
-    print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(
@@ -39,7 +48,8 @@ class _GMapState extends State<GMap> {
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(
-              ImageConfiguration(devicePixelRatio: 5), 'assets/icons/book.png'),
+              ImageConfiguration(devicePixelRatio: 5),
+              'assets/icons/book_case.png'),
           onTap: () {
             showModalBottomSheet(
                 context: context,
@@ -119,14 +129,23 @@ class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        myLocationEnabled: true,
-        initialCameraPosition: CameraPosition(
-          target: LatLng(50.1109, 8.6821),
-          zoom: 12,
-        ),
-        markers: Set<Marker>.of(_markers),
+      resizeToAvoidBottomInset: false,
+      drawer: AppDrawer(),
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            onMapCreated: _onMapCreated,
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+            compassEnabled: false,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(50.1109, 8.6821),
+              zoom: 12,
+            ),
+            markers: Set<Marker>.of(_markers),
+          ),
+          buildFloatingSearchBar()
+        ],
       ),
     );
   }
@@ -160,7 +179,9 @@ class _GMapState extends State<GMap> {
 
       debounceDelay: const Duration(milliseconds: 500),
       onQueryChanged: (query) {
-        // TODO: Call your model, bloc, controller here.
+        setState(() {
+          selectedTerm = query;
+        });
       },
       // Specify a custom transition to be used for
       // animating between opened and closed stated.
@@ -178,18 +199,69 @@ class _GMapState extends State<GMap> {
         ),
       ],
       builder: (context, transition) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Material(
-            color: Colors.white,
-            elevation: 4.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: Colors.accents.map((color) {
-                return Container(height: 112, color: color);
-              }).toList(),
-            ),
-          ),
+        return FutureBuilder(
+          future: search(selectedTerm),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return ClipRRect(
+                child: Material(
+                  color: Colors.white,
+                  child: Container(
+                    height: 50,
+                    child: Center(
+                      child: Text("Lade Inhalte!"),
+                    ),
+                  ),
+                ),
+              );
+            } else if (snapshot.data[0]["title"] == "Nichts gefunden!") {
+              return ClipRRect(
+                child: Material(
+                  color: Colors.white,
+                  child: Container(
+                    height: 50,
+                    child: Center(
+                      child: Text("Nichts gefunden!"),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return Container(
+                height: 650,
+                child: ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    print("$index" + snapshot.data[index]["title"]);
+                    return Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: ClipRRect(
+                        child: Material(
+                          color: Colors.white,
+                          child: ListTile(
+                            onTap: () {
+                              try {
+                                gotoLocation(
+                                  double.parse(snapshot.data[index]["lat"]),
+                                  double.parse(snapshot.data[index]["long"]),
+                                );
+                              } catch (e) {
+                                print(e);
+                              }
+                            },
+                            leading: Image(
+                              image: AssetImage('assets/icons/book_case.png'),
+                            ),
+                            title: Text(snapshot.data[index]["title"]),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              );
+            }
+          },
         );
       },
     );
