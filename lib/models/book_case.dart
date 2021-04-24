@@ -11,7 +11,6 @@ List<BookCase> _bookcases = [];
 List _data = [];
 bool finished = false;
 
-
 Future<String> getDistance(String lat2, String lng2) async {
   String out;
   LocationData _locationData;
@@ -57,24 +56,23 @@ class BookCase {
   int? distance;
 
   BookCase(
-    this.iId,
-    this.address,
-    this.bcz,
-    this.comment,
-    this.contact,
-    this.deactivated,
-    this.deactreason,
-    this.digital,
-    this.entrytype,
-    this.homepage,
-    this.icontype,
-    this.lat,
-    this.lon,
-    this.open,
-    this.title,
-    this.type,
-    this.distance
-  );
+      this.iId,
+      this.address,
+      this.bcz,
+      this.comment,
+      this.contact,
+      this.deactivated,
+      this.deactreason,
+      this.digital,
+      this.entrytype,
+      this.homepage,
+      this.icontype,
+      this.lat,
+      this.lon,
+      this.open,
+      this.title,
+      this.type,
+      this.distance);
 
   BookCase.fromJson(Map<String, dynamic> json) {
     iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
@@ -97,27 +95,28 @@ class BookCase {
   }
 }
 
-
 List<BookCase> parseBookCaseJSON(String file) {
   BookCase tempMarker;
-  return jsonDecode(file).cast<Map<String, dynamic>>().map<BookCase>((Map<String, dynamic> json) {
+  return jsonDecode(file)
+      .cast<Map<String, dynamic>>()
+      .map<BookCase>((Map<String, dynamic> json) {
     tempMarker = BookCase.fromJson(json);
     return tempMarker;
-}).toList();
+  }).toList();
 }
 
 Future<bool> loadBookCases() async {
-    if (_bookcases.length == 0) {
-      var file = await rootBundle.loadString("assets/markers.json");
+  if (_bookcases.length == 0) {
+    var file = await rootBundle.loadString("assets/markers.json");
 
-      _bookcases = await compute(parseBookCaseJSON, file);
+    _bookcases = await compute(parseBookCaseJSON, file);
 
-      finished = true;
-    }
-    print(_bookcases.length);
-
-    return true;
+    finished = true;
   }
+  print(_bookcases.length);
+
+  return true;
+}
 
 Future<void> _waitUntilDone() async {
   final completer = Completer();
@@ -134,7 +133,7 @@ Future<List<BookCase>> getBookCases() async {
   await _waitUntilDone();
 
   return _bookcases;
- /* if (_bookcases.length != 0) {
+  /* if (_bookcases.length != 0) {
     print("schraenke1 $_bookcases");
     return _bookcases;
   } else {
@@ -144,7 +143,6 @@ Future<List<BookCase>> getBookCases() async {
     }, onError: (e) {
       print("$e");
     });
-
     return books;
   } */
 }

@@ -1,14 +1,13 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:digitaler_buecherschrank/location.dart';
+import 'package:digitaler_buecherschrank/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
-import 'package:page_transition/page_transition.dart';
 
-import 'drawer.dart';
+import 'search.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
-import 'gmap.dart';
 import 'models/book_case.dart';
 import 'package:flutter/services.dart';
 
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -82,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GMap();
+    return Search();
 
     /*FutureBuilder(
       // Replace the 3 second delay with your initialization code:

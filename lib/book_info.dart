@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import "./../DetailPage.dart";
+import "DetailPage.dart";
 
 // ignore: must_be_immutable
 class BookInfo extends StatefulWidget {
@@ -20,10 +20,12 @@ class _BookInfo extends State<BookInfo> {
 //  List<Book> _books = List<Book>();
 
   Future<List<Book>> fetchBooks() async {
-    var url = "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2";
+    Uri url =
+        "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2" as Uri;
     var response = await http.get(url);
 
-    var books = List<Book>();
+    // var books = List<Book>();
+    List<Book> books = [];
 
     if (response.statusCode == 200) {
       var booksJson = json.decode(response.body);
@@ -35,8 +37,8 @@ class _BookInfo extends State<BookInfo> {
   }
 
   Future postMarkersId(String markersId) async {
-    const _url =
-        "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2";
+    Uri _url =
+        "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2" as Uri;
     http
         .post(_url,
             body: json.encode({

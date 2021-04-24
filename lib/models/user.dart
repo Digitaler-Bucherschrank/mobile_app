@@ -11,7 +11,7 @@ class User {
     username = json['username'];
     mail = json['mail'];
     tokens =
-    json['tokens'] != null ? new Tokens.fromJson(json['tokens']) : null;
+        json['tokens'] != null ? new Tokens.fromJson(json['tokens']) : null;
   }
 
   Map<String, dynamic> toJson() {
