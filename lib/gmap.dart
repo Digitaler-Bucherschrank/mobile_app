@@ -27,7 +27,6 @@ class _GMapState extends State<GMap> {
     _controller.complete(controller);
 
     var schraenke = await getBookCases();
-    print("blabla${schraenke.length}");
     for (int i = 0; i < schraenke.length; i++) {
       var tempMarker = schraenke[i];
       _markers.add(Marker(

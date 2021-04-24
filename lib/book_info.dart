@@ -17,14 +17,12 @@ class _BookInfo extends State<BookInfo> {
   String markersId;
   _BookInfo(this.markersId);
 
-//  List<Book> _books = List<Book>();
-
   Future<List<Book>> fetchBooks() async {
     Uri url =
         "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2" as Uri;
     var response = await http.get(url);
 
-    // var books = List<Book>();
+    //var books = List<Book>();
     List<Book> books = [];
 
     if (response.statusCode == 200) {
@@ -49,7 +47,6 @@ class _BookInfo extends State<BookInfo> {
     });
   }
 
-//class BookInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,9 +66,9 @@ class _BookInfo extends State<BookInfo> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(snapshot.data[index].name),
+                    title: Text(snapshot.data[index].title),
                     //title: Text(_books[index].title),
-                    subtitle: Text(snapshot.data[index].email),
+                    subtitle: Text(snapshot.data[index].author),
                     //  leading: Image.network(-) ,
                     trailing: Icon(Icons.arrow_forward_rounded),
                     onTap: () {
