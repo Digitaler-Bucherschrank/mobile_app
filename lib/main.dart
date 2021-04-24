@@ -1,15 +1,15 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:location/location.dart';
 
-import 'drawer.dart';
-import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'gmap.dart';
 import 'models/book_case.dart';
-import 'package:flutter/services.dart';
 
 
 void main() {
@@ -38,6 +38,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: GoogleFonts.notoSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
