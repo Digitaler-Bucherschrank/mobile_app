@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'drawer.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
@@ -14,11 +13,16 @@ import 'package:flutter/services.dart';
 
 
 void main() {
+  runApp(MyApp());
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent
   ));
 
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
 
   var location = new Location();
 
@@ -43,15 +47,16 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       home: AnimatedSplashScreen.withScreenFunction(
-        duration: 3000,
-        splash: Icons.home,
-          screenFunction: () async{
-            await loadBookCases();
-            return MyHomePage();
-          },
+        duration: 1500,
+        splash: Image.asset('assets/icons/splash.png', scale: 0.5),
+        screenFunction: () async{
+          await loadBookCases();
+          return MyHomePage();
+        },
         splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Colors.blue
-    ),
+        backgroundColor: Colors.blue,
+        centered: true,
+      ),
     );
   }
 }
