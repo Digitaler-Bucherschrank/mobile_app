@@ -48,7 +48,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       home: AnimatedSplashScreen.withScreenFunction(
         duration: 1500,
-        splash: Image.asset('assets/icons/splash.png', scale: 0.5),
+        splashIconSize: 256,
+        splash: Image.asset('assets/icons/splash.png'),
         screenFunction: () async{
           await loadBookCases();
           return MyHomePage();

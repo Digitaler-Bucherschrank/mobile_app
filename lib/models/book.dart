@@ -7,8 +7,7 @@ class Book {
   String? thumbnail;
   BookData? bookData;
 
-  Book(
-      {this.id,
+  Book({this.id,
         this.googleBooksID,
         this.author,
         this.title,
