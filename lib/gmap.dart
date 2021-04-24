@@ -43,10 +43,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
       _darkMapStyle = value.first;
       _lightMapStyle = value.last;
 
-      _controller.future.then((value) =>
-          MediaQuery.of(context).platformBrightness == Brightness.dark
-              ? value.setMapStyle(_darkMapStyle)
-              : value.setMapStyle(_lightMapStyle));
+      _setMapStyle();
     });
   }
 
