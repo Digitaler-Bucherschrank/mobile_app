@@ -8,23 +8,7 @@ import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
 List<BookCase> _bookcases = [];
-List _data = [];
 bool finished = false;
-
-Future<String> getDistance(String lat2, String lng2) async {
-  String out;
-  LocationData _locationData;
-  Location location = new Location();
-  double lng2db = double.parse(lng2);
-  double lat2db = double.parse(lat2);
-  _locationData = await LocationProvider.getLocation();
-  var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
-      LatLng(_locationData.latitude!, _locationData.longitude!),
-      LatLng(lat2db, lng2db));
-  out = (distanceBetweenPoints / 1000).toStringAsFixed(2);
-  print(out);
-  return out;
-}
 
 class Id {
   String? oid;
@@ -53,7 +37,7 @@ class BookCase {
   String? open;
   String? title;
   String? type;
-  int? distance;
+  String? distance;
 
   BookCase(
       this.iId,
@@ -91,16 +75,26 @@ class BookCase {
     open = json['open'];
     title = json['title'];
     type = json['type'];
-    distance = -1000;
+    distance = "-1000";
+  }
+
+  updateDistance() async {
+    var currLocation = await LocationProvider.getLocation();
+
+    double lng2db = double.parse(this.lon!);
+    double lat2db = double.parse(this.lon!);
+    var distanceBetweenPoints = SphericalUtil.computeDistanceBetween(
+        LatLng(currLocation.latitude!, currLocation.longitude!),
+        LatLng(lat2db, lng2db));
+    this.distance = (distanceBetweenPoints / 1000).toStringAsFixed(2);
   }
 }
 
-List<BookCase> parseBookCaseJSON(String file) {
-  BookCase tempMarker;
+Future<List<BookCase>> parseBookCaseJSON(String file) async {
   return jsonDecode(file)
       .cast<Map<String, dynamic>>()
       .map<BookCase>((Map<String, dynamic> json) {
-    tempMarker = BookCase.fromJson(json);
+    final tempMarker = BookCase.fromJson(json);
     return tempMarker;
   }).toList();
 }
@@ -112,16 +106,16 @@ Future<bool> loadBookCases() async {
     _bookcases = await compute(parseBookCaseJSON, file);
 
     finished = true;
+    return true;
   }
   print(_bookcases.length);
-
-  return true;
+  return false;
 }
 
 Future<void> _waitUntilDone() async {
   final completer = Completer();
   if (!finished) {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(milliseconds: 500));
     return _waitUntilDone();
   } else {
     completer.complete();
@@ -133,16 +127,4 @@ Future<List<BookCase>> getBookCases() async {
   await _waitUntilDone();
 
   return _bookcases;
-  /* if (_bookcases.length != 0) {
-    print("schraenke1 $_bookcases");
-    return _bookcases;
-  } else {
-    var books = await loadBookCases().then((v) {
-      print("schraenke2 $_bookcases");
-      return _bookcases;
-    }, onError: (e) {
-      print("$e");
-    });
-    return books;
-  } */
 }

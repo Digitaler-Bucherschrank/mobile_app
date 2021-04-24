@@ -1,21 +1,22 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:digitaler_buecherschrank/gmap.dart';
 import 'package:digitaler_buecherschrank/location.dart';
-import 'package:digitaler_buecherschrank/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
-import 'search.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'models/book_case.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-  ));
-
   runApp(MyApp());
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent));
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   var location = new Location();
 
@@ -40,14 +41,16 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       home: AnimatedSplashScreen.withScreenFunction(
-          duration: 3000,
-          splash: Icons.home,
-          screenFunction: () async {
-            await loadBookCases();
-            return MyHomePage();
-          },
-          splashTransition: SplashTransition.fadeTransition,
-          backgroundColor: Colors.blue),
+        duration: 1500,
+        splash: Image.asset('assets/icons/splash.png', scale: 0.5),
+        screenFunction: () async {
+          await loadBookCases();
+          return MyHomePage();
+        },
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.blue,
+        centered: true,
+      ),
     );
   }
 }
@@ -72,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _getLocationPermission() async {
     var location = new Location();
     try {
+      // ignore: unused_local_variable
       var perm = location.requestPermission();
     } on Exception catch (_) {
       print('There was a problem allowing location access');
@@ -80,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Search();
+    return GMap();
 
     /*FutureBuilder(
       // Replace the 3 second delay with your initialization code:
