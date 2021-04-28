@@ -152,7 +152,7 @@ class _SchraenkeState extends State<Schraenke> {
                         width: 300,
                         child: ListTile(
                           leading: Image(
-                            image: AssetImage('book.png'),
+                            image: AssetImage('book_case.png'),
                           ),
                           title: Text(snapshot.data[i].title),
                           subtitle: Container(

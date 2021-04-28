@@ -1,7 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
-import 'package:digitaler_buecherschrank/location.dart';
-import 'package:digitaler_buecherschrank/search.dart';
+import 'package:digitaler_buecherschrank/utils/location.dart';
+import 'package:digitaler_buecherschrank/search/search.dart';
+import 'package:digitaler_buecherschrank/search/search_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:provider/provider.dart';
 
 import 'drawer.dart';
 import 'gmap.dart';
@@ -39,6 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -104,7 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         children: <Widget>[
           GMap(),
-          Search()
+          ChangeNotifierProvider(
+            create: (_) => SearchModel(),
+            child: const Search(),
+          ),
         ],
       ),
     );

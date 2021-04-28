@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:digitaler_buecherschrank/drawer.dart';
-import 'package:digitaler_buecherschrank/location.dart';
+import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +18,7 @@ import 'scanner/scanner_pickup_form.dart';
 String _darkMapStyle = "";
 String _lightMapStyle = "";
 Completer<GoogleMapController> _controller = new Completer();
+
 
 class GMap extends StatefulWidget {
   GMap({Key? key}) : super(key: key);
@@ -85,7 +86,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(
-              ImageConfiguration(devicePixelRatio: 5), 'assets/icons/book.png'),
+              ImageConfiguration(devicePixelRatio: 5), 'assets/icons/book_case.png'),
           onTap: () {
             showModalBottomSheet(
                 context: context,
@@ -157,8 +158,9 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 });
           }));
     }
-
-    setState(() => null);
+    if(mounted){
+      setState(() => null);
+    }
   }
 
   @override
@@ -168,6 +170,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
       myLocationEnabled: true,
       myLocationButtonEnabled: false,
       compassEnabled: false,
+      zoomControlsEnabled: false,
       initialCameraPosition: CameraPosition(
         target: LatLng(50.1109, 8.6821),
         zoom: 12,
@@ -187,4 +190,12 @@ void currentLocation() async {
       zoom: 17.0,
     ),
   ));
+}
+
+Future<void> goToLocation(double lat, double long) async {
+  final GoogleMapController controller = await _controller.future;
+  controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+    target: LatLng(lat, long),
+    zoom: 15,
+  )));
 }
