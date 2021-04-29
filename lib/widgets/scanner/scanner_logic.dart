@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/book_case.dart';
+import '../../models/book_case.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {

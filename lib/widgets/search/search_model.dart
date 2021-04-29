@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/cupertino.dart';
-import '../utils/utils.dart';
+import '../../utils/utils.dart';
 
 class SearchModel extends ChangeNotifier {
   SearchModel(){

@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 import '../gmap.dart';
-import '../models/book_case.dart';
+import '../../models/book_case.dart';
 import 'search_model.dart';
 
 
@@ -128,7 +128,7 @@ class ExpandableSearchBody extends StatelessWidget{
 }
 
 class ListItem extends StatelessWidget {
-  ListItem(this.bookCase);
+  ListItem(this.bookCase, {Key? key}) : super(key: key);
 
   final BookCase bookCase;
 

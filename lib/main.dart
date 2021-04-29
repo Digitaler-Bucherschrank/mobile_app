@@ -1,30 +1,28 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
-import 'package:digitaler_buecherschrank/search/search.dart';
-import 'package:digitaler_buecherschrank/search/search_model.dart';
+import 'package:digitaler_buecherschrank/widgets/search/search.dart';
+import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import 'drawer.dart';
-import 'gmap.dart';
+import 'widgets/drawer.dart';
+import 'widgets/gmap.dart';
 import 'models/book_case.dart';
 
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent
-  ));
+  await loadBookCases();
+
+  runApp(MyApp());
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
@@ -42,13 +40,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: GoogleFonts.notoSansTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
+      theme: lightThemeData(context),
+      darkTheme: darkThemeData(context),
+      themeMode: null,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -56,18 +50,7 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: AnimatedSplashScreen.withScreenFunction(
-        duration: 1500,
-        splashIconSize: 256,
-        splash: Image.asset('assets/icons/splash.png'),
-        screenFunction: () async{
-          await loadBookCases();
-          return MyHomePage();
-        },
-        splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Colors.blue,
-        centered: true,
-      ),
+      home: MyHomePage()
     );
   }
 }
@@ -101,6 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+
      return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer: AppDrawer(),

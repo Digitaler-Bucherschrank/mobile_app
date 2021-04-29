@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:digitaler_buecherschrank/drawer.dart';
+import 'package:digitaler_buecherschrank/widgets/drawer.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:location/location.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
-import 'models/book_case.dart';
+import '../models/book_case.dart';
 import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
 import 'scanner/scanner_pickup_form.dart';
