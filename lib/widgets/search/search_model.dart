@@ -32,7 +32,7 @@ class SearchModel extends ChangeNotifier {
       var bookCases = await getBookCases();
       var result = <BookCase>[];
       for(var bookCase in bookCases){
-        if (Utilities.containsIgnoreCase(bookCase.title!, query) || Utilities.containsIgnoreCase(bookCase.address == null ? "" : bookCase.address!, query)) {
+        if (Utilities.containsIgnoreCase(bookCase.title!, query) || Utilities.containsIgnoreCase(bookCase.address?? '', query)) {
           result.add(bookCase);
         }
       }
