@@ -3,25 +3,24 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // TODO: import better color schemes
-ThemeData lightThemeData(BuildContext context){
+ThemeData lightThemeData(){
   return ThemeData(
   primaryColor: Colors.blue,
   brightness: Brightness.light,
   visualDensity: VisualDensity.adaptivePlatformDensity,
-  textTheme: GoogleFonts.notoSansTextTheme(
-    Theme.of(context).textTheme,
-  ),
+  textTheme: GoogleFonts.notoSansTextTheme(),
   accentColor: Colors.blue);
 }
 
 
-ThemeData darkThemeData(BuildContext context){
+ThemeData darkThemeData(){
   return ThemeData(
       primaryColor: Colors.blue,
       textTheme: GoogleFonts.notoSansTextTheme(
-        new TextTheme(button: TextStyle(color: Colors.black54))
+        new TextTheme(button: TextStyle(color: Colors.black))
       ),
-      cardColor: Colors.black54,
+      cardColor: Colors.black,
       brightness: Brightness.dark,
+      shadowColor: Colors.transparent,
       accentColor: Colors.blue);
 }
