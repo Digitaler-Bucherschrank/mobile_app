@@ -60,7 +60,7 @@ class _SearchState extends State<Search> {
     return Consumer<SearchModel>(
         builder: (context, model, _) => FloatingSearchBar(
             hint: 'Search...',
-            scrollPadding: const EdgeInsets.only(top: 16, bottom: 0),
+            scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
             transitionDuration: const Duration(milliseconds: 400),
             transitionCurve: Curves.easeInOut,
             physics: const BouncingScrollPhysics(),
