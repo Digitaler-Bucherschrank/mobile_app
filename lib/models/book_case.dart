@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:digitaler_buecherschrank/location.dart';
+import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 // ignore: unused_import

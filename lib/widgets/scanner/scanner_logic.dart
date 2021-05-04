@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/book_case.dart';
+import '../../models/book_case.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -152,7 +152,7 @@ class _SchraenkeState extends State<Schraenke> {
                         width: 300,
                         child: ListTile(
                           leading: Image(
-                            image: AssetImage('assets/icons/book_case.png'),
+                            image: AssetImage('book_case.png'),
                           ),
                           title: Text(snapshot.data[i].title),
                           subtitle: Container(

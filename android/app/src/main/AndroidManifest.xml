@@ -15,8 +15,8 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="digitaler_buecherschrank"
-        android:icon="@mipmap/launcher_icon">
+        android:label="Digitaler Bücherschrank"
+        android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyCL98rztnTR79Y5aX7YZHqJASgWwa1GvwI"/>
 
