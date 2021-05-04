@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import "DetailPage.dart";
+import "./../DetailPage.dart";
 
 // ignore: must_be_immutable
 class BookInfo extends StatefulWidget {
