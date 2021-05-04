@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:location/location.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
 List<BookCase> _bookcases = [];
