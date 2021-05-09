@@ -1,18 +1,14 @@
-// ignore: unused_import
-import 'dart:convert';
 import 'dart:ui';
-// ignore: unused_import
-import 'package:blur/blur.dart';
+
+import 'package:flutter/material.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-import '../gmap.dart';
 import '../../models/book_case.dart';
+// ignore: unused_import
+import './../gmap.dart';
 import 'search_model.dart';
 
 class Search extends StatefulWidget {
@@ -66,7 +62,6 @@ class _SearchState extends State<Search> {
             transitionDuration: const Duration(milliseconds: 400),
             transitionCurve: Curves.easeInOut,
             physics: const BouncingScrollPhysics(),
-            backgroundColor: Theme.of(context).cardColor,
             axisAlignment: isPortrait ? 0.0 : -1.0,
             openAxisAlignment: 0.0,
             isScrollControlled: false,

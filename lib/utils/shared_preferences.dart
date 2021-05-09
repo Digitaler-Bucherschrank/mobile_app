@@ -19,4 +19,10 @@ class SharedPrefs {
   set user(User user){
     _sharedPrefs!.setString("user", json.encode(user));
   }
+
+  String get language => _sharedPrefs!.getString("language", defaultValue: "de").toString();
+
+  set language(String language){
+    _sharedPrefs!.setString("language", language);
+  }
 }

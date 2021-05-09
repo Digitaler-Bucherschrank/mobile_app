@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
-// ignore: unused_import
-import 'package:digitaler_buecherschrank/widgets/drawer.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:location/location.dart';
-// ignore: unused_import
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import '../models/book_case.dart';
-import 'book_info.dart';
-import 'scanner/scanner_drop_form.dart';
-import 'scanner/scanner_pickup_form.dart';
+import 'bookcasemodal.dart';
 
 // ignore: unused_import
 import 'drawer.dart';
@@ -86,15 +78,15 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   void _onMapCreated(GoogleMapController controller) async {
     _controller.complete(controller);
 
-    var schraenke = await getBookCases();
-    for (int i = 0; i < schraenke.length; i++) {
-      var tempMarker = schraenke[i];
+    var caseList = await getBookCases();
+
+    for (var bookCase in caseList) {
       _markers.add(Marker(
-          markerId: MarkerId('${tempMarker.iId!.oid}'),
+          markerId: MarkerId('${bookCase.iId!.oid}'),
           position: LatLng(
-            double.parse('${tempMarker.lat}'),
+            double.parse('${bookCase.lat}'),
             double.parse(
-              '${tempMarker.lon}',
+              '${bookCase.lon}',
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(
@@ -104,72 +96,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
             showModalBottomSheet(
                 context: context,
                 builder: (builder) {
-                  return Container(
-                    height: 300,
-                    color: Color(0xff757575),
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0),
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text('${tempMarker.title}'),
-                          ),
-                          ListTile(
-                            title: Text('${tempMarker.address}'),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              ElevatedButton(
-                                  child: Text(S.of(context).label_dropbook),
-                                  onPressed: () {
-                                    print('${tempMarker.iId!.oid}');
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ScannerDropForm(
-                                              '${tempMarker.iId!.oid}')),
-                                    );
-                                  }),
-                              ElevatedButton(
-                                  child: Text(S.of(context).label_borrowbook),
-                                  onPressed: () {
-                                    print('${tempMarker.iId!.oid}');
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                ScannerPickupForm(
-                                                    '${tempMarker.iId!.oid}')));
-                                  }),
-                            ],
-                          ),
-                          ElevatedButton(
-                              child: const Text("Siehe Bücher"),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BookInfo('${tempMarker.iId!.oid}')),
-                                );
-                              }),
-                          ElevatedButton(
-                            child: const Text('Close BottomSheet'),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return BookCaseModal(bookCase);
                 });
           }));
     }
