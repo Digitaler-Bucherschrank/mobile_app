@@ -98,12 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
             persistentContentHeight: 0,
             persistentHeader: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
                       topRight: Radius.circular(10.0),
-                    )
-                ),
+                    )),
                 constraints: BoxConstraints.expand(height: 50),
                 child: Column(
                   children: <Widget>[
@@ -111,12 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     Container(
                       height: 5,
                       width: 30,
-                      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(16)),
+                      decoration: BoxDecoration(
+                          color: Color(200),
+                          borderRadius: BorderRadius.circular(16)),
                     ),
                     SizedBox(height: 16),
                   ],
-                )
-            ),
+                )),
             expandableContent: Container(
               height: 500,
               color: Colors.green,

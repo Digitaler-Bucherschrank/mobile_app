@@ -13,58 +13,57 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            ListTile(
-              title: Text('${bookcase.title}'),
-            ),
-            ListTile(
-              title: Text('${bookcase.address}'),
-            ),
-            ElevatedButton(
-                child: const Text("Siehe Bücher"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BookInfo()),
-                  );
-                }),
-            ElevatedButton(
-              child: const Text('Close BottomSheet'),
-              onPressed: () => Navigator.pop(context),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ElevatedButton(
-                    child: Text(S.of(context).label_dropbook),
-                    onPressed: () {
-                      print('${bookcase.iId!.oid}');
-                      Navigator.push(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          ListTile(
+            title: Text('${bookcase.title}'),
+          ),
+          ListTile(
+            title: Text('${bookcase.address}'),
+          ),
+          ElevatedButton(
+              child: const Text("Siehe Bücher"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BookInfo('${bookcase.iId!.oid}')),
+                );
+              }),
+          ElevatedButton(
+            child: const Text('Close BottomSheet'),
+            onPressed: () => Navigator.pop(context),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              ElevatedButton(
+                  child: Text(S.of(context).label_dropbook),
+                  onPressed: () {
+                    print('${bookcase.iId!.oid}');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ScannerDropForm('${bookcase.iId!.oid}')),
+                    );
+                  }),
+              ElevatedButton(
+                  child: Text(S.of(context).label_borrowbook),
+                  onPressed: () {
+                    print('${bookcase.iId!.oid}');
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ScannerDropForm(
-                                '${bookcase.iId!.oid}')),
-                      );
-                    }),
-                ElevatedButton(
-                    child: Text(S.of(context).label_borrowbook),
-                    onPressed: () {
-                      print('${bookcase.iId!.oid}');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ScannerPickupForm(
-                                      '${bookcase.iId!.oid}')));
-                    }),
-              ],
-            ),
-          ],
-        ),
-      );
+                            builder: (context) =>
+                                ScannerPickupForm('${bookcase.iId!.oid}')));
+                  }),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
