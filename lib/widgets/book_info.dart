@@ -21,8 +21,6 @@ class _BookInfo extends State<BookInfo> {
     Uri url =
         "http://www.json-generator.com/api/json/get/bVulMGunCa?indent=2" as Uri;
     var response = await http.get(url);
-
-    //var books = List<Book>();
     List<Book> books = [];
 
     if (response.statusCode == 200) {

@@ -1,11 +1,13 @@
+// ignore: unused_import
 import 'dart:convert';
 import 'dart:ui';
-
+// ignore: unused_import
 import 'package:blur/blur.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -102,37 +104,35 @@ class ExpandableSearchBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
-      child: new ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: new BackdropFilter(
-          filter: new ImageFilter.blur(
-            sigmaX: 5.0,
-            sigmaY: 5.0,
-          ),
-          child: Material(
-            color: Theme.of(context).cardColor.withOpacity(0.5),
+        padding: const EdgeInsets.only(top: 16.0),
+        child: new ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: ImplicitlyAnimatedList<BookCase>(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              items: model.suggestions.take(5).toList(),
-              areItemsTheSame: (a, b) => a == b,
-              itemBuilder: (context, animation, bookCase, i) {
-                return SizeFadeTransition(
-                    animation: animation, child: ListItem(bookCase));
-              },
-              updateItemBuilder: (context, animation, bookCase) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: ListItem(bookCase),
-                );
-              },
-            ),
-          ),
-        )
-      )
-    );
+            child: new BackdropFilter(
+              filter: new ImageFilter.blur(
+                sigmaX: 5.0,
+                sigmaY: 5.0,
+              ),
+              child: Material(
+                color: Theme.of(context).cardColor.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(15),
+                child: ImplicitlyAnimatedList<BookCase>(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  items: model.suggestions.take(5).toList(),
+                  areItemsTheSame: (a, b) => a == b,
+                  itemBuilder: (context, animation, bookCase, i) {
+                    return SizeFadeTransition(
+                        animation: animation, child: ListItem(bookCase));
+                  },
+                  updateItemBuilder: (context, animation, bookCase) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: ListItem(bookCase),
+                    );
+                  },
+                ),
+              ),
+            )));
   }
 }
 

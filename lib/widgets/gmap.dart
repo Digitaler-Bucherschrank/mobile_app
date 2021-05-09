@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
+// ignore: unused_import
 import 'package:digitaler_buecherschrank/widgets/drawer.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:location/location.dart';
+// ignore: unused_import
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import '../models/book_case.dart';
 import 'book_info.dart';
 import 'scanner/scanner_drop_form.dart';
 import 'scanner/scanner_pickup_form.dart';
-import 'search.dart';
+
+// ignore: unused_import
 import 'drawer.dart';
 
 String _darkMapStyle = "";
@@ -103,6 +105,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 context: context,
                 builder: (builder) {
                   return Container(
+                    height: 300,
                     color: Color(0xff757575),
                     child: Container(
                       padding: EdgeInsets.all(20.0),
@@ -121,20 +124,6 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                           ),
                           ListTile(
                             title: Text('${tempMarker.address}'),
-                          ),
-                          ElevatedButton(
-                              child: const Text("Siehe Bücher"),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BookInfo('${tempMarker.iId!.oid}')),
-                                );
-                              }),
-                          ElevatedButton(
-                            child: const Text('Close BottomSheet'),
-                            onPressed: () => Navigator.pop(context),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,6 +151,20 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                                                     '${tempMarker.iId!.oid}')));
                                   }),
                             ],
+                          ),
+                          ElevatedButton(
+                              child: const Text("Siehe Bücher"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          BookInfo('${tempMarker.iId!.oid}')),
+                                );
+                              }),
+                          ElevatedButton(
+                            child: const Text('Close BottomSheet'),
+                            onPressed: () => Navigator.pop(context),
                           ),
                         ],
                       ),
