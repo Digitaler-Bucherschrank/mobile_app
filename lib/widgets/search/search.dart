@@ -62,6 +62,7 @@ class _SearchState extends State<Search> {
             transitionCurve: Curves.easeInOut,
             physics: const BouncingScrollPhysics(),
             axisAlignment: isPortrait ? 0.0 : -1.0,
+            backgroundColor: Theme.of(context).cardColor,
             openAxisAlignment: 0.0,
             isScrollControlled: false,
             elevation: 100,
