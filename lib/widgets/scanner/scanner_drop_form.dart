@@ -1,49 +1,104 @@
 import 'package:flutter/material.dart';
 
-import 'scanner_logic.dart';
+import '../../models/book.dart';
+import 'modules/scanner_logic.dart';
+import 'modules/getManuellyWidget.dart';
+import 'modules/getInventoryWidget.dart';
+import 'modules/getFrotpageModules.dart';
+
+enum WidgetMarker { isbn, manuelly, iventory }
+WidgetMarker selectedWidgetMarker = WidgetMarker.isbn;
+String from = "";
+
+// ignore: must_be_immutable
+class _GetISBNScannWidget extends StatefulWidget {
+  String markersId;
+  _GetISBNScannWidget(this.markersId);
+  @override
+  _GetISBNScannWidgetState createState() => _GetISBNScannWidgetState(markersId);
+}
+
+class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
+  String markersId;
+  _GetISBNScannWidgetState(this.markersId);
+
+  TextEditingController txt = TextEditingController();
+  TextEditingController txt2 = TextEditingController();
+
+  Book _book = new Book();
+  @override
+  void initState() {
+    super.initState();
+    _book.bookData = new BookData();
+    _book.bookData!.volumeInfo = new VolumeInfo();
+    _book.location = markersId;
+  }
+
+  Map bookInfo = {
+    'name': 'Titel',
+    'author': 'Autor',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: new Container(
+        child: Column(
+          children: [
+            getScannerWidget(_book, bookInfo, txt, txt2),
+            getBookinfo(txt, txt2),
+            getBookcase(markersId),
+            GetFromWidget(from),
+            OutlinedButton(
+              onPressed: () {
+                print(_book);
+                //postBook(_book);
+                postIsbnAndSchrank(
+                  _book.id,
+                  _book.location,
+                );
+              },
+              child: Text("Bestätigen"),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget getCustomContainer(String markersId) {
+  print("inside getCustomContainer");
+  switch (selectedWidgetMarker) {
+    case WidgetMarker.manuelly:
+      {
+        print(WidgetMarker.manuelly);
+        return getManuellyWidget();
+      }
+    case WidgetMarker.isbn:
+      {
+        print(WidgetMarker.isbn);
+        return _GetISBNScannWidget(markersId);
+      }
+    case WidgetMarker.iventory:
+      {
+        print(WidgetMarker.iventory);
+        return getInventoryWidget();
+      }
+  }
+}
 
 // ignore: must_be_immutable
 class ScannerDropForm extends StatefulWidget {
   String markersId;
   ScannerDropForm(this.markersId);
   @override
-  _ScannerPageState createState() => _ScannerPageState(markersId);
+  _ScannerDropFormState createState() => _ScannerDropFormState(markersId);
 }
 
-class _ScannerPageState extends State<ScannerDropForm> {
+class _ScannerDropFormState extends State<ScannerDropForm> {
   String markersId;
-  _ScannerPageState(this.markersId);
-  int? selectedRadio;
-  int? selectedSchrank;
-  var txt = TextEditingController();
-  var txt2 = TextEditingController();
-  Map bookInfo = {
-    'name': 'Titel',
-    'author': 'Autor',
-  };
-
-  Map formular = {
-    'a': 'ablegen',
-    'isbn': 'leer',
-    'von': 'leer',
-    'schrank': 'leer',
-  };
-  @override
-  void initState() {
-    super.initState();
-    selectedRadio = 0;
-  }
-
-  setSelectedRadio(int? val, String von) {
-    setState(() {
-      selectedRadio = val;
-      formular.update('von', (v) {
-        print('old value of von before update: ' + v);
-        print('updated formular: ' + von);
-        return von;
-      });
-    });
-  }
+  _ScannerDropFormState(this.markersId);
 
   @override
   Widget build(BuildContext context) {
@@ -52,166 +107,74 @@ class _ScannerPageState extends State<ScannerDropForm> {
         title: new Text("Buch ablegen"),
       ),
       body: SingleChildScrollView(
-        child: new Container(
-          child: Column(
-            children: [
-              Card(
-                child: Column(
-                  children: [
-                    Container(
-                      child: Text('Barcode scannen oder ISBN eingeben!'),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 200,
-                          height: 100,
-                          child: TextField(
-                            onSubmitted: (String str) {
-                              getInfo(formular['isbn']).then((value) {
-                                setState(() {
-                                  bookInfo['name'] = value['name'];
-                                  print(bookInfo);
-                                  txt.text = bookInfo['name'];
-                                });
-                              });
-                              setState(() {
-                                print('old value of isbn before update: ' +
-                                    formular['isbn']);
-                                formular['isbn'] = str;
-                                print('updated formular: ' + formular['isbn']);
-                              });
-                            },
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.qr_code_scanner),
-                          tooltip: "Scannen",
-                          onPressed: () {
-                            setState(
-                              () {
-                                scanBarcodeNormal().then((value) {
-                                  print('old value of isbn before update: ' +
-                                      formular['isbn']);
-                                  formular['isbn'] = value;
-                                  print(
-                                      'updated formular: ' + formular['isbn']);
-                                  getInfo(formular['isbn']).then((value) {
-                                    setState(() {
-                                      bookInfo['name'] = value['name'];
-                                      print(bookInfo);
-                                      txt.text = bookInfo['name'];
-                                    });
-                                  });
-                                });
-                              },
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          child: Text('Buchinformationen:'),
-                        ),
-                        Container(
-                          child: TextField(
-                            controller: txt,
-                            decoration: InputDecoration(
-                              labelText: "Titel",
-                            ),
-                          ),
-                          width: 200,
-                        ),
-                        Container(
-                          child: TextField(
-                            controller: txt2,
-                            decoration: InputDecoration(
-                              labelText: "Autor",
-                            ),
-                          ),
-                          width: 200,
-                        ),
-                        Container(
-                          width: 200,
-                          child: Text(
-                              'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [Schraenke(formular, markersId)],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        Text("Von wo soll das Buch hinzugefügt werden?"),
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 1,
-                            groupValue: selectedRadio,
-                            title: Text("Buch aus Inventar ablegen"),
-                            activeColor: Colors.blue,
-                            onChanged: (dynamic val) {
-                              setSelectedRadio(val, "inv");
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: 300,
-                          child: RadioListTile(
-                            value: 2,
-                            groupValue: selectedRadio,
-                            title: Text("Neues Buch ablegen"),
-                            activeColor: Colors.blue,
-                            onChanged: (dynamic val) {
-                              setSelectedRadio(val, "neu");
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              OutlinedButton(
-                onPressed: () {
-                  setSchrank(markersId, formular);
-                  print(formular);
-                  postIsbnAndSchrank(
-                    formular['isbn'],
-                    formular['schrank'],
-                  );
-                },
-                child: Text("Bestätigen"),
-              )
-            ],
-          ),
-        ),
+        child: new Container(child: ContentWidget(markersId)),
       ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class ContentWidget extends StatefulWidget {
+  String markersId;
+  ContentWidget(this.markersId);
+  @override
+  State<StatefulWidget> createState() => ContentWidgetState(markersId);
+}
+
+class ContentWidgetState extends State<ContentWidget> {
+  String markersId;
+  ContentWidgetState(this.markersId);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            TextButton(
+              onPressed: () {
+                print("isbn");
+                print(selectedWidgetMarker);
+                setState(() {
+                  selectedWidgetMarker = WidgetMarker.isbn;
+                });
+                print(selectedWidgetMarker);
+              },
+              child: Text(
+                "Normal Scann",
+                style: TextStyle(color: Colors.black12),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                print("manuell");
+                setState(() {
+                  selectedWidgetMarker = WidgetMarker.manuelly;
+                });
+              },
+              child: Text(
+                "manuelle Eingabe",
+                style: TextStyle(color: Colors.black12),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                print("Inventar");
+                setState(() {
+                  selectedWidgetMarker = WidgetMarker.iventory;
+                });
+              },
+              child: Text(
+                "Inventar Auswahl",
+                style: TextStyle(color: Colors.black12),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          child: getCustomContainer(markersId),
+        )
+      ],
     );
   }
 }

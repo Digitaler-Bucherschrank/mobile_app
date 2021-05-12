@@ -19,7 +19,6 @@ String _darkMapStyle = "";
 String _lightMapStyle = "";
 Completer<GoogleMapController> _controller = new Completer();
 
-
 class GMap extends StatefulWidget {
   GMap({Key? key}) : super(key: key);
 
@@ -86,7 +85,8 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(
-              ImageConfiguration(devicePixelRatio: 5), 'assets/icons/book_case.png'),
+              ImageConfiguration(devicePixelRatio: 5),
+              'assets/icons/book_case.png'),
           onTap: () {
             showModalBottomSheet(
                 context: context,
@@ -158,7 +158,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 });
           }));
     }
-    if(mounted){
+    if (mounted) {
       setState(() => null);
     }
   }
