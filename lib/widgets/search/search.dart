@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:ui';
 
+import 'package:blur/blur.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
@@ -11,15 +13,14 @@ import '../gmap.dart';
 import '../../models/book_case.dart';
 import 'search_model.dart';
 
-
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
 
   @override
-  _SearchState  createState() => _SearchState();
+  _SearchState createState() => _SearchState();
 }
 
-class _SearchState extends State<Search > {
+class _SearchState extends State<Search> {
   FloatingSearchBarController? controller;
 
   @override
@@ -52,83 +53,91 @@ class _SearchState extends State<Search > {
   } */
 
   @override
-  Widget build(BuildContext  context) {
-    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+  Widget build(BuildContext context) {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Consumer<SearchModel>(
         builder: (context, model, _) => FloatingSearchBar(
-      hint: 'Search...',
-      scrollPadding: const EdgeInsets.only(top: 16, bottom: 56),
-      transitionDuration: const Duration(milliseconds: 400),
-      transitionCurve: Curves.easeInOut,
-      physics: const BouncingScrollPhysics(),
-      axisAlignment: isPortrait ? 0.0 : -1.0,
-      openAxisAlignment: 0.0,
-      automaticallyImplyDrawerHamburger: true,
-      width: isPortrait ? 600 : 500,
-      progress: model.isLoading,
-      debounceDelay: const Duration(milliseconds: 500),
-      onQueryChanged: model.onQueryChanged,
-      // Specify a custom transition to be used for
-      // animating between opened and closed stated.
-      transition: CircularFloatingSearchBarTransition(spacing: 16),
-      actions: [
-        FloatingSearchBarAction(
-          showIfOpened: false,
-          child: CircularButton(
-            icon: const Icon(Icons.place),
-            onPressed: currentLocation,
-          ),
-        ),
-        FloatingSearchBarAction.searchToClear(
-          showIfClosed: false,
-        ),
-      ],
-      builder: (context, transition) => ExpandableSearchBody(model)
-        )
-    );
+            hint: 'Search...',
+            scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
+            transitionDuration: const Duration(milliseconds: 400),
+            transitionCurve: Curves.easeInOut,
+            physics: const BouncingScrollPhysics(),
+            backgroundColor: Theme.of(context).cardColor,
+            axisAlignment: isPortrait ? 0.0 : -1.0,
+            openAxisAlignment: 0.0,
+            isScrollControlled: false,
+            elevation: 100,
+            automaticallyImplyDrawerHamburger: true,
+            width: isPortrait ? 600 : 500,
+            progress: model.isLoading,
+            debounceDelay: const Duration(milliseconds: 500),
+            onQueryChanged: model.onQueryChanged,
+            // Specify a custom transition to be used for
+            // animating between opened and closed stated.
+            transition: CircularFloatingSearchBarTransition(spacing: 16),
+            actions: [
+              FloatingSearchBarAction(
+                showIfOpened: false,
+                child: CircularButton(
+                  icon: const Icon(Icons.place),
+                  onPressed: currentLocation,
+                ),
+              ),
+              FloatingSearchBarAction.searchToClear(
+                showIfClosed: false,
+              ),
+            ],
+            builder: (context, transition) => ExpandableSearchBody(model)));
   }
 }
 
-class ExpandableSearchBody extends StatelessWidget{
+class ExpandableSearchBody extends StatelessWidget {
   ExpandableSearchBody(this.model, {Key? key}) : super(key: key);
 
   final SearchModel model;
 
+  // Maybe with blur?
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
-      child: Material(
-        color: Colors.white,
-        elevation: 4.0,
-        borderRadius: BorderRadius.circular(8),
-        child: ImplicitlyAnimatedList<BookCase>(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          items: model.suggestions.take(5).toList(),
-          areItemsTheSame: (a, b) => a == b,
-          itemBuilder: (context, animation, bookCase, i) {
-            return SizeFadeTransition(
-              animation: animation,
-              child: ListItem(bookCase),
-            );
-          },
-          updateItemBuilder: (context, animation, bookCase) {
-            return FadeTransition(
-              opacity: animation,
-              child: ListItem(bookCase),
-            );
-          },
-        ),
-      ),
+      child: new ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: new BackdropFilter(
+          filter: new ImageFilter.blur(
+            sigmaX: 5.0,
+            sigmaY: 5.0,
+          ),
+          child: Material(
+            color: Theme.of(context).cardColor.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+            child: ImplicitlyAnimatedList<BookCase>(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              items: model.suggestions.take(5).toList(),
+              areItemsTheSame: (a, b) => a == b,
+              itemBuilder: (context, animation, bookCase, i) {
+                return SizeFadeTransition(
+                    animation: animation, child: ListItem(bookCase));
+              },
+              updateItemBuilder: (context, animation, bookCase) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: ListItem(bookCase),
+                );
+              },
+            ),
+          ),
+        )
+      )
     );
   }
-
 }
 
 class ListItem extends StatelessWidget {
-  ListItem(this.bookCase, {Key? key}) : super(key: key);
+  ListItem(this.bookCase);
 
   final BookCase bookCase;
 
@@ -142,8 +151,8 @@ class ListItem extends StatelessWidget {
         InkWell(
           onTap: () {
             FloatingSearchBar.of(context)!.close();
-
-            goToLocation(double.parse(bookCase.lat!), double.parse(bookCase.lon!));
+            goToLocation(
+                double.parse(bookCase.lat!), double.parse(bookCase.lon!));
           },
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -153,8 +162,7 @@ class ListItem extends StatelessWidget {
                   width: 36,
                   child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 500),
-                      child: Image.asset("assets/icons/book_case.png")
-                  ),
+                      child: Image.asset("assets/icons/book_case.png")),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -164,12 +172,12 @@ class ListItem extends StatelessWidget {
                     children: [
                       Text(
                         bookCase.title!,
-                        style: textTheme.subtitle1,
                       ),
                       const SizedBox(height: 2),
                       Text(
                         bookCase.address == null ? "" : bookCase.address!,
-                        style: textTheme.bodyText2!.copyWith(color: Colors.grey.shade600),
+                        style: textTheme.bodyText2!
+                            .copyWith(color: Colors.grey.shade600),
                       ),
                     ],
                   ),

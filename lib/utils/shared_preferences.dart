@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:digitaler_buecherschrank/models/user.dart';
 import 'package:streaming_shared_preferences/streaming_shared_preferences.dart';
 
 class SharedPrefs {
@@ -9,5 +12,11 @@ class SharedPrefs {
 
   Future<void> init() async {
     _sharedPrefs ??= await StreamingSharedPreferences.instance;
+  }
+  
+  User get user => User.fromJson(json.decode(_sharedPrefs!.getString("user", defaultValue: "{}").toString()));
+
+  set user(User user){
+    _sharedPrefs!.setString("user", json.encode(user));
   }
 }

@@ -3,7 +3,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e079"
         },
-        "address":null,
+        "address": "Frankfurter Straße 33, 65760 Eschborn",
         "bcz":null,
         "comment":"Für Mitarbeiter und Besucher des Bundesamtes für Wirtschaft und Ausfuhrkontrolle (BAFA); Im Eingang des BAFA",
         "contact":null,
@@ -25,7 +25,7 @@
         },
         "address":"Leipziger Straße 54, 60487 Frankfurt am Main",
         "bcz":"0",
-        "comment":"städtische Amt für Straßenbau und Erschließung, Projektgruppe Nahmobilität",
+        "comment":"Städtische Amt für Straßenbau und Erschließung, Projektgruppe Nahmobilität",
         "contact":"",
         "deactivated":"0",
         "deactreason":"",
@@ -43,7 +43,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e082"
         },
-        "address":null,
+        "address": "Homburger Landstraße 701, 60437 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -63,7 +63,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e083"
         },
-        "address":"Alt-Bornheim , 60385 Frankfurt am Main",
+        "address":"Berger Straße 253, 60385 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -83,7 +83,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e084"
         },
-        "address":null,
+        "address":"Eschersheimer Landstraße 248, 60320 Frankfurt am Main",
         "bcz":null,
         "comment":"Gefördert durch das Verkehrsdezernat Frankfurt Entwicklung: Hans-Jürgen Greve",
         "contact":null,
@@ -103,7 +103,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e085"
         },
-        "address":"",
+        "address":"Gelnhäuser Str. 2, 60435 Frankfurt am Main",
         "bcz":"0",
         "comment":"Restaurant Bürgerhaus Ronneburg\n// Herr Boro Celic 069 / 300 595 68",
         "contact":"",
@@ -123,7 +123,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e086"
         },
-        "address":"",
+        "address":"Maybachbrücke 10, 60431 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -143,7 +143,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e087"
         },
-        "address":null,
+        "address":"Ankergasse 3, 60386 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -163,7 +163,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e088"
         },
-        "address":"",
+        "address":"Am Dachsberg 17, 60435 Frankfurt am Main",
         "bcz":"0",
         "comment":"http://coord.info/GC4CRZ9",
         "contact":"Ursula und Klaus Böttger (069/547764)",
@@ -183,7 +183,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e089"
         },
-        "address":"Frankenallee , 60326 Frankfurt am Main",
+        "address":"Schneidhainer Str. 1, 60326 Frankfurt am Main",
         "bcz":null,
         "comment":"auch fremdsprachige Auswahl",
         "contact":null,
@@ -203,7 +203,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e08a"
         },
-        "address":"Kurhessenstrasse, Ecke Höhenblick",
+        "address":"Höhenblick 2, 60431 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -223,7 +223,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e08b"
         },
-        "address":null,
+        "address":"Ginnheimer Kirchplatz, 60431 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -263,7 +263,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e08d"
         },
-        "address":null,
+        "address":"Rödelheimer Parkweg, 60489 Frankfurt am Main",
         "bcz":null,
         "comment":"Schwerpunkt auf Kriminalliteratur / im Brentanobad",
         "contact":null,
@@ -283,7 +283,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e08e"
         },
-        "address":null,
+        "address":"Emmerich-Josef-Straße 14, 65929 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -303,7 +303,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e08f"
         },
-        "address":null,
+        "address":"Neumarkt 3A, 65934 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -343,7 +343,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e091"
         },
-        "address":"Weißkirchener Weg , 60439 Frankfurt am Main",
+        "address":"Weißkirchener Weg, 60439 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -363,7 +363,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e092"
         },
-        "address":" , 60316 Frankfurt am Main",
+        "address":"Berger Str. 47, 60316 Frankfurt am Main",
         "bcz":"0",
         "comment":"Gefördert durch das Verkehrsdezernat Frankfurt; Entwicklung: Hans-Jürgen Greve",
         "contact":"",
@@ -403,7 +403,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e094"
         },
-        "address":"",
+        "address":"Parlamentsplatz, 60385 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -423,7 +423,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e095"
         },
-        "address":null,
+        "address":"Paul-Arnsberg-Platz, 60314 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -443,7 +443,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e096"
         },
-        "address":"",
+        "address":"Gravensteiner Platz, 60435 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -463,7 +463,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e097"
         },
-        "address":null,
+        "address":"Schäfflestraße 24, 60386 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -483,7 +483,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e098"
         },
-        "address":"Dreieichstraße , 60594 Frankfurt am Main",
+        "address":"Dreieichstraße 59, 60594 Frankfurt am Main",
         "bcz":null,
         "comment":"",
         "contact":null,
@@ -503,9 +503,9 @@
         "_id":{
             "$oid":"6000c773d055d5093066e099"
         },
-        "address":null,
+        "address":"Atzelbergplatz, 60389 Frankfurt am Main",
         "bcz":null,
-        "comment":"Gefördert durch das Verkehrsdezernat FrankfurtEntwurf: Hans-Jürgen GreveAusstattung der Kunstvitrine durch das Nachbarschaftsbüro Seckbach",
+        "comment":"Gefördert durch das Verkehrsdezernat Frankfurt",
         "contact":null,
         "deactivated":"0",
         "deactreason":"",
@@ -523,7 +523,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e134"
         },
-        "address":"Kaiserstraße 39, 63065 Offenbach",
+        "address":"Herrnstraße 61, 63065 Offenbach am Main",
         "bcz":"0",
         "comment":"im Bürgerbüro",
         "contact":"",
@@ -563,7 +563,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e136"
         },
-        "address":"",
+        "address":"Hermann-Steinhäuser-Straße 2, 63065 Offenbach am Main",
         "bcz":"0",
         "comment":"in der Schanzenbäckerei",
         "contact":"",
@@ -603,7 +603,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e1c5"
         },
-        "address":"Gallusanlage 7, 60329 Frankfurt Main",
+        "address":"Kaiserstraße 34, 60329 Frankfurt am Main",
         "bcz":"0",
         "comment":"erster Bücherschrank mit ausschließlich englischer Literatur; entworfen vom Kölner Architekten Hans-Jürgen Greve",
         "contact":"",
@@ -643,7 +643,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e26c"
         },
-        "address":" 3, 60438 Frankfurt am Main",
+        "address":"Riedbergplatz, 60438 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -663,7 +663,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e298"
         },
-        "address":"Baumweg 20, Frankfurt am Main",
+        "address":"Danziger Platz 1, 60314 Frankfurt am Main",
         "bcz":"0",
         "comment":"Daten von http://www.givebox.eu",
         "contact":"",
@@ -683,7 +683,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e2b9"
         },
-        "address":" , 61449 ",
+        "address":"Pijnackerplatz, 61449 Steinbach (Taunus)",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -723,7 +723,7 @@
         "_id":{
             "$oid":"6000c773d055d5093066e2bd"
         },
-        "address":"Karl-Perott-Platz , 60439 Frankfurt am Main",
+        "address":"Karl-Perott-Platz, 60439 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -803,7 +803,7 @@
         "_id":{
             "$oid":"6000c774d055d5093066e4e3"
         },
-        "address":"",
+        "address":"Auf der Rosenhöhe 55-83, 63069 Offenbach am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -823,7 +823,7 @@
         "_id":{
             "$oid":"6000c774d055d5093066e505"
         },
-        "address":" 5, 61118 ",
+        "address":"Lohstraße 1, 61118 Bad Vilbel",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -903,7 +903,7 @@
         "_id":{
             "$oid":"6000c774d055d5093066e7f0"
         },
-        "address":"Hartmannsweilerstraße , 65933 Frankfurt am Main",
+        "address":"Alte Falterstraße 7, 65933 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -923,7 +923,7 @@
         "_id":{
             "$oid":"6000c774d055d5093066e7f1"
         },
-        "address":"Offenbacher Landstraße 357, 60599 Frankfurt am Main",
+        "address":"Buchrainplatz, 60599 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -983,7 +983,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066e897"
         },
-        "address":"Im Vogelsgesang 4",
+        "address":"Im Vogelsgesang 4, 60488 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1023,7 +1023,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066e9b7"
         },
-        "address":"Braubachstr. 16",
+        "address":"Braubachstr. 16, 60311 Frankfurt am Main",
         "bcz":"0",
         "comment":"Eingerichtet von der Börsenvereinsgruppe. Der Schrank ist für alle Bürger und Besucher der Stadt Frankfurt am Main ein Ort zum Stöbern und Weitergeben von Büchern.Jeden ersten Montag im Monat findet ein besonderes Buch seinen Platz darin, angekündigt auf der Facebookseite des Börsenvereins: http://www.facebook.com/Boersenverein/ ",
         "contact":"Haus des Buches",
@@ -1143,7 +1143,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066ec17"
         },
-        "address":"Friedensstraße, 63165 ",
+        "address":"Friedensstraße, 63165 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1183,7 +1183,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066ecb6"
         },
-        "address":" , 60487 Frankfurt am Main",
+        "address":"Kirchplatz, 60487 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1243,7 +1243,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066ecc8"
         },
-        "address":"Siesmayerstraße , 60323 Frankfurt am Main",
+        "address":"Siesmayerstraße, 60323 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1263,7 +1263,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066ecc9"
         },
-        "address":" , 60318 Frankfurt am Main",
+        "address":"Maria-Ward-Platz, 60318 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1283,7 +1283,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066ed97"
         },
-        "address":"Hauptstraße 40",
+        "address":"Hauptstraße 20, 65760 Eschborn",
         "bcz":"0",
         "comment":"https://goo.gl/maps/TrKxjer3vco",
         "contact":"Tel.: 06196 93148-23 oder  E-Mail: info@eschbornhaus.de",
@@ -1303,7 +1303,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066eeb4"
         },
-        "address":"",
+        "address":"Olof-Palme-Straße 35-13, 60439 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1325,7 +1325,7 @@
         },
         "address":"Mailänder Str. 8, 60598 Frankfurt am Main",
         "bcz":"0",
-        "comment":"Ich habe diesen Schrank vor dem tegut-Laden nicht eingerichtet, wollte ihn nur anmelden, da er hier bisher nicht auftauchte",
+        "comment":"",
         "contact":"",
         "deactivated":"0",
         "deactreason":"",
@@ -1343,7 +1343,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066eeea"
         },
-        "address":"Waldschwimmbad, Alicestraße 118, 63263 Neu-Isenburg",
+        "address":"Alicestraße 89, 63263 Neu-Isenburg",
         "bcz":"0",
         "comment":"Die offene Bücherkiste befindet sich im Vorraum des Waldschwimmbades (Hallenbad) Neu-Isenburg. ",
         "contact":"",
@@ -1363,7 +1363,7 @@
         "_id":{
             "$oid":"6000c775d055d5093066eeeb"
         },
-        "address":"Neckarstr. 45, 63263 Neu-Isenburg",
+        "address":"Neckarstraße 47, 63263 Neu-Isenburg",
         "bcz":"0",
         "comment":"LittleFreeLibrary.org\nTake a Book - Share a Book\nCharter # 80196",
         "contact":"littlefreelibrary.org/",
@@ -1443,7 +1443,7 @@
         "_id":{
             "$oid":"6000c776d055d5093066f068"
         },
-        "address":"",
+        "address":"Anspacher Str. 2, 60326 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1451,7 +1451,7 @@
         "deactreason":"",
         "digital":"0",
         "entrytype":"bookcase",
-        "homepage":"Anspacher Strasse, Frankfurt",
+        "homepage":"",
         "icontype":"",
         "lat":"50.1055",
         "lon":"8.621623",
@@ -1463,7 +1463,7 @@
         "_id":{
             "$oid":"6000c776d055d5093066f07c"
         },
-        "address":"",
+        "address":"Goethe-Universität, 60323 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1471,7 +1471,7 @@
         "deactreason":"",
         "digital":"0",
         "entrytype":"bookcase",
-        "homepage":"",
+        "homepage":"https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
         "icontype":"",
         "lat":"50.127381",
         "lon":"8.668063",
@@ -1543,7 +1543,7 @@
         "_id":{
             "$oid":"6000c776d055d5093066f312"
         },
-        "address":" , 65929 Frankfurt am Main",
+        "address":"Andreasplatz, 65929 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1583,7 +1583,7 @@
         "_id":{
             "$oid":"6000c776d055d5093066f314"
         },
-        "address":" , 60435 Frankfurt am Main",
+        "address":"Gravensteiner Platz, 60435 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1623,7 +1623,7 @@
         "_id":{
             "$oid":"6000c776d055d5093066f37f"
         },
-        "address":"Alicestraße , 63263 ",
+        "address":"Alicestraße 118, 63263 Neu-Isenburg",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1761,46 +1761,6 @@
     },
     {
         "_id":{
-            "$oid":"6000c776d055d5093066f6c5"
-        },
-        "address":"null, 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
-        "icontype":"",
-        "lat":"50.127508455459",
-        "lon":"8.6681465059519",
-        "open":"",
-        "title":"Goethe&#39;s Book Xchange",
-        "type":""
-    },
-    {
-        "_id":{
-            "$oid":"6000c776d055d5093066f6c6"
-        },
-        "address":", 60323 Frankfurt am Main",
-        "bcz":"0",
-        "comment":"",
-        "contact":"",
-        "deactivated":"0",
-        "deactreason":"",
-        "digital":"0",
-        "entrytype":"bookcase",
-        "homepage":"https://aktuelles.uni-frankfurt.de/campus/buecherschrank-auf-dem-campus-westend-eingeweiht/",
-        "icontype":"",
-        "lat":"50.127508455459",
-        "lon":"8.6681465059519",
-        "open":"",
-        "title":"Goethe&#39;s Book Xchange",
-        "type":""
-    },
-    {
-        "_id":{
             "$oid":"6000c776d055d5093066f715"
         },
         "address":" , 60489 Frankfurt am Main",
@@ -1843,7 +1803,7 @@
         "_id":{
             "$oid":"6000c777d055d5093066f8b0"
         },
-        "address":"Gutzkowstraße , 60594 Frankfurt",
+        "address":"Gutzkowstraße, 60594 Frankfurt",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -1923,7 +1883,7 @@
         "_id":{
             "$oid":"6000c777d055d5093066f9b3"
         },
-        "address":"Dreiherrnsteinplatz , 63263 ",
+        "address":"Dreiherrnsteinplatz, 63263 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -2023,7 +1983,7 @@
         "_id":{
             "$oid":"6000c777d055d5093066fae8"
         },
-        "address":" , 60437 Frankfurt am Main",
+        "address":"Alt-Harheim 7, 60437 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -2143,7 +2103,7 @@
         "_id":{
             "$oid":"6000c777d055d5093066fc5e"
         },
-        "address":"Am Weißen Stein , 60431 Frankfurt am Main",
+        "address":"Am Weißen Stein, 60431 Frankfurt am Main",
         "bcz":"0",
         "comment":"",
         "contact":"",
@@ -2163,7 +2123,7 @@
         "_id":{
             "$oid":"6000c777d055d5093066fc5f"
         },
-        "address":" , 61440 ",
+        "address":"Lia-Wöhr-Weg, 61440 Oberursel (Taunus)",
         "bcz":"0",
         "comment":"",
         "contact":"",

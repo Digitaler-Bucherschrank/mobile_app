@@ -1,7 +1,7 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
+import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
 import 'package:flutter/foundation.dart';
@@ -16,11 +16,10 @@ import 'widgets/drawer.dart';
 import 'widgets/gmap.dart';
 import 'models/book_case.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await loadBookCases();
+  await SharedPrefs().init();
 
   runApp(MyApp());
 
@@ -40,9 +39,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: lightThemeData(context),
-      darkTheme: darkThemeData(context),
-      themeMode: null,
+      theme: lightThemeData(),
+      darkTheme: darkThemeData(),
+      themeMode: ThemeMode.system,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
