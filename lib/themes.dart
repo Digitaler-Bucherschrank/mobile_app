@@ -6,22 +6,21 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: todo
 // TODO: import better color schemes
 ThemeData lightThemeData() {
-  return ThemeData(
-      colorScheme: new ColorScheme.light(
-          primary: Color(0xFF1890C9), secondary: Color(0xFF423C3A)),
-      brightness: Brightness.light,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
+  return FlexColorScheme.light(
+    colors: FlexSchemeColor.from(
+            primary: Color(0xFF423C3A), secondary: Color(0xFF1890C9))
+        .toDark(),
+    visualDensity: FlexColorScheme.comfortablePlatformDensity,
+    surfaceStyle: FlexSurface.strong,
+  ).toTheme.copyWith(
       bottomSheetTheme: new BottomSheetThemeData(
-          backgroundColor: Colors.black,
-          modalBackgroundColor: Colors.black,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0),
-            ),
-          )),
-      textTheme: GoogleFonts.notoSansTextTheme(),
-      accentColor: Colors.blue);
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      )),
+      textTheme: GoogleFonts.notoSansTextTheme());
 }
 
 ThemeData darkThemeData() {

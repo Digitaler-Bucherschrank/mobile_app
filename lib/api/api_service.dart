@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:digitaler_buecherschrank/config.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
@@ -27,12 +28,16 @@ class Client extends http.BaseClient {
   }
 }
 
+// ignore: todo
+// TODO: ERROR HANDLING IF E.G. TOKEN LOSES VALIDITY WHILE SENDING REQUESTS
 class ApiService {
   final String host;
   final Client client = Client();
 
-  factory ApiService(String hostName) {
-    return ApiService._internal(hostName);
+  static final ApiService _instance = ApiService._internal(CONFIG.API_HOST);
+
+  factory ApiService() {
+    return _instance;
   }
 
   ApiService._internal(this.host);

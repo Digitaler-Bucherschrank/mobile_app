@@ -34,7 +34,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
     WidgetsBinding.instance!.addObserver(this);
 
-    Future.wait([
+     Future.wait([
       rootBundle.loadString('assets/map_styles/dark.json'),
       rootBundle.loadString('assets/map_styles/light.json')
     ]).then((value) {
@@ -48,10 +48,10 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   Future _setMapStyle() async {
     final controller = await _controller.future;
     final theme = WidgetsBinding.instance!.window.platformBrightness;
-    if (theme == Brightness.dark)
-      controller.setMapStyle(_darkMapStyle);
-    else
-      controller.setMapStyle(_lightMapStyle);
+    if (theme == Brightness.dark){
+      await controller.setMapStyle(_darkMapStyle);
+    } else
+      await controller.setMapStyle(_lightMapStyle);
   }
 
   @override
@@ -76,7 +76,9 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   }
 
   void _onMapCreated(GoogleMapController controller) async {
-    _controller.complete(controller);
+    if(!_controller.isCompleted){
+      _controller.complete(controller);
+    }
 
     var caseList = await getBookCases();
 
