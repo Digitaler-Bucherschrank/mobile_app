@@ -1,15 +1,13 @@
 class User {
   String? id;
   String? username;
-  String? mail;
   Tokens? tokens;
 
-  User({this.id, this.username, this.mail, this.tokens});
+  User({this.id, this.username, this.tokens});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     username = json['username'];
-    mail = json['mail'];
     tokens =
     json['tokens'] != null ? new Tokens.fromJson(json['tokens']) : null;
   }
@@ -18,7 +16,6 @@ class User {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['username'] = this.username;
-    data['mail'] = this.mail;
     if (this.tokens != null) {
       data['tokens'] = this.tokens!.toJson();
     }

@@ -29,14 +29,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_barcode_scanner: ^2.0.0
   google_maps_flutter: ^2.0.3
-  google_maps_cluster_manager: ^1.0.0
+  expandable_bottom_sheet: ^1.0.0+2
+  flex_color_scheme: ^2.1.1
+  flutter_login: ^2.0.0-nullsafety.0
   google_fonts: ^2.0.0
   location: ^4.1.1
-  http: ^0.13.1
+  http: ^0.13.3
   material_floating_search_bar: ^0.3.4
   rxdart: ^0.26.0
   flutter_native_splash: ^1.1.8+4
   provider: ^5.0.0
+  jwt_decode: ^0.3.1
   streaming_shared_preferences: ^2.0.0
   blur: ^2.0.0
   implicitly_animated_reorderable_list: ^0.4.0

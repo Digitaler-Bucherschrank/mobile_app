@@ -1,19 +1,14 @@
 import 'dart:async';
 
-import 'package:digitaler_buecherschrank/widgets/drawer.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:location/location.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 
 import '../models/book_case.dart';
-import 'book_info.dart';
-import 'scanner/scanner_drop_form.dart';
-import 'scanner/scanner_pickup_form.dart';
+import 'bookcasemodal.dart';
 
 String _darkMapStyle = "";
 String _lightMapStyle = "";
@@ -36,7 +31,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
     WidgetsBinding.instance!.addObserver(this);
 
-    Future.wait([
+     Future.wait([
       rootBundle.loadString('assets/map_styles/dark.json'),
       rootBundle.loadString('assets/map_styles/light.json')
     ]).then((value) {
@@ -50,10 +45,10 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   Future _setMapStyle() async {
     final controller = await _controller.future;
     final theme = WidgetsBinding.instance!.window.platformBrightness;
-    if (theme == Brightness.dark)
-      controller.setMapStyle(_darkMapStyle);
-    else
-      controller.setMapStyle(_lightMapStyle);
+    if (theme == Brightness.dark){
+      await controller.setMapStyle(_darkMapStyle);
+    } else
+      await controller.setMapStyle(_lightMapStyle);
   }
 
   @override
@@ -70,18 +65,18 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   }
 
   void _onMapCreated(GoogleMapController controller) async {
-    _controller.complete(controller);
+    if(!_controller.isCompleted){
+      _controller.complete(controller);
+    }
 
-    var schraenke = await getBookCases();
-    print("blabla${schraenke.length}");
-    for (int i = 0; i < schraenke.length; i++) {
-      var tempMarker = schraenke[i];
+    var caseList = await getBookCases();
+
+    for (var bookCase in caseList) {
       _markers.add(Marker(
-          markerId: MarkerId('${tempMarker.iId!.oid}'),
+          markerId: MarkerId('${bookCase.iId!.oid}'),
           position: LatLng(
-            double.parse('${tempMarker.lat}'),
-            double.parse(
-              '${tempMarker.lon}',
+            double.parse('${bookCase.lat}'),
+            double.parse('${bookCase.lon}',
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(
@@ -91,70 +86,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
             showModalBottomSheet(
                 context: context,
                 builder: (builder) {
-                  return Container(
-                    color: Color(0xff757575),
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          topRight: Radius.circular(20.0),
-                        ),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          ListTile(
-                            title: Text('${tempMarker.title}'),
-                          ),
-                          ListTile(
-                            title: Text('${tempMarker.address}'),
-                          ),
-                          ElevatedButton(
-                              child: const Text("Siehe Bücher"),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BookInfo()),
-                                );
-                              }),
-                          ElevatedButton(
-                            child: const Text('Close BottomSheet'),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              ElevatedButton(
-                                  child: Text(S.of(context).label_dropbook),
-                                  onPressed: () {
-                                    print('${tempMarker.iId!.oid}');
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ScannerDropForm(
-                                              '${tempMarker.iId!.oid}')),
-                                    );
-                                  }),
-                              ElevatedButton(
-                                  child: Text(S.of(context).label_borrowbook),
-                                  onPressed: () {
-                                    print('${tempMarker.iId!.oid}');
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                ScannerPickupForm(
-                                                    '${tempMarker.iId!.oid}')));
-                                  }),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return BookCaseModal(bookCase);
                 });
           }));
     }
