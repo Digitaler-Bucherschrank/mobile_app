@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:digitaler_buecherschrank/config.dart';
+import 'package:digitaler_buecherschrank/main.dart';
 import 'package:digitaler_buecherschrank/models/user.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+import 'package:digitaler_buecherschrank/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:http/retry.dart';
@@ -32,39 +34,20 @@ class AuthenticationService {
     });
 
 
-    // Mechanism returning the tokens if these are valid else logs out the user
-    Tokens? getTokens(){
-        if(Jwt.isExpired(_user.tokens!.accessToken!.token!)){
-            refreshTokens().then((value) {
-                if(value is Tokens) {
-                    _user.tokens = value;
-                    SharedPrefs().user = _user;
-                    return value;
-                } else if(value == null){
-                    logout();
-                } else {
-                    // Logic for showing the user that the server is temporarily offline
-                }
-            });
-        } else {
-            return _user.tokens!;
-        }
-    }
-
+    // checks if Tokens are still up to date
     AuthenticationService._internal(){
         this._user = SharedPrefs().user;
 
-        if(Jwt.isExpired(_user.tokens!.accessToken!.token!)){
-            refreshTokens().then((value) {
-                if(value is Tokens) {
-                    _user.tokens = value;
-                    SharedPrefs().user = _user;
-                } else if(value == null){
+        if(_user.tokens?.accessToken != null && _user.tokens?.refreshToken != null){
+            if(Jwt.isExpired(_user.tokens?.accessToken?.token ?? "")){
+                if(Jwt.isExpired(_user.tokens?.refreshToken?.token ?? "")){
                     logout();
                 } else {
-                    // Logic for showing the user that the server is temporarily offline
+                    refreshTokens();
                 }
-            });
+            }
+        } else {
+            Utilities.logoutUser(null);
         }
     }
 
@@ -74,6 +57,12 @@ class AuthenticationService {
                 case(401): {
                     return false;
                 }
+                case(201): {
+                    return false;
+                }
+                case(400): {
+                    return false;
+                }
                 default: {
                     return true;
                 }
@@ -81,23 +70,27 @@ class AuthenticationService {
         });
 
         try {
-            var res = await client.post(Uri.https(CONFIG.API_HOST, 'login'), body: {
+            var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/login'), body: {
                 "username": username,
-                "password": password
+                "password": password,
+                "client_id": SharedPrefs().clientId
             });
 
-            if(res.statusCode != 401) {
-                var decodedUser = User.fromJson(jsonDecode(res.body));
+            if(res.statusCode == 201) {
+                var decodedUser = User.fromJson(jsonDecode(res.body) as Map<String, dynamic>);
                 _user = decodedUser;
                 SharedPrefs().user = decodedUser;
-            } else if(res.statusCode != 503) {
+                SharedPrefs().isLoggedIn = true;
+                return true;
+            } else if(res.statusCode == 400) {
+                Utilities.logoutUser(null);
                 return false;
-            } else {
+            } else if(res.statusCode == 401){
                 return null;
             }
 
         } catch(_) {
-            return false;
+            return null;
         }finally {
             client.close();
         }
@@ -105,7 +98,7 @@ class AuthenticationService {
     }
 
 
-    Future<dynamic?> refreshTokens() async{
+    Future<void> refreshTokens() async{
         final client = RetryClient(http.Client(), when: (BaseResponse res) {
             switch(res.statusCode){
                 case(200): {
@@ -121,18 +114,24 @@ class AuthenticationService {
         });
 
         try {
-            var res = await client.post(Uri.https(CONFIG.API_HOST, 'refresh'), headers: {
+            var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/refresh'), headers: {
                 HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.refreshToken!.token}"
             });
 
             if(res.statusCode == 200) {
-                return Tokens.fromJson(jsonDecode(res.body));
+                var tokens = Tokens.fromJson(jsonDecode(res.body));
+                if(tokens is Tokens) {
+                    _user.tokens = tokens;
+                    SharedPrefs().user = _user;
+                } else {
+                    logout();
+                }
             } else if(res.statusCode == 401) {
                 // Logout the User --> no specialized error handling needed
                 logout();
                 return null;
             } else {
-                return 503;
+                // Logic for showing the user that the server is temporarily offline
             }
 
         } catch(_) {
@@ -142,7 +141,6 @@ class AuthenticationService {
         }
     }
 
-    /// returns a bool if logout was successfull
     /// TODO: Send User to login screen
     Future<bool?> logout() async {
         final client = RetryClient(http.Client(), when: (BaseResponse res) {
@@ -164,18 +162,18 @@ class AuthenticationService {
         });
 
         try {
-            var res = await client.post(Uri.https(CONFIG.API_HOST, 'logout'), headers: {
+            var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/logout'), headers: {
                 HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.accessToken!.token}"
             });
 
+            // Logout anyways also if there are other Errors
             if(res.statusCode != 401) {
-                var decodedUser = User.fromJson(jsonDecode(res.body));
-                _user = decodedUser;
-                SharedPrefs().user = decodedUser;
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
             } else if(res.statusCode != 503) {
                 return false;
             } else if(res.statusCode == 400){
                 // Client already logged out
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
                 return true;
             } else {
                 // Server unavailable
