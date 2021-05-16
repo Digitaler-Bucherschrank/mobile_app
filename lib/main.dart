@@ -1,4 +1,4 @@
-import 'package:digitaler_buecherschrank/api/api_service.dart';
+import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
@@ -12,18 +12,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-import 'config.dart';
 import 'models/book_case.dart';
-import 'widgets/drawer.dart';
 import 'widgets/gmap.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadBookCases();
   await SharedPrefs().init();
+  AuthenticationService();
 
   runApp(MyApp());
 
@@ -42,11 +42,16 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static GlobalKey<NavigatorState> globalKey = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    var isLoggedIn = SharedPrefs().isLoggedIn;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightThemeData(),
+      navigatorKey: globalKey,
       darkTheme: darkThemeData(),
       themeMode: ThemeMode.system,
       localizationsDelegates: [
@@ -56,7 +61,9 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: MyHomePage()
+      home: Phoenix(
+        child: isLoggedIn ? MyHomePage() : LoginScreen(),
+      ),
     );
   }
 }
@@ -91,7 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
      return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: AppDrawer(),
       body: Stack(
         children: <Widget>[
           ExpandableBottomSheet(
