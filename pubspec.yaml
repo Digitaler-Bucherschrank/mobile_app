@@ -26,34 +26,39 @@ dependencies:
   another_transformer_page_view: ^1.0.0
   another_flushbar: ^1.10.17
   quiver: ^3.0.0
-  #
-  json_annotation: ^4.0.1
+
+  # enabling 90 hz
   flutter_displaymode: ^0.3.1-nullsafety.0
+
+  # UI Stuff
   flutter_launcher_icons: ^0.9.0
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  flutter_barcode_scanner: ^2.0.0
   google_maps_flutter: ^2.0.3
   expandable_bottom_sheet: ^1.0.0+2
+  material_floating_search_bar: ^0.3.4
+  flutter_native_splash: ^1.1.8+4
+  blur: ^2.0.0
   flex_color_scheme: ^2.1.1
+  implicitly_animated_reorderable_list: ^0.4.0
+  maps_toolkit:
+    git:
+      url: git://github.com/edgarfroes/maps_toolkit.git
+
+  # Diverse Utilities
   google_fonts: ^2.0.0
   location: ^4.1.1
   http: ^0.13.3
-  material_floating_search_bar: ^0.3.4
   rxdart: ^0.26.0
-  flutter_native_splash: ^1.1.8+4
+  flutter_barcode_scanner: ^2.0.0
   provider: ^5.0.0
   jwt_decode: ^0.3.1
   flutter_phoenix: ^1.0.0
   path_provider: ^2.0.1
   uuid: ^3.0.4
+  json_annotation: ^4.0.1
   streaming_shared_preferences: ^2.0.0
-  blur: ^2.0.0
-  implicitly_animated_reorderable_list: ^0.4.0
-  maps_toolkit:
-    git:
-      url: git://github.com/edgarfroes/maps_toolkit.git
   flutter_localizations:
     sdk: flutter
 
