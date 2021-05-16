@@ -3,12 +3,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/config.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+import 'package:digitaler_buecherschrank/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+
+import '../main.dart';
 
 class Client extends http.BaseClient{
   late http.Client client;
@@ -17,12 +22,55 @@ class Client extends http.BaseClient{
     this.client = new http.Client();
   }
 
-  Future<http.StreamedResponse> send(http.BaseRequest request) {
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
     request.headers.addAll({
       HttpHeaders.authorizationHeader: "Bearer ${SharedPrefs().user.tokens!.accessToken!.token}"
     });
 
-    return this.client.send(request);
+    var streamedRes = await this.client.send(request);
+    var res = await Response.fromStream(streamedRes);
+
+    switch(res.statusCode){
+      case(401): {
+        var error_message = json.decode(res.body).message;
+
+        switch(error_message){
+          case("TokenExpiredError"): {
+            // Potentially causing never ending function calls but shouldn't unless we don't catch something
+            await AuthenticationService().refreshTokens();
+            return await send(request);
+          }
+
+          case("JsonWebTokenError"): {
+            Utilities.logoutUser(MyApp.globalKey.currentContext);
+            return streamedRes;
+          }
+
+          case("client_not_found"): {
+            Utilities.logoutUser(MyApp.globalKey.currentContext);
+            return streamedRes;
+          }
+
+          case("user_not_found"): {
+            Utilities.logoutUser(MyApp.globalKey.currentContext);
+            return streamedRes;
+          }
+
+          case("access_token_outdated"):{
+            Utilities.logoutUser(MyApp.globalKey.currentContext);
+            return streamedRes;
+          }
+
+          default: {
+            return streamedRes;
+          }
+        }
+      }
+
+      default: {
+        return streamedRes;
+      }
+    }
   }
 }
 
@@ -40,7 +88,7 @@ class ApiService{
   ApiService._internal(this.host);
 
   Future<List<Book>> getBookCaseInventory(BookCase bookCase) async {
-    var res = await client.get(Uri.https(host, 'bookCaseInventory', {
+    var res = await client.get(Uri.https(host, 'api/bookCaseInventory', {
       "id": bookCase.iId!.oid
     }));
 
