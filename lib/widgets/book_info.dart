@@ -49,8 +49,7 @@ class _BookInfo extends State<BookInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Maybe even book name?
-        title: Text("buchanzeigen"),
+        title: Text("Buchanzeigen"),
       ),
       body: Container(
         child: FutureBuilder(

@@ -3,6 +3,7 @@ import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_drop_form.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_utils/intl_utils.dart';
 
 import 'book_info.dart';
 
@@ -13,28 +14,20 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 305,
       padding: EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ListTile(
-            title: Text('${bookcase.title}'),
-          ),
-          ListTile(
-            title: Text('${bookcase.address}'),
-          ),
-          ElevatedButton(
-              child: const Text("Siehe Bücher"),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => BookInfo('${bookcase.iId!.oid}')),
-                );
-              }),
-          ElevatedButton(
-            child: const Text('Close BottomSheet'),
-            onPressed: () => Navigator.pop(context),
+            title: Text(
+              '${bookcase.title}',
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 18.0,
+              ),
+            ),
+            subtitle: Text('${bookcase.address}'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,6 +54,19 @@ class BookCaseModal extends StatelessWidget {
                                 ScannerPickupForm('${bookcase.iId!.oid}')));
                   }),
             ],
+          ),
+          ElevatedButton(
+              child: const Text("Siehe Bücher"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BookInfo('${bookcase.iId!.oid}')),
+                );
+              }),
+          ElevatedButton(
+            child: const Text('Close BottomSheet'),
+            onPressed: () => Navigator.pop(context),
           ),
         ],
       ),
