@@ -119,7 +119,7 @@ class __HeaderState extends State<_Header> {
         ),
       ),
       textDirection: TextDirection.ltr,
-      maxLines: 1,
+      maxLines: 2,
     );
 
     renderParagraph.layout(BoxConstraints());
@@ -158,9 +158,12 @@ class __HeaderState extends State<_Header> {
     var logo = displayLogo
         ? Image.asset(
             widget.logoPath!,
+            fit: BoxFit.cover,
             filterQuality: FilterQuality.high,
-            height: logoHeight,
-            width: MediaQuery.of(context).size.width * 0.75,
+            scale: 1.5,
+            height: logoHeight * 1.25,
+            width: MediaQuery.of(context).size.width * 0.5,
+            colorBlendMode: BlendMode.multiply,
           )
         : NullWidget();
 
@@ -183,10 +186,17 @@ class __HeaderState extends State<_Header> {
         viewState: ViewState.enlarged,
       );
     } else if (!DartHelper.isNullOrEmpty(widget.title)) {
-      title = Text(
-        widget.title!,
-        key: kTitleKey,
-        style: theme.textTheme.headline3,
+      double c_width = MediaQuery.of(context).size.width*0.8;
+
+      title = new Container (
+        width: c_width,
+        child: Text(
+          widget.title!,
+          softWrap: true,
+          textAlign: TextAlign.center,
+          key: kTitleKey,
+          style: theme.textTheme.headline3,
+        )
       );
     } else {
       title = null;
@@ -205,13 +215,13 @@ class __HeaderState extends State<_Header> {
                 fadeDirection: FadeDirection.topToBottom,
                 child: logo,
               ),
-            SizedBox(height: gap),
             FadeIn(
               controller: widget.titleController,
               offset: .5,
               fadeDirection: FadeDirection.topToBottom,
               child: title,
             ),
+            SizedBox(height: gap),
           ],
         ),
       ),
@@ -577,8 +587,8 @@ class _FlutterLoginState extends State<FlutterLogin>
     final loginTheme = widget.theme ?? LoginTheme();
     final theme = _mergeTheme(theme: Theme.of(context), loginTheme: loginTheme);
     final deviceSize = MediaQuery.of(context).size;
-    const headerMargin = 15;
-    const cardInitialHeight = 300;
+    const headerMargin = 0;
+    const cardInitialHeight = 150;
     final cardTopPosition = deviceSize.height / 2 - cardInitialHeight / 2;
     final headerHeight = cardTopPosition - headerMargin;
     final userValidator =

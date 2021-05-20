@@ -2,6 +2,7 @@ import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:restart_app/restart_app.dart';
 
 /// Utilities for some use cases dart hasn't implemented yet
 class Utilities{
@@ -31,7 +32,7 @@ class Utilities{
     SharedPrefs().clearSettings();
 
     if(context != null){
-      Phoenix.rebirth(context);
+      Restart.restartApp();
     }
   }
 }

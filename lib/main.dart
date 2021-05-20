@@ -61,9 +61,7 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: Phoenix(
-        child: isLoggedIn ? MyHomePage() : LoginScreen(),
-      ),
+      home:  isLoggedIn ? MyHomePage() : LoginScreen(),
     );
   }
 }

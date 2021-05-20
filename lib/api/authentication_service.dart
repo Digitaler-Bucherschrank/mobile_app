@@ -6,6 +6,7 @@ import 'package:digitaler_buecherschrank/main.dart';
 import 'package:digitaler_buecherschrank/models/user.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
+import 'package:flutter_bcrypt/flutter_bcrypt.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:http/retry.dart';
@@ -22,17 +23,22 @@ class AuthenticationService {
         return _instance;
     }
 
-    final client = RetryClient(http.Client(), when: (BaseResponse res) {
+    bool retryWhen(BaseResponse res) {
         switch(res.statusCode){
             case(401): {
+                return false;
+            }
+            case(201): {
+                return false;
+            }
+            case(400): {
                 return false;
             }
             default: {
                 return true;
             }
         }
-    });
-
+    }
 
     // checks if Tokens are still up to date
     AuthenticationService._internal(){
@@ -51,24 +57,14 @@ class AuthenticationService {
         }
     }
 
+    /// Status codes:
+    /// 201: Login successful
+    /// 400: client_id_already used (hence no further case differentation)
+    /// 401: Login failed
     Future<bool?> login(String username, String password) async {
-        final client = RetryClient(http.Client(), when: (BaseResponse res) {
-            switch(res.statusCode){
-                case(401): {
-                    return false;
-                }
-                case(201): {
-                    return false;
-                }
-                case(400): {
-                    return false;
-                }
-                default: {
-                    return true;
-                }
-            }
-        });
+        final client = RetryClient(http.Client(), when: retryWhen);
 
+        print(await FlutterBcrypt.hashPw(password: password, salt: await FlutterBcrypt.salt()));
         try {
             var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/login'), body: {
                 "username": username,
@@ -83,7 +79,7 @@ class AuthenticationService {
                 SharedPrefs().isLoggedIn = true;
                 return true;
             } else if(res.statusCode == 400) {
-                Utilities.logoutUser(null);
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
                 return false;
             } else if(res.statusCode == 401){
                 return null;
@@ -99,19 +95,7 @@ class AuthenticationService {
 
 
     Future<void> refreshTokens() async{
-        final client = RetryClient(http.Client(), when: (BaseResponse res) {
-            switch(res.statusCode){
-                case(200): {
-                    return false;
-                }
-                case(401): {
-                    return false;
-                }
-                default: {
-                    return true;
-                }
-            }
-        });
+        final client = RetryClient(http.Client(), when: retryWhen);
 
         try {
             var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/refresh'), headers: {
@@ -143,23 +127,7 @@ class AuthenticationService {
 
     /// TODO: Send User to login screen
     Future<bool?> logout() async {
-        final client = RetryClient(http.Client(), when: (BaseResponse res) {
-            switch(res.statusCode){
-                case(200): {
-                    return false;
-                }
-                case(401): {
-                    return false;
-                }
-                // User already logged out
-                case(400): {
-                    return false;
-                }
-                default: {
-                    return true;
-                }
-            }
-        });
+        final client = RetryClient(http.Client(), when: retryWhen);
 
         try {
             var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/logout'), headers: {
@@ -186,4 +154,44 @@ class AuthenticationService {
             client.close();
         }
     }
+
+    ///
+    ///
+    Future<String?> signUp(String username, String password, String email) async {
+      final client = RetryClient(http.Client(), when: retryWhen);
+
+      var hashedPw = await FlutterBcrypt.hashPw(password: password, salt: await FlutterBcrypt.salt());
+      try {
+          var res = await client.post(Uri.https(CONFIG.API_HOST, 'api/signup'), body: {
+              "username": username,
+              "hash": hashedPw,
+              "mail": email,
+          });
+
+          if(res.statusCode == 201) {
+              // Try to login after sign-up
+              var loggedIn = await login(username, password);
+
+              if(loggedIn == null){
+                  return "login_failed";
+              } else if(loggedIn){
+                  return "logged_in";
+              } else {
+                  // TODO: Try to find a way to stop future chaining
+                  // this is basically dead code, i don't know yet how to avoid this being executed
+                  return "client_id_used";
+              }
+          } else if(res.statusCode == 400) {
+              /// Return the servers error message to _authSignUp
+              return json.decode(res.body)["message"];
+          } else if(res.statusCode == 401){
+              return null;
+          }
+
+      } catch(_) {
+          return null;
+      }finally {
+          client.close();
+      }
+  }
 }
