@@ -1,3 +1,4 @@
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/book.dart';
@@ -58,21 +59,17 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
     _book.location = markersId;
   }
 
-  Map bookInfo = {
-    'name': 'Titel',
-    'author': 'Autor',
-  };
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: new Container(
         child: Column(
           children: [
-            getScannerWidget(_book, bookInfo, txt, txt2),
-            getBookinfo(txt, txt2),
+            getScannerWidget(context, _book, txt, txt2),
+            getBookinfo(context, txt, txt2),
             getBookcase(markersId),
-            OutlinedButton(
+            ElevatedButton(
+              style: Theme.of(context).outlinedButtonTheme.style,
               onPressed: () {
                 print(_book);
                 //postBook(_book);
@@ -81,7 +78,9 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
                   _book.location,
                 );
               },
-              child: Text("Bestätigen"),
+              child: Text(
+                S.of(context).label_scanner_confirm,
+              ),
             )
           ],
         ),
@@ -117,6 +116,10 @@ class ContentWidget extends StatefulWidget {
 class ContentWidgetState extends State<ContentWidget> {
   String markersId;
   ContentWidgetState(this.markersId);
+
+  Color _scannpageColor = Colors.black;
+  Color? _inventorypageColor;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -124,31 +127,33 @@ class ContentWidgetState extends State<ContentWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            TextButton(
+            IconButton(
+              icon: Icon(Icons.qr_code_scanner_sharp),
+              color: _scannpageColor,
               onPressed: () {
                 print("isbn");
                 print(selectedWidgetMarker);
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.isbn;
+                  _scannpageColor = Colors.black;
+                  _inventorypageColor = Theme.of(context).accentColor;
                 });
                 print(selectedWidgetMarker);
               },
-              child: Text(
-                "Normal Scann",
-                style: TextStyle(color: Colors.black12),
-              ),
             ),
-            TextButton(
+            IconButton(
+              icon: Icon(Icons.inventory),
+              color: _inventorypageColor == null
+                  ? Theme.of(context).accentColor
+                  : _inventorypageColor,
               onPressed: () {
                 print("Inventar");
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.iventory;
+                  _inventorypageColor = Colors.black;
+                  _scannpageColor = Theme.of(context).accentColor;
                 });
               },
-              child: Text(
-                "Inventar Auswahl",
-                style: TextStyle(color: Colors.black12),
-              ),
             ),
           ],
         ),

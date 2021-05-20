@@ -1,58 +1,84 @@
+import 'dart:ui';
+
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
 import 'scanner_logic.dart';
 import '../../../models/book.dart';
 
-Widget getScannerWidget(Book _book, Map bookInfo, TextEditingController txt,
-    TextEditingController txt2) {
+double cardBorderRadius = 20.0;
+
+Widget getScannerWidget(BuildContext context, Book _book,
+    TextEditingController txt, TextEditingController txt2) {
   TextEditingController scannerText = new TextEditingController();
   return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(cardBorderRadius),
+    ),
+    elevation: 5,
     child: Column(
       children: [
+        Padding(padding: EdgeInsets.only(top: 10)),
         Container(
-          child: Text('Barcode scannen oder ISBN eingeben!'),
+          child: Text(
+            S.of(context).label_scanner_enterISBN,
+            style: Theme.of(context).textTheme.headline6,
+          ),
         ),
+        Padding(padding: EdgeInsets.only(top: 10)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 200,
-              height: 100,
-              child: TextField(
-                controller: scannerText,
-                onSubmitted: (String str) {
-                  getInfo(_book.id).then((value) {
-                    bookInfo['name'] = value['name'];
-                    print(bookInfo);
-                    txt.text = bookInfo['name'];
-                  });
+            Column(
+              children: [
+                Container(
+                  width: 300,
+                  child: TextField(
+                    controller: scannerText,
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 15),
+                      labelText: "ISBN",
+                      fillColor: Theme.of(context).backgroundColor,
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.qr_code_scanner),
+                        onPressed: () {
+                          scanBarcodeNormal().then((value) {
+                            if (_book.id != null) {
+                              print('old value of isbn before update: ' +
+                                  _book.id!);
+                            }
+                            _book.id = value;
+                            scannerText.text = _book.id!;
+                            print('updated isbn: ' + _book.id!);
+                            getInfo(_book.id).then((value) {
+                              txt.text = "${txt.text} ${value['name']}";
+                              print(txt.text);
+                            });
+                          });
+                        },
+                      ),
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(50.0),
+                        borderSide: new BorderSide(),
+                      ),
+                    ),
+                    onSubmitted: (String str) {
+                      getInfo(_book.id).then((value) {
+                        txt.text = "${txt.text} ${value['name']}";
+                        print(txt.text);
+                      });
 
-                  if (_book.id != null) {
-                    print('old value of isbn before update: ' + _book.id!);
-                  }
-                  _book.id = str;
-                  print('updated isbn: ' + _book.id!);
-                },
-              ),
-            ),
-            IconButton(
-              icon: Icon(Icons.qr_code_scanner),
-              tooltip: "Scannen",
-              onPressed: () {
-                scanBarcodeNormal().then((value) {
-                  if (_book.id != null) {
-                    print('old value of isbn before update: ' + _book.id!);
-                  }
-                  _book.id = value;
-                  scannerText.text = _book.id!;
-                  print('updated isbn: ' + _book.id!);
-                  getInfo(_book.id).then((value) {
-                    bookInfo['name'] = value['name'];
-                    print(bookInfo);
-                    txt.text = bookInfo['name'];
-                  });
-                });
-              },
+                      if (_book.id != null) {
+                        print('old value of isbn before update: ' + _book.id!);
+                      }
+                      _book.id = str;
+                      print('updated isbn: ' + _book.id!);
+                    },
+                  ),
+                ),
+                Padding(padding: EdgeInsets.only(top: 10)),
+              ],
             ),
           ],
         ),
@@ -61,39 +87,66 @@ Widget getScannerWidget(Book _book, Map bookInfo, TextEditingController txt,
   );
 }
 
-Widget getBookinfo(TextEditingController txt, TextEditingController txt2) {
+Widget getBookinfo(BuildContext context, TextEditingController txt,
+    TextEditingController txt2) {
   return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(cardBorderRadius),
+    ),
+    elevation: 5,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: 10)),
             Container(
-              child: Text('Buchinformationen:'),
+              child: Text(S.of(context).label_scanner_bookinfo,
+                  style: Theme.of(context).textTheme.headline6),
             ),
-            Container(
-              child: TextField(
-                controller: txt,
-                decoration: InputDecoration(
-                  labelText: "Titel",
+            Padding(padding: EdgeInsets.only(top: 10)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("${S.of(context).label_scanner_title}: ",
+                    style: Theme.of(context).textTheme.bodyText1),
+                Container(
+                  child: TextField(
+                    selectionHeightStyle: BoxHeightStyle.tight,
+                    controller: txt,
+                    decoration: InputDecoration(
+                      fillColor: Theme.of(context).cardColor,
+                      border: InputBorder.none,
+                    ),
+                  ),
+                  width: 200,
                 ),
-              ),
-              width: 200,
+              ],
             ),
-            Container(
-              child: TextField(
-                controller: txt2,
-                decoration: InputDecoration(
-                  labelText: "Autor",
+            Padding(padding: EdgeInsets.only(top: 10)),
+            Row(
+              children: [
+                Text("${S.of(context).label_scanner_autor}: ",
+                    style: Theme.of(context).textTheme.bodyText1),
+                Container(
+                  child: TextField(
+                    controller: txt2,
+                    decoration: InputDecoration(
+                      fillColor: Theme.of(context).cardColor,
+                      border: InputBorder.none,
+                    ),
+                  ),
+                  width: 200,
                 ),
-              ),
-              width: 200,
+              ],
             ),
+            Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 200,
-              child: Text(
-                  'Nicht Ihr Buch? Barcode erneut scannen bzw. ISBN eingeben.'),
+              width: 250,
+              child: Text(S.of(context).label_scanner_notYourBook,
+                  style: Theme.of(context).textTheme.bodyText2),
             ),
+            Padding(padding: EdgeInsets.only(top: 10)),
           ],
         ),
       ],
@@ -103,11 +156,16 @@ Widget getBookinfo(TextEditingController txt, TextEditingController txt2) {
 
 Widget getBookcase(String markersId) {
   return Card(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(cardBorderRadius),
+    ),
+    elevation: 5,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: 10)),
             Container(
               child: FutureBuilder(
                   future: getBookCases(),
@@ -115,7 +173,8 @@ Widget getBookcase(String markersId) {
                     if (snapshot.data == null) {
                       return Container(
                         child: Center(
-                          child: Text("Loading..."),
+                          child: Text(S.of(context).label_loading,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ),
                       );
                     } else {
@@ -127,21 +186,30 @@ Widget getBookcase(String markersId) {
                               "snapshot.data[$i].iId.oid ${snapshot.data[i].iId.oid}");
                           return Column(
                             children: [
-                              Text("Bücherschrank"),
+                              Text(
+                                S.of(context).label_scanner_bookcase,
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
                               Container(
-                                height: 100,
+                                height: 80,
                                 width: 300,
                                 child: ListTile(
-                                  leading:
-                                      Image.asset("assets/icons/book_case.png"),
-                                  title: Text(snapshot.data[i].title),
-                                  subtitle: Container(
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            "Entfernung: ${snapshot.data[i].distance}km"),
-                                      ],
-                                    ),
+                                  leading: SizedBox(
+                                    height: 50,
+                                    child: Image.asset(
+                                        "assets/icons/book_case.png"),
+                                  ),
+                                  title: Text(
+                                    snapshot.data[i].title,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                  subtitle: Text(
+                                    "${S.of(context).label_scanner_distance}${snapshot.data[i].distance} km",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2!
+                                        .copyWith(color: Colors.grey.shade600),
                                   ),
                                 ),
                               ),
@@ -150,7 +218,7 @@ Widget getBookcase(String markersId) {
                         }
                       }
                     }
-                    return Container(child: Text(""));
+                    return Container();
                   }),
             )
           ],
@@ -161,7 +229,7 @@ Widget getBookcase(String markersId) {
 }
 
 class GetFromWidget extends StatefulWidget {
-  String? from;
+  final String from;
   GetFromWidget(this.from);
   @override
   _GetFromWidgetState createState() => _GetFromWidgetState(from);
@@ -181,23 +249,36 @@ class _GetFromWidgetState extends State<GetFromWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(cardBorderRadius),
+      ),
+      elevation: 5,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(
             children: [
-              Text("Von wo soll das Buch hinzugefügt werden?"),
+              Padding(padding: EdgeInsets.only(top: 10)),
+              Container(
+                width: 300,
+                child: Text(
+                  S.of(context).label_scanner_fromWhere,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ),
               Container(
                 width: 300,
                 child: RadioListTile(
                   value: 1,
                   groupValue: selectedRadio,
-                  title: Text("Buch aus Inventar ablegen"),
-                  activeColor: Colors.blue,
+                  title: Text(
+                    S.of(context).label_scanner_fromInventory,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  activeColor: Theme.of(context).accentColor,
                   onChanged: (dynamic val) {
                     setState(() {
                       selectedRadio = val;
-
                       from = "inventory";
                     });
                   },
@@ -208,8 +289,11 @@ class _GetFromWidgetState extends State<GetFromWidget> {
                 child: RadioListTile(
                   value: 2,
                   groupValue: selectedRadio,
-                  title: Text("Neues Buch ablegen"),
-                  activeColor: Colors.blue,
+                  title: Text(
+                    S.of(context).label_scanner_newBook,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  activeColor: Theme.of(context).accentColor,
                   onChanged: (dynamic val) {
                     setState(() {
                       selectedRadio = val;
