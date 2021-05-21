@@ -24,12 +24,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_invalid_mail" : MessageLookupByLibrary.simpleMessage("Email ist ungültig!"),
     "error_invalid_username" : MessageLookupByLibrary.simpleMessage("Nutzername besitzt ungültige Zeichen!"),
     "error_login_failed" : MessageLookupByLibrary.simpleMessage("Einloggen fehlgeschlagen. Bitte versuch es erneut"),
+    "error_login_invalid_credentials" : MessageLookupByLibrary.simpleMessage("Nutzername oder Passwort ungültig!"),
     "error_mail_taken" : MessageLookupByLibrary.simpleMessage("Email wird bereits verwendet."),
     "error_username_taken" : MessageLookupByLibrary.simpleMessage("Nutzername wird bereits verwendet"),
     "error_username_too_long" : MessageLookupByLibrary.simpleMessage("Nutzername zu lang!"),
     "error_username_too_short" : MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
     "label_bookinfo" : MessageLookupByLibrary.simpleMessage("Buch-Infos"),
     "label_borrowbook" : MessageLookupByLibrary.simpleMessage("Buch mitnehmen"),
+    "label_close_sheet" : MessageLookupByLibrary.simpleMessage("Schließen"),
     "label_confirm_pw" : MessageLookupByLibrary.simpleMessage("Password bestätigen"),
     "label_dropbook" : MessageLookupByLibrary.simpleMessage("Buch ablegen"),
     "label_loading" : MessageLookupByLibrary.simpleMessage("Loading..."),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "label_server_unavailable" : MessageLookupByLibrary.simpleMessage("Server derzeit nicht erreichbar. Bitte versuche es später"),
     "label_signup_button" : MessageLookupByLibrary.simpleMessage("Signup"),
     "label_username" : MessageLookupByLibrary.simpleMessage("Nutzername"),
+    "label_view_books" : MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
     "title" : MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
   };
 }
