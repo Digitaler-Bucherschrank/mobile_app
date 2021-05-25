@@ -28,7 +28,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadBookCases();
   await SharedPrefs().init();
-  AuthenticationService();
+  //AuthenticationService();
 
   runApp(MyApp());
 

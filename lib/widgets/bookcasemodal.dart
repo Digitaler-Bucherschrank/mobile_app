@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl_utils/intl_utils.dart';
 
 import 'book_info.dart';
+import 'scanner/donatebook.dart';
 
 class BookCaseModal extends StatelessWidget {
   final BookCase bookcase;
@@ -14,7 +15,7 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 305,
+      height: 325,
       padding: EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,7 +57,17 @@ class BookCaseModal extends StatelessWidget {
             ],
           ),
           ElevatedButton(
-              child: const Text("Siehe Bücher"),
+              child: Text(S.of(context).label_donate_book),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          DonateWidget('${bookcase.iId!.oid}')),
+                );
+              }),
+          ElevatedButton(
+              child: Text(S.of(context).label_show_books),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -65,7 +76,7 @@ class BookCaseModal extends StatelessWidget {
                 );
               }),
           ElevatedButton(
-            child: const Text('Close BottomSheet'),
+            child: Text(S.of(context).label_close_sheet),
             onPressed: () => Navigator.pop(context),
           ),
         ],

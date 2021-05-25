@@ -5,7 +5,7 @@ import '../main.dart';
 import 'login/flutter_login.dart';
 
 class LoginScreen extends StatelessWidget {
-  final bool skipLogin = false;
+  final bool skipLogin = true;
 
   Future<String?> _authUser(LoginData data) async {
     print('Name: ${data.name}, Password: ${data.password}');
