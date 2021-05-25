@@ -48,13 +48,15 @@ Widget getScannerWidget(BuildContext context, Book _book,
                               print('old value of isbn before update: ' +
                                   _book.id!);
                             }
-                            _book.id = value;
-                            scannerText.text = _book.id!;
-                            print('updated isbn: ' + _book.id!);
-                            getInfo(_book.id).then((value) {
-                              txt.text = "${txt.text} ${value['name']}";
-                              print(txt.text);
-                            });
+                            if (value != "-1") {
+                              _book.id = value;
+                              scannerText.text = _book.id!;
+                              print('updated isbn: ' + _book.id!);
+                              getInfo(_book.id).then((value) {
+                                txt.text = "${txt.text} ${value['name']}";
+                                print(txt.text);
+                              });
+                            }
                           });
                         },
                       ),
@@ -115,7 +117,7 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
                     selectionHeightStyle: BoxHeightStyle.tight,
                     controller: txt,
                     decoration: InputDecoration(
-                      fillColor: Theme.of(context).cardColor,
+                      fillColor: Colors.transparent,
                       border: InputBorder.none,
                     ),
                   ),
@@ -132,7 +134,7 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
                   child: TextField(
                     controller: txt2,
                     decoration: InputDecoration(
-                      fillColor: Theme.of(context).cardColor,
+                      fillColor: Colors.transparent,
                       border: InputBorder.none,
                     ),
                   ),

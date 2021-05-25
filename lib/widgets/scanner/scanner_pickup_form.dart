@@ -117,7 +117,7 @@ class ContentWidgetState extends State<ContentWidget> {
   String markersId;
   ContentWidgetState(this.markersId);
 
-  Color _scannpageColor = Colors.black;
+  Color? _scannpageColor;
   Color? _inventorypageColor;
 
   @override
@@ -129,14 +129,16 @@ class ContentWidgetState extends State<ContentWidget> {
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.qr_code_scanner_sharp),
-              color: _scannpageColor,
+              color: _scannpageColor == null
+                  ? Theme.of(context).primaryColorLight
+                  : _scannpageColor,
               onPressed: () {
                 print("isbn");
                 print(selectedWidgetMarker);
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.isbn;
-                  _scannpageColor = Colors.black;
-                  _inventorypageColor = Theme.of(context).accentColor;
+                  _scannpageColor = Theme.of(context).primaryColorLight;
+                  _inventorypageColor = Theme.of(context).primaryColorDark;
                 });
                 print(selectedWidgetMarker);
               },
@@ -144,14 +146,14 @@ class ContentWidgetState extends State<ContentWidget> {
             IconButton(
               icon: Icon(Icons.inventory),
               color: _inventorypageColor == null
-                  ? Theme.of(context).accentColor
+                  ? Theme.of(context).primaryColorDark
                   : _inventorypageColor,
               onPressed: () {
                 print("Inventar");
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.iventory;
-                  _inventorypageColor = Colors.black;
-                  _scannpageColor = Theme.of(context).accentColor;
+                  _inventorypageColor = Theme.of(context).primaryColorLight;
+                  _scannpageColor = Theme.of(context).primaryColorDark;
                 });
               },
             ),

@@ -121,7 +121,7 @@ class ContentWidget extends StatefulWidget {
 class ContentWidgetState extends State<ContentWidget> {
   String markersId;
   ContentWidgetState(this.markersId);
-  Color _scannpageColor = Colors.black;
+  Color? _scannpageColor;
   Color? _manualpageColor;
   Color? _inventorypageColor;
 
@@ -134,15 +134,17 @@ class ContentWidgetState extends State<ContentWidget> {
           children: <Widget>[
             IconButton(
               icon: Icon(Icons.qr_code_scanner_sharp),
-              color: _scannpageColor,
+              color: _scannpageColor == null
+                  ? Theme.of(context).primaryColorLight
+                  : _scannpageColor,
               onPressed: () {
                 print("isbn");
                 print(selectedWidgetMarker);
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.isbn;
-                  _manualpageColor = Theme.of(context).accentColor;
-                  _scannpageColor = Colors.black;
-                  _inventorypageColor = Theme.of(context).accentColor;
+                  _manualpageColor = Theme.of(context).primaryColorDark;
+                  _scannpageColor = Theme.of(context).primaryColorLight;
+                  _inventorypageColor = Theme.of(context).primaryColorDark;
                 });
                 print(selectedWidgetMarker);
               },
@@ -156,10 +158,9 @@ class ContentWidgetState extends State<ContentWidget> {
                 print("manuell");
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.manuelly;
-
-                  _scannpageColor = Theme.of(context).accentColor;
-                  _manualpageColor = Colors.black;
-                  _inventorypageColor = Theme.of(context).accentColor;
+                  _scannpageColor = Theme.of(context).primaryColorDark;
+                  _manualpageColor = Theme.of(context).primaryColorLight;
+                  _inventorypageColor = Theme.of(context).primaryColorDark;
                 });
               },
             ),
@@ -172,9 +173,9 @@ class ContentWidgetState extends State<ContentWidget> {
                 print("Inventar");
                 setState(() {
                   selectedWidgetMarker = WidgetMarker.iventory;
-                  _inventorypageColor = Colors.black;
-                  _scannpageColor = Theme.of(context).accentColor;
-                  _manualpageColor = Theme.of(context).accentColor;
+                  _inventorypageColor = Theme.of(context).primaryColorLight;
+                  _scannpageColor = Theme.of(context).primaryColorDark;
+                  _manualpageColor = Theme.of(context).primaryColorDark;
                 });
               },
             ),
