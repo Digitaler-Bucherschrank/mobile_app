@@ -7,9 +7,10 @@ class LocationProvider {
   // ignore: close_sinks
   static var _streamProvider = BehaviorSubject<LocationData>();
 
-  static updateLocation(LocationData l){
+  static updateLocation(LocationData l) {
     _streamProvider.add(l);
   }
+
   static Future<LocationData> getLocation() async {
     ValueStream<LocationData> _currentLocation = _streamProvider.stream;
 

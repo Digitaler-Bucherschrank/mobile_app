@@ -7,13 +7,14 @@ class Book {
   String? thumbnail;
   BookData? bookData;
 
-  Book({this.id,
-        this.googleBooksID,
-        this.author,
-        this.title,
-        this.location,
-        this.thumbnail,
-        this.bookData});
+  Book(
+      {this.id,
+      this.googleBooksID,
+      this.author,
+      this.title,
+      this.location,
+      this.thumbnail,
+      this.bookData});
 
   Book.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -89,22 +90,22 @@ class VolumeInfo {
 
   VolumeInfo(
       {this.title,
-        this.subtitle,
-        this.authors,
-        this.publisher,
-        this.publishedDate,
-        this.description,
-        this.pageCount,
-        this.mainCategory,
-        this.categories,
-        this.averageRating,
-        this.ratingsCount,
-        this.contentVersion,
-        this.imageLinks,
-        this.language,
-        this.previewLink,
-        this.infoLink,
-        this.canonicalVolumeLink});
+      this.subtitle,
+      this.authors,
+      this.publisher,
+      this.publishedDate,
+      this.description,
+      this.pageCount,
+      this.mainCategory,
+      this.categories,
+      this.averageRating,
+      this.ratingsCount,
+      this.contentVersion,
+      this.imageLinks,
+      this.language,
+      this.previewLink,
+      this.infoLink,
+      this.canonicalVolumeLink});
 
   VolumeInfo.fromJson(Map<String, dynamic> json) {
     title = json['title'];

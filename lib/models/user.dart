@@ -9,7 +9,7 @@ class User {
     id = json['id'];
     username = json['username'];
     tokens =
-    json['tokens'] != null ? new Tokens.fromJson(json['tokens']) : null;
+        json['tokens'] != null ? new Tokens.fromJson(json['tokens']) : null;
   }
 
   Map<String, dynamic> toJson() {

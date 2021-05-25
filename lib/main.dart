@@ -1,8 +1,11 @@
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
+// ignore: unused_import
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+// ignore: unused_import
 import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
@@ -16,6 +19,8 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+// ignore: unused_import
+import 'config.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
 
@@ -27,18 +32,12 @@ Future<void> main() async {
 
   runApp(MyApp());
 
-
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp
-  ]);
-
-
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   var location = new Location();
 
-  location.onLocationChanged.listen((l) => {
-    LocationProvider.updateLocation(l)
-  });
+  location.onLocationChanged
+      .listen((l) => {LocationProvider.updateLocation(l)});
 }
 
 class MyApp extends StatelessWidget {
@@ -88,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _getLocationPermission() async {
     var location = new Location();
     try {
+      // ignore: unused_local_variable
       var perm = location.requestPermission();
     } on Exception catch (_) {
       print('There was a problem allowing location access');
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
@@ -113,32 +113,39 @@ class _MyHomePageState extends State<MyHomePage> {
                         offset: Offset(0, 3), // changes position of shadow
                       ),
                     ],
-                  color: Theme.of(context).cardColor,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
                       topRight: Radius.circular(10.0),
-                    )
-                ),
+                    )),
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 12),
                     Container(
                       height: 5,
                       width: 30,
-                      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(16)),
+                      decoration: BoxDecoration(
+                          color: Color(200),
+                          borderRadius: BorderRadius.circular(16)),
                     ),
                     SizedBox(height: 8),
                     Row(
                       children: <Widget>[
-                        SizedBox(width: 20,),
-                        Text("Digitaler Bücherschrank", style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),)
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Digitaler Bücherschrank",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        )
                       ],
                     ),
                     SizedBox(height: 16)
-
                   ],
-                )
-            ),
+                )),
             expandableContent: Container(
               height: 500,
               color: Colors.green,

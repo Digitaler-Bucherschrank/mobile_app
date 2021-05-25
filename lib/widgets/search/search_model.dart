@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import '../../utils/utils.dart';
 
 class SearchModel extends ChangeNotifier {
-  SearchModel(){
+  SearchModel() {
     loadSuggestions();
   }
 
@@ -15,7 +15,7 @@ class SearchModel extends ChangeNotifier {
 
   Completer _history = new Completer<List<BookCase>>();
   List<BookCase> _suggestions = [];
-  List<BookCase> get suggestions =>  _suggestions;
+  List<BookCase> get suggestions => _suggestions;
 
   String _query = '';
   String get query => _query;
@@ -32,8 +32,9 @@ class SearchModel extends ChangeNotifier {
     } else {
       var bookCases = await getBookCases();
       var result = <BookCase>[];
-      for(var bookCase in bookCases){
-        if (Utilities.containsIgnoreCase(bookCase.title!, query) || Utilities.containsIgnoreCase(bookCase.address?? '', query)) {
+      for (var bookCase in bookCases) {
+        if (Utilities.containsIgnoreCase(bookCase.title!, query) ||
+            Utilities.containsIgnoreCase(bookCase.address ?? '', query)) {
           result.add(bookCase);
         }
       }
@@ -51,15 +52,16 @@ class SearchModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clear() async{
+  void clear() async {
     _suggestions = await _history.future;
     notifyListeners();
   }
 
+  // ignore: todo
   /// Either returns 5 random BookCases TODO: or the last 5 searched items
   void loadSuggestions() async {
+    // ignore: dead_code
     if (false /* insert history check*/) {
-
     } else {
       var bookCases = (await getBookCases());
       bookCases.shuffle();
