@@ -6,6 +6,8 @@
   "@error_invalid_username": {},
   "error_login_failed": "Einloggen fehlgeschlagen. Bitte versuch es erneut",
   "@error_login_failed": {},
+  "error_login_invalid_credentials": "Nutzername oder Passwort ungültig!",
+  "@error_login_invalid_credentials": {},
   "error_mail_taken": "Email wird bereits verwendet.",
   "@error_mail_taken": {},
   "error_username_taken": "Nutzername wird bereits verwendet",
@@ -18,6 +20,8 @@
   "@label_bookinfo": {},
   "label_borrowbook": "Buch mitnehmen",
   "@label_borrowbook": {},
+  "label_close_sheet": "Schließen",
+  "@label_close_sheet": {},
   "label_confirm_pw": "Password bestätigen",
   "@label_confirm_pw": {},
   "label_dropbook": "Buch ablegen",
@@ -70,6 +74,8 @@
   "@label_signup_button": {},
   "label_username": "Nutzername",
   "@label_username": {},
+  "label_view_books": "Siehe Bücher",
+  "@label_view_books": {},
   "title": "Digitaler Bücherschrank",
   "@title": {}
 }

@@ -1,6 +1,6 @@
 class Book {
   String? id;
-  String? googleBooksID;
+  String? isbn;
   String? author;
   String? title;
   String? location;
@@ -8,18 +8,18 @@ class Book {
   BookData? bookData;
 
   Book({this.id,
-        this.googleBooksID,
         this.author,
+        this.isbn,
         this.title,
         this.location,
         this.thumbnail,
         this.bookData});
 
   Book.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    googleBooksID = json['googleBooksID'];
+    id = json['_id'];
     author = json['author'];
     title = json['title'];
+    isbn = json['isbn'];
     location = json['location'];
     thumbnail = json['thumbnail'];
     bookData = json['bookData'] != null
@@ -29,15 +29,41 @@ class Book {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['googleBooksID'] = this.googleBooksID;
+    data['_id'] = this.id;
     data['author'] = this.author;
     data['title'] = this.title;
+    data['isbn'] = this.isbn;
     data['location'] = this.location;
     data['thumbnail'] = this.thumbnail;
     if (this.bookData != null) {
       data['bookData'] = this.bookData!.toJson();
     }
+    return data;
+  }
+}
+
+class ManualBookData {
+  String? description;
+  String? publisher;
+  String? publishedDate;
+  String? language;
+
+  ManualBookData({this.description, this.publisher, this.publishedDate, this.language});
+
+  ManualBookData.fromJson(Map<String, dynamic> json) {
+    description = json['description'];
+    publisher = json['publisher'];
+    publishedDate = json['publishedDate'];
+    language = json['language'];
+  }
+
+  Map<String, String> toJson() {
+    final Map<String, String> data = new Map<String, String>();
+    data['description'] = this.description!;
+    data['publisher'] = this.publisher!;
+    data['publishedDate'] = this.publishedDate!;
+    data['language'] = this.language!;
+
     return data;
   }
 }

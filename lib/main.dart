@@ -12,10 +12,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
 
@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
      return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
           ExpandableBottomSheet(
             background: GMap(),
@@ -129,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Row(
                       children: <Widget>[
                         SizedBox(width: 20,),
-                        Text("Digitaler Bücherschrank", style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),)
+                        Text(S.current.title, style: Theme.of(context).textTheme.headline6!.copyWith(fontWeight: FontWeight.bold),)
                       ],
                     ),
                     SizedBox(height: 16)

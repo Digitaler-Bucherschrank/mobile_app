@@ -77,6 +77,16 @@ class S {
     );
   }
 
+  /// `Nutzername oder Passwort ungültig!`
+  String get error_login_invalid_credentials {
+    return Intl.message(
+      'Nutzername oder Passwort ungültig!',
+      name: 'error_login_invalid_credentials',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email wird bereits verwendet.`
   String get error_mail_taken {
     return Intl.message(
@@ -132,6 +142,16 @@ class S {
     return Intl.message(
       'Buch mitnehmen',
       name: 'label_borrowbook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Schließen`
+  String get label_close_sheet {
+    return Intl.message(
+      'Schließen',
+      name: 'label_close_sheet',
       desc: '',
       args: [],
     );
@@ -392,6 +412,16 @@ class S {
     return Intl.message(
       'Nutzername',
       name: 'label_username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Siehe Bücher`
+  String get label_view_books {
+    return Intl.message(
+      'Siehe Bücher',
+      name: 'label_view_books',
       desc: '',
       args: [],
     );

@@ -57,10 +57,14 @@ dependencies:
   path_provider: ^2.0.1
   uuid: ^3.0.4
   restart_app: ^1.0.3
-  json_annotation: ^4.0.1
-  flutter_bcrypt:
+  dio: ^4.0.0
+  dio_retry:
     git:
-      url: https://github.com/flawnn/flutter_bcrypt.git
+      url: https://github.com/Golapadeog/dio_retry.git
+      path: dio_retry
+      ref: null-safety-migration
+  json_annotation: ^4.0.1
+  flutter_bcrypt: ^1.0.6
   streaming_shared_preferences: ^2.0.0
   flutter_localizations:
     sdk: flutter

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
@@ -56,17 +57,18 @@ class _SearchState extends State<Search> {
 
     return Consumer<SearchModel>(
         builder: (context, model, _) => FloatingSearchBar(
-            hint: 'Search...',
+            hint: S.current.label_search,
+            implicitCurve: Curves.bounceInOut,
+            backgroundColor: Theme.of(context).cardColor,
             scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
             transitionDuration: const Duration(milliseconds: 400),
             transitionCurve: Curves.easeInOut,
             physics: const BouncingScrollPhysics(),
             axisAlignment: isPortrait ? 0.0 : -1.0,
-            backgroundColor: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(12),
             openAxisAlignment: 0.0,
             isScrollControlled: false,
             elevation: 100,
-            automaticallyImplyDrawerHamburger: true,
             width: isPortrait ? 600 : 500,
             progress: model.isLoading,
             debounceDelay: const Duration(milliseconds: 500),

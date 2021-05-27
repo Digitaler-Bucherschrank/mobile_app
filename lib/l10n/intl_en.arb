@@ -6,6 +6,8 @@
   "@error_invalid_username": {},
   "error_login_failed": "Login failed. Please try again",
   "@error_login_failed": {},
+  "error_login_invalid_credentials": "Username or Password invalid!",
+  "@error_login_invalid_credentials": {},
   "error_mail_taken": "Email already used by another user.\n",
   "@error_mail_taken": {},
   "error_username_taken": "Username already taken",
@@ -18,6 +20,8 @@
   "@label_bookinfo": {},
   "label_borrowbook": "Take Book",
   "@label_borrowbook": {},
+  "label_close_sheet": "Close",
+  "@label_close_sheet": {},
   "label_confirm_pw": "Confirm Password",
   "@label_confirm_pw": {},
   "label_dropbook": "Return Book",
@@ -70,6 +74,8 @@
   "@label_signup_button": {},
   "label_username": "Username",
   "@label_username": {},
+  "label_view_books": "Show books",
+  "@label_view_books": {},
   "title": "Digital Bookcase",
   "@title": {}
 }
