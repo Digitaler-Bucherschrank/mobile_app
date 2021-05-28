@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
@@ -76,11 +79,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late StreamSubscription<ConnectivityResult> subscription;
+
   @override
   void initState() {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setHighRefreshRate();
+
+    // Show the user a dialog if offline and warning about limited functionality
+    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+      if(result == ConnectivityResult.none){
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(S.current.error_connectivity_title),
+              content: Text(S.current.error_connectivity_desc),
+              actions: [
+                TextButton(
+                  child: Text(S.current.dialog_ok_button),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   void _getLocationPermission() async {
@@ -89,6 +117,14 @@ class _MyHomePageState extends State<MyHomePage> {
       var perm = location.requestPermission();
     } on Exception catch (_) {
       print('There was a problem allowing location access');
+    }
+
+    // Be sure to cancel subscription after you are done
+    @override
+    dispose() {
+      super.dispose();
+
+      subscription.cancel();
     }
   }
 

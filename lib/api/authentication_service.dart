@@ -37,6 +37,7 @@ class AuthenticationService {
                 retries: 3, // Number of retries before a failure
                 retryInterval: const Duration(seconds: 1), // Interval between each retry
                 retryEvaluator: (error) async {
+                    // TODO: Show user the server is unavailable
                     if(error.type != DioErrorType.cancel && error.type != DioErrorType.response){
                         return true;
                     } else {
