@@ -379,6 +379,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
 
   final _passwordFocusNode = FocusNode();
   final _confirmPasswordFocusNode = FocusNode();
+  final _EmailNode = FocusNode();
 
   TextEditingController? _nameController;
   TextEditingController? _passController;
@@ -510,13 +511,14 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
 
     if (auth.isLogin) {
       error = await auth.onLogin!(LoginData(
-        name: auth.email,
+        name: auth.username,
         password: auth.password,
       ));
     } else {
       error = await auth.onSignup!(LoginData(
-        name: auth.email,
+        name: auth.username,
         password: auth.password,
+        email: auth.email
       ));
     }
 
@@ -629,7 +631,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
         FocusScope.of(context).requestFocus(_passwordFocusNode);
       },
       validator: widget.userValidator,
-      onSaved: (value) => auth.email = value!,
+      onSaved: (value) => auth.username = value!,
     );
   }
 
@@ -670,7 +672,9 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       controller: _confirmPassController,
       textInputAction: TextInputAction.done,
       focusNode: _confirmPasswordFocusNode,
-      onFieldSubmitted: (value) => _submit(),
+      onFieldSubmitted: (value) {
+        FocusScope.of(context).requestFocus(_EmailNode);
+      },
       validator: auth.isSignup
           ? (value) {
               if (value != _passController!.text) {
@@ -680,6 +684,36 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             }
           : (value) => null,
       onSaved: (value) => auth.confirmPassword = value!,
+    );
+  }
+
+  Widget _buildEmailField(
+      double width, LoginMessages messages, Auth auth) {
+    return AnimatedTextFormField(
+     // animatedWidth: width,
+      width: width,
+      enabled: auth.isSignup,
+      loadingController: _loadingController,
+      inertiaController: _postSwitchAuthController,
+      inertiaDirection: TextFieldInertiaDirection.right,
+      prefixIcon: Icon(FontAwesomeIcons.envelope),
+      labelText: messages.mailHint,
+      textInputAction: TextInputAction.done,
+      focusNode: _EmailNode,
+      onFieldSubmitted: (value) => _submit(),
+      onSaved: (value) => auth.email = value!,
+    );
+  }
+
+  Widget _buildSignUpFields(
+      double width, LoginMessages messages, Auth auth) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildConfirmPasswordField(width, messages, auth),
+        SizedBox(height: 20),
+        _buildEmailField(width, messages, auth)
+      ],
     );
   }
 
@@ -814,7 +848,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
               vertical: 10,
             ),
             onExpandCompleted: () => _postSwitchAuthController.forward(),
-            child: _buildConfirmPasswordField(textFieldWidth, messages, auth),
+            child: _buildSignUpFields(textFieldWidth, messages, auth),
           ),
           Container(
             padding: Paddings.fromRBL(cardPadding),

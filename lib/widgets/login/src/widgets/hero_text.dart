@@ -154,7 +154,7 @@ class HeroText extends StatelessWidget {
     this.textAlign = TextAlign.center,
     this.textDirection,
     this.textScaleFactor,
-    this.maxLines = 1,
+    this.maxLines = 2,
     this.locale,
     this.strutStyle,
   })  : assert(

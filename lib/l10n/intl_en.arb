@@ -1,5 +1,11 @@
 {
   "@@locale": "en",
+  "dialog_ok_button": "Alright",
+  "@dialog_ok_button": {},
+  "error_connectivity_desc": "Enable connectivity on your device to ensure full functionality of the app.",
+  "@error_connectivity_desc": {},
+  "error_connectivity_title": "Limited Functionality",
+  "@error_connectivity_title": {},
   "error_invalid_mail": "Email is invalid!",
   "@error_invalid_mail": {},
   "error_invalid_username": "Username contains invalid characters!",

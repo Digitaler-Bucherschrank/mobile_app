@@ -38,23 +38,7 @@ ThemeData darkThemeData() {
           topRight: Radius.circular(20.0),
         ),
       )),
+      inputDecorationTheme: InputDecorationTheme(),
       textTheme: GoogleFonts.notoSansTextTheme(
           new TextTheme(button: TextStyle(color: Colors.black))));
-  // ignore: dead_code
-  return ThemeData(
-      colorScheme: new ColorScheme.dark(
-        primary: Color(0xFF1890C9),
-        secondary: Color(0xFF423C3A),
-      ),
-      textTheme: GoogleFonts.notoSansTextTheme(
-          new TextTheme(button: TextStyle(color: Colors.black))),
-      bottomSheetTheme: new BottomSheetThemeData(
-          shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-      )),
-      brightness: Brightness.dark,
-      shadowColor: Colors.transparent);
 }

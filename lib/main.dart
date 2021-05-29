@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 // ignore: unused_import
 import 'package:digitaler_buecherschrank/api/api_service.dart';
@@ -15,12 +18,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 // ignore: unused_import
 import 'config.dart';
+import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
 
@@ -60,9 +63,7 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: Phoenix(
-        child: isLoggedIn ? MyHomePage() : LoginScreen(),
-      ),
+      home: isLoggedIn ? MyHomePage() : LoginScreen(),
     );
   }
 }
@@ -77,11 +78,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late StreamSubscription<ConnectivityResult> subscription;
+
   @override
   void initState() {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setHighRefreshRate();
+
+    // Show the user a dialog if offline and warning about limited functionality
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(S.current.error_connectivity_title),
+              content: Text(S.current.error_connectivity_desc),
+              actions: [
+                TextButton(
+                  child: Text(S.current.dialog_ok_button),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   void _getLocationPermission() async {
@@ -92,6 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } on Exception catch (_) {
       print('There was a problem allowing location access');
     }
+
+    // Be sure to cancel subscription after you are done
+    @override
+    dispose() {
+      super.dispose();
+
+      subscription.cancel();
+    }
   }
 
   @override
@@ -99,6 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
           ExpandableBottomSheet(
             background: GMap(),
@@ -135,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: 20,
                         ),
                         Text(
-                          "Digitaler Bücherschrank",
+                          S.current.title,
                           style: Theme.of(context)
                               .textTheme
                               .headline6!

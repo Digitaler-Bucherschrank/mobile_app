@@ -20,7 +20,12 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+  static _notInlinedMessages(_) => <String, Function>{
+        "dialog_ok_button": MessageLookupByLibrary.simpleMessage("Alles klar"),
+        "error_connectivity_desc": MessageLookupByLibrary.simpleMessage(
+            "Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können."),
+        "error_connectivity_title":
+            MessageLookupByLibrary.simpleMessage("Limitierte Funktionen"),
         "error_invalid_mail":
             MessageLookupByLibrary.simpleMessage("Email ist ungültig!"),
         "error_invalid_username": MessageLookupByLibrary.simpleMessage(

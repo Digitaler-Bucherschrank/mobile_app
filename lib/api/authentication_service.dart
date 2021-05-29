@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:digitaler_buecherschrank/config.dart';
@@ -6,13 +5,15 @@ import 'package:digitaler_buecherschrank/main.dart';
 import 'package:digitaler_buecherschrank/models/user.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'package:http/retry.dart';
+import 'package:dio/dio.dart';
+import 'package:dio_retry/dio_retry.dart';
+import 'package:flutter_bcrypt/flutter_bcrypt.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 
+// TODO: transition
 class AuthenticationService {
-  late User _user;
+    final Dio client = Dio();
+    late User _user;
 
   User get user => this._user;
 
@@ -23,29 +24,36 @@ class AuthenticationService {
     return _instance;
   }
 
-  final client = RetryClient(http.Client(), when: (BaseResponse res) {
-    switch (res.statusCode) {
-      case (401):
-        {
-          return false;
-        }
-      default:
-        {
-          return true;
-        }
-    }
-  });
+    // checks if Tokens are still up to date
+    AuthenticationService._internal(){
+        client.options.baseUrl = CONFIG.API_HOST;
+        client.options.responseType = ResponseType.json;
 
-  // Mechanism returning the tokens if these are valid else logs out the user
-  Tokens? getTokens() {
-    if (Jwt.isExpired(_user.tokens!.accessToken!.token!)) {
-      refreshTokens().then((value) {
-        if (value is Tokens) {
-          _user.tokens = value;
-          SharedPrefs().user = _user;
-          return value;
-        } else if (value == null) {
-          logout();
+            client.interceptors.add(RetryInterceptor(
+            options: RetryOptions(
+                retries: 3, // Number of retries before a failure
+                retryInterval: const Duration(seconds: 1), // Interval between each retry
+                retryEvaluator: (error) async {
+                    // TODO: Show user the server is unavailable
+                    if(error.type != DioErrorType.cancel && error.type != DioErrorType.response){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
+            ), dio: client
+        ));
+
+        this._user = SharedPrefs().user;
+
+        if(_user.tokens?.accessToken != null && _user.tokens?.refreshToken != null){
+            if(Jwt.isExpired(_user.tokens?.accessToken?.token ?? "")){
+                if(Jwt.isExpired(_user.tokens?.refreshToken?.token ?? "")){
+                    logout();
+                } else {
+                    refreshTokens();
+                }
+            }
         } else {
           // Logic for showing the user that the server is temporarily offline
         }
@@ -53,56 +61,33 @@ class AuthenticationService {
     } else {
       return _user.tokens!;
     }
-  }
 
-  AuthenticationService._internal() {
-    this._user = SharedPrefs().user;
+    /// Status codes:
+    /// 201: Login successful
+    /// 400: client_id_already used (hence no further case differentation)
+    /// 401: Login failed
+    Future<bool?> login(String username, String password) async {
+        try {
+            var res = await client.post('/api/login', data: {
+                "username": username,
+                "password": password,
+                "client_id": SharedPrefs().clientId
+            });
 
-    if (Jwt.isExpired(_user.tokens!.accessToken!.token!)) {
-      refreshTokens().then((value) {
-        if (value is Tokens) {
-          _user.tokens = value;
-          SharedPrefs().user = _user;
-        } else if (value == null) {
-          logout();
-        } else {
-          // Logic for showing the user that the server is temporarily offline
-        }
-      });
-    }
-  }
-
-  Future<bool?> login(String username, String password) async {
-    final client = RetryClient(http.Client(), when: (BaseResponse res) {
-      switch (res.statusCode) {
-        case (401):
-          {
-            return false;
-          }
-        default:
-          {
+            var decodedUser = User.fromJson(res.data as Map<String, dynamic>);
+            _user = decodedUser;
+            SharedPrefs().user = decodedUser;
+            SharedPrefs().isLoggedIn = true;
             return true;
-          }
-      }
-    });
 
-    try {
-      var res = await client.post(Uri.https(CONFIG.API_HOST, 'login'),
-          body: {"username": username, "password": password});
-
-      if (res.statusCode != 401) {
-        var decodedUser = User.fromJson(jsonDecode(res.body));
-        _user = decodedUser;
-        SharedPrefs().user = decodedUser;
-      } else if (res.statusCode != 503) {
-        return false;
-      } else {
-        return null;
-      }
-    } catch (_) {
-      return false;
-    } finally {
-      client.close();
+        } on DioError catch (e) {
+            if (e.response!.statusCode == 400) {
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
+                return null;
+            } else if (e.response!.statusCode == 401) {
+                return false;
+            }
+        }
     }
   }
 
@@ -124,79 +109,88 @@ class AuthenticationService {
       }
     });
 
-    try {
-      var res = await client.post(Uri.https(CONFIG.API_HOST, 'refresh'),
-          headers: {
-            HttpHeaders.authorizationHeader:
-                "Bearer ${_user.tokens!.refreshToken!.token}"
-          });
+    Future<void> refreshTokens() async{
+        try {
+            var res = await client.post('/api/refresh', options: Options(headers: {
+                HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.refreshToken!.token}"
+            }));
 
-      if (res.statusCode == 200) {
-        return Tokens.fromJson(jsonDecode(res.body));
-      } else if (res.statusCode == 401) {
-        // Logout the User --> no specialized error handling needed
-        logout();
-        return null;
-      } else {
-        return 503;
-      }
-    } catch (_) {
-      return null;
-    } finally {
-      client.close();
+                var tokens = Tokens.fromJson(res.data);
+                if(tokens is Tokens) {
+                    _user.tokens = tokens;
+                    SharedPrefs().user = _user;
+                } else {
+                    logout();
+                }
+        } on DioError catch (e) {
+            if (e.response!.statusCode == 401) {
+                // Logout the User --> no specialized error handling needed
+                await logout();
+                return null;
+            } else {
+                // Logic for showing the user that the server is temporarily offline
+                return null;
+            }
+        }
     }
   }
 
-  /// returns a bool if logout was successfull
-  // ignore: todo
-  /// TODO: Send User to login screen
-  Future<bool?> logout() async {
-    final client = RetryClient(http.Client(), when: (BaseResponse res) {
-      switch (res.statusCode) {
-        case (200):
-          {
-            return false;
-          }
-        case (401):
-          {
-            return false;
-          }
-        // User already logged out
-        case (400):
-          {
-            return false;
-          }
-        default:
-          {
-            return true;
-          }
-      }
-    });
 
-    try {
-      var res = await client.post(Uri.https(CONFIG.API_HOST, 'logout'),
-          headers: {
-            HttpHeaders.authorizationHeader:
-                "Bearer ${_user.tokens!.accessToken!.token}"
+    Future<bool?> logout() async {
+        try {
+            var res = await client.post('/api/logout', options: Options(headers: {
+                HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.accessToken!.token}"
+            }));
+
+            Utilities.logoutUser(MyApp.globalKey.currentContext);
+        } on DioError catch (e) {
+            // Logout anyways also if there are other Errors
+            if (e.response!.statusCode == 401) {
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
+            }  else if(e.response!.statusCode == 400){
+                // Client already logged out
+                Utilities.logoutUser(MyApp.globalKey.currentContext);
+                return true;
+            } else if(e.response!.statusCode != 503) {
+                return false;
+            } else {
+                // Server unavailable - show maybe some dialogue?
+                return null;
+            }
+        }
+    }
+
+    ///
+    ///
+    Future<String?> signUp(String username, String password, String email) async {
+      var hashedPw = await FlutterBcrypt.hashPw(password: password, salt: await FlutterBcrypt.salt());
+      try {
+          var res = await client.post('/api/signup', data: {
+              "username": username,
+              "hash": hashedPw,
+              "mail": email,
           });
 
-      if (res.statusCode != 401) {
-        var decodedUser = User.fromJson(jsonDecode(res.body));
-        _user = decodedUser;
-        SharedPrefs().user = decodedUser;
-      } else if (res.statusCode != 503) {
-        return false;
-      } else if (res.statusCode == 400) {
-        // Client already logged out
-        return true;
-      } else {
-        // Server unavailable
-        return null;
+              // Try to login after sign-up
+              var loggedIn = await login(username, password);
+
+              if(loggedIn == null){
+                  return "login_failed";
+              } else if(loggedIn){
+                  return "logged_in";
+              } else {
+                  // TODO: Try to find a way to stop future chaining
+                  // this is basically dead code, i don't know yet how to avoid this being executed
+                  return "client_id_used";
+              }
+
+      } on DioError catch (e) {
+          if(e.response!.statusCode == 400) {
+              /// Return the servers error message to _authSignUp
+              return e.response!.data["message"];
+          } else if(e.response!.statusCode == 401){
+              return null;
+          }
       }
-    } catch (_) {
-      return false;
-    } finally {
-      client.close();
-    }
   }
 }
