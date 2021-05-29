@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Book {
   String? id;
   String? isbn;
@@ -5,12 +7,17 @@ class Book {
   String? title;
   String? location;
   String? thumbnail;
+  bool? addedManual;
+  ManualBookData? manualBookData;
+  // Nothing the Database would deliver when requesting a book, needs to be populated manually
   BookData? bookData;
 
   Book({this.id,
         this.author,
         this.isbn,
         this.title,
+        this.addedManual,
+        this.manualBookData,
         this.location,
         this.thumbnail,
         this.bookData});
@@ -19,11 +26,15 @@ class Book {
     id = json['_id'];
     author = json['author'];
     title = json['title'];
+    addedManual = json["addedmanual"];
     isbn = json['isbn'];
     location = json['location'];
     thumbnail = json['thumbnail'];
+    manualBookData = json['manualBookData'] != null
+        ? new ManualBookData.fromJson(json['manualBookData'])
+        : null;
     bookData = json['bookData'] != null
-        ? new BookData.fromJson(json['bookData'])
+        ? new BookData.fromJson(json['bookInfo'])
         : null;
   }
 
@@ -32,6 +43,10 @@ class Book {
     data['_id'] = this.id;
     data['author'] = this.author;
     data['title'] = this.title;
+    data['addedmanual'] = this.addedManual;
+    if (this.manualBookData != null) {
+      data['manualBookData'] = this.manualBookData!.toJson();
+    }
     data['isbn'] = this.isbn;
     data['location'] = this.location;
     data['thumbnail'] = this.thumbnail;
@@ -68,6 +83,7 @@ class ManualBookData {
   }
 }
 
+// Google Books API BookData
 class BookData {
   String? id;
   String? selfLink;

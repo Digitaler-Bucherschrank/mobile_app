@@ -169,7 +169,7 @@ class ApiService {
   }
 
   Future<bool> donateBook(Book book, bool manual, ManualBookData? data) async {
-    var params = {
+    Map<String, dynamic> params = {
       "isbn": book.isbn,
       "author": book.author,
       "title": book.title,
@@ -180,7 +180,7 @@ class ApiService {
 
     if(manual){
       params.addAll({
-      "bookInfo": data!.toString()
+      "manualBookData": data!.toJson()
       });
     }
 
@@ -194,7 +194,7 @@ class ApiService {
 
   }
 
-  Future<bool> borrowBook(Book book, bool manual) async {
+  Future<bool> borrowBook(Book book) async {
     var params = {
       "bookId": book.id,
       "location": book.location,
@@ -210,4 +210,22 @@ class ApiService {
     }
 
   }
+
+  Future<bool> returnBook(Book book, BookCase bookCase) async {
+    var params = {
+      "bookId": book.id,
+      "location": bookCase.iId!.oid,
+    };
+
+    try {
+      await client.post('/api/returnBook', data: params);
+
+      return true;
+    } on DioError catch (e) {
+      // Show user: "Please try again later" and refresh the List to fix up some issues with not being synced to the server
+      return false;
+    }
+
+  }
+
 }

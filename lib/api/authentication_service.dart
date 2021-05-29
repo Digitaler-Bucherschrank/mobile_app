@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:digitaler_buecherschrank/config.dart';
@@ -9,9 +8,6 @@ import 'package:digitaler_buecherschrank/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_retry/dio_retry.dart';
 import 'package:flutter_bcrypt/flutter_bcrypt.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'package:http/retry.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 
 // TODO: transition
