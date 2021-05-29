@@ -24,14 +24,12 @@ class User {
 }
 
 class Tokens {
-  String? client;
   AccessToken? accessToken;
   RefreshToken? refreshToken;
 
-  Tokens({this.client, this.accessToken, this.refreshToken});
+  Tokens({ this.accessToken, this.refreshToken});
 
   Tokens.fromJson(Map<String, dynamic> json) {
-    client = json['client'];
     accessToken = json['accessToken'] != null
         ? new AccessToken.fromJson(json['accessToken'])
         : null;
@@ -42,7 +40,6 @@ class Tokens {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['client'] = this.client;
     if (this.accessToken != null) {
       data['accessToken'] = this.accessToken!.toJson();
     }
@@ -55,32 +52,38 @@ class Tokens {
 
 class AccessToken {
   String? token;
+  int? iat;
 
-  AccessToken({this.token});
+  AccessToken({this.token, this.iat});
 
   AccessToken.fromJson(Map<String, dynamic> json) {
     token = json['token'];
+    iat = json['iat'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['token'] = this.token;
+    data['iat'] = this.iat;
     return data;
   }
 }
 
 class RefreshToken {
   String? token;
+  int? iat;
 
-  RefreshToken({this.token});
+  RefreshToken({this.token, this.iat});
 
   RefreshToken.fromJson(Map<String, dynamic> json) {
     token = json['token'];
+    iat = json['iat'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['token'] = this.token;
+    data['iat'] = this.iat;
     return data;
   }
 }

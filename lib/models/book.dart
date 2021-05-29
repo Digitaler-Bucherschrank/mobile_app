@@ -1,39 +1,54 @@
+import 'dart:convert';
+
 class Book {
   String? id;
-  String? googleBooksID;
+  String? isbn;
   String? author;
   String? title;
   String? location;
   String? thumbnail;
+  bool? addedManual;
+  ManualBookData? manualBookData;
+  // Nothing the Database would deliver when requesting a book, needs to be populated manually
   BookData? bookData;
 
   Book(
       {this.id,
-      this.googleBooksID,
       this.author,
+      this.isbn,
       this.title,
+      this.addedManual,
+      this.manualBookData,
       this.location,
       this.thumbnail,
       this.bookData});
 
   Book.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    googleBooksID = json['googleBooksID'];
+    id = json['_id'];
     author = json['author'];
     title = json['title'];
+    addedManual = json["addedmanual"];
+    isbn = json['isbn'];
     location = json['location'];
     thumbnail = json['thumbnail'];
+    manualBookData = json['manualBookData'] != null
+        ? new ManualBookData.fromJson(json['manualBookData'])
+        : null;
     bookData = json['bookData'] != null
-        ? new BookData.fromJson(json['bookData'])
+        ? new BookData.fromJson(json['bookInfo'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['googleBooksID'] = this.googleBooksID;
+    data['_id'] = this.id;
     data['author'] = this.author;
     data['title'] = this.title;
+    data['addedmanual'] = this.addedManual;
+    if (this.manualBookData != null) {
+      data['manualBookData'] = this.manualBookData!.toJson();
+    }
+    data['isbn'] = this.isbn;
     data['location'] = this.location;
     data['thumbnail'] = this.thumbnail;
     if (this.bookData != null) {
@@ -43,6 +58,34 @@ class Book {
   }
 }
 
+class ManualBookData {
+  String? description;
+  String? publisher;
+  String? publishedDate;
+  String? language;
+
+  ManualBookData(
+      {this.description, this.publisher, this.publishedDate, this.language});
+
+  ManualBookData.fromJson(Map<String, dynamic> json) {
+    description = json['description'];
+    publisher = json['publisher'];
+    publishedDate = json['publishedDate'];
+    language = json['language'];
+  }
+
+  Map<String, String> toJson() {
+    final Map<String, String> data = new Map<String, String>();
+    data['description'] = this.description!;
+    data['publisher'] = this.publisher!;
+    data['publishedDate'] = this.publishedDate!;
+    data['language'] = this.language!;
+
+    return data;
+  }
+}
+
+// Google Books API BookData
 class BookData {
   String? id;
   String? selfLink;

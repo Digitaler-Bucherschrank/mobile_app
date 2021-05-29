@@ -1,5 +1,7 @@
-// ignore: unused_import
-import 'package:digitaler_buecherschrank/api/api_service.dart';
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
@@ -17,16 +19,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
-// ignore: unused_import
-import 'config.dart';
+import 'api/api_service.dart';
 import 'models/book_case.dart';
-import 'widgets/drawer.dart';
 import 'widgets/gmap.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadBookCases();
   await SharedPrefs().init();
+  AuthenticationService();
 
   runApp(MyApp());
 
@@ -39,21 +40,27 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  static GlobalKey<NavigatorState> globalKey = new GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    var isLoggedIn = SharedPrefs().isLoggedIn;
+
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: lightThemeData(),
-        darkTheme: darkThemeData(),
-        themeMode: ThemeMode.system,
-        localizationsDelegates: [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          S.delegate
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        home: MyHomePage());
+      debugShowCheckedModeBanner: false,
+      theme: lightThemeData(),
+      navigatorKey: globalKey,
+      darkTheme: darkThemeData(),
+      themeMode: ThemeMode.system,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        S.delegate
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      home: isLoggedIn ? MyHomePage() : LoginScreen(),
+    );
   }
 }
 
@@ -67,11 +74,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late StreamSubscription<ConnectivityResult> subscription;
+
   @override
   void initState() {
     super.initState();
     _getLocationPermission();
     FlutterDisplayMode.setHighRefreshRate();
+
+    // Show the user a dialog if offline and warning about limited functionality
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(S.current.error_connectivity_title),
+              content: Text(S.current.error_connectivity_desc),
+              actions: [
+                TextButton(
+                  child: Text(S.current.dialog_ok_button),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   void _getLocationPermission() async {
@@ -82,14 +116,22 @@ class _MyHomePageState extends State<MyHomePage> {
     } on Exception catch (_) {
       print('There was a problem allowing location access');
     }
+
+    // Be sure to cancel subscription after you are done
+    @override
+    dispose() {
+      super.dispose();
+
+      subscription.cancel();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      drawer: AppDrawer(),
       body: Stack(
+        fit: StackFit.expand,
         children: <Widget>[
           ExpandableBottomSheet(
             background: GMap(),
@@ -126,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: 20,
                         ),
                         Text(
-                          "Digitaler Bücherschrank",
+                          S.current.title,
                           style: Theme.of(context)
                               .textTheme
                               .headline6!
