@@ -50,6 +50,36 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Alles klar`
+  String get dialog_ok_button {
+    return Intl.message(
+      'Alles klar',
+      name: 'dialog_ok_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können.`
+  String get error_connectivity_desc {
+    return Intl.message(
+      'Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können.',
+      name: 'error_connectivity_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limitierte Funktionen`
+  String get error_connectivity_title {
+    return Intl.message(
+      'Limitierte Funktionen',
+      name: 'error_connectivity_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email ist ungültig!`
   String get error_invalid_mail {
     return Intl.message(
