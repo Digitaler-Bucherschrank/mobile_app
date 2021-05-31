@@ -2,9 +2,11 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../models/book.dart';
 import 'scanner_logic.dart';
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 
 Widget getManuellyWidget(BuildContext context) {
   TextEditingController scannerText = new TextEditingController();
+  ApiService apiService = new ApiService();
   Book _book = new Book();
   _book.bookData = new BookData();
   _book.bookData!.volumeInfo = new VolumeInfo();
@@ -17,6 +19,9 @@ Widget getManuellyWidget(BuildContext context) {
         elevation: 5,
         child: Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: 10)),
+            Text(S.of(context).label_scanner_manual_explanation,
+                style: Theme.of(context).textTheme.headline6),
             Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -161,11 +166,9 @@ Widget getManuellyWidget(BuildContext context) {
         style: Theme.of(context).outlinedButtonTheme.style,
         onPressed: () {
           print(_book);
-          //postBook(_book);
-          postIsbnAndSchrank(
-            _book.id,
-            _book.location,
-          );
+          apiService.donateBook(_book, false, null).then((value) {
+            print("donateBook: $value");
+          });
         },
         child: Text(
           S.of(context).label_scanner_confirm,

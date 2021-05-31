@@ -1,6 +1,7 @@
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import '../../models/book.dart';
 import 'modules/scanner_logic.dart';
 import 'modules/getManuellyWidget.dart';
@@ -8,7 +9,6 @@ import 'modules/getFrotpageModules.dart';
 
 enum WidgetMarker { isbn, manuelly }
 WidgetMarker selectedWidgetMarker = WidgetMarker.isbn;
-String from = "";
 
 class _GetISBNScannWidget extends StatefulWidget {
   final String markersId;
@@ -25,6 +25,9 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   TextEditingController txt2 = TextEditingController();
 
   Book _book = new Book();
+
+  ApiService apiService = new ApiService();
+
   @override
   void initState() {
     super.initState();
@@ -39,19 +42,16 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
       child: new Container(
         child: Column(
           children: [
-            getScannerWidget(context, _book, txt, txt2),
+            getScannerWidget(context, _book, txt, txt2, apiService),
             getBookinfo(context, txt, txt2),
             getBookcase(markersId),
-            GetFromWidget(from),
             ElevatedButton(
               style: Theme.of(context).outlinedButtonTheme.style,
-              onPressed: () {
+              onPressed: () async {
                 print(_book);
-                //postBook(_book);
-                postIsbnAndSchrank(
-                  _book.id,
-                  _book.location,
-                );
+                apiService.donateBook(_book, false, null).then((value) {
+                  print("donateBook: $value");
+                });
               },
               child: Text(S.of(context).label_scanner_confirm),
             ),

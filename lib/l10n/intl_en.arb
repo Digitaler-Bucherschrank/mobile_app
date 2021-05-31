@@ -60,6 +60,8 @@
   "@label_scanner_fromInventory": {},
   "label_scanner_fromWhere": "Where should the book be added from?",
   "@label_scanner_fromWhere": {},
+  "label_scanner_manual_explanation": "Enter the key data of the book!",
+  "@label_scanner_manual_explanation": {},
   "label_scanner_newBook": "Add new book",
   "@label_scanner_newBook": {},
   "label_scanner_notYourBook": "Not your Book? Scann the barcode again or enter the correct isbn.",

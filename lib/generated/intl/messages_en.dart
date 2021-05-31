@@ -70,6 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add book from inventory"),
         "label_scanner_fromWhere": MessageLookupByLibrary.simpleMessage(
             "Where should the book be added from?"),
+        "label_scanner_manual_explanation":
+            MessageLookupByLibrary.simpleMessage(
+                "Enter the key data of the book!"),
         "label_scanner_newBook":
             MessageLookupByLibrary.simpleMessage("Add new book"),
         "label_scanner_notYourBook": MessageLookupByLibrary.simpleMessage(

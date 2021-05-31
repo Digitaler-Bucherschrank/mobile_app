@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,12 @@ import '../../../models/book.dart';
 
 double cardBorderRadius = 20.0;
 
-Widget getScannerWidget(BuildContext context, Book _book,
-    TextEditingController txt, TextEditingController txt2) {
+Widget getScannerWidget(
+    BuildContext context,
+    Book _book,
+    TextEditingController txt,
+    TextEditingController txt2,
+    ApiService apiService) {
   TextEditingController scannerText = new TextEditingController();
   return Card(
     shape: RoundedRectangleBorder(
@@ -52,9 +57,11 @@ Widget getScannerWidget(BuildContext context, Book _book,
                               _book.id = value;
                               scannerText.text = _book.id!;
                               print('updated isbn: ' + _book.id!);
-                              getInfo(_book.id).then((value) {
-                                txt.text = "${txt.text} ${value['name']}";
+                              apiService.getBookData([_book]).then((value) {
+                                txt.text = "${txt.text} ${value[0].title}";
                                 print(txt.text);
+                                txt2.text = "${txt.text} ${value[0].author}";
+                                print(txt2.text);
                               });
                             }
                           });
@@ -66,16 +73,18 @@ Widget getScannerWidget(BuildContext context, Book _book,
                       ),
                     ),
                     onSubmitted: (String str) {
-                      getInfo(_book.id).then((value) {
-                        txt.text = "${txt.text} ${value['name']}";
-                        print(txt.text);
-                      });
-
-                      if (_book.id != null) {
-                        print('old value of isbn before update: ' + _book.id!);
+                      if (_book.isbn != null) {
+                        print(
+                            'old value of isbn before update: ' + _book.isbn!);
                       }
-                      _book.id = str;
-                      print('updated isbn: ' + _book.id!);
+                      _book.isbn = str;
+                      print('updated isbn: ' + _book.isbn!);
+                      apiService.getBookData([_book]).then((value) {
+                        txt.text = "${txt.text} ${value[0].title}";
+                        print(txt.text);
+                        txt2.text = "${txt.text} ${value[0].author}";
+                        print(txt2.text);
+                      });
                     },
                   ),
                 ),

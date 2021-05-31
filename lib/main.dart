@@ -31,7 +31,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadBookCases();
   await SharedPrefs().init();
-  //AuthenticationService();
+  print(SharedPrefs().user.tokens!.accessToken!.toJson().toString());
+  AuthenticationService();
 
   runApp(MyApp());
 

@@ -350,6 +350,16 @@ class S {
     );
   }
 
+  /// `Eckdaten des Buchs eingeben!`
+  String get label_scanner_manual_explanation {
+    return Intl.message(
+      'Eckdaten des Buchs eingeben!',
+      name: 'label_scanner_manual_explanation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Neues Buch ablegen`
   String get label_scanner_newBook {
     return Intl.message(

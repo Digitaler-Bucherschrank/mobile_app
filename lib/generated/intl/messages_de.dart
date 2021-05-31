@@ -71,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Buch aus Inventar ablegen"),
         "label_scanner_fromWhere": MessageLookupByLibrary.simpleMessage(
             "Von wo soll das Buch hinzugefügt werden?"),
+        "label_scanner_manual_explanation":
+            MessageLookupByLibrary.simpleMessage(
+                "Eckdaten des Buchs eingeben!"),
         "label_scanner_newBook":
             MessageLookupByLibrary.simpleMessage("Neues Buch ablegen"),
         "label_scanner_notYourBook": MessageLookupByLibrary.simpleMessage(
