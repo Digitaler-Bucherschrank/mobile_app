@@ -196,9 +196,10 @@ Widget getManuellyWidget(BuildContext context) {
         style: Theme.of(context).outlinedButtonTheme.style,
         onPressed: () {
           print(_book);
-          apiService.donateBook(_book, true, _manualBook).then((value) {
+          Navigator.pop(context);
+          /*apiService.donateBook(_book, true, _manualBook).then((value) {
             print("donateBook: $value");
-          });
+          });*/
         },
         child: Text(
           S.of(context).label_scanner_confirm,

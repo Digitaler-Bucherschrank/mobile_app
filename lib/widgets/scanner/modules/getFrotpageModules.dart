@@ -216,7 +216,7 @@ Widget getBookcase(String markersId) {
                                         Theme.of(context).textTheme.bodyText1,
                                   ),
                                   subtitle: Text(
-                                    "${S.of(context).label_scanner_distance}${snapshot.data[i].distance} km",
+                                    "${snapshot.data[i].address}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText2!

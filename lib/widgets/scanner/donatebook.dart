@@ -49,9 +49,10 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
               style: Theme.of(context).outlinedButtonTheme.style,
               onPressed: () async {
                 print(_book);
-                apiService.donateBook(_book, false, null).then((value) {
+                Navigator.pop(context);
+                /*apiService.donateBook(_book, false, null).then((value) {
                   print("donateBook: $value");
-                });
+                });*/
               },
               child: Text(S.of(context).label_scanner_confirm),
             ),
