@@ -30,32 +30,27 @@ class BookCaseModal extends StatelessWidget {
             ),
             subtitle: Text('${bookcase.address}'),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              ElevatedButton(
-                  child: Text(S.of(context).label_dropbook),
-                  onPressed: () {
-                    print('${bookcase.iId!.oid}');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ScannerDropForm('${bookcase.iId!.oid}')),
-                    );
-                  }),
-              ElevatedButton(
-                  child: Text(S.of(context).label_borrowbook),
-                  onPressed: () {
-                    print('${bookcase.iId!.oid}');
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                ScannerPickupForm('${bookcase.iId!.oid}')));
-                  }),
-            ],
-          ),
+          ElevatedButton(
+              child: Text(S.of(context).label_show_books),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ScannerPickupForm('${bookcase.iId!.oid}')),
+                );
+              }),
+          ElevatedButton(
+              child: Text(S.of(context).label_dropbook),
+              onPressed: () {
+                print('${bookcase.iId!.oid}');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ScannerDropForm('${bookcase.iId!.oid}')),
+                );
+              }),
           ElevatedButton(
               child: Text(S.of(context).label_donate_book),
               onPressed: () {
@@ -64,15 +59,6 @@ class BookCaseModal extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) =>
                           DonateWidget('${bookcase.iId!.oid}')),
-                );
-              }),
-          ElevatedButton(
-              child: Text(S.of(context).label_show_books),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => BookInfo('${bookcase.iId!.oid}')),
                 );
               }),
           ElevatedButton(

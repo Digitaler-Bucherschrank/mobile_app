@@ -21,7 +21,7 @@ class _ScannerDropFormState extends State<ScannerDropForm> {
         title: new Text(S.of(context).label_dropbook),
       ),
       body: SingleChildScrollView(
-        child: new Container(child: getInventoryWidget()),
+        child: new Container(child: getUserInventoryWidget()),
       ),
     );
   }

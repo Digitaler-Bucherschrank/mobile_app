@@ -158,12 +158,9 @@ class ApiService {
   }
 
   Future<Map<String, List<Book>>> getUserInventory(User user) async {
-    print("test1");
     var res = await client.get('/api/getUserInventory',
         options: Options(responseType: ResponseType.plain));
-    print("test2");
     var parsedInventory = await compute(Utilities.parseInventory, res.data);
-    print("test3");
 
     return parsedInventory;
   }

@@ -7,6 +7,7 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 Widget getManuellyWidget(BuildContext context) {
   TextEditingController scannerText = new TextEditingController();
   ApiService apiService = new ApiService();
+  ManualBookData _manualBook = new ManualBookData();
   Book _book = new Book();
   _book.bookData = new BookData();
   _book.bookData!.volumeInfo = new VolumeInfo();
@@ -59,24 +60,29 @@ Widget getManuellyWidget(BuildContext context) {
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
-            Container(
-              width: 300,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: S.of(context).label_scanner_title,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  fillColor: Theme.of(context).backgroundColor,
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(50.0),
-                    borderSide: new BorderSide(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 300,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: S.of(context).label_scanner_title,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 20),
+                      fillColor: Theme.of(context).backgroundColor,
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(50.0),
+                        borderSide: new BorderSide(),
+                      ),
+                    ),
+                    onSubmitted: (val) {
+                      _book.title = val;
+                      print(_book.title);
+                    },
                   ),
                 ),
-                onSubmitted: (val) {
-                  _book.title = val;
-                  print(_book.title);
-                },
-              ),
+              ],
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
@@ -115,6 +121,7 @@ Widget getManuellyWidget(BuildContext context) {
                 onSubmitted: (val) {
                   _book.bookData!.volumeInfo!.subtitle = val;
                   print(_book.bookData!.volumeInfo!.subtitle);
+                  _manualBook.description = val;
                 },
               ),
             ),
@@ -135,6 +142,7 @@ Widget getManuellyWidget(BuildContext context) {
                 onSubmitted: (val) {
                   _book.bookData!.volumeInfo!.publisher = val;
                   print(_book.bookData!.volumeInfo!.publisher);
+                  _manualBook.publisher = val;
                 },
               ),
             ),
@@ -155,6 +163,28 @@ Widget getManuellyWidget(BuildContext context) {
                 onSubmitted: (val) {
                   _book.bookData!.volumeInfo!.publishedDate = val;
                   print(_book.bookData!.volumeInfo!.publishedDate);
+                  _manualBook.publishedDate = val;
+                },
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(top: 5)),
+            Container(
+              width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Language",
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  fillColor: Theme.of(context).backgroundColor,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(50.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onSubmitted: (val) {
+                  _book.bookData!.volumeInfo!.language = val;
+                  print(_book.bookData!.volumeInfo!.publishedDate);
+                  _manualBook.language = val;
                 },
               ),
             ),
@@ -166,7 +196,7 @@ Widget getManuellyWidget(BuildContext context) {
         style: Theme.of(context).outlinedButtonTheme.style,
         onPressed: () {
           print(_book);
-          apiService.donateBook(_book, false, null).then((value) {
+          apiService.donateBook(_book, true, _manualBook).then((value) {
             print("donateBook: $value");
           });
         },

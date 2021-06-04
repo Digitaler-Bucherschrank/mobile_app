@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_donate_book":
             MessageLookupByLibrary.simpleMessage("Buch spenden"),
         "label_dropbook": MessageLookupByLibrary.simpleMessage("Buch ablegen"),
+        "label_empty_bookcase": MessageLookupByLibrary.simpleMessage(
+            "Inventar des Bücherschranks ist leer!"),
+        "label_empty_user":
+            MessageLookupByLibrary.simpleMessage("Ihr Inventar ist leer!"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Lade..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Anmelden"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),

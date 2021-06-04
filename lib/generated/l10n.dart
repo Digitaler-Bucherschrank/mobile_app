@@ -220,6 +220,26 @@ class S {
     );
   }
 
+  /// `Inventar des Bücherschranks ist leer!`
+  String get label_empty_bookcase {
+    return Intl.message(
+      'Inventar des Bücherschranks ist leer!',
+      name: 'label_empty_bookcase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ihr Inventar ist leer!`
+  String get label_empty_user {
+    return Intl.message(
+      'Ihr Inventar ist leer!',
+      name: 'label_empty_user',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lade...`
   String get label_loading {
     return Intl.message(
