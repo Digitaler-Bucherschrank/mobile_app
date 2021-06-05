@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 import '../../models/book.dart';
+// ignore: unused_import
 import 'modules/scanner_logic.dart';
 import 'modules/getManuellyWidget.dart';
 import 'modules/getFrotpageModules.dart';

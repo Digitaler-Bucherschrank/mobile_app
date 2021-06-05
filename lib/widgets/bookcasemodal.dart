@@ -5,6 +5,7 @@ import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dar
 import 'package:flutter/material.dart';
 // ignore: unused_import
 
+// ignore: unused_import
 import 'book_info.dart';
 import 'scanner/donatebook.dart';
 
@@ -15,7 +16,7 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 325,
+      height: 350,
       padding: EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

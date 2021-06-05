@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'dart:io';
-
 import 'package:digitaler_buecherschrank/config.dart';
 import 'package:digitaler_buecherschrank/main.dart';
 import 'package:digitaler_buecherschrank/models/user.dart';

@@ -16,8 +16,6 @@ import 'package:dio_retry/dio_retry.dart';
 import 'package:flutter/foundation.dart';
 import '../main.dart';
 
-import 'package:dio/dio.dart';
-
 class CustomInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {

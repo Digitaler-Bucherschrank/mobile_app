@@ -23,7 +23,6 @@ import 'package:provider/provider.dart';
 
 // ignore: unused_import
 import 'config.dart';
-import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
 
