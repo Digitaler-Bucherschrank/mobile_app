@@ -32,8 +32,7 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   @override
   void initState() {
     super.initState();
-    _book.bookData = new BookData();
-    _book.bookData!.volumeInfo = new VolumeInfo();
+    _book.bookData = new VolumeData();
     _book.location = markersId;
   }
 
@@ -44,16 +43,15 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
         child: Column(
           children: [
             getScannerWidget(context, _book, txt, txt2, apiService),
-            getBookinfo(context, txt, txt2),
             getBookcase(markersId),
             ElevatedButton(
               style: Theme.of(context).outlinedButtonTheme.style,
               onPressed: () async {
                 print(_book);
                 Navigator.pop(context);
-                /*apiService.donateBook(_book, false, null).then((value) {
+                apiService.donateBook(_book, false, null).then((value) {
                   print("donateBook: $value");
-                });*/
+                });
               },
               child: Text(S.of(context).label_scanner_confirm),
             ),

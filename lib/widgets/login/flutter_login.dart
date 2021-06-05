@@ -186,7 +186,6 @@ class __HeaderState extends State<_Header> {
         viewState: ViewState.enlarged,
       );
     } else if (!DartHelper.isNullOrEmpty(widget.title)) {
-      // ignore: non_constant_identifier_names
       double c_width = MediaQuery.of(context).size.width * 0.8;
 
       title = new Container(
@@ -204,7 +203,7 @@ class __HeaderState extends State<_Header> {
 
     return SafeArea(
       child: SizedBox(
-        height: (widget.height - MediaQuery.of(context).padding.top),
+        height: (widget.height - MediaQuery.of(context).padding.top + 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[

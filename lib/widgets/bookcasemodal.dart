@@ -16,7 +16,6 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
       padding: EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -24,12 +23,15 @@ class BookCaseModal extends StatelessWidget {
           ListTile(
             title: Text(
               '${bookcase.title}',
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18.0,
-              ),
+              style: Theme.of(context).textTheme.headline6,
             ),
-            subtitle: Text('${bookcase.address}'),
+            subtitle: Text(
+              '${bookcase.address}',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .copyWith(color: Colors.grey.shade600),
+            ),
           ),
           ElevatedButton(
               child: Text(S.of(context).label_show_books),
