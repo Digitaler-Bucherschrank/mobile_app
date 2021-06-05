@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
 
-import '../../models/book_case.dart';
+import '../../../models/book_case.dart';
 
 // Platform messages are asynchronous, so we initialize in an async method.
 Future scanBarcodeNormal() async {
@@ -77,31 +77,18 @@ setSchrank(String markersId, Map formular) {
 
 // ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
-  final formular;
   String markersId;
-  Schraenke(this.formular, this.markersId);
+  Schraenke(this.markersId);
 
   @override
-  _SchraenkeState createState() => _SchraenkeState(formular, markersId);
+  _SchraenkeState createState() => _SchraenkeState(markersId);
 }
 
 class _SchraenkeState extends State<Schraenke> {
   var result;
-  Map formular;
   int? selectedSchrank;
   String markersId;
-  _SchraenkeState(this.formular, this.markersId);
-
-  setSelectedSchrank(int val, String schrank) {
-    setState(() {
-      selectedSchrank = val;
-      formular.update('schrank', (v) {
-        print('old value of schrank before update: ' + v);
-        print('updated formular: ' + schrank);
-        return schrank;
-      });
-    });
-  }
+  _SchraenkeState(this.markersId);
 
   @override
   Widget build(BuildContext context) {
@@ -115,28 +102,6 @@ class _SchraenkeState extends State<Schraenke> {
                   child: Text("Loading..."),
                 ),
               );
-              /*} else if (markersId == "") {
-              return Container(
-                height: 400,
-                width: 300,
-                child: ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return RadioListTile(
-                      value: index,
-                      groupValue: selectedSchrank,
-                      title: Text(snapshot.data[index].title),
-                      subtitle: Container(
-                        child: Text("${snapshot.data[index].address}"),
-                      ),
-                      activeColor: Colors.blue,
-                      onChanged: (val) {
-                        setSelectedSchrank(val, snapshot.data[index].id);
-                      },
-                    );
-                  },
-                ),
-              );*/
             } else {
               print("snapshot.data.length ${snapshot.data.length}");
               print("markersId $markersId");
@@ -151,9 +116,7 @@ class _SchraenkeState extends State<Schraenke> {
                         height: 100,
                         width: 300,
                         child: ListTile(
-                          leading: Image(
-                            image: AssetImage('book_case.png'),
-                          ),
+                          leading: Image.asset("assets/icons/book_case.png"),
                           title: Text(snapshot.data[i].title),
                           subtitle: Container(
                             child: Column(

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
+// ignore: unused_import
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
@@ -20,6 +22,7 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 // ignore: unused_import
+import 'config.dart';
 import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';

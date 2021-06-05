@@ -10,7 +10,7 @@ import 'intl/messages_all.dart';
 
 // ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
 // ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
-// ignore_for_file: avoid_redundant_argument_values
+// ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
 class S {
   S();
@@ -18,28 +18,31 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       final instance = S();
       S._current = instance;
- 
+
       return instance;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -217,6 +220,26 @@ class S {
     );
   }
 
+  /// `Inventar des Bücherschranks ist leer!`
+  String get label_empty_bookcase {
+    return Intl.message(
+      'Inventar des Bücherschranks ist leer!',
+      name: 'label_empty_bookcase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ihr Inventar ist leer!`
+  String get label_empty_user {
+    return Intl.message(
+      'Ihr Inventar ist leer!',
+      name: 'label_empty_user',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lade...`
   String get label_loading {
     return Intl.message(
@@ -342,6 +365,16 @@ class S {
     return Intl.message(
       'Von wo soll das Buch hinzugefügt werden?',
       name: 'label_scanner_fromWhere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eckdaten des Buchs eingeben!`
+  String get label_scanner_manual_explanation {
+    return Intl.message(
+      'Eckdaten des Buchs eingeben!',
+      name: 'label_scanner_manual_explanation',
       desc: '',
       args: [],
     );
