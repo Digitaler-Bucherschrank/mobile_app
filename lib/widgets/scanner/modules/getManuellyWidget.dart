@@ -9,8 +9,7 @@ Widget getManuellyWidget(BuildContext context) {
   ApiService apiService = new ApiService();
   ManualBookData _manualBook = new ManualBookData();
   Book _book = new Book();
-  _book.bookData = new BookData();
-  _book.bookData!.volumeInfo = new VolumeInfo();
+  _book.bookData = new VolumeData();
   return Column(
     children: [
       Card(
@@ -119,8 +118,8 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.subtitle = val;
-                  print(_book.bookData!.volumeInfo!.subtitle);
+                  _book.bookData!.titleLong = val;
+                  print(_book.bookData!.titleLong);
                   _manualBook.description = val;
                 },
               ),
@@ -140,13 +139,14 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.publisher = val;
-                  print(_book.bookData!.volumeInfo!.publisher);
+                  _book.bookData!.publisher = val;
+                  print(_book.bookData!.publisher);
                   _manualBook.publisher = val;
                 },
               ),
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
+            // TODO: Natives Datumspicker verwenden ==> dann richtigen ISO String mitschicken
             Container(
               width: 300,
               child: TextField(
@@ -161,8 +161,8 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.publishedDate = val;
-                  print(_book.bookData!.volumeInfo!.publishedDate);
+                  _book.bookData!.datePublished = new DateTime.now();
+                  print(_book.bookData!.datePublished);
                   _manualBook.publishedDate = val;
                 },
               ),
@@ -182,8 +182,8 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.language = val;
-                  print(_book.bookData!.volumeInfo!.publishedDate);
+                  _book.bookData!.language = val;
+                  print(_book.bookData!.datePublished);
                   _manualBook.language = val;
                 },
               ),

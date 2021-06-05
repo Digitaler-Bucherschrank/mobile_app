@@ -10,7 +10,7 @@ class Book {
   bool? addedManual;
   ManualBookData? manualBookData;
   // Nothing the Database would deliver when requesting a book, needs to be populated manually
-  BookData? bookData;
+  VolumeData? bookData;
 
   Book(
       {this.id,
@@ -35,7 +35,7 @@ class Book {
         ? new ManualBookData.fromJson(json['manualBookData'])
         : null;
     bookData = json['bookData'] != null
-        ? new BookData.fromJson(json['bookInfo'])
+        ? new VolumeData.fromJson(json['bookInfo'])
         : null;
   }
 
@@ -85,136 +85,73 @@ class ManualBookData {
   }
 }
 
-// Google Books API BookData
-class BookData {
-  String? id;
-  String? selfLink;
-  VolumeInfo? volumeInfo;
-
-  BookData({this.id, this.selfLink, this.volumeInfo});
-
-  BookData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    selfLink = json['selfLink'];
-    volumeInfo = json['volumeInfo'] != null
-        ? new VolumeInfo.fromJson(json['volumeInfo'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['selfLink'] = this.selfLink;
-    if (this.volumeInfo != null) {
-      data['volumeInfo'] = this.volumeInfo!.toJson();
-    }
-    return data;
-  }
-}
-
-class VolumeInfo {
-  String? title;
-  String? subtitle;
-  List<dynamic>? authors;
+class VolumeData {
   String? publisher;
-  String? publishedDate;
-  String? description;
-  int? pageCount;
-  String? mainCategory;
-  List<dynamic>? categories;
-  int? averageRating;
-  int? ratingsCount;
-  String? contentVersion;
-  ImageLinks? imageLinks;
   String? language;
-  String? previewLink;
-  String? infoLink;
-  String? canonicalVolumeLink;
+  String? image;
+  String? titleLong;
+  String? dimensions;
+  DateTime? datePublished;
+  List<dynamic>? authors;
+  String? title;
+  String? isbn13;
+  String? msrp;
+  String? binding;
+  String? isbn;
 
-  VolumeInfo(
-      {this.title,
-      this.subtitle,
-      this.authors,
-      this.publisher,
-      this.publishedDate,
-      this.description,
-      this.pageCount,
-      this.mainCategory,
-      this.categories,
-      this.averageRating,
-      this.ratingsCount,
-      this.contentVersion,
-      this.imageLinks,
-      this.language,
-      this.previewLink,
-      this.infoLink,
-      this.canonicalVolumeLink});
+  VolumeData({
+    this.publisher,
+    this.language,
+    this.image,
+    this.titleLong,
+    this.dimensions,
+    this.datePublished,
+    this.authors,
+    this.title,
+    this.isbn13,
+    this.msrp,
+    this.binding,
+    this.isbn,
+  });
 
-  VolumeInfo.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    subtitle = json['subtitle'];
-    authors = json['authors'];
-    publisher = json['publisher'];
-    publishedDate = json['publishedDate'];
-    description = json['description'];
-    pageCount = json['pageCount'];
-    mainCategory = json['mainCategory'];
-    categories = json['categories'];
-    averageRating = json['averageRating'];
-    ratingsCount = json['ratingsCount'];
-    contentVersion = json['contentVersion'];
-    imageLinks = json['imageLinks'] != null
-        ? new ImageLinks.fromJson(json['imageLinks'])
-        : null;
-    language = json['language'];
-    previewLink = json['previewLink'];
-    infoLink = json['infoLink'];
-    canonicalVolumeLink = json['canonicalVolumeLink'];
+  @override
+  String toString() {
+    return 'VolumeData(publisher: $publisher, language: $language, image: $image, titleLong: $titleLong, dimensions: $dimensions, datePublished: $datePublished, authors: $authors, title: $title, isbn13: $isbn13, msrp: $msrp, binding: $binding, isbn: $isbn)';
+  }
+
+  factory VolumeData.fromJson(Map<String, dynamic> json) {
+    return VolumeData(
+      publisher: json['publisher'] as String?,
+      language: json['language'] as String?,
+      image: json['image'] as String?,
+      titleLong: json['title_long'] as String?,
+      dimensions: json['dimensions'] as String?,
+      datePublished: json['date_published'] == null
+          ? null
+          : DateTime.parse(json['date_published'] as String),
+      authors: json['authors'] as List<dynamic>?,
+      title: json['title'] as String?,
+      isbn13: json['isbn13'] as String?,
+      msrp: json['msrp'] as String?,
+      binding: json['binding'] as String?,
+      isbn: json['isbn'] as String?,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['subtitle'] = this.subtitle;
-    data['authors'] = this.authors;
-    data['publisher'] = this.publisher;
-    data['publishedDate'] = this.publishedDate;
-    data['description'] = this.description;
-    data['pageCount'] = this.pageCount;
-    data['mainCategory'] = this.mainCategory;
-    data['categories'] = this.categories;
-    data['averageRating'] = this.averageRating;
-    data['ratingsCount'] = this.ratingsCount;
-    data['contentVersion'] = this.contentVersion;
-    if (this.imageLinks != null) {
-      data['imageLinks'] = this.imageLinks!.toJson();
-    }
-    data['language'] = this.language;
-    data['previewLink'] = this.previewLink;
-    data['infoLink'] = this.infoLink;
-    data['canonicalVolumeLink'] = this.canonicalVolumeLink;
-    return data;
-  }
-}
-
-class ImageLinks {
-  String? thumbnail;
-  String? large;
-  String? extraLarge;
-
-  ImageLinks({this.thumbnail, this.large, this.extraLarge});
-
-  ImageLinks.fromJson(Map<String, dynamic> json) {
-    thumbnail = json['thumbnail'];
-    large = json['large'];
-    extraLarge = json['extraLarge'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['thumbnail'] = this.thumbnail;
-    data['large'] = this.large;
-    data['extraLarge'] = this.extraLarge;
-    return data;
+    return {
+      'publisher': publisher,
+      'language': language,
+      'image': image,
+      'title_long': titleLong,
+      'dimensions': dimensions,
+      'date_published': datePublished?.toIso8601String(),
+      'authors': authors,
+      'title': title,
+      'isbn13': isbn13,
+      'msrp': msrp,
+      'binding': binding,
+      'isbn': isbn,
+    };
   }
 }

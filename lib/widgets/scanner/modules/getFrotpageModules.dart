@@ -59,13 +59,6 @@ Widget getScannerWidget(
                               _book.isbn = value;
                               scannerText.text = _book.isbn!;
                               print('updated isbn: ' + _book.isbn!);
-                              apiService.getBookData([_book]).then((value) {
-                                print(value.toString());
-                                txt.text = "${value[0].title}";
-                                print(txt.text);
-                                txt2.text = "${value[0].author}";
-                                print(txt2.text);
-                              });
                             }
                           });
                         },

@@ -142,9 +142,9 @@ class ApiService {
 
     var data = json.decode(res.data);
     for (var i = 0; i < bookList.length; i++) {
-      bookList[i].bookData = BookData.fromJson(data![i]);
-      bookList[i].title = bookList[i].bookData!.volumeInfo!.title;
-      bookList[i].author = bookList[i].bookData!.volumeInfo!.authors![0];
+      bookList[i].bookData = VolumeData.fromJson(data![i]);
+      bookList[i].title = bookList[i].bookData!.title;
+      bookList[i].author = bookList[i].bookData!.authors![0];
     }
 
     return bookList;
