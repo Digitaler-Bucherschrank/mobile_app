@@ -14,9 +14,6 @@ import 'package:location/location.dart';
 import '../models/book_case.dart';
 import 'bookcasemodal.dart';
 
-// ignore: unused_import
-import 'drawer.dart';
-
 String _darkMapStyle = "";
 String _lightMapStyle = "";
 Completer<GoogleMapController> _controller = new Completer();
@@ -38,7 +35,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
     WidgetsBinding.instance!.addObserver(this);
 
-     Future.wait([
+    Future.wait([
       rootBundle.loadString('assets/map_styles/dark.json'),
       rootBundle.loadString('assets/map_styles/light.json')
     ]).then((value) {
@@ -52,7 +49,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   Future _setMapStyle() async {
     final controller = await _controller.future;
     final theme = WidgetsBinding.instance!.window.platformBrightness;
-    if (theme == Brightness.dark){
+    if (theme == Brightness.dark) {
       await controller.setMapStyle(_darkMapStyle);
     } else
       await controller.setMapStyle(_lightMapStyle);
@@ -80,7 +77,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   }
 
   void _onMapCreated(GoogleMapController controller) async {
-    if(!_controller.isCompleted){
+    if (!_controller.isCompleted) {
       _controller.complete(controller);
     }
 

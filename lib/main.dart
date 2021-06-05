@@ -19,6 +19,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+// ignore: unused_import
 import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
@@ -119,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Be sure to cancel subscription after you are done
     @override
+    // ignore: unused_element
     dispose() {
       super.dispose();
 

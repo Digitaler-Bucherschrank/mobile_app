@@ -1,3 +1,4 @@
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -49,7 +50,7 @@ class _BookInfo extends State<BookInfo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Buchanzeigen"),
+        title: Text(S.of(context).label_show_books),
       ),
       body: Container(
         child: FutureBuilder(
@@ -57,7 +58,8 @@ class _BookInfo extends State<BookInfo> {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             print(snapshot.data);
             if (snapshot.data == null) {
-              return Container(child: Center(child: Text("Loading...")));
+              return Container(
+                  child: Center(child: Text(S.of(context).label_loading)));
             } else {
               return ListView.builder(
                 itemCount: snapshot.data.length,
