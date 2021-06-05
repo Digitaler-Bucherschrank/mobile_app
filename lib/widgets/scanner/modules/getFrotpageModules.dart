@@ -75,7 +75,7 @@ Widget getScannerWidget(
                         borderSide: new BorderSide(),
                       ),
                     ),
-                    onSubmitted: (String str) {
+                    onChanged: (String str) {
                       if (_book.isbn != null) {
                         print(
                             'old value of isbn before update: ' + _book.isbn!);
