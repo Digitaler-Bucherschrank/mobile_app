@@ -115,13 +115,13 @@ class BookData {
 class VolumeInfo {
   String? title;
   String? subtitle;
-  List<String>? authors;
+  List<dynamic>? authors;
   String? publisher;
   String? publishedDate;
   String? description;
   int? pageCount;
   String? mainCategory;
-  List<String>? categories;
+  List<dynamic>? categories;
   int? averageRating;
   int? ratingsCount;
   String? contentVersion;
@@ -153,13 +153,13 @@ class VolumeInfo {
   VolumeInfo.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     subtitle = json['subtitle'];
-    authors = json['authors'].cast<String>();
+    authors = json['authors'];
     publisher = json['publisher'];
     publishedDate = json['publishedDate'];
     description = json['description'];
     pageCount = json['pageCount'];
     mainCategory = json['mainCategory'];
-    categories = json['categories'].cast<String>();
+    categories = json['categories'];
     averageRating = json['averageRating'];
     ratingsCount = json['ratingsCount'];
     contentVersion = json['contentVersion'];

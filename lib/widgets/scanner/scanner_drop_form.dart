@@ -21,7 +21,17 @@ class _ScannerDropFormState extends State<ScannerDropForm> {
         title: new Text(S.of(context).label_dropbook),
       ),
       body: SingleChildScrollView(
-        child: new Container(child: getUserInventoryWidget()),
+        child: new Container(
+          child: FutureBuilder(
+              future: getUserInventoryWidget(markersId),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.data == null) {
+                  return Text("");
+                } else {
+                  return snapshot.data;
+                }
+              }),
+        ),
       ),
     );
   }

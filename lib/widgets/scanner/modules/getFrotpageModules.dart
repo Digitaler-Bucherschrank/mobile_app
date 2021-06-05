@@ -4,6 +4,7 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
+import 'package:quiver/strings.dart';
 import 'scanner_logic.dart';
 import '../../../models/book.dart';
 
@@ -28,6 +29,7 @@ Widget getScannerWidget(
           child: Text(
             S.of(context).label_scanner_enterISBN,
             style: Theme.of(context).textTheme.headline6,
+            textAlign: TextAlign.center,
           ),
         ),
         Padding(padding: EdgeInsets.only(top: 10)),
@@ -49,18 +51,19 @@ Widget getScannerWidget(
                         icon: Icon(Icons.qr_code_scanner),
                         onPressed: () {
                           scanBarcodeNormal().then((value) {
-                            if (_book.id != null) {
+                            if (_book.isbn != null) {
                               print('old value of isbn before update: ' +
-                                  _book.id!);
+                                  _book.isbn!);
                             }
                             if (value != "-1") {
-                              _book.id = value;
-                              scannerText.text = _book.id!;
-                              print('updated isbn: ' + _book.id!);
+                              _book.isbn = value;
+                              scannerText.text = _book.isbn!;
+                              print('updated isbn: ' + _book.isbn!);
                               apiService.getBookData([_book]).then((value) {
-                                txt.text = "${txt.text} ${value[0].title}";
+                                print(value.toString());
+                                txt.text = "${value[0].title}";
                                 print(txt.text);
-                                txt2.text = "${txt.text} ${value[0].author}";
+                                txt2.text = "${value[0].author}";
                                 print(txt2.text);
                               });
                             }
@@ -80,9 +83,10 @@ Widget getScannerWidget(
                       _book.isbn = str;
                       print('updated isbn: ' + _book.isbn!);
                       apiService.getBookData([_book]).then((value) {
-                        txt.text = "${txt.text} ${value[0].title}";
+                        print(value.toString());
+                        txt.text = "${value[0].title}";
                         print(txt.text);
-                        txt2.text = "${txt.text} ${value[0].author}";
+                        txt2.text = "${value[0].author}";
                         print(txt2.text);
                       });
                     },
@@ -202,7 +206,6 @@ Widget getBookcase(String markersId) {
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               Container(
-                                height: 80,
                                 width: 300,
                                 child: ListTile(
                                   leading: SizedBox(
@@ -224,6 +227,7 @@ Widget getBookcase(String markersId) {
                                   ),
                                 ),
                               ),
+                              Padding(padding: EdgeInsets.only(top: 10)),
                             ],
                           );
                         }

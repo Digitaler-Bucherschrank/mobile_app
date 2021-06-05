@@ -43,8 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Buch-Infos"),
-        "label_borrowbook":
-            MessageLookupByLibrary.simpleMessage("Buch mitnehmen"),
+        "label_borrowbook": MessageLookupByLibrary.simpleMessage("Buch nehmen"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Schließen"),
         "label_confirm_pw":
             MessageLookupByLibrary.simpleMessage("Password bestätigen"),
@@ -95,7 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_server_unavailable": MessageLookupByLibrary.simpleMessage(
             "Server derzeit nicht erreichbar. Bitte versuche es später"),
         "label_show_books":
-            MessageLookupByLibrary.simpleMessage("Buch anzeigen"),
+            MessageLookupByLibrary.simpleMessage("Bücher anzeigen"),
         "label_signup_button": MessageLookupByLibrary.simpleMessage("Signup"),
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
