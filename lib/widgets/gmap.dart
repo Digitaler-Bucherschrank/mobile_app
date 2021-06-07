@@ -94,6 +94,8 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 });
           }));
     }
+
+    print(ApiService().getUserInventory(SharedPrefs().user));
     if(mounted){
       setState(() => null);
     }

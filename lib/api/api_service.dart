@@ -137,10 +137,11 @@ class ApiService {
       "isbn": bookParams.toString(),
     };
 
-    var res = await client.get('/api/searchBooks', queryParameters: params);
+    var res = await client.get('/api/searchBooks', queryParameters: params, options: Options(responseType: ResponseType.plain));
 
+    var data = json.decode(res.data);
     for (var i = 0; i < bookList.length; i++) {
-      bookList[i].bookData = BookData.fromJson(res.data[i]);
+      bookList[i].bookData = BookData.fromJson(data[i]);
     }
 
     return bookList;

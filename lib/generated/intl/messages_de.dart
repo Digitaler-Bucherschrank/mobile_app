@@ -19,6 +19,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
+  static m0(name) => "Willkommen, ${name}!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "dialog_ok_button" : MessageLookupByLibrary.simpleMessage("Alles klar"),
@@ -33,13 +35,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_username_too_long" : MessageLookupByLibrary.simpleMessage("Nutzername zu lang!"),
     "error_username_too_short" : MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
     "label_bookinfo" : MessageLookupByLibrary.simpleMessage("Buch-Infos"),
-    "label_borrowbook" : MessageLookupByLibrary.simpleMessage("Buch mitnehmen"),
+    "label_borrowbook" : MessageLookupByLibrary.simpleMessage("Buch nehmen"),
     "label_close_sheet" : MessageLookupByLibrary.simpleMessage("Schließen"),
     "label_confirm_pw" : MessageLookupByLibrary.simpleMessage("Password bestätigen"),
     "label_donate_book" : MessageLookupByLibrary.simpleMessage("Buch spenden"),
     "label_dropbook" : MessageLookupByLibrary.simpleMessage("Buch ablegen"),
+    "label_empty_bookcase" : MessageLookupByLibrary.simpleMessage("Inventar des Bücherschranks ist leer!"),
+    "label_empty_user" : MessageLookupByLibrary.simpleMessage("Ihr Inventar ist leer!"),
+    "label_help" : MessageLookupByLibrary.simpleMessage("Hilfe"),
+    "label_inventory" : MessageLookupByLibrary.simpleMessage("Dein Inventar"),
     "label_loading" : MessageLookupByLibrary.simpleMessage("Lade..."),
     "label_login_button" : MessageLookupByLibrary.simpleMessage("Anmelden"),
+    "label_logout" : MessageLookupByLibrary.simpleMessage("Ausloggen"),
     "label_mail" : MessageLookupByLibrary.simpleMessage("E-mail"),
     "label_map" : MessageLookupByLibrary.simpleMessage("Karte"),
     "label_password" : MessageLookupByLibrary.simpleMessage("Passwort"),
@@ -51,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "label_scanner_enterISBN" : MessageLookupByLibrary.simpleMessage("Barcode scannen oder ISBN eingeben!"),
     "label_scanner_fromInventory" : MessageLookupByLibrary.simpleMessage("Buch aus Inventar ablegen"),
     "label_scanner_fromWhere" : MessageLookupByLibrary.simpleMessage("Von wo soll das Buch hinzugefügt werden?"),
+    "label_scanner_manual_explanation" : MessageLookupByLibrary.simpleMessage("Eckdaten des Buchs eingeben!"),
     "label_scanner_newBook" : MessageLookupByLibrary.simpleMessage("Neues Buch ablegen"),
     "label_scanner_notYourBook" : MessageLookupByLibrary.simpleMessage("Nicht Ihr Buch? Barcode erneut scannen bzw. korrekte ISBN eigeben."),
     "label_scanner_publishedDate" : MessageLookupByLibrary.simpleMessage("Erscheinungsdatum"),
@@ -60,10 +68,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "label_search" : MessageLookupByLibrary.simpleMessage("Suchen"),
     "label_searchprocess" : MessageLookupByLibrary.simpleMessage("Suchen..."),
     "label_server_unavailable" : MessageLookupByLibrary.simpleMessage("Server derzeit nicht erreichbar. Bitte versuche es später"),
+    "label_settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
     "label_show_books" : MessageLookupByLibrary.simpleMessage("Buch anzeigen"),
     "label_signup_button" : MessageLookupByLibrary.simpleMessage("Signup"),
     "label_username" : MessageLookupByLibrary.simpleMessage("Nutzername"),
     "label_view_books" : MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
+    "label_welcome_user" : m0,
     "title" : MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
   };
 }

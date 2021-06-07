@@ -104,10 +104,10 @@ class AuthenticationService {
             if (e.response!.statusCode == 401) {
                 // Logout the User --> no specialized error handling needed
                 await logout();
-                return null;
+                return;
             } else {
                 // Logic for showing the user that the server is temporarily offline
-                return null;
+                return;
             }
         }
     }

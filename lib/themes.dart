@@ -38,7 +38,7 @@ ThemeData darkThemeData(){
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
   ),)),
-  inputDecorationTheme: InputDecorationTheme(),
+  inputDecorationTheme: ThemeData.dark().inputDecorationTheme,
   textTheme: GoogleFonts.notoSansTextTheme(
       new TextTheme(button: TextStyle(color: Colors.black))
   ));

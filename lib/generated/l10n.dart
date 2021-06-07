@@ -167,10 +167,10 @@ class S {
     );
   }
 
-  /// `Buch mitnehmen`
+  /// `Buch nehmen`
   String get label_borrowbook {
     return Intl.message(
-      'Buch mitnehmen',
+      'Buch nehmen',
       name: 'label_borrowbook',
       desc: '',
       args: [],
@@ -217,6 +217,46 @@ class S {
     );
   }
 
+  /// `Inventar des Bücherschranks ist leer!`
+  String get label_empty_bookcase {
+    return Intl.message(
+      'Inventar des Bücherschranks ist leer!',
+      name: 'label_empty_bookcase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ihr Inventar ist leer!`
+  String get label_empty_user {
+    return Intl.message(
+      'Ihr Inventar ist leer!',
+      name: 'label_empty_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hilfe`
+  String get label_help {
+    return Intl.message(
+      'Hilfe',
+      name: 'label_help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dein Inventar`
+  String get label_inventory {
+    return Intl.message(
+      'Dein Inventar',
+      name: 'label_inventory',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lade...`
   String get label_loading {
     return Intl.message(
@@ -232,6 +272,16 @@ class S {
     return Intl.message(
       'Anmelden',
       name: 'label_login_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ausloggen`
+  String get label_logout {
+    return Intl.message(
+      'Ausloggen',
+      name: 'label_logout',
       desc: '',
       args: [],
     );
@@ -347,6 +397,16 @@ class S {
     );
   }
 
+  /// `Eckdaten des Buchs eingeben!`
+  String get label_scanner_manual_explanation {
+    return Intl.message(
+      'Eckdaten des Buchs eingeben!',
+      name: 'label_scanner_manual_explanation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Neues Buch ablegen`
   String get label_scanner_newBook {
     return Intl.message(
@@ -437,6 +497,16 @@ class S {
     );
   }
 
+  /// `Einstellungen`
+  String get label_settings {
+    return Intl.message(
+      'Einstellungen',
+      name: 'label_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch anzeigen`
   String get label_show_books {
     return Intl.message(
@@ -474,6 +544,16 @@ class S {
       name: 'label_view_books',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Willkommen, {name}!`
+  String label_welcome_user(Object name) {
+    return Intl.message(
+      'Willkommen, $name!',
+      name: 'label_welcome_user',
+      desc: '',
+      args: [name],
     );
   }
 

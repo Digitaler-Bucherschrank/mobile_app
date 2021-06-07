@@ -68,9 +68,11 @@ class _SearchState extends State<Search> {
             borderRadius: BorderRadius.circular(12),
             openAxisAlignment: 0.0,
             isScrollControlled: false,
-            elevation: 100,
             width: isPortrait ? 600 : 500,
             progress: model.isLoading,
+            padding: EdgeInsets.only(left: 15, right: 15),
+            insets: EdgeInsets.zero,
+            textInputAction: TextInputAction.search,
             debounceDelay: const Duration(milliseconds: 500),
             onQueryChanged: model.onQueryChanged,
             // Specify a custom transition to be used for
@@ -78,7 +80,6 @@ class _SearchState extends State<Search> {
             transition: CircularFloatingSearchBarTransition(spacing: 16),
             actions: [
               FloatingSearchBarAction(
-                showIfOpened: false,
                 child: CircularButton(
                   icon: const Icon(Icons.place),
                   onPressed: currentLocation,
