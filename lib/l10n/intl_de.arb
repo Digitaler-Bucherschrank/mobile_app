@@ -38,10 +38,13 @@
   "@label_empty_bookcase": {},
   "label_empty_user": "Ihr Inventar ist leer!",
   "@label_empty_user": {},
+<<<<<<< HEAD
   "label_help": "Hilfe",
   "@label_help": {},
   "label_inventory": "Dein Inventar",
   "@label_inventory": {},
+=======
+>>>>>>> search
   "label_loading": "Lade...",
   "@label_loading": {},
   "label_login_button": "Anmelden",
@@ -90,9 +93,13 @@
   "@label_searchprocess": {},
   "label_server_unavailable": "Server derzeit nicht erreichbar. Bitte versuche es später",
   "@label_server_unavailable": {},
+<<<<<<< HEAD
   "label_settings": "Einstellungen",
   "@label_settings": {},
   "label_show_books": "Buch anzeigen",
+=======
+  "label_show_books": "Bücher anzeigen",
+>>>>>>> search
   "@label_show_books": {},
   "label_signup_button": "Signup",
   "@label_signup_button": {},

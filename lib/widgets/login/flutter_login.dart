@@ -186,25 +186,24 @@ class __HeaderState extends State<_Header> {
         viewState: ViewState.enlarged,
       );
     } else if (!DartHelper.isNullOrEmpty(widget.title)) {
-      double c_width = MediaQuery.of(context).size.width*0.8;
+      double c_width = MediaQuery.of(context).size.width * 0.8;
 
-      title = new Container (
-        width: c_width,
-        child: Text(
-          widget.title!,
-          softWrap: true,
-          textAlign: TextAlign.center,
-          key: kTitleKey,
-          style: theme.textTheme.headline3,
-        )
-      );
+      title = new Container(
+          width: c_width,
+          child: Text(
+            widget.title!,
+            softWrap: true,
+            textAlign: TextAlign.center,
+            key: kTitleKey,
+            style: theme.textTheme.headline3,
+          ));
     } else {
       title = null;
     }
 
     return SafeArea(
       child: SizedBox(
-        height: (widget.height - MediaQuery.of(context).padding.top),
+        height: (widget.height - MediaQuery.of(context).padding.top + 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[

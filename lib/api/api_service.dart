@@ -1,3 +1,4 @@
+// ignore: todo
 // TODO: Caching requests
 import 'dart:async';
 import 'dart:convert';
@@ -19,40 +20,42 @@ import 'package:dio/dio.dart';
 
 class CustomInterceptor extends Interceptor {
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async{
-    if(err.type == DioErrorType.response){
-      switch(err.response!.data.statusCode){
-        case(401): {
-          var errorMessage = err.response!.data.message;
+  void onError(DioError err, ErrorInterceptorHandler handler) async {
+    if (err.type == DioErrorType.response) {
+      switch (err.response!.data.statusCode) {
+        case (401):
+          {
+            var errorMessage = err.response!.data.message;
 
-          switch(errorMessage){
-           /* case("TokenExpiredError"): {
+            switch (errorMessage) {
+              /* case("TokenExpiredError"): {
               // Potentially causing never ending function calls but shouldn't unless we don't catch something
               await AuthenticationService().refreshTokens();
               return super.onError(err, handler);
             } */ // handled by RetryInterceptor
 
-            case("JsonWebTokenError"):
-            case("client_not_found"):
-            case("user_not_found"):
-            case("access_token_outdated"):{
-              Utilities.logoutUser(MyApp.globalKey.currentContext);
-              return super.onError(err, handler);
-            }
+              case ("JsonWebTokenError"):
+              case ("client_not_found"):
+              case ("user_not_found"):
+              case ("access_token_outdated"):
+                {
+                  Utilities.logoutUser(MyApp.globalKey.currentContext);
+                  return super.onError(err, handler);
+                }
 
-            default: {
-              return super.onError(err, handler);
+              default:
+                {
+                  return super.onError(err, handler);
+                }
             }
           }
-        }
 
-        default: {
-          return super.onError(err, handler);
-        }
+        default:
+          {
+            return super.onError(err, handler);
+          }
       }
-    } else {
-
-    }
+    } else {}
 
     return super.onError(err, handler);
   }
@@ -65,25 +68,23 @@ class ApiService {
 
   static final ApiService _instance = ApiService._internal(CONFIG.API_HOST);
 
-  factory ApiService(){
+  factory ApiService() {
     return _instance;
   }
 
-  ApiService._internal(this.host){
+  ApiService._internal(this.host) {
     client.options.headers.addAll({
-      HttpHeaders.authorizationHeader: "Bearer ${SharedPrefs().user.tokens!
-          .accessToken!.token}"
+      HttpHeaders.authorizationHeader:
+          "Bearer ${SharedPrefs().user.tokens!.accessToken!.token}"
     });
 
     client.options.baseUrl = this.host;
     client.options.responseType = ResponseType.json;
 
-    client.interceptors.add(InterceptorsWrapper(
-        onError: (DioError e, handler) {
-          // TODO: Add Screen to link user to some waiting screen until the server is online again
-          return handler.next(e);
-        }
-    ));
+    client.interceptors.add(InterceptorsWrapper(onError: (DioError e, handler) {
+      // TODO: Add Screen to link user to some waiting screen until the server is online again
+      return handler.next(e);
+    }));
 
     client.interceptors.add(RetryInterceptor(
         options: RetryOptions(
@@ -109,10 +110,8 @@ class ApiService {
                     await AuthenticationService().refreshTokens();
                     client.options.headers.clear();
                     client.options.headers.addAll({
-                      HttpHeaders.authorizationHeader: "Bearer ${SharedPrefs()
-                          .user.tokens!
-                          .accessToken!
-                          .token}"
+                      HttpHeaders.authorizationHeader:
+                          "Bearer ${SharedPrefs().user.tokens!.accessToken!.token}"
                     });
                   }
               }
@@ -122,8 +121,8 @@ class ApiService {
               return false;
             }
           }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
-        ), dio: client
-    ));
+        ),
+        dio: client));
   }
 
   Future<List<Book>> getBookData(List<Book> bookList) async {
@@ -137,24 +136,26 @@ class ApiService {
       "isbn": bookParams.toString(),
     };
 
-    var res = await client.get('/api/searchBooks', queryParameters: params, options: Options(responseType: ResponseType.plain));
+    var res = await client.get('/api/searchBooks',
+        queryParameters: params,
+        options: Options(responseType: ResponseType.plain));
 
     var data = json.decode(res.data);
     for (var i = 0; i < bookList.length; i++) {
-      bookList[i].bookData = BookData.fromJson(data[i]);
+      bookList[i].bookData = VolumeData.fromJson(data![i]);
+      bookList[i].title = bookList[i].bookData!.title;
+      bookList[i].author = bookList[i].bookData!.authors![0];
     }
 
     return bookList;
   }
 
   Future<List<Book>> getBookCaseInventory(String bookCaseID) async {
-    var params = {
-      "_id": bookCaseID,
-      "type": "inventory"
-    };
+    var params = {"_id": bookCaseID, "type": "inventory"};
     var inventory = <Book>[];
 
-    var res = await client.get('/api/getBookCase', queryParameters: params,
+    var res = await client.get('/api/getBookCase',
+        queryParameters: params,
         options: Options(responseType: ResponseType.plain));
     inventory = await compute(Utilities.parseBooks, res.data);
 
@@ -179,10 +180,8 @@ class ApiService {
       "type": manual ? "manual" : "predefined"
     };
 
-    if(manual){
-      params.addAll({
-      "manualBookData": data!.toJson()
-      });
+    if (manual) {
+      params.addAll({"manualBookData": data!.toJson()});
     }
 
     try {
@@ -190,9 +189,9 @@ class ApiService {
 
       return true;
     } on DioError catch (e) {
+      print(e);
       return false;
     }
-
   }
 
   Future<bool> borrowBook(Book book) async {
@@ -209,7 +208,6 @@ class ApiService {
       // Show user: "Please try again later" and refresh the List to fix up some issues with not being synced to the server
       return false;
     }
-
   }
 
   Future<bool> returnBook(Book book, BookCase bookCase) async {
@@ -226,7 +224,5 @@ class ApiService {
       // Show user: "Please try again later" and refresh the List to fix up some issues with not being synced to the server
       return false;
     }
-
   }
-
 }

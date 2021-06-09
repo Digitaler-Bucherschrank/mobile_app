@@ -38,10 +38,13 @@
   "@label_empty_bookcase": {},
   "label_empty_user": "Your inventory is empty!",
   "@label_empty_user": {},
+<<<<<<< HEAD
   "label_help": "Help",
   "@label_help": {},
   "label_inventory": "Your Inventory",
   "@label_inventory": {},
+=======
+>>>>>>> search
   "label_loading": "Loading...",
   "@label_loading": {},
   "label_login_button": "Login",

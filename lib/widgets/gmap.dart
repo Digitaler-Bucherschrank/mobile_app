@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
 import 'package:digitaler_buecherschrank/api/api_service.dart';
@@ -6,13 +8,14 @@ import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 import '../models/book_case.dart';
 import 'bookcasemodal.dart';
+
+// ignore: unused_import
+import 'drawer.dart';
 
 String _darkMapStyle = "";
 String _lightMapStyle = "";
@@ -68,6 +71,14 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
     super.dispose();
   }
 
+  Future<void> gotoLocation(double lat, double long) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(lat, long),
+      zoom: 15,
+    )));
+  }
+
   void _onMapCreated(GoogleMapController controller) async {
     if(!_controller.isCompleted){
       _controller.complete(controller);
@@ -80,7 +91,8 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
           markerId: MarkerId('${bookCase.iId!.oid}'),
           position: LatLng(
             double.parse('${bookCase.lat}'),
-            double.parse('${bookCase.lon}',
+            double.parse(
+              '${bookCase.lon}',
             ),
           ),
           icon: await BitmapDescriptor.fromAssetImage(

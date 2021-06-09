@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:maps_toolkit/maps_toolkit.dart';
 
 List<BookCase> _bookcases = [];
-List _data = [];
 bool finished = false;
 
 class Id {
@@ -41,24 +40,23 @@ class BookCase {
   String? distance;
 
   BookCase(
-    this.iId,
-    this.address,
-    this.bcz,
-    this.comment,
-    this.contact,
-    this.deactivated,
-    this.deactreason,
-    this.digital,
-    this.entrytype,
-    this.homepage,
-    this.icontype,
-    this.lat,
-    this.lon,
-    this.open,
-    this.title,
-    this.type,
-    this.distance
-  );
+      this.iId,
+      this.address,
+      this.bcz,
+      this.comment,
+      this.contact,
+      this.deactivated,
+      this.deactreason,
+      this.digital,
+      this.entrytype,
+      this.homepage,
+      this.icontype,
+      this.lat,
+      this.lon,
+      this.open,
+      this.title,
+      this.type,
+      this.distance);
 
   BookCase.fromJson(Map<String, dynamic> json) {
     iId = json['_id'] != null ? new Id.fromJson(json['_id']) : null;
@@ -92,26 +90,27 @@ class BookCase {
   }
 }
 
-
 Future<List<BookCase>> parseBookCaseJSON(String file) async {
-    return jsonDecode(file).cast<Map<String, dynamic>>().map<BookCase>((Map<String, dynamic> json) {
-      final tempMarker = BookCase.fromJson(json);
-      return tempMarker;
-    }).toList();
+  return jsonDecode(file)
+      .cast<Map<String, dynamic>>()
+      .map<BookCase>((Map<String, dynamic> json) {
+    final tempMarker = BookCase.fromJson(json);
+    return tempMarker;
+  }).toList();
 }
 
 Future<bool> loadBookCases() async {
-    if (_bookcases.length == 0) {
-      var file = await rootBundle.loadString("assets/markers.json");
+  if (_bookcases.length == 0) {
+    var file = await rootBundle.loadString("assets/markers.json");
 
-      _bookcases = await compute(parseBookCaseJSON, file);
+    _bookcases = await compute(parseBookCaseJSON, file);
 
-      finished = true;
-      return true;
-    }
-    print(_bookcases.length);
-    return false;
+    finished = true;
+    return true;
   }
+  print(_bookcases.length);
+  return false;
+}
 
 Future<void> _waitUntilDone() async {
   final completer = Completer();

@@ -1,15 +1,21 @@
 import 'dart:ui';
 
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
+import 'package:quiver/strings.dart';
 import 'scanner_logic.dart';
 import '../../../models/book.dart';
 
 double cardBorderRadius = 20.0;
 
-Widget getScannerWidget(BuildContext context, Book _book,
-    TextEditingController txt, TextEditingController txt2) {
+Widget getScannerWidget(
+    BuildContext context,
+    Book _book,
+    TextEditingController txt,
+    TextEditingController txt2,
+    ApiService apiService) {
   TextEditingController scannerText = new TextEditingController();
   return Card(
     shape: RoundedRectangleBorder(
@@ -23,6 +29,7 @@ Widget getScannerWidget(BuildContext context, Book _book,
           child: Text(
             S.of(context).label_scanner_enterISBN,
             style: Theme.of(context).textTheme.headline6,
+            textAlign: TextAlign.center,
           ),
         ),
         Padding(padding: EdgeInsets.only(top: 10)),
@@ -44,17 +51,15 @@ Widget getScannerWidget(BuildContext context, Book _book,
                         icon: Icon(Icons.qr_code_scanner),
                         onPressed: () {
                           scanBarcodeNormal().then((value) {
-                            if (_book.id != null) {
+                            if (_book.isbn != null) {
                               print('old value of isbn before update: ' +
-                                  _book.id!);
+                                  _book.isbn!);
                             }
-                            _book.id = value;
-                            scannerText.text = _book.id!;
-                            print('updated isbn: ' + _book.id!);
-                            getInfo(_book.id).then((value) {
-                              txt.text = "${txt.text} ${value['name']}";
-                              print(txt.text);
-                            });
+                            if (value != "-1") {
+                              _book.isbn = value;
+                              scannerText.text = _book.isbn!;
+                              print('updated isbn: ' + _book.isbn!);
+                            }
                           });
                         },
                       ),
@@ -63,17 +68,20 @@ Widget getScannerWidget(BuildContext context, Book _book,
                         borderSide: new BorderSide(),
                       ),
                     ),
-                    onSubmitted: (String str) {
-                      getInfo(_book.id).then((value) {
-                        txt.text = "${txt.text} ${value['name']}";
-                        print(txt.text);
-                      });
-
-                      if (_book.id != null) {
-                        print('old value of isbn before update: ' + _book.id!);
+                    onChanged: (String str) {
+                      if (_book.isbn != null) {
+                        print(
+                            'old value of isbn before update: ' + _book.isbn!);
                       }
-                      _book.id = str;
-                      print('updated isbn: ' + _book.id!);
+                      _book.isbn = str;
+                      print('updated isbn: ' + _book.isbn!);
+                      apiService.getBookData([_book]).then((value) {
+                        print(value.toString());
+                        txt.text = "${value[0].title}";
+                        print(txt.text);
+                        txt2.text = "${value[0].author}";
+                        print(txt2.text);
+                      });
                     },
                   ),
                 ),
@@ -115,7 +123,7 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
                     selectionHeightStyle: BoxHeightStyle.tight,
                     controller: txt,
                     decoration: InputDecoration(
-                      fillColor: Theme.of(context).cardColor,
+                      fillColor: Colors.transparent,
                       border: InputBorder.none,
                     ),
                   ),
@@ -132,7 +140,7 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
                   child: TextField(
                     controller: txt2,
                     decoration: InputDecoration(
-                      fillColor: Theme.of(context).cardColor,
+                      fillColor: Colors.transparent,
                       border: InputBorder.none,
                     ),
                   ),
@@ -191,7 +199,6 @@ Widget getBookcase(String markersId) {
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               Container(
-                                height: 80,
                                 width: 300,
                                 child: ListTile(
                                   leading: SizedBox(
@@ -205,7 +212,7 @@ Widget getBookcase(String markersId) {
                                         Theme.of(context).textTheme.bodyText1,
                                   ),
                                   subtitle: Text(
-                                    "${S.of(context).label_scanner_distance}${snapshot.data[i].distance} km",
+                                    "${snapshot.data[i].address}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText2!
@@ -213,6 +220,7 @@ Widget getBookcase(String markersId) {
                                   ),
                                 ),
                               ),
+                              Padding(padding: EdgeInsets.only(top: 10)),
                             ],
                           );
                         }

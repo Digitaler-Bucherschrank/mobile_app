@@ -2,12 +2,14 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../models/book.dart';
 import 'scanner_logic.dart';
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 
 Widget getManuellyWidget(BuildContext context) {
   TextEditingController scannerText = new TextEditingController();
+  ApiService apiService = new ApiService();
+  ManualBookData _manualBook = new ManualBookData();
   Book _book = new Book();
-  _book.bookData = new BookData();
-  _book.bookData!.volumeInfo = new VolumeInfo();
+  _book.bookData = new VolumeData();
   return Column(
     children: [
       Card(
@@ -17,6 +19,9 @@ Widget getManuellyWidget(BuildContext context) {
         elevation: 5,
         child: Column(
           children: [
+            Padding(padding: EdgeInsets.only(top: 10)),
+            Text(S.of(context).label_scanner_manual_explanation,
+                style: Theme.of(context).textTheme.headline6),
             Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -54,24 +59,29 @@ Widget getManuellyWidget(BuildContext context) {
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
-            Container(
-              width: 300,
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: S.of(context).label_scanner_title,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  fillColor: Theme.of(context).backgroundColor,
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(50.0),
-                    borderSide: new BorderSide(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 300,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: S.of(context).label_scanner_title,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 20),
+                      fillColor: Theme.of(context).backgroundColor,
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(50.0),
+                        borderSide: new BorderSide(),
+                      ),
+                    ),
+                    onSubmitted: (val) {
+                      _book.title = val;
+                      print(_book.title);
+                    },
                   ),
                 ),
-                onSubmitted: (val) {
-                  _book.title = val;
-                  print(_book.title);
-                },
-              ),
+              ],
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
@@ -108,8 +118,9 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.subtitle = val;
-                  print(_book.bookData!.volumeInfo!.subtitle);
+                  _book.bookData!.titleLong = val;
+                  print(_book.bookData!.titleLong);
+                  _manualBook.description = val;
                 },
               ),
             ),
@@ -128,12 +139,14 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.publisher = val;
-                  print(_book.bookData!.volumeInfo!.publisher);
+                  _book.bookData!.publisher = val;
+                  print(_book.bookData!.publisher);
+                  _manualBook.publisher = val;
                 },
               ),
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
+            // TODO: Natives Datumspicker verwenden ==> dann richtigen ISO String mitschicken
             Container(
               width: 300,
               child: TextField(
@@ -148,8 +161,30 @@ Widget getManuellyWidget(BuildContext context) {
                   ),
                 ),
                 onSubmitted: (val) {
-                  _book.bookData!.volumeInfo!.publishedDate = val;
-                  print(_book.bookData!.volumeInfo!.publishedDate);
+                  _book.bookData!.datePublished = new DateTime.now();
+                  print(_book.bookData!.datePublished);
+                  _manualBook.publishedDate = val;
+                },
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(top: 5)),
+            Container(
+              width: 300,
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Language",
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  fillColor: Theme.of(context).backgroundColor,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(50.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+                onSubmitted: (val) {
+                  _book.bookData!.language = val;
+                  print(_book.bookData!.datePublished);
+                  _manualBook.language = val;
                 },
               ),
             ),
@@ -161,11 +196,10 @@ Widget getManuellyWidget(BuildContext context) {
         style: Theme.of(context).outlinedButtonTheme.style,
         onPressed: () {
           print(_book);
-          //postBook(_book);
-          postIsbnAndSchrank(
-            _book.id,
-            _book.location,
-          );
+          Navigator.pop(context);
+          /*apiService.donateBook(_book, true, _manualBook).then((value) {
+            print("donateBook: $value");
+          });*/
         },
         child: Text(
           S.of(context).label_scanner_confirm,
