@@ -1,6 +1,10 @@
 import 'dart:async';
 
+import 'package:digitaler_buecherschrank/api/api_service.dart';
+import 'package:digitaler_buecherschrank/api/authentication_service.dart';
+import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
+import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -90,7 +94,9 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 });
           }));
     }
-    if (mounted) {
+
+    print(ApiService().getUserInventory(SharedPrefs().user));
+    if(mounted){
       setState(() => null);
     }
   }

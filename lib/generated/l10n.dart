@@ -47,6 +47,36 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Alles klar`
+  String get dialog_ok_button {
+    return Intl.message(
+      'Alles klar',
+      name: 'dialog_ok_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können.`
+  String get error_connectivity_desc {
+    return Intl.message(
+      'Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können.',
+      name: 'error_connectivity_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limitierte Funktionen`
+  String get error_connectivity_title {
+    return Intl.message(
+      'Limitierte Funktionen',
+      name: 'error_connectivity_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email ist ungültig!`
   String get error_invalid_mail {
     return Intl.message(
@@ -87,20 +117,20 @@ class S {
     );
   }
 
-  /// `Email wird bereits verwendet.`
+  /// `Email wird bereits verwendet!`
   String get error_mail_taken {
     return Intl.message(
-      'Email wird bereits verwendet.',
+      'Email wird bereits verwendet!',
       name: 'error_mail_taken',
       desc: '',
       args: [],
     );
   }
 
-  /// `Nutzername wird bereits verwendet`
+  /// `Nutzername wird bereits verwendet!`
   String get error_username_taken {
     return Intl.message(
-      'Nutzername wird bereits verwendet',
+      'Nutzername wird bereits verwendet!',
       name: 'error_username_taken',
       desc: '',
       args: [],
@@ -137,10 +167,10 @@ class S {
     );
   }
 
-  /// `Buch mitnehmen`
+  /// `Buch nehmen`
   String get label_borrowbook {
     return Intl.message(
-      'Buch mitnehmen',
+      'Buch nehmen',
       name: 'label_borrowbook',
       desc: '',
       args: [],
@@ -167,6 +197,16 @@ class S {
     );
   }
 
+  /// `Buch spenden`
+  String get label_donate_book {
+    return Intl.message(
+      'Buch spenden',
+      name: 'label_donate_book',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch ablegen`
   String get label_dropbook {
     return Intl.message(
@@ -177,10 +217,50 @@ class S {
     );
   }
 
-  /// `Loading...`
+  /// `Inventar des Bücherschranks ist leer!`
+  String get label_empty_bookcase {
+    return Intl.message(
+      'Inventar des Bücherschranks ist leer!',
+      name: 'label_empty_bookcase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ihr Inventar ist leer!`
+  String get label_empty_user {
+    return Intl.message(
+      'Ihr Inventar ist leer!',
+      name: 'label_empty_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hilfe`
+  String get label_help {
+    return Intl.message(
+      'Hilfe',
+      name: 'label_help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dein Inventar`
+  String get label_inventory {
+    return Intl.message(
+      'Dein Inventar',
+      name: 'label_inventory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lade...`
   String get label_loading {
     return Intl.message(
-      'Loading...',
+      'Lade...',
       name: 'label_loading',
       desc: '',
       args: [],
@@ -197,10 +277,20 @@ class S {
     );
   }
 
-  /// `Email`
+  /// `Ausloggen`
+  String get label_logout {
+    return Intl.message(
+      'Ausloggen',
+      name: 'label_logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
   String get label_mail {
     return Intl.message(
-      'Email',
+      'E-mail',
       name: 'label_mail',
       desc: '',
       args: [],
@@ -257,10 +347,10 @@ class S {
     );
   }
 
-  /// `Confirm`
+  /// `Bestätigen`
   String get label_scanner_confirm {
     return Intl.message(
-      'Confirm',
+      'Bestätigen',
       name: 'label_scanner_confirm',
       desc: '',
       args: [],
@@ -307,6 +397,16 @@ class S {
     );
   }
 
+  /// `Eckdaten des Buchs eingeben!`
+  String get label_scanner_manual_explanation {
+    return Intl.message(
+      'Eckdaten des Buchs eingeben!',
+      name: 'label_scanner_manual_explanation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Neues Buch ablegen`
   String get label_scanner_newBook {
     return Intl.message(
@@ -317,10 +417,10 @@ class S {
     );
   }
 
-  /// `Nicht Ihr Buch? Barcode erneut scannen bzw. korrekte ISBN eigeben`
+  /// `Nicht Ihr Buch? Barcode erneut scannen bzw. korrekte ISBN eigeben.`
   String get label_scanner_notYourBook {
     return Intl.message(
-      'Nicht Ihr Buch? Barcode erneut scannen bzw. korrekte ISBN eigeben',
+      'Nicht Ihr Buch? Barcode erneut scannen bzw. korrekte ISBN eigeben.',
       name: 'label_scanner_notYourBook',
       desc: '',
       args: [],
@@ -397,6 +497,26 @@ class S {
     );
   }
 
+  /// `Einstellungen`
+  String get label_settings {
+    return Intl.message(
+      'Einstellungen',
+      name: 'label_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buch anzeigen`
+  String get label_show_books {
+    return Intl.message(
+      'Buch anzeigen',
+      name: 'label_show_books',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Signup`
   String get label_signup_button {
     return Intl.message(
@@ -424,6 +544,16 @@ class S {
       name: 'label_view_books',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Willkommen, {name}!`
+  String label_welcome_user(Object name) {
+    return Intl.message(
+      'Willkommen, $name!',
+      name: 'label_welcome_user',
+      desc: '',
+      args: [name],
     );
   }
 

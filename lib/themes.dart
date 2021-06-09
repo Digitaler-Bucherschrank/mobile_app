@@ -6,13 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 // TODO: import better color schemes
 ThemeData lightThemeData(){
   return FlexColorScheme.light(
-    colors: FlexSchemeColor.from(primary: Color(0xFF423C3A), secondary: Color(0xFF1890C9)).toDark(),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    surfaceStyle: FlexSurface.strong,
+      colors: FlexSchemeColor.from(primary: Color(0xFF423C3A), accentColor: Color(0xFF1890C9)),
+      visualDensity: FlexColorScheme.comfortablePlatformDensity,
+      appBarStyle: FlexAppBarStyle.primary
   ).toTheme.copyWith(bottomSheetTheme: new BottomSheetThemeData( shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
   ),)),
+      cardTheme: CardTheme(margin: EdgeInsets.all(4)),
       textTheme: GoogleFonts.notoSansTextTheme());
   return ThemeData(
   colorScheme:new ColorScheme.light(
@@ -31,29 +32,16 @@ ThemeData lightThemeData(){
 
 ThemeData darkThemeData(){
   return FlexColorScheme.dark(
-    colors: FlexSchemeColor.from(primary: Color(0xFF423C3A), secondary: Color(0xFF1890C9)).toDark(),
+    colors: FlexSchemeColor.from(primary: Color(0xFF423C3A), accentColor: Color(0xFF1890C9)).toDark(),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    surfaceStyle: FlexSurface.strong,
+    appBarStyle: FlexAppBarStyle.primary
   ).toTheme.copyWith(bottomSheetTheme: new BottomSheetThemeData( shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
   ),)),
+  cardTheme: CardTheme(margin: EdgeInsets.all(4)),
+  inputDecorationTheme: ThemeData.dark().inputDecorationTheme,
   textTheme: GoogleFonts.notoSansTextTheme(
       new TextTheme(button: TextStyle(color: Colors.black))
   ));
-  return ThemeData(
-      colorScheme: new ColorScheme.dark(
-        primary: Color(0xFF1890C9),
-        secondary: Color(0xFF423C3A),
-      ),
-      textTheme: GoogleFonts.notoSansTextTheme(
-        new TextTheme(button: TextStyle(color: Colors.black))
-      ),
-      bottomSheetTheme: new BottomSheetThemeData( shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(20.0),
-        topRight: Radius.circular(20.0),
-      ),)),
-      brightness: Brightness.dark,
-
-      shadowColor: Colors.transparent);
 }

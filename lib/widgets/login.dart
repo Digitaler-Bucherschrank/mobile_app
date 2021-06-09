@@ -10,11 +10,11 @@ class LoginScreen extends StatelessWidget {
     print('Name: ${data.name}, Password: ${data.password}, mail: ${data.email ?? "GG"}');
     var res = await AuthenticationService().login(data.name, data.password);
       if (res == null) {
-        return "Server unavailable";
+        return S.current.label_server_unavailable;
       } else if(res == true){
         return null;
       } else {
-        return "Password or Username wrong";
+        return S.current.error_login_invalid_credentials;
       }
   }
 
@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
     var res = await AuthenticationService().signUp(data.name, data.password, data.email!);
     switch(res){
       case(null):{
-        return "Server unavailable";
+        return S.current.label_server_unavailable;
       }
 
       case("logged_in"):{
