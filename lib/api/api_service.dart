@@ -100,8 +100,8 @@ class ApiService {
               return true;
             } else if (error.response!.statusCode == 401) {
               switch (data["message"]) {
-                case("TokenExpiredError"):
-                case("JsonWebTokenError"):
+                case("token_expired"):
+                case("invalid_access_token"):
                 case("client_not_found"):
                 case("user_not_found"):
                 case("access_token_outdated"):

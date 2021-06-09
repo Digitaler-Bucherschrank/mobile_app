@@ -8,6 +8,7 @@ import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
+import 'package:digitaler_buecherschrank/widgets/inventory.dart';
 import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
@@ -176,8 +177,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       SizedBox(height: 8),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          SizedBox(width:  MediaQuery.of(context).size.width * 0.04,),
                           Text(S.current.title, style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),)
                         ],
                       ),
@@ -204,15 +205,17 @@ class _MyHomePageState extends State<MyHomePage> {
                               right: constraints.maxWidth * 0.04),
                           child: Column(mainAxisSize: MainAxisSize.min,children: [
                             SizedBox(height: constraints.maxHeight * 0.05),
-                            Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+                            Row(children: [
                               Flexible(
-                                  child: FractionallySizedBox(
-                                    alignment: Alignment.center,
-                                      widthFactor: 0.6,
-                                      child: FittedBox(
-                                        fit: BoxFit.contain,
-                                        child: RichText(
-                                          textAlign: TextAlign.center,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: Theme.of(context).cardTheme.margin!.horizontal),
+                                    child: FractionallySizedBox(
+                                        alignment: Alignment.center,
+                                        widthFactor: 0.6,
+                                        child: FittedBox(
+                                          fit: BoxFit.contain,
+                                          child: RichText(
+                                            textAlign: TextAlign.center,
                                             text: TextSpan(
                                                 text: S.current.label_welcome_user(SharedPrefs().user.username!),
                                                 style: Theme.of(context)
@@ -221,7 +224,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     .copyWith(
                                                     fontWeight:
                                                     FontWeight.w300))),
-                                      )), fit: FlexFit.loose,)
+                                        )),
+                                  ), fit: FlexFit.loose,)
                             ]),
                             SizedBox(height: constraints.maxHeight * 0.03),
                             // TODO: Ripple Effect for buttons
@@ -230,6 +234,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                               child: ListTile(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => InventoryList()));
+                                },
                                 leading: Icon(Icons.inventory_2),
                                 title: Text(S.current.label_inventory),
                               ),
