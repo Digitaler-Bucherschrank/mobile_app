@@ -3,6 +3,7 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 Future<Widget> getUserInventoryWidget(String bookCaseID) async {

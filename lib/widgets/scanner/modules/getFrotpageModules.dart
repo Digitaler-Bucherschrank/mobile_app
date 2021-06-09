@@ -4,6 +4,7 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:quiver/strings.dart';
 import 'scanner_logic.dart';
 import '../../../models/book.dart';

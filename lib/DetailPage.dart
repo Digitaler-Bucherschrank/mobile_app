@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 
 class DetailPage extends StatelessWidget {
-  final String name;
-  final String author;
-  final String thumbnail;
-  final String bookData;
-  DetailPage(this.name, this.author, this.thumbnail, this.bookData);
+  String markersId;
+  DetailPage(this.markersId);
+  @override
+  // ignore: override_on_non_overriding_member
+  _DetailPage createState() => _DetailPage(markersId);
+}
 
+class _DetailPage extends State<DetailPage> {
+  String markersId;
+  _DetailPage(this.markersId);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
