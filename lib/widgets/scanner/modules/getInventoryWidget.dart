@@ -54,6 +54,11 @@ Future<Widget> getUserInventoryWidget(String bookCaseID) async {
             itemBuilder: (context, index) {
               return Container(
                 child: ListTile(
+                  leading: userInventory[index].thumbnail != null
+                      ? Image(
+                          image: NetworkImage(userInventory[index].thumbnail),
+                        )
+                      : Icon(Icons.image),
                   title: Text("${userInventory[index].title}",
                       style: Theme.of(context).textTheme.bodyText1),
                   subtitle: Text(
@@ -109,6 +114,11 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
             itemBuilder: (context, index) {
               return Container(
                 child: ListTile(
+                  leading: snapshot.data[index].thumbnail != null
+                      ? Image(
+                          image: NetworkImage(snapshot.data[index].thumbnail),
+                        )
+                      : Icon(Icons.image),
                   title: Text("${snapshot.data[index].title}",
                       style: Theme.of(context).textTheme.bodyText1),
                   subtitle: Text(
