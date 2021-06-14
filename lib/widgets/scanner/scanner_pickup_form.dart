@@ -2,7 +2,6 @@ import 'package:digitaler_buecherschrank/DetailPage.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'modules/getInventoryWidget.dart';
-import 'package:digitaler_buecherschrank/DetailPage.dart';
 
 class ScannerPickupForm extends StatefulWidget {
   final String markersId;

@@ -6,6 +6,7 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 
 Widget getManuellyWidget(BuildContext context) {
   TextEditingController scannerText = new TextEditingController();
+  // ignore: unused_local_variable
   ApiService apiService = new ApiService();
   ManualBookData _manualBook = new ManualBookData();
   Book _book = new Book();

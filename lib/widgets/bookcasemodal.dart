@@ -5,8 +5,6 @@ import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dar
 import 'package:flutter/material.dart';
 // ignore: unused_import
 
-// ignore: unused_import
-import 'book_info.dart';
 import 'scanner/donatebook.dart';
 
 class BookCaseModal extends StatelessWidget {
