@@ -3,7 +3,6 @@ import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_drop_form.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
 
 import 'scanner/donatebook.dart';
 

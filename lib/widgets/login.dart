@@ -10,13 +10,13 @@ class LoginScreen extends StatelessWidget {
     print(
         'Name: ${data.name}, Password: ${data.password}, mail: ${data.email ?? "GG"}');
     var res = await AuthenticationService().login(data.name, data.password);
-    if (res == null) {
-      return S.current.label_server_unavailable;
-    } else if (res == true) {
-      return null;
-    } else {
-      return S.current.error_login_invalid_credentials;
-    }
+      if (res == null) {
+        return S.current.label_server_unavailable;
+      } else if(res == true){
+        return null;
+      } else {
+        return S.current.error_login_invalid_credentials;
+      }
   }
 
   Future<String?> _authUserSignUp(LoginData data) async {
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
           loginButton: S.current.label_login_button),
       title: S.current.title,
       logo: 'assets/icons/icon.png',
-      userValidator: (var userName) {
+      userValidator: (var userName){
         return null;
       },
       onLogin: _authUserLogin,
@@ -99,9 +99,8 @@ class LoginScreen extends StatelessWidget {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => MyHomePage(),
         ));
-      },
-      onRecoverPassword: (String s) {},
-      hideForgotPasswordButton: true,
+      }, onRecoverPassword: (String s) {  },
+        hideForgotPasswordButton: true,
     );
   }
 }

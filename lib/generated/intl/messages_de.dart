@@ -19,8 +19,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
+  static m0(name) => "Willkommen, ${name}!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+  static _notInlinedMessages(_) => <String, Function>{
         "dialog_ok_button": MessageLookupByLibrary.simpleMessage("Alles klar"),
         "error_connectivity_desc": MessageLookupByLibrary.simpleMessage(
             "Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können."),
@@ -54,8 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Inventar des Bücherschranks ist leer!"),
         "label_empty_user":
             MessageLookupByLibrary.simpleMessage("Ihr Inventar ist leer!"),
+        "label_help": MessageLookupByLibrary.simpleMessage("Hilfe"),
+        "label_inventory":
+            MessageLookupByLibrary.simpleMessage("Dein Inventar"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Lade..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Anmelden"),
+        "label_logout": MessageLookupByLibrary.simpleMessage("Ausloggen"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Karte"),
         "label_password": MessageLookupByLibrary.simpleMessage("Passwort"),
@@ -93,12 +99,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Suchen..."),
         "label_server_unavailable": MessageLookupByLibrary.simpleMessage(
             "Server derzeit nicht erreichbar. Bitte versuche es später"),
+        "label_settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "label_show_books":
-            MessageLookupByLibrary.simpleMessage("Bücher anzeigen"),
+            MessageLookupByLibrary.simpleMessage("Buch anzeigen"),
         "label_signup_button": MessageLookupByLibrary.simpleMessage("Signup"),
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
             MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
+        "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
       };
 }

@@ -240,6 +240,26 @@ class S {
     );
   }
 
+  /// `Hilfe`
+  String get label_help {
+    return Intl.message(
+      'Hilfe',
+      name: 'label_help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dein Inventar`
+  String get label_inventory {
+    return Intl.message(
+      'Dein Inventar',
+      name: 'label_inventory',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lade...`
   String get label_loading {
     return Intl.message(
@@ -255,6 +275,16 @@ class S {
     return Intl.message(
       'Anmelden',
       name: 'label_login_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ausloggen`
+  String get label_logout {
+    return Intl.message(
+      'Ausloggen',
+      name: 'label_logout',
       desc: '',
       args: [],
     );
@@ -470,10 +500,20 @@ class S {
     );
   }
 
-  /// `Bücher anzeigen`
+  /// `Einstellungen`
+  String get label_settings {
+    return Intl.message(
+      'Einstellungen',
+      name: 'label_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buch anzeigen`
   String get label_show_books {
     return Intl.message(
-      'Bücher anzeigen',
+      'Buch anzeigen',
       name: 'label_show_books',
       desc: '',
       args: [],
@@ -507,6 +547,16 @@ class S {
       name: 'label_view_books',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Willkommen, {name}!`
+  String label_welcome_user(Object name) {
+    return Intl.message(
+      'Willkommen, $name!',
+      name: 'label_welcome_user',
+      desc: '',
+      args: [name],
     );
   }
 
