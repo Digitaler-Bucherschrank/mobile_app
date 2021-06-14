@@ -7,6 +7,7 @@ class Book {
   String? title;
   String? location;
   String? thumbnail;
+  String? currentUser;
   bool? addedManual;
   ManualBookData? manualBookData;
   // Nothing the Database would deliver when requesting a book, needs to be populated manually
@@ -21,6 +22,7 @@ class Book {
       this.manualBookData,
       this.location,
       this.thumbnail,
+      this.currentUser,
       this.bookData});
 
   Book.fromJson(Map<String, dynamic> json) {
@@ -31,6 +33,7 @@ class Book {
     isbn = json['isbn'];
     location = json['location'];
     thumbnail = json['thumbnail'];
+    currentUser = json['currentUser'];
     manualBookData = json['manualBookData'] != null
         ? new ManualBookData.fromJson(json['manualBookData'])
         : null;
@@ -44,6 +47,7 @@ class Book {
     data['_id'] = this.id;
     data['author'] = this.author;
     data['title'] = this.title;
+    data['currentUser'] = this.currentUser;
     data['addedmanual'] = this.addedManual;
     if (this.manualBookData != null) {
       data['manualBookData'] = this.manualBookData!.toJson();

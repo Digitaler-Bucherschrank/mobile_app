@@ -136,7 +136,7 @@ class ApiService {
       "isbn": bookParams.toString(),
     };
 
-    var res = await client.get('/api/searchBooks',
+    var res = await client.get('/api/getBookInfo',
         queryParameters: params,
         options: Options(responseType: ResponseType.plain));
 
@@ -148,6 +148,17 @@ class ApiService {
     }
 
     return bookList;
+  }
+
+  Future<List<Book>> searchBooks(String query) async {
+    var params = {
+      "query": query,
+    };
+
+    var res = await client.get('/api/searchBooks',
+        queryParameters: params, options: Options(responseType: ResponseType.plain));
+
+    return await compute(Utilities.parseBooks, res.data);
   }
 
   Future<List<Book>> getBookCaseInventory(String bookCaseID) async {
