@@ -109,32 +109,33 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
             print("snapshot.data['donated'].length: ${snapshot.data.length}");
             return ListView.builder(
               itemBuilder: (context, index) {
-                return Container(child: InkWell(onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DetailPage("${snapshot.data[index].isbn}")),
-                  );
-                  new ListTile(
-                    title: Text("${snapshot.data[index].title}",
-                        style: Theme.of(context).textTheme.bodyText1),
-                    subtitle: Text(
-                      "${snapshot.data[index].author}",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2!
-                          .copyWith(color: Colors.grey.shade600),
-                    ),
-                    trailing: ElevatedButton(
-                      child: Text(S.of(context).label_borrowbook),
-                      onPressed: () {
-                        apiService.borrowBook(snapshot.data[index]);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  );
-                }));
+                return Container(
+
+                    //child: InkWell(onTap: () {
+                    //Navigator.push(
+                    //context,
+                    //MaterialPageRoute(
+                    //  builder: (context) =>
+                    //    DetailPage("${snapshot.data[index].isbn}")),
+                    // );
+                    child: ListTile(
+                  title: Text("${snapshot.data[index].title}",
+                      style: Theme.of(context).textTheme.bodyText1),
+                  subtitle: Text(
+                    "${snapshot.data[index].author}",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.grey.shade600),
+                  ),
+                  trailing: ElevatedButton(
+                    child: Text(S.of(context).label_borrowbook),
+                    onPressed: () {
+                      apiService.borrowBook(snapshot.data[index]);
+                      Navigator.pop(context);
+                    },
+                  ),
+                ));
               },
               itemCount: snapshot.data.length,
             );
