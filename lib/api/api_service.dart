@@ -101,8 +101,8 @@ class ApiService {
               return true;
             } else if (error.response!.statusCode == 401) {
               switch (data["message"]) {
-                case ("TokenExpiredError"):
-                case ("JsonWebTokenError"):
+                case ("token_expired"):
+                case ("invalid_access_token"):
                 case ("client_not_found"):
                 case ("user_not_found"):
                 case ("access_token_outdated"):
@@ -142,9 +142,7 @@ class ApiService {
 
     var data = json.decode(res.data);
     for (var i = 0; i < bookList.length; i++) {
-      bookList[i].bookData = VolumeData.fromJson(data![i]);
-      bookList[i].title = bookList[i].bookData!.title;
-      bookList[i].author = bookList[i].bookData!.authors![0];
+      bookList[i].bookData = BookData.fromJson(data[i]);
     }
 
     return bookList;

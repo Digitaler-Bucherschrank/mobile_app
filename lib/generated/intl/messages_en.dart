@@ -19,6 +19,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(name) => "Welcome, ${name}!";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "dialog_ok_button": MessageLookupByLibrary.simpleMessage("Alright"),
@@ -54,8 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bookcase inventory is empty!"),
         "label_empty_user":
             MessageLookupByLibrary.simpleMessage("Your inventory is empty!"),
+        "label_help": MessageLookupByLibrary.simpleMessage("Help"),
+        "label_inventory":
+            MessageLookupByLibrary.simpleMessage("Your Inventory"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Login"),
+        "label_logout": MessageLookupByLibrary.simpleMessage("Logout\n"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Map"),
         "label_password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -93,11 +99,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Searching...\n"),
         "label_server_unavailable": MessageLookupByLibrary.simpleMessage(
             "Server not available right now. Please try later again"),
+        "label_settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "label_show_books": MessageLookupByLibrary.simpleMessage("Show books"),
         "label_signup_button":
             MessageLookupByLibrary.simpleMessage("Registrieren"),
         "label_username": MessageLookupByLibrary.simpleMessage("Username"),
         "label_view_books": MessageLookupByLibrary.simpleMessage("Show books"),
+        "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digital Bookcase")
       };
 }

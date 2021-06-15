@@ -88,16 +88,50 @@ class ManualBookData {
 class VolumeData {
   String? publisher;
   String? language;
-  String? image;
-  String? titleLong;
-  String? dimensions;
-  DateTime? datePublished;
-  List<dynamic>? authors;
-  String? title;
-  String? isbn13;
-  String? msrp;
-  String? binding;
-  String? isbn;
+  String? previewLink;
+  String? infoLink;
+  String? canonicalVolumeLink;
+
+  VolumeInfo(
+      {this.title,
+        this.subtitle,
+        this.authors,
+        this.publisher,
+        this.publishedDate,
+        this.description,
+        this.pageCount,
+        this.mainCategory,
+        this.categories,
+        this.averageRating,
+        this.ratingsCount,
+        this.contentVersion,
+        this.imageLinks,
+        this.language,
+        this.previewLink,
+        this.infoLink,
+        this.canonicalVolumeLink});
+
+  VolumeInfo.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    subtitle = json['subtitle'];
+    authors = json['authors'];
+    publisher = json['publisher'];
+    publishedDate = json['publishedDate'];
+    description = json['description'];
+    pageCount = json['pageCount'];
+    mainCategory = json['mainCategory'];
+    categories = json['categories'].cast<String>();
+    averageRating = json['averageRating'];
+    ratingsCount = json['ratingsCount'];
+    contentVersion = json['contentVersion'];
+    imageLinks = json['imageLinks'] != null
+        ? new ImageLinks.fromJson(json['imageLinks'])
+        : null;
+    language = json['language'];
+    previewLink = json['previewLink'];
+    infoLink = json['infoLink'];
+    canonicalVolumeLink = json['canonicalVolumeLink'];
+  }
 
   VolumeData({
     this.publisher,

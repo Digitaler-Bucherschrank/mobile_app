@@ -89,30 +89,30 @@ class AuthenticationService {
     }
   }
 
-  Future<void> refreshTokens() async {
-    try {
-      var res = await client.post('/api/refresh',
-          options: Options(headers: {
-            HttpHeaders.authorizationHeader:
-                "Bearer ${_user.tokens!.refreshToken!.token}"
-          }));
 
-      var tokens = Tokens.fromJson(res.data);
-      if (tokens is Tokens) {
-        _user.tokens = tokens;
-        SharedPrefs().user = _user;
-      } else {
-        logout();
-      }
-    } on DioError catch (e) {
-      if (e.response!.statusCode == 401) {
-        // Logout the User --> no specialized error handling needed
-        await logout();
-        return null;
-      } else {
-        // Logic for showing the user that the server is temporarily offline
-        return null;
-      }
+    Future<void> refreshTokens() async{
+        try {
+            var res = await client.post('/api/refresh', options: Options(headers: {
+                HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.refreshToken!.token}"
+            }));
+
+                var tokens = Tokens.fromJson(res.data);
+                if(tokens is Tokens) {
+                    _user.tokens = tokens;
+                    SharedPrefs().user = _user;
+                } else {
+                    logout();
+                }
+        } on DioError catch (e) {
+            if (e.response!.statusCode == 401) {
+                // Logout the User --> no specialized error handling needed
+                await logout();
+                return;
+            } else {
+                // Logic for showing the user that the server is temporarily offline
+                return;
+            }
+        }
     }
   }
 
