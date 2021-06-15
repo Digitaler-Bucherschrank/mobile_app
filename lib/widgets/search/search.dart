@@ -114,7 +114,7 @@ class ExpandableSearchBody extends StatelessWidget {
               child: Material(
                 color: Theme.of(context).cardColor.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(15),
-                child: ImplicitlyAnimatedList<BookCase>(
+                child: ImplicitlyAnimatedList<Map>(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   items: model.suggestions.take(5).toList(),
@@ -136,9 +136,8 @@ class ExpandableSearchBody extends StatelessWidget {
 }
 
 class ListItem extends StatelessWidget {
-  ListItem(this.bookCase);
-
-  final BookCase bookCase;
+  final Map data;
+  ListItem(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -149,9 +148,13 @@ class ListItem extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            FloatingSearchBar.of(context)!.close();
-            goToLocation(
-                double.parse(bookCase.lat!), double.parse(bookCase.lon!));
+            if (data['lat'] != null) {
+              FloatingSearchBar.of(context)!.close();
+              goToLocation(
+                double.parse(data['lat']),
+                double.parse(data['lon']),
+              );
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -161,7 +164,11 @@ class ListItem extends StatelessWidget {
                   width: 36,
                   child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 500),
-                      child: Image.asset("assets/icons/book_case.png")),
+                      child: data['icon'] == 'asset'
+                          ? Image.asset("assets/icons/book_case.png")
+                          : Image(
+                              image: NetworkImage(data['icon']),
+                            )),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -170,11 +177,11 @@ class ListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        bookCase.title!,
+                        data['title'],
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        bookCase.address == null ? "" : bookCase.address!,
+                        data['subtitle'] != null ? data['subtitle'] : "",
                         style: textTheme.bodyText2!
                             .copyWith(color: Colors.grey.shade600),
                       ),
