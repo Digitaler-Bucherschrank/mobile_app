@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
-// ignore: unused_import
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 // ignore: unused_import
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 // ignore: unused_import
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
-// ignore: unused_import
-
+import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:location/location.dart';
@@ -109,7 +107,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
     }
 
     print(ApiService().getUserInventory(SharedPrefs().user));
-    if(mounted){
+    if (mounted) {
       setState(() => null);
     }
   }

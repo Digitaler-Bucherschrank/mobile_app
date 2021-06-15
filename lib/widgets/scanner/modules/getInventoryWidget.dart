@@ -5,6 +5,9 @@ import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+// ignore: unused_import
+import 'package:digitaler_buecherschrank/models/book.dart';
+import '../../../DetailPage.dart';
 
 Future<Widget> getUserInventoryWidget(String bookCaseID) async {
   ApiService apiService = new ApiService();
@@ -84,54 +87,58 @@ Future<Widget> getUserInventoryWidget(String bookCaseID) async {
 Widget getBookCaseInventoryWidget(String bookCaseID) {
   ApiService apiService = new ApiService();
   return Container(
-    height: 600,
-    child: FutureBuilder(
-      future: apiService.getBookCaseInventory(bookCaseID),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.data == null) {
-          return Container(
-            child: ListTile(
-              title: Text(S.of(context).label_loading,
-                  style: Theme.of(context).textTheme.bodyText1),
-            ),
-          );
-        } else if (snapshot.data.isEmpty) {
-          print("snapshot.data['donated'].length: ${snapshot.data.length}");
-          return Container(
-            child: ListTile(
+      height: 600,
+      child: FutureBuilder(
+        future: apiService.getBookCaseInventory(bookCaseID),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.data == null) {
+            return Container(
+              child: ListTile(
+                title: Text(S.of(context).label_loading,
+                    style: Theme.of(context).textTheme.bodyText1),
+              ),
+            );
+          } else if (snapshot.data.isEmpty) {
+            print("snapshot.data['donated'].length: ${snapshot.data.length}");
+            return Container(
+                child: ListTile(
               title: Text(S.of(context).label_empty_bookcase,
                   style: Theme.of(context).textTheme.bodyText1),
-            ),
-          );
-        } else {
-          print("snapshot.data['donated'].length: ${snapshot.data.length}");
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              return Container(
-                child: ListTile(
-                  title: Text("${snapshot.data[index].title}",
-                      style: Theme.of(context).textTheme.bodyText1),
-                  subtitle: Text(
-                    "${snapshot.data[index].author}",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2!
-                        .copyWith(color: Colors.grey.shade600),
-                  ),
-                  trailing: ElevatedButton(
-                    child: Text(S.of(context).label_borrowbook),
-                    onPressed: () {
-                      apiService.borrowBook(snapshot.data[index]);
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              );
-            },
-            itemCount: snapshot.data.length,
-          );
-        }
-      },
-    ),
-  );
+            ));
+          } else {
+            print("snapshot.data['donated'].length: ${snapshot.data.length}");
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return Container(child: InkWell(onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DetailPage("${snapshot.data[index].isbn}")),
+                  );
+                  new ListTile(
+                    title: Text("${snapshot.data[index].title}",
+                        style: Theme.of(context).textTheme.bodyText1),
+                    subtitle: Text(
+                      "${snapshot.data[index].author}",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2!
+                          .copyWith(color: Colors.grey.shade600),
+                    ),
+                    trailing: ElevatedButton(
+                      child: Text(S.of(context).label_borrowbook),
+                      onPressed: () {
+                        apiService.borrowBook(snapshot.data[index]);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  );
+                }));
+              },
+              itemCount: snapshot.data.length,
+            );
+          }
+        },
+      ));
 }

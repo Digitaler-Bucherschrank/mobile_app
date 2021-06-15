@@ -8,10 +8,10 @@ import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dar
 
 // ignore: must_be_immutable
 class DetailPage extends StatefulWidget {
-  String markersId;
-  DetailPage(this.markersId);
+  String isbn;
+  DetailPage(this.isbn);
   @override
-  _DetailPage createState() => _DetailPage(markersId);
+  _DetailPage createState() => _DetailPage(isbn);
 }
 
 class _DetailPage extends State<DetailPage> {

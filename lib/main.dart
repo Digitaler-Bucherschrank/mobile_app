@@ -121,7 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Be sure to cancel subscription after you are done
     @override
-    // ignore: unused_element
     dispose() {
       super.dispose();
 
@@ -260,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           builder: (context) =>
                                               InventoryList()));
                                 },
-                                leading: Icon(Icons.inventory_2),
+                                leading: Icon(Icons.inventory),
                                 title: Text(S.current.label_inventory),
                               ),
                             ),
