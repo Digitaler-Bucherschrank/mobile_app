@@ -136,16 +136,30 @@ class ApiService {
       "isbn": bookParams.toString(),
     };
 
-    var res = await client.get('/api/searchBooks',
+    var res = await client.get('/api/getBookInfo',
         queryParameters: params,
         options: Options(responseType: ResponseType.plain));
 
     var data = json.decode(res.data);
     for (var i = 0; i < bookList.length; i++) {
-      bookList[i].bookData = BookData.fromJson(data[i]);
+      bookList[i].bookData = VolumeData.fromJson(data![i]);
+      bookList[i].title = bookList[i].bookData!.title;
+      bookList[i].author = bookList[i].bookData!.authors![0];
     }
 
     return bookList;
+  }
+
+  Future<List<Book>> searchBooks(String query) async {
+    var params = {
+      "query": query,
+    };
+
+    var res = await client.get('/api/searchBooks',
+        queryParameters: params,
+        options: Options(responseType: ResponseType.plain));
+
+    return await compute(Utilities.parseBooks, res.data);
   }
 
   Future<List<Book>> getBookCaseInventory(String bookCaseID) async {

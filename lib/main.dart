@@ -3,8 +3,6 @@ import 'dart:ui';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
-// ignore: unused_import
-import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
@@ -24,8 +22,6 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-// ignore: unused_import
-import 'config.dart';
 import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
@@ -118,7 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _getLocationPermission() async {
     var location = new Location();
     try {
-      // ignore: unused_local_variable
       var perm = location.requestPermission();
     } on Exception catch (_) {
       print('There was a problem allowing location access');
@@ -264,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           builder: (context) =>
                                               InventoryList()));
                                 },
-                                leading: Icon(Icons.inventory_2),
+                                leading: Icon(Icons.inventory),
                                 title: Text(S.current.label_inventory),
                               ),
                             ),
