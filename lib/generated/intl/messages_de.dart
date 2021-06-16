@@ -69,7 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "label_searchprocess" : MessageLookupByLibrary.simpleMessage("Suchen..."),
     "label_server_unavailable" : MessageLookupByLibrary.simpleMessage("Server derzeit nicht erreichbar. Bitte versuche es später"),
     "label_settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
-    "label_show_books" : MessageLookupByLibrary.simpleMessage("Buch anzeigen"),
+    "label_show_books" : MessageLookupByLibrary.simpleMessage("Bücher anzeigen"),
     "label_signup_button" : MessageLookupByLibrary.simpleMessage("Signup"),
     "label_username" : MessageLookupByLibrary.simpleMessage("Nutzername"),
     "label_view_books" : MessageLookupByLibrary.simpleMessage("Siehe Bücher"),

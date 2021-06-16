@@ -507,10 +507,10 @@ class S {
     );
   }
 
-  /// `Buch anzeigen`
+  /// `Bücher anzeigen`
   String get label_show_books {
     return Intl.message(
-      'Buch anzeigen',
+      'Bücher anzeigen',
       name: 'label_show_books',
       desc: '',
       args: [],
