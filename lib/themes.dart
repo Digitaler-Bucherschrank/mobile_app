@@ -13,7 +13,11 @@ ThemeData lightThemeData(){
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
   ),)),
-      cardTheme: CardTheme(margin: EdgeInsets.all(4)),
+      cardTheme: CardTheme(
+        margin: EdgeInsets.all(4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),),
       textTheme: GoogleFonts.notoSansTextTheme());
   return ThemeData(
   colorScheme:new ColorScheme.light(
@@ -39,7 +43,11 @@ ThemeData darkThemeData(){
     topLeft: Radius.circular(20.0),
     topRight: Radius.circular(20.0),
   ),)),
-  cardTheme: CardTheme(margin: EdgeInsets.all(4)),
+  cardTheme: CardTheme(
+    margin: EdgeInsets.all(4),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+  ),),
   inputDecorationTheme: ThemeData.dark().inputDecorationTheme,
   textTheme: GoogleFonts.notoSansTextTheme(
       new TextTheme(button: TextStyle(color: Colors.black))

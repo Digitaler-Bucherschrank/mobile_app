@@ -88,12 +88,7 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
       future: apiService.getBookCaseInventory(bookCaseID),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.data == null) {
-          return Container(
-            child: ListTile(
-              title: Text(S.of(context).label_loading,
-                  style: Theme.of(context).textTheme.bodyText1),
-            ),
-          );
+          return Center(child: SizedBox( width: 60, height: 60, child: CircularProgressIndicator(color: Theme.of(context).accentColor,)));
         } else if (snapshot.data.isEmpty) {
           print("snapshot.data['donated'].length: ${snapshot.data.length}");
           return Container(
@@ -108,6 +103,7 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
             itemBuilder: (context, index) {
               return Container(
                 child: ListTile(
+                  leading: snapshot.data[index].thumbnail != null ? Image.network(snapshot.data[index].thumbnail!) :  Icon(Icons.book),
                   title: Text("${snapshot.data[index].title}",
                       style: Theme.of(context).textTheme.bodyText1),
                   subtitle: Text(

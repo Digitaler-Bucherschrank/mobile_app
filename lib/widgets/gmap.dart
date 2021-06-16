@@ -100,6 +100,8 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
               'assets/icons/book_case.png'),
           onTap: () {
             showModalBottomSheet(
+                backgroundColor: Theme.of(context).cardColor.withOpacity(0.6),
+
                 context: context,
                 builder: (builder) {
                   return BookCaseModal(bookCase);
@@ -107,7 +109,6 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
           }));
     }
 
-    print(ApiService().getUserInventory(SharedPrefs().user));
     if(mounted){
       setState(() => null);
     }
