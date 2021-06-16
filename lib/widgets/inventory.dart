@@ -4,7 +4,9 @@ import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class InventoryList extends StatefulWidget {
@@ -12,25 +14,30 @@ class InventoryList extends StatefulWidget {
   _InventoryListState createState() => _InventoryListState();
 }
 
-class _InventoryListState extends State<InventoryList> {
-  Map<String, List<Book>> items = {"gg": []};
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
+class _InventoryListState extends State<InventoryList> with TickerProviderStateMixin{
+  Map<String, List<Book>> items = {"": []};
+  RefreshController _refreshControllerDonated = RefreshController(initialRefresh: false);
+  RefreshController _refreshControllerBorrowed = RefreshController(initialRefresh: false);
+  late TabController _tabController;
   var initialBuild = true;
 
   void _onRefresh() async{
     // monitor network fetch
     await Future.delayed(Duration(milliseconds: 1000));
 
-    var books = await  ApiService().getUserInventory(SharedPrefs().user);
+    var books = await ApiService().getUserInventory(SharedPrefs().user);
 
     items = books;
-    // if failed,use refreshFailed()
-    _refreshController.refreshCompleted();
+
+    // just refresh both
+    _refreshControllerDonated.refreshCompleted();
+    _refreshControllerBorrowed.refreshCompleted();
   }
 
   @override
   void initState(){
     super.initState();
+    _tabController = new TabController(vsync: this, length: 2);
   }
 
   @override
@@ -41,13 +48,25 @@ class _InventoryListState extends State<InventoryList> {
         appBar: AppBar(
           title: Text(S.current.label_inventory),
           actions: <Widget>[],
-
+          bottom: TabBar(
+            controller: _tabController,
+            tabs: [
+              Tab(text: "Borrowed"),
+              Tab(text: "Donated")
+            ],
+          ),
         ),
         body: FutureBuilder(builder: (BuildContext context, AsyncSnapshot<Map<String, List<Book>>> snapshot) {
           if(snapshot.hasData){
             this.items = snapshot.data!;
             initialBuild = false;
-            return _buildSmartRefresher();
+            return TabBarView(
+              controller: _tabController,
+              children: [
+                _buildSmartRefresher("b", _refreshControllerBorrowed),
+                _buildSmartRefresher("d", _refreshControllerDonated),
+              ],
+            );
           } else {
             return Center(child: SizedBox( width: 60, height: 60, child: CircularProgressIndicator(color: Theme.of(context).accentColor,)));
           }
@@ -60,46 +79,90 @@ class _InventoryListState extends State<InventoryList> {
         appBar: AppBar(
           title: Text(S.current.label_inventory),
           actions: <Widget>[],
+          bottom: TabBar(
+            controller: _tabController,
+            tabs: [
+              Tab(text: "Borrowed"),
+              Tab(text: "Donated")
+            ],
+          ),
         ),
-        body: _buildSmartRefresher(),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            _buildSmartRefresher("b", _refreshControllerBorrowed),
+            _buildSmartRefresher("d", _refreshControllerDonated),
+          ],
+        )
       );
     }
 
   }
 
-  SmartRefresher _buildSmartRefresher() {
-    return SmartRefresher(
-      enablePullDown: true,
-      header: ClassicHeader(),
-      controller: _refreshController,
-      onRefresh: _onRefresh,
-      child: GroupedListView<Book, String>(
-        separator: SizedBox(
-        height: 5,
+
+
+  SmartRefresher _buildSmartRefresher(String type, RefreshController _refreshController) {
+    if(type == "d"){
+      return SmartRefresher(
+        enablePullDown: true,
+        header: ClassicHeader(),
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        child:
+        ListView.builder(
+          itemCount: items['donated']!.length,
+          itemBuilder: (BuildContext context, int index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 375),
+              child: SlideAnimation(
+                verticalOffset: 50.0,
+                child: FadeInAnimation(
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: ListTile(
+                          leading: items['donated']![index].thumbnail != null ? Image.network(items['donated']![index].thumbnail!) :  Icon(Icons.book),
+                          title: Text(items['donated']![index].title!),
+                        ))
+                ),
+              ),
+            );
+          },
         ),
-        itemBuilder: (c, i) {
-          return Card(
-              shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: ListTile(
-            leading: i.thumbnail != null ? Image.network(i.thumbnail!) :  Icon(Icons.book),
-            title: Text(i.title!),
-          ));
-        },
-        groupSeparatorBuilder: (String groupByValue) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(groupByValue, style: Theme.of(context).textTheme.headline4!.copyWith(fontWeight: FontWeight.bold)),
+      );
+    } else {
+      return SmartRefresher(
+        enablePullDown: true,
+        header: ClassicHeader(),
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        child:
+        ListView.builder(
+          itemCount: items['borrowed']!.length,
+          itemBuilder: (BuildContext context, int index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 375),
+              child: SlideAnimation(
+                verticalOffset: 50.0,
+                child: FadeInAnimation(
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: ListTile(
+                          leading: items['borrowed']![index].thumbnail != null ? Image.network(items['borrowed']![index].thumbnail!) :  Icon(Icons.book),
+                          title: Text(items['borrowed']![index].title!),
+                        ))
+                ),
+              ),
+            );
+          },
         ),
-        groupBy: (Book? element) {
-          if(items["donated"]!.contains(element)){
-            return "Donated";
-          } else {
-            return "Borrowed";
-          }
-        },
-        elements: items["donated"]! + items["borrowed"]!,
-      ),
-    );
+      );
+    }
+   ;
   }
 }
