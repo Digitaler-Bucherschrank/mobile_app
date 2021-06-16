@@ -126,6 +126,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
         target: LatLng(50.1109, 8.6821),
         zoom: 12,
       ),
+
       markers: Set<Marker>.of(_markers),
     );
   }
@@ -145,7 +146,7 @@ void currentLocation() async {
 
 Future<void> goToLocation(double lat, double long) async {
   final GoogleMapController controller = await _controller.future;
-  controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+  return controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
     target: LatLng(lat, long),
     zoom: 15,
   )));
