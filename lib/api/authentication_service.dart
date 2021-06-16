@@ -93,7 +93,7 @@ class AuthenticationService {
                 HttpHeaders.authorizationHeader: "Bearer ${_user.tokens!.refreshToken!.token}"
             }));
 
-                var tokens = Tokens.fromJson(res.data);
+                var tokens = Tokens.fromJson(res.data['tokens']);
                 if(tokens is Tokens) {
                     _user.tokens = tokens;
                     SharedPrefs().user = _user;
