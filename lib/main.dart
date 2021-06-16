@@ -12,7 +12,6 @@ import 'package:digitaler_buecherschrank/widgets/inventory.dart';
 import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -131,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: SlidingUpPanel(
         renderPanelSheet: false,
         padding: EdgeInsets.only(top: 30),
@@ -230,9 +229,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             SizedBox(height: constraints.maxHeight * 0.03),
                             // TODO: Ripple Effect for buttons
                             Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
                               child: ListTile(
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => InventoryList()));
@@ -242,27 +238,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
                               child: ListTile(
                                 leading: Icon(Icons.settings),
                                 title: Text(S.current.label_settings),
                               ),
                             ),
                             Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
                               child: ListTile(
                                 leading: Icon(Icons.help),
                                 title: Text(S.current.label_help),
                               ),
                             ),
                             Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
                               child: ListTile(
                                 leading: Icon(Icons.logout),
                                 onTap: () {
