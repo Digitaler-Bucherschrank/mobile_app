@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
@@ -9,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/book_case.dart';
 // ignore: unused_import
+import '../bookcasemodal.dart';
 import './../gmap.dart';
 import 'search_model.dart';
 
@@ -34,23 +37,6 @@ class _SearchState extends State<Search> {
     super.dispose();
   }
 
-  /* Future getBook(String  bookInfo) async {
-    const _url =
-        "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json";
-    Map  response = await http
-        .post(_url as Uri,
-        body: json.encode({
-          'bookInfo': bookInfo,
-        }))
-        .then((response) {
-      Map? out = {};
-      print(json.decode(response.body));
-      out = json.decode(response.body);
-      return out!;
-    });
-    return response['name'];
-  } */
-
   @override
   Widget build(BuildContext context) {
     final isPortrait =
@@ -68,6 +54,8 @@ class _SearchState extends State<Search> {
             axisAlignment: isPortrait ? 0.0 : -1.0,
             borderRadius: BorderRadius.circular(12),
             openAxisAlignment: 0.0,
+            clearQueryOnClose: true,
+
             isScrollControlled: false,
             width: isPortrait ? 600 : 500,
             progress: model.isLoading,
@@ -114,7 +102,7 @@ class ExpandableSearchBody extends StatelessWidget {
               child: Material(
                 color: Theme.of(context).cardColor.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(15),
-                child: ImplicitlyAnimatedList<BookCase>(
+                child: ImplicitlyAnimatedList<Map>(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   items: model.suggestions.take(5).toList(),
@@ -136,9 +124,9 @@ class ExpandableSearchBody extends StatelessWidget {
 }
 
 class ListItem extends StatelessWidget {
-  ListItem(this.bookCase);
+  final Map data;
 
-  final BookCase bookCase;
+  ListItem(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -149,9 +137,30 @@ class ListItem extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            FloatingSearchBar.of(context)!.close();
-            goToLocation(
-                double.parse(bookCase.lat!), double.parse(bookCase.lon!));
+            // dirty way of checking if we have a bookcase or book
+            if (data['lat'] != null) {
+              FloatingSearchBar.of(context)!.close();
+              goToLocation(
+                double.parse(data['lat']),
+                double.parse(data['lon']),
+              );
+            } else {
+              FloatingSearchBar.of(context)!.close();
+
+              goToLocation(
+                double.parse(data['location'].lat),
+                double.parse(data['location'].lon),
+              ).then((value){
+                // Dirty workaround as we don't have another way to control it
+                Timer(Duration(milliseconds: 1100), () => showModalBottomSheet(
+                    backgroundColor: Theme.of(context).cardColor.withOpacity(0.6),
+
+                    context: context,
+                    builder: (builder) {
+                      return BookCaseModal(data['location']);
+                    }));
+              });
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -161,7 +170,11 @@ class ListItem extends StatelessWidget {
                   width: 36,
                   child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 500),
-                      child: Image.asset("assets/icons/book_case.png")),
+                      child: data['icon'] == 'asset'
+                          ? Image.asset("assets/icons/book_case.png")
+                          : Image(
+                        image: NetworkImage(data['icon']),
+                      )),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -170,11 +183,11 @@ class ListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        bookCase.title!,
+                        data['title'],
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        bookCase.address == null ? "" : bookCase.address!,
+                        data['subtitle'] != null ? data['subtitle'] : "",
                         style: textTheme.bodyText2!
                             .copyWith(color: Colors.grey.shade600),
                       ),
