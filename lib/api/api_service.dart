@@ -16,8 +16,6 @@ import 'package:dio_retry/dio_retry.dart';
 import 'package:flutter/foundation.dart';
 import '../main.dart';
 
-import 'package:dio/dio.dart';
-
 class CustomInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
@@ -101,11 +99,11 @@ class ApiService {
               return true;
             } else if (error.response!.statusCode == 401) {
               switch (data["message"]) {
-                case("token_expired"):
-                case("invalid_access_token"):
-                case("client_not_found"):
-                case("user_not_found"):
-                case("access_token_outdated"):
+                case ("token_expired"):
+                case ("invalid_access_token"):
+                case ("client_not_found"):
+                case ("user_not_found"):
+                case ("access_token_outdated"):
                   {
                     await AuthenticationService().refreshTokens();
                     client.options.headers.clear();
@@ -156,7 +154,8 @@ class ApiService {
     };
 
     var res = await client.get('/api/searchBooks',
-        queryParameters: params, options: Options(responseType: ResponseType.plain));
+        queryParameters: params,
+        options: Options(responseType: ResponseType.plain));
 
     return await compute(Utilities.parseBooks, res.data);
   }

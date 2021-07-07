@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-
-import 'package:digitaler_buecherschrank/api/api_service.dart';
-import 'package:digitaler_buecherschrank/api/authentication_service.dart';
-import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
-import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:location/location.dart';
-
 import '../models/book_case.dart';
 import 'bookcasemodal.dart';
-
-// ignore: unused_import
-import 'drawer.dart';
 
 String _darkMapStyle = "";
 String _lightMapStyle = "";
@@ -38,7 +29,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
     WidgetsBinding.instance!.addObserver(this);
 
-     Future.wait([
+    Future.wait([
       rootBundle.loadString('assets/map_styles/dark.json'),
       rootBundle.loadString('assets/map_styles/light.json')
     ]).then((value) {
@@ -52,7 +43,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   Future _setMapStyle() async {
     final controller = await _controller.future;
     final theme = WidgetsBinding.instance!.window.platformBrightness;
-    if (theme == Brightness.dark){
+    if (theme == Brightness.dark) {
       await controller.setMapStyle(_darkMapStyle);
     } else
       await controller.setMapStyle(_lightMapStyle);
@@ -80,7 +71,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   }
 
   void _onMapCreated(GoogleMapController controller) async {
-    if(!_controller.isCompleted){
+    if (!_controller.isCompleted) {
       _controller.complete(controller);
     }
 
@@ -101,7 +92,6 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
           onTap: () {
             showModalBottomSheet(
                 backgroundColor: Theme.of(context).cardColor.withOpacity(0.6),
-
                 context: context,
                 builder: (builder) {
                   return BookCaseModal(bookCase);
@@ -109,7 +99,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
           }));
     }
 
-    if(mounted){
+    if (mounted) {
       setState(() => null);
     }
   }
@@ -126,7 +116,6 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
         target: LatLng(50.1109, 8.6821),
         zoom: 12,
       ),
-
       markers: Set<Marker>.of(_markers),
     );
   }

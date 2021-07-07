@@ -1,12 +1,9 @@
 import 'dart:ui';
-
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_drop_form.dart';
 import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 import 'package:flutter/material.dart';
-
-import 'book_info.dart';
 import 'scanner/donatebook.dart';
 
 class BookCaseModal extends StatelessWidget {
@@ -16,7 +13,7 @@ class BookCaseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-    // TODO: Fix borders
+      // TODO: Fix borders
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(20.0),
         topRight: Radius.circular(20.0),
@@ -56,7 +53,8 @@ class BookCaseModal extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  ScannerPickupForm('${bookcase.iId!.oid}')),);
+                                  ScannerPickupForm('${bookcase.iId!.oid}')),
+                        );
                       },
                       title: Text(S.of(context).label_show_books),
                     ),
