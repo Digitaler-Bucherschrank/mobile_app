@@ -5,13 +5,16 @@ import 'modules/getInventoryWidget.dart';
 
 class ScannerPickupForm extends StatefulWidget {
   final String markersId;
+
   ScannerPickupForm(this.markersId);
+
   @override
   _ScannerPickupFormState createState() => _ScannerPickupFormState(markersId);
 }
 
 class _ScannerPickupFormState extends State<ScannerPickupForm> {
   String markersId;
+
   _ScannerPickupFormState(this.markersId);
 
   @override

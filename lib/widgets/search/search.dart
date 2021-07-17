@@ -2,17 +2,15 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
-import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/book_case.dart';
+import './../gmap.dart';
 // ignore: unused_import
 import '../bookcasemodal.dart';
-import './../gmap.dart';
 import 'search_model.dart';
 
 class Search extends StatefulWidget {
@@ -55,7 +53,6 @@ class _SearchState extends State<Search> {
             borderRadius: BorderRadius.circular(12),
             openAxisAlignment: 0.0,
             clearQueryOnClose: true,
-
             isScrollControlled: false,
             width: isPortrait ? 600 : 500,
             progress: model.isLoading,
@@ -150,15 +147,17 @@ class ListItem extends StatelessWidget {
               goToLocation(
                 double.parse(data['location'].lat),
                 double.parse(data['location'].lon),
-              ).then((value){
+              ).then((value) {
                 // Dirty workaround as we don't have another way to control it
-                Timer(Duration(milliseconds: 1100), () => showModalBottomSheet(
-                    backgroundColor: Theme.of(context).cardColor.withOpacity(0.6),
-
-                    context: context,
-                    builder: (builder) {
-                      return BookCaseModal(data['location']);
-                    }));
+                Timer(
+                    Duration(milliseconds: 1100),
+                    () => showModalBottomSheet(
+                        backgroundColor:
+                            Theme.of(context).cardColor.withOpacity(0.6),
+                        context: context,
+                        builder: (builder) {
+                          return BookCaseModal(data['location']);
+                        }));
               });
             }
           },
@@ -173,8 +172,8 @@ class ListItem extends StatelessWidget {
                       child: data['icon'] == 'asset'
                           ? Image.asset("assets/icons/book_case.png")
                           : Image(
-                        image: NetworkImage(data['icon']),
-                      )),
+                              image: NetworkImage(data['icon']),
+                            )),
                 ),
                 const SizedBox(width: 16),
                 Expanded(

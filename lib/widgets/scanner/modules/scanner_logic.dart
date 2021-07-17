@@ -78,6 +78,7 @@ setSchrank(String markersId, Map formular) {
 // ignore: must_be_immutable
 class Schraenke extends StatefulWidget {
   String markersId;
+
   Schraenke(this.markersId);
 
   @override
@@ -88,6 +89,7 @@ class _SchraenkeState extends State<Schraenke> {
   var result;
   int? selectedSchrank;
   String markersId;
+
   _SchraenkeState(this.markersId);
 
   @override

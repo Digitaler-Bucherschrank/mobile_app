@@ -27,7 +27,7 @@ class Tokens {
   AccessToken? accessToken;
   RefreshToken? refreshToken;
 
-  Tokens({ this.accessToken, this.refreshToken});
+  Tokens({this.accessToken, this.refreshToken});
 
   Tokens.fromJson(Map<String, dynamic> json) {
     accessToken = json['accessToken'] != null

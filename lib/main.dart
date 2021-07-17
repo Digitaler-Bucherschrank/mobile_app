@@ -21,13 +21,15 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import 'api/api_service.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Load Bookcases into memory
   await loadBookCases();
+
+  // Initialize Shared Preferences
   await SharedPrefs().init();
   AuthenticationService();
 
@@ -164,27 +166,33 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0),
-                      )
-                  ),
+                      )),
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 12),
                       Container(
                         height: 5,
                         width: 30,
-                        decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(16)),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(16)),
                       ),
                       SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(S.current.title, style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),)
+                          Text(
+                            S.current.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline5!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          )
                         ],
                       ),
                       SizedBox(height: 8),
                     ],
-                  )
-              ),
+                  )),
             ),
             Expanded(
               flex: 20,
@@ -197,41 +205,57 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     color: Theme.of(context).cardColor.withOpacity(0.8),
                     child: LayoutBuilder(
-                      builder: (BuildContext context, BoxConstraints constraints) {
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
                         return Padding(
                           padding: EdgeInsets.only(
                               left: constraints.maxWidth * 0.04,
                               right: constraints.maxWidth * 0.04),
-                          child: Column(mainAxisSize: MainAxisSize.min,children: [
+                          child:
+                              Column(mainAxisSize: MainAxisSize.min, children: [
                             SizedBox(height: constraints.maxHeight * 0.05),
                             Row(children: [
                               Flexible(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: Theme.of(context).cardTheme.margin!.horizontal),
-                                    child: FractionallySizedBox(
-                                        alignment: Alignment.center,
-                                        widthFactor: 0.6,
-                                        child: FittedBox(
-                                          fit: BoxFit.contain,
-                                          child: RichText(
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: Theme.of(context)
+                                          .cardTheme
+                                          .margin!
+                                          .horizontal),
+                                  child: FractionallySizedBox(
+                                      alignment: Alignment.center,
+                                      widthFactor: 0.6,
+                                      child: FittedBox(
+                                        fit: BoxFit.contain,
+                                        child: RichText(
                                             textAlign: TextAlign.center,
                                             text: TextSpan(
-                                                text: S.current.label_welcome_user(SharedPrefs().user.username!),
+                                                text: S.current
+                                                    .label_welcome_user(
+                                                        SharedPrefs()
+                                                            .user
+                                                            .username!),
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .subtitle2!
                                                     .copyWith(
-                                                    fontWeight:
-                                                    FontWeight.w300))),
-                                        )),
-                                  ), fit: FlexFit.loose,)
+                                                        fontWeight:
+                                                            FontWeight.w300))),
+                                      )),
+                                ),
+                                fit: FlexFit.loose,
+                              )
                             ]),
                             SizedBox(height: constraints.maxHeight * 0.03),
                             // TODO: Ripple Effect for buttons
                             Card(
                               child: ListTile(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => InventoryList()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              InventoryList()));
                                 },
                                 leading: Icon(Icons.inventory_2),
                                 title: Text(S.current.label_inventory),
@@ -254,7 +278,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 leading: Icon(Icons.logout),
                                 onTap: () {
                                   Utilities.logoutUser(null);
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginScreen()));
                                 },
                                 title: Text(S.current.label_logout),
                               ),

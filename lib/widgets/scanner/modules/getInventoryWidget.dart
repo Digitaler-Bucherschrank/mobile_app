@@ -3,7 +3,6 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 Future<Widget> getUserInventoryWidget(String bookCaseID) async {
   ApiService apiService = new ApiService();
@@ -88,7 +87,13 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
       future: apiService.getBookCaseInventory(bookCaseID),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.data == null) {
-          return Center(child: SizedBox( width: 60, height: 60, child: CircularProgressIndicator(color: Theme.of(context).accentColor,)));
+          return Center(
+              child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                  )));
         } else if (snapshot.data.isEmpty) {
           print("snapshot.data['donated'].length: ${snapshot.data.length}");
           return Container(
@@ -103,7 +108,9 @@ Widget getBookCaseInventoryWidget(String bookCaseID) {
             itemBuilder: (context, index) {
               return Container(
                 child: ListTile(
-                  leading: snapshot.data[index].thumbnail != null ? Image.network(snapshot.data[index].thumbnail!) :  Icon(Icons.book),
+                  leading: snapshot.data[index].thumbnail != null
+                      ? Image.network(snapshot.data[index].thumbnail!)
+                      : Icon(Icons.book),
                   title: Text("${snapshot.data[index].title}",
                       style: Theme.of(context).textTheme.bodyText1),
                   subtitle: Text(

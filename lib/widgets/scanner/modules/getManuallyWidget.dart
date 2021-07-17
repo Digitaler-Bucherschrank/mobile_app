@@ -1,10 +1,11 @@
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
+
 import '../../../models/book.dart';
 import 'scanner_logic.dart';
-import 'package:digitaler_buecherschrank/api/api_service.dart';
 
-Widget getManuellyWidget(BuildContext context) {
+Widget getManuallyWidget(BuildContext context) {
   TextEditingController scannerText = new TextEditingController();
   ApiService apiService = new ApiService();
   ManualBookData _manualBook = new ManualBookData();
