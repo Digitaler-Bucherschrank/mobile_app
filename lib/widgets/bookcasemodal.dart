@@ -54,7 +54,7 @@ class BookCaseModal extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  ScannerPickupForm('${bookcase.iId!.oid}')),
+                                  ScannerPickupForm(bookcase)),
                         );
                       },
                       title: Text(S.of(context).label_show_books),
@@ -68,8 +68,7 @@ class BookCaseModal extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  ScannerDropForm('${bookcase.iId!.oid}')),
+                              builder: (context) => ScannerDropForm(bookcase)),
                         );
                       },
                       title: Text(S.of(context).label_dropbook),

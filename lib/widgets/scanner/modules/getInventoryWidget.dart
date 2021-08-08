@@ -4,16 +4,8 @@ import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
-Future<Widget> getUserInventoryWidget(String bookCaseID) async {
+Future<Widget> getUserInventoryWidget(BookCase bookcase) async {
   ApiService apiService = new ApiService();
-  List bookCases = await getBookCases();
-  BookCase bookcase = bookCases[109];
-  for (int i = 0; i < bookCases.length; i++) {
-    if (bookCases[i].iId!.oid == bookCaseID) {
-      bookcase = bookCases[i];
-      i = bookCases.length;
-    }
-  }
 
   return FutureBuilder(
     future: apiService.getUserInventory(SharedPrefs().user),
@@ -52,6 +44,9 @@ Future<Widget> getUserInventoryWidget(String bookCaseID) async {
             itemBuilder: (context, index) {
               return Container(
                 child: ListTile(
+                  leading: userInventory[index].thumbnail != null
+                      ? Image.network(userInventory[index].thumbnail!)
+                      : Icon(Icons.book),
                   title: Text("${userInventory[index].title}",
                       style: Theme.of(context).textTheme.bodyText1),
                   subtitle: Text(
