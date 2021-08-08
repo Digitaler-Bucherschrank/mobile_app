@@ -8,6 +8,7 @@ class Book {
   String? currentUser;
   bool? addedManual;
   ManualBookData? manualBookData;
+
   // Nothing the Database would deliver when requesting a book, needs to be populated manually
   VolumeData? bookData;
 

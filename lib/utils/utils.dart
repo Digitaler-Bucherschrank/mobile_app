@@ -7,10 +7,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:restart_app/restart_app.dart';
 
 /// Utilities for some use cases dart hasn't implemented yet
-class Utilities{
+class Utilities {
   static List<Book> parseBooks(data) {
-
-    var parsed = jsonDecode(data).cast<Map<String, dynamic>>().map<Book>((Map<String, dynamic> json) {
+    var parsed = jsonDecode(data)
+        .cast<Map<String, dynamic>>()
+        .map<Book>((Map<String, dynamic> json) {
       final tempMarker = Book.fromJson(json);
       return tempMarker;
     }).toList();
@@ -21,20 +22,21 @@ class Utilities{
   static Map<String, List<Book>> parseInventory(data) {
     var parsedData = jsonDecode(data);
 
-    var parsedDonatedInv = parsedData["donated"].cast<Map<String, dynamic>>().map<Book>((Map<String, dynamic> json) {
+    var parsedDonatedInv = parsedData["donated"]
+        .cast<Map<String, dynamic>>()
+        .map<Book>((Map<String, dynamic> json) {
       final tempMarker = Book.fromJson(json);
       return tempMarker;
     }).toList();
 
-    var parsedBorrowedInv = parsedData["borrowed"].cast<Map<String, dynamic>>().map<Book>((Map<String, dynamic> json) {
+    var parsedBorrowedInv = parsedData["borrowed"]
+        .cast<Map<String, dynamic>>()
+        .map<Book>((Map<String, dynamic> json) {
       final tempMarker = Book.fromJson(json);
       return tempMarker;
     }).toList();
 
-    return {
-      "donated": parsedDonatedInv,
-      "borrowed": parsedBorrowedInv
-    };
+    return {"donated": parsedDonatedInv, "borrowed": parsedBorrowedInv};
   }
 
   static bool containsIgnoreCase(String string1, String string2) {
@@ -52,7 +54,7 @@ class Utilities{
   static Future<void> _deleteAppDir() async {
     final appDir = await getApplicationSupportDirectory();
 
-    if(appDir.existsSync()){
+    if (appDir.existsSync()) {
       appDir.deleteSync(recursive: true);
     }
   }
@@ -62,7 +64,7 @@ class Utilities{
     await _deleteCacheDir();
     SharedPrefs().clearSettings();
 
-    if(context != null){
+    if (context != null) {
       Restart.restartApp();
     }
   }

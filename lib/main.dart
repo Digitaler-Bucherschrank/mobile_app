@@ -25,7 +25,10 @@ import 'widgets/gmap.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Load Bookcases into memory
   await loadBookCases();
+
+  // Initialize Shared Preferences
   await SharedPrefs().init();
   AuthenticationService();
 

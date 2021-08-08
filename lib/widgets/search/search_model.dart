@@ -14,13 +14,16 @@ class SearchModel extends ChangeNotifier {
   }
 
   bool _isLoading = false;
+
   bool get isLoading => _isLoading;
 
   Completer _history = new Completer<List<Map<dynamic, dynamic>>>();
   List<Map<dynamic, dynamic>> _suggestions = [];
+
   List<Map<dynamic, dynamic>> get suggestions => _suggestions;
 
   String _query = '';
+
   String get query => _query;
 
   void onQueryChanged(String query) async {
@@ -55,12 +58,12 @@ class SearchModel extends ChangeNotifier {
           });
         } else {
           // Only add not borrowed Books to the search (for now, until we have a working Book info view
-          if((item.location ?? "") != ""){
+          if ((item.location ?? "") != "") {
             result.add({
               'title': item.title,
               'subtitle': item.author,
               'icon': item.thumbnail,
-              'location': bookCases.firstWhere((element){
+              'location': bookCases.firstWhere((element) {
                 print(element.iId!.oid! + " " + item.location);
                 return (element.iId!.oid ?? "") == item.location;
               })

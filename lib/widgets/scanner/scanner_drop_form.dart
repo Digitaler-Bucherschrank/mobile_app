@@ -5,13 +5,16 @@ import 'modules/getInventoryWidget.dart';
 
 class ScannerDropForm extends StatefulWidget {
   final String markersId;
+
   ScannerDropForm(this.markersId);
+
   @override
   _ScannerDropFormState createState() => _ScannerDropFormState(markersId);
 }
 
 class _ScannerDropFormState extends State<ScannerDropForm> {
   String markersId;
+
   _ScannerDropFormState(this.markersId);
 
   @override

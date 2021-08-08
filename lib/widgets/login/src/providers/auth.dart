@@ -37,12 +37,14 @@ class Auth with ChangeNotifier {
   AuthMode _mode = AuthMode.Login;
 
   AuthMode get mode => _mode;
+
   set mode(AuthMode value) {
     _mode = value;
     notifyListeners();
   }
 
   bool get isLogin => _mode == AuthMode.Login;
+
   bool get isSignup => _mode == AuthMode.Signup;
   bool isRecover = false;
 
@@ -60,28 +62,36 @@ class Auth with ChangeNotifier {
   }
 
   String _username = '';
+
   String get username => _username;
+
   set username(String username) {
     _username = username;
     notifyListeners();
   }
 
   String _email = '';
+
   String get email => _email;
+
   set email(String mail) {
     _email = mail;
     notifyListeners();
   }
 
   String _password = '';
+
   String get password => _password;
+
   set password(String password) {
     _password = password;
     notifyListeners();
   }
 
   String _confirmPassword = '';
+
   String get confirmPassword => _confirmPassword;
+
   set confirmPassword(String confirmPassword) {
     _confirmPassword = confirmPassword;
     notifyListeners();

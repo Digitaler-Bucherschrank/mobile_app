@@ -4,7 +4,6 @@ import 'package:location/location.dart';
 import 'package:rxdart/rxdart.dart';
 
 class LocationProvider {
-  // ignore: close_sinks
   static var _streamProvider = BehaviorSubject<LocationData>();
 
   static updateLocation(LocationData l) {

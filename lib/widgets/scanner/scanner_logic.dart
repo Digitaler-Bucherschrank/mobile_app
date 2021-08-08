@@ -33,8 +33,8 @@ Future scanBarcodeNormal() async {
 }
 
 Future getInfo(String? isbn) async {
-  var _url =
-      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
+  var _url = Uri.parse(
+      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/getInfo.json");
   Map response = await http
       .post(_url,
           body: json.encode({
@@ -52,8 +52,8 @@ Future getInfo(String? isbn) async {
 }
 
 Future postIsbnAndSchrank(String? isbn, String? schrank) async {
-  var _url =
-      Uri.parse("https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json");
+  var _url = Uri.parse(
+      "https://test-3eea7-default-rtdb.europe-west1.firebasedatabase.app/isbn.json");
   http
       .post(_url,
           body: json.encode({
@@ -79,6 +79,7 @@ setSchrank(String markersId, Map formular) {
 class Schraenke extends StatefulWidget {
   final formular;
   String markersId;
+
   Schraenke(this.formular, this.markersId);
 
   @override
@@ -90,6 +91,7 @@ class _SchraenkeState extends State<Schraenke> {
   Map formular;
   int? selectedSchrank;
   String markersId;
+
   _SchraenkeState(this.formular, this.markersId);
 
   setSelectedSchrank(int val, String schrank) {

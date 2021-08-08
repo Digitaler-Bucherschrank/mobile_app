@@ -3,9 +3,18 @@ import 'dart:math';
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
 import 'package:digitaler_buecherschrank/widgets/login/src/models/login_user_type.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
+import '../constants.dart';
+import '../dart_helper.dart';
+import '../matrix.dart';
+import '../models/login_data.dart';
+import '../paddings.dart';
+import '../providers/auth.dart';
+import '../providers/login_messages.dart';
+import '../providers/login_theme.dart';
+import '../widget_helper.dart';
 import 'animated_button.dart';
 import 'animated_icon.dart';
 import 'animated_text.dart';
@@ -13,15 +22,6 @@ import 'animated_text_form_field.dart';
 import 'custom_page_transformer.dart';
 import 'expandable_container.dart';
 import 'fade_in.dart';
-import '../constants.dart';
-import '../providers/auth.dart';
-import '../providers/login_messages.dart';
-import '../providers/login_theme.dart';
-import '../models/login_data.dart';
-import '../dart_helper.dart';
-import '../matrix.dart';
-import '../paddings.dart';
-import '../widget_helper.dart';
 
 // TODO Improvement: Keep just this in auth_card.dart
 class AuthCard extends StatefulWidget {
@@ -516,10 +516,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       ));
     } else {
       error = await auth.onSignup!(LoginData(
-        name: auth.username,
-        password: auth.password,
-        email: auth.email
-      ));
+          name: auth.username, password: auth.password, email: auth.email));
     }
 
     // workaround to run after _cardSizeAnimation in parent finished
@@ -687,10 +684,9 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildEmailField(
-      double width, LoginMessages messages, Auth auth) {
+  Widget _buildEmailField(double width, LoginMessages messages, Auth auth) {
     return AnimatedTextFormField(
-     // animatedWidth: width,
+      // animatedWidth: width,
       width: width,
       enabled: auth.isSignup,
       loadingController: _loadingController,
@@ -705,8 +701,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildSignUpFields(
-      double width, LoginMessages messages, Auth auth) {
+  Widget _buildSignUpFields(double width, LoginMessages messages, Auth auth) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

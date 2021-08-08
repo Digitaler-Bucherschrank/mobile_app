@@ -1,15 +1,13 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
-
-import '../bookcasemodal.dart';
 import './../gmap.dart';
+import '../bookcasemodal.dart';
 import 'search_model.dart';
 
 class Search extends StatefulWidget {

@@ -4,8 +4,8 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
-import 'scanner_logic.dart';
 import '../../../models/book.dart';
+import 'scanner_logic.dart';
 
 double cardBorderRadius = 20.0;
 
@@ -237,16 +237,20 @@ Widget getBookcase(String markersId) {
 
 class GetFromWidget extends StatefulWidget {
   final String from;
+
   GetFromWidget(this.from);
+
   @override
   _GetFromWidgetState createState() => _GetFromWidgetState(from);
 }
 
 class _GetFromWidgetState extends State<GetFromWidget> {
   String? from;
+
   _GetFromWidgetState(this.from);
 
   int? selectedRadio;
+
   @override
   void initState() {
     super.initState();

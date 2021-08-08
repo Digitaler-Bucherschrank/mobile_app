@@ -8,6 +8,7 @@ import 'scanner/donatebook.dart';
 
 class BookCaseModal extends StatelessWidget {
   final BookCase bookcase;
+
   BookCaseModal(this.bookcase);
 
   @override

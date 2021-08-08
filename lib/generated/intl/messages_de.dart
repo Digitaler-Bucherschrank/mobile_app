@@ -22,7 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(name) => "Willkommen, ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+
+  static _notInlinedMessages(_) => <String, Function>{
         "dialog_ok_button": MessageLookupByLibrary.simpleMessage("Alles klar"),
         "error_connectivity_desc": MessageLookupByLibrary.simpleMessage(
             "Verbinde dich wieder mit dem Internet, um alle Funktionen der App nutzen zu können."),

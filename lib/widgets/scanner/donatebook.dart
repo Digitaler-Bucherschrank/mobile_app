@@ -1,23 +1,27 @@
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-import 'package:digitaler_buecherschrank/api/api_service.dart';
 import '../../models/book.dart';
-import 'modules/getManuellyWidget.dart';
 import 'modules/getFrotpageModules.dart';
+import 'modules/getManuallyWidget.dart';
 
 enum WidgetMarker { isbn, manuelly }
+
 WidgetMarker selectedWidgetMarker = WidgetMarker.isbn;
 
 class _GetISBNScannWidget extends StatefulWidget {
   final String markersId;
+
   _GetISBNScannWidget(this.markersId);
+
   @override
   _GetISBNScannWidgetState createState() => _GetISBNScannWidgetState(markersId);
 }
 
 class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   String markersId;
+
   _GetISBNScannWidgetState(this.markersId);
 
   TextEditingController txt = TextEditingController();
@@ -67,7 +71,7 @@ Widget getCustomContainer(String markersId, BuildContext context) {
     case WidgetMarker.manuelly:
       {
         print(WidgetMarker.manuelly);
-        return getManuellyWidget(context);
+        return getManuallyWidget(context);
       }
     case WidgetMarker.isbn:
       {
@@ -79,13 +83,16 @@ Widget getCustomContainer(String markersId, BuildContext context) {
 
 class DonateWidget extends StatefulWidget {
   final String markersId;
+
   DonateWidget(this.markersId);
+
   @override
   _DonateWidgetState createState() => _DonateWidgetState(markersId);
 }
 
 class _DonateWidgetState extends State<DonateWidget> {
   String markersId;
+
   _DonateWidgetState(this.markersId);
 
   @override
@@ -103,14 +110,18 @@ class _DonateWidgetState extends State<DonateWidget> {
 
 class ContentWidget extends StatefulWidget {
   final String markersId;
+
   ContentWidget(this.markersId);
+
   @override
   State<StatefulWidget> createState() => ContentWidgetState(markersId);
 }
 
 class ContentWidgetState extends State<ContentWidget> {
   String markersId;
+
   ContentWidgetState(this.markersId);
+
   Color? _scannpageColor;
   Color? _manualpageColor;
 
