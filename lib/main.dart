@@ -135,7 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
         renderPanelSheet: false,
         padding: EdgeInsets.only(top: 30),
         backdropEnabled: true,
-        maxHeight: MediaQuery.of(context).size.height * 0.5,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),

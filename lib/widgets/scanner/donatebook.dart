@@ -65,22 +65,6 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   }
 }
 
-Widget getCustomContainer(String markersId, BuildContext context) {
-  print("inside getCustomContainer");
-  switch (selectedWidgetMarker) {
-    case WidgetMarker.manuelly:
-      {
-        print(WidgetMarker.manuelly);
-        return getManuallyWidget(context);
-      }
-    case WidgetMarker.isbn:
-      {
-        print(WidgetMarker.isbn);
-        return _GetISBNScannWidget(markersId);
-      }
-  }
-}
-
 class DonateWidget extends StatefulWidget {
   final String markersId;
 
@@ -90,84 +74,47 @@ class DonateWidget extends StatefulWidget {
   _DonateWidgetState createState() => _DonateWidgetState(markersId);
 }
 
-class _DonateWidgetState extends State<DonateWidget> {
+class _DonateWidgetState extends State<DonateWidget>
+    with TickerProviderStateMixin {
+  TabController? _tabController;
   String markersId;
-
   _DonateWidgetState(this.markersId);
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(S.of(context).label_donate_book),
-      ),
-      body: SingleChildScrollView(
-        child: new Container(child: ContentWidget(markersId)),
-      ),
-    );
-  }
-}
-
-class ContentWidget extends StatefulWidget {
-  final String markersId;
-
-  ContentWidget(this.markersId);
-
-  @override
-  State<StatefulWidget> createState() => ContentWidgetState(markersId);
-}
-
-class ContentWidgetState extends State<ContentWidget> {
-  String markersId;
-
-  ContentWidgetState(this.markersId);
-
-  Color? _scannpageColor;
-  Color? _manualpageColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(
               icon: Icon(Icons.qr_code_scanner_sharp),
-              color: _scannpageColor == null
-                  ? Theme.of(context).primaryColorLight
-                  : _scannpageColor,
-              onPressed: () {
-                print("isbn");
-                print(selectedWidgetMarker);
-                setState(() {
-                  selectedWidgetMarker = WidgetMarker.isbn;
-                  _manualpageColor = Theme.of(context).primaryColorDark;
-                  _scannpageColor = Theme.of(context).primaryColorLight;
-                });
-                print(selectedWidgetMarker);
-              },
             ),
-            IconButton(
+            Tab(
               icon: Icon(Icons.text_snippet),
-              color: _manualpageColor == null
-                  ? Theme.of(context).accentColor
-                  : _manualpageColor,
-              onPressed: () {
-                print("manuell");
-                setState(() {
-                  selectedWidgetMarker = WidgetMarker.manuelly;
-                  _scannpageColor = Theme.of(context).primaryColorDark;
-                  _manualpageColor = Theme.of(context).primaryColorLight;
-                });
-              },
             ),
           ],
         ),
-        Container(
-          child: getCustomContainer(markersId, context),
-        )
-      ],
+      ),
+      body: SingleChildScrollView(
+        child: new Container(
+          height: 600,
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              _GetISBNScannWidget(markersId),
+              getManuallyWidget(context),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
