@@ -123,9 +123,10 @@ SmartRefresher _buildSmartRefresherBookcase(
   );
 }
 
-Future<Widget> getUserInventoryWidget(BookCase bookcase) async {
+Future<Widget> getUserInventoryWidget(
+    BookCase bookcase, BuildContext context) async {
   return Container(
-    height: 600,
+    height: MediaQuery.of(context).size.height * 0.92,
     child: FutureBuilder(
       future: apiService.getUserInventory(SharedPrefs().user),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -169,9 +170,9 @@ Future<Widget> getUserInventoryWidget(BookCase bookcase) async {
   );
 }
 
-Widget getBookCaseInventoryWidget(String bookCaseID) {
+Widget getBookCaseInventoryWidget(String bookCaseID, BuildContext context) {
   return Container(
-    height: 600,
+    height: MediaQuery.of(context).size.height * 0.92,
     child: FutureBuilder(
       future: apiService.getBookCaseInventory(bookCaseID),
       builder: (BuildContext context, AsyncSnapshot snapshot) {

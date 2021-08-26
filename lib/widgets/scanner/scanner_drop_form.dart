@@ -22,12 +22,13 @@ class _ScannerDropFormState extends State<ScannerDropForm> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * 0.08,
         title: new Text(S.of(context).label_dropbook),
       ),
       body: SingleChildScrollView(
         child: new Container(
           child: FutureBuilder(
-              future: getUserInventoryWidget(bookcase),
+              future: getUserInventoryWidget(bookcase, context),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return Text("");

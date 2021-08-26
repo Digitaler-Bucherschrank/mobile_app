@@ -82,6 +82,7 @@ class _InventoryListState extends State<InventoryList>
     } else {
       return Scaffold(
           appBar: AppBar(
+            toolbarHeight: MediaQuery.of(context).size.height * 0.15,
             title: Text(S.current.label_inventory),
             actions: <Widget>[],
             bottom: TabBar(

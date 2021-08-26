@@ -14,7 +14,8 @@ Widget getScannerWidget(
     Book _book,
     TextEditingController txt,
     TextEditingController txt2,
-    ApiService apiService) {
+    ApiService apiService,
+    double containerWidth) {
   TextEditingController scannerText = new TextEditingController();
   return Card(
     shape: RoundedRectangleBorder(
@@ -38,7 +39,7 @@ Widget getScannerWidget(
             Column(
               children: [
                 Container(
-                  width: 300,
+                  width: containerWidth,
                   child: TextField(
                     controller: scannerText,
                     decoration: InputDecoration(
@@ -95,7 +96,8 @@ Widget getScannerWidget(
 }
 
 Widget getBookinfo(BuildContext context, TextEditingController txt,
-    TextEditingController txt2) {
+    TextEditingController txt2, double containerWidth) {
+  double testFieldWidth = MediaQuery.of(context).size.width * 0.6;
   return Card(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(cardBorderRadius),
@@ -113,43 +115,51 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
             ),
             Padding(padding: EdgeInsets.only(top: 10)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("${S.of(context).label_scanner_title}: ",
-                    style: Theme.of(context).textTheme.bodyText1),
-                Container(
-                  child: TextField(
-                    selectionHeightStyle: BoxHeightStyle.tight,
-                    controller: txt,
-                    decoration: InputDecoration(
-                      fillColor: Colors.transparent,
-                      border: InputBorder.none,
-                    ),
-                  ),
-                  width: 200,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text("${S.of(context).label_scanner_title}: ",
+                        style: Theme.of(context).textTheme.bodyText1),
+                    Padding(padding: EdgeInsets.only(top: 35)),
+                    Text("${S.of(context).label_scanner_autor}: ",
+                        style: Theme.of(context).textTheme.bodyText1),
+                  ],
                 ),
-              ],
-            ),
-            Padding(padding: EdgeInsets.only(top: 10)),
-            Row(
-              children: [
-                Text("${S.of(context).label_scanner_autor}: ",
-                    style: Theme.of(context).textTheme.bodyText1),
-                Container(
-                  child: TextField(
-                    controller: txt2,
-                    decoration: InputDecoration(
-                      fillColor: Colors.transparent,
-                      border: InputBorder.none,
+                Column(
+                  children: [
+                    Container(
+                      child: TextField(
+                        selectionHeightStyle: BoxHeightStyle.tight,
+                        controller: txt,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        decoration: InputDecoration(
+                          fillColor: Colors.transparent,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                      width: testFieldWidth,
                     ),
-                  ),
-                  width: 200,
-                ),
+                    Padding(padding: EdgeInsets.only(top: 10)),
+                    Container(
+                      child: TextField(
+                        selectionHeightStyle: BoxHeightStyle.tight,
+                        controller: txt2,
+                        style: Theme.of(context).textTheme.bodyText1,
+                        decoration: InputDecoration(
+                          fillColor: Colors.transparent,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                      width: testFieldWidth,
+                    ),
+                  ],
+                )
               ],
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 250,
+              width: containerWidth,
               child: Text(S.of(context).label_scanner_notYourBook,
                   style: Theme.of(context).textTheme.bodyText2),
             ),
@@ -161,7 +171,8 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
   );
 }
 
-Widget getBookcase(String markersId) {
+Widget getBookcase(
+    String markersId, BuildContext context, double containerWidth) {
   return Card(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(cardBorderRadius),
@@ -198,7 +209,7 @@ Widget getBookcase(String markersId) {
                                 style: Theme.of(context).textTheme.headline6,
                               ),
                               Container(
-                                width: 300,
+                                width: containerWidth,
                                 child: ListTile(
                                   leading: SizedBox(
                                     height: 50,

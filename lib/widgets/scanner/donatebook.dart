@@ -12,17 +12,20 @@ WidgetMarker selectedWidgetMarker = WidgetMarker.isbn;
 
 class _GetISBNScannWidget extends StatefulWidget {
   final String markersId;
+  final double containerWidth;
 
-  _GetISBNScannWidget(this.markersId);
+  _GetISBNScannWidget(this.markersId, this.containerWidth);
 
   @override
-  _GetISBNScannWidgetState createState() => _GetISBNScannWidgetState(markersId);
+  _GetISBNScannWidgetState createState() =>
+      _GetISBNScannWidgetState(markersId, containerWidth);
 }
 
 class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   String markersId;
+  double containerWidth;
 
-  _GetISBNScannWidgetState(this.markersId);
+  _GetISBNScannWidgetState(this.markersId, this.containerWidth);
 
   TextEditingController txt = TextEditingController();
   TextEditingController txt2 = TextEditingController();
@@ -44,8 +47,10 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
       child: new Container(
         child: Column(
           children: [
-            getScannerWidget(context, _book, txt, txt2, apiService),
-            getBookcase(markersId),
+            getScannerWidget(
+                context, _book, txt, txt2, apiService, containerWidth),
+            getBookinfo(context, txt, txt2, containerWidth),
+            getBookcase(markersId, context, containerWidth),
             ElevatedButton(
               style: Theme.of(context).outlinedButtonTheme.style,
               onPressed: () async {
@@ -88,8 +93,10 @@ class _DonateWidgetState extends State<DonateWidget>
 
   @override
   Widget build(BuildContext context) {
+    double containerWidth = MediaQuery.of(context).size.width * 0.8;
     return new Scaffold(
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * 0.15,
         title: new Text(S.of(context).label_donate_book),
         bottom: TabBar(
           controller: _tabController,
@@ -105,12 +112,12 @@ class _DonateWidgetState extends State<DonateWidget>
       ),
       body: SingleChildScrollView(
         child: new Container(
-          height: 600,
+          height: MediaQuery.of(context).size.height * 0.85,
           child: TabBarView(
             controller: _tabController,
             children: [
-              _GetISBNScannWidget(markersId),
-              getManuallyWidget(context),
+              _GetISBNScannWidget(markersId, containerWidth),
+              getManuallyWidget(context, containerWidth),
             ],
           ),
         ),

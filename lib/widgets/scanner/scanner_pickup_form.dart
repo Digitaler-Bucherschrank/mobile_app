@@ -22,11 +22,13 @@ class _ScannerPickupFormState extends State<ScannerPickupForm> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height * 0.08,
         title: new Text(S.of(context).label_show_books),
       ),
       body: SingleChildScrollView(
         child: new Container(
-            child: getBookCaseInventoryWidget('${bookcase.iId!.oid}')),
+          child: getBookCaseInventoryWidget('${bookcase.iId!.oid}', context),
+        ),
       ),
     );
   }
