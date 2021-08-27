@@ -132,12 +132,23 @@ class ListItem extends StatelessWidget {
         InkWell(
           onTap: () {
             // dirty way of checking if we have a bookcase or book
-            if (data['lat'] != null) {
+            if (data['bookCase'] != null) {
               FloatingSearchBar.of(context)!.close();
               goToLocation(
-                double.parse(data['lat']),
-                double.parse(data['lon']),
-              );
+                double.parse(data['bookCase'].lat),
+                double.parse(data['bookCase'].lon),
+              ).then((value) {
+                // Dirty workaround as we don't have another way to control it
+                Timer(
+                    Duration(milliseconds: 1100),
+                    () => showModalBottomSheet(
+                        backgroundColor:
+                            Theme.of(context).cardColor.withOpacity(0.6),
+                        context: context,
+                        builder: (builder) {
+                          return BookCaseModal(data['bookCase']);
+                        }));
+              });
             } else {
               FloatingSearchBar.of(context)!.close();
 

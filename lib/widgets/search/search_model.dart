@@ -50,11 +50,10 @@ class SearchModel extends ChangeNotifier {
       for (var item in temp) {
         if (item.runtimeType == BookCase) {
           result.add({
+            'bookCase': item,
             'title': item.title,
             'subtitle': item.address,
             'icon': "asset",
-            'lat': item.lat,
-            'lon': item.lon
           });
         } else {
           // Only add not borrowed Books to the search (for now, until we have a working Book info view
@@ -99,11 +98,10 @@ class SearchModel extends ChangeNotifier {
       List<Map<dynamic, dynamic>> bookCasesList = [];
       for (var item in bookCases) {
         bookCasesList.add({
+          'bookCase': item,
           'title': item.title,
           'subtitle': item.address,
           'icon': "asset",
-          'lat': item.lat,
-          'lon': item.lon
         });
       }
       bookCasesList.shuffle();
