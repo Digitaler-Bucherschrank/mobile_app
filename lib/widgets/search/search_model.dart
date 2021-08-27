@@ -98,8 +98,13 @@ class SearchModel extends ChangeNotifier {
       var bookCases = (await getBookCases());
       List<Map<dynamic, dynamic>> bookCasesList = [];
       for (var item in bookCases) {
-        bookCasesList.add(
-            {'title': item.title, 'subtitle': item.address, 'icon': "asset"});
+        bookCasesList.add({
+          'title': item.title,
+          'subtitle': item.address,
+          'icon': "asset",
+          'lat': item.lat,
+          'lon': item.lon
+        });
       }
       bookCasesList.shuffle();
 
