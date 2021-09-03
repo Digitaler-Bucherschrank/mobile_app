@@ -17,6 +17,12 @@ class Id {
   Id.fromJson(Map<String, dynamic> json) {
     oid = json[r"$oid"];
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': this.oid,
+    };
+  }
 }
 
 class BookCase {
@@ -75,6 +81,27 @@ class BookCase {
     title = json['title'];
     type = json['type'];
     distance = "-1000";
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': iId!.toJson(),
+      'address': address,
+      'bcz': bcz,
+      'comment': comment,
+      'contact': contact,
+      'deactivated': deactivated,
+      'deactreason': deactreason,
+      'digital': digital,
+      'entrytype': entrytype,
+      'homepage': homepage,
+      'icontype': icontype,
+      'lat': lat,
+      'lon': lon,
+      'open': open,
+      'title': title,
+      'type': type,
+    };
   }
 
   updateDistance() async {

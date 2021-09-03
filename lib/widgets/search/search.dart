@@ -183,7 +183,7 @@ class ListItem extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        data['subtitle'] != null ? data['subtitle'] : "",
+                        data['address'],
                         style: textTheme.bodyText2!
                             .copyWith(color: Colors.grey.shade600),
                       ),

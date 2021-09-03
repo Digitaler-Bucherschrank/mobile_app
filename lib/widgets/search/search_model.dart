@@ -96,16 +96,23 @@ class SearchModel extends ChangeNotifier {
     if (false /* insert history check*/) {
     } else {
       var bookCases = (await getBookCases());
-      List<Map<dynamic, dynamic>> bookCasesList = [];
-      for (var item in bookCases) {
-        bookCasesList.add(
-            {'title': item.title, 'subtitle': item.address, 'icon': "asset"});
-      }
-      bookCasesList.shuffle();
 
-      var trimmed = bookCasesList.sublist(0, 5);
+      bookCases.shuffle();
+
+      // Needed for darts weird conversion policy
+      List<Map<String, dynamic>> convertedBookCases = [];
+
+      bookCases.forEach((element) {
+        var book = element.toJson();
+        book.addAll({
+          'icon': 'asset'
+        });
+        convertedBookCases.add(book);
+      });
+
+      var trimmed = convertedBookCases.sublist(0, 5);
       //_history.complete(trimmed);
-      _suggestions = trimmed;
+      _suggestions = trimmed.cast<Map>();
       notifyListeners();
     }
   }

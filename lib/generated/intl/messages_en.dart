@@ -22,8 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m0(name) => "Welcome, ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-
-  static _notInlinedMessages(_) => <String, Function>{
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "dialog_ok_button": MessageLookupByLibrary.simpleMessage("Alright"),
         "error_connectivity_desc": MessageLookupByLibrary.simpleMessage(
             "Enable connectivity on your device to ensure full functionality of the app."),
@@ -62,7 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Your Inventory"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Login"),
-        "label_logout": MessageLookupByLibrary.simpleMessage("Logout\n"),
+        "label_logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Map"),
         "label_password": MessageLookupByLibrary.simpleMessage("Password"),

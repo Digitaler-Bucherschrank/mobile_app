@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 ThemeData lightThemeData() {
   return FlexColorScheme.light(
           colors: FlexSchemeColor.from(
-              primary: Color(0xFF423C3A), accentColor: Color(0xFF1890C9)),
+              primary: Color(0xFF423C3A), secondary: Color(0xFF1890C9)),
           visualDensity: FlexColorScheme.comfortablePlatformDensity,
           appBarStyle: FlexAppBarStyle.primary)
       .toTheme
@@ -48,7 +48,7 @@ ThemeData lightThemeData() {
 ThemeData darkThemeData() {
   return FlexColorScheme.dark(
           colors: FlexSchemeColor.from(
-                  primary: Color(0xFF423C3A), accentColor: Color(0xFF1890C9))
+                  primary: Color(0xFF423C3A), secondary: Color(0xFF1890C9))
               .toDark(),
           visualDensity: FlexColorScheme.comfortablePlatformDensity,
           appBarStyle: FlexAppBarStyle.primary)

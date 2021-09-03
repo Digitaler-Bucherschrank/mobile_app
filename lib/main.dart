@@ -19,6 +19,7 @@ import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
@@ -127,15 +128,16 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  // TODO: Make it clean responsive
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SlidingUpPanel(
         renderPanelSheet: false,
-        padding: EdgeInsets.only(top: 30),
+        minHeight: 66,
         backdropEnabled: true,
-        maxHeight: MediaQuery.of(context).size.height * 0.5,
+        maxHeight: 400,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
@@ -156,44 +158,41 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         panel: Column(
           children: [
+            Container(
+              height: 66,
+                decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.0),
+                      topRight: Radius.circular(15.0),
+                    )),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 12),
+                    Container(
+                      height: 5,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(16)),
+                    ),
+                    SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          S.current.title,
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline5!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                )),
             Expanded(
-              flex: 4,
-              child: Container(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0),
-                      )),
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(height: 12),
-                      Container(
-                        height: 5,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(16)),
-                      ),
-                      SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            S.current.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline5!
-                                .copyWith(fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 8),
-                    ],
-                  )),
-            ),
-            Expanded(
-              flex: 20,
               child: ClipRRect(
                 child: BackdropFilter(
                   filter: new ImageFilter.blur(
@@ -210,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               left: constraints.maxWidth * 0.04,
                               right: constraints.maxWidth * 0.04),
                           child:
-                              Column(mainAxisSize: MainAxisSize.min, children: [
+                          Column(mainAxisSize: MainAxisSize.min, children: [
                             SizedBox(height: constraints.maxHeight * 0.05),
                             Row(children: [
                               Flexible(
@@ -246,44 +245,51 @@ class _MyHomePageState extends State<MyHomePage> {
                             ]),
                             SizedBox(height: constraints.maxHeight * 0.03),
                             // TODO: Ripple Effect for buttons
-                            Card(
-                              child: ListTile(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              InventoryList()));
-                                },
-                                leading: Icon(Icons.inventory_2),
-                                title: Text(S.current.label_inventory),
-                              ),
+                            Flexible(
+                              fit: FlexFit.loose,
+                               child: Column(
+                                children: [
+                                  Card(
+                                    child: ListTile(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    InventoryList()));
+                                      },
+                                      leading: Icon(Icons.inventory_2),
+                                      title: Text(S.current.label_inventory),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: ListTile(
+                                      leading: Icon(Icons.settings),
+                                      title: Text(S.current.label_settings),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: ListTile(
+                                      leading: Icon(Icons.help),
+                                      title: Text(S.current.label_help),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: ListTile(
+                                      leading: Icon(Icons.logout),
+                                      onTap: () {
+                                        Utilities.logoutUser(null);
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => LoginScreen()));
+                                      },
+                                      title: Text(S.current.label_logout),
+                                    ),
+                                  ),
+                                ],
                             ),
-                            Card(
-                              child: ListTile(
-                                leading: Icon(Icons.settings),
-                                title: Text(S.current.label_settings),
-                              ),
-                            ),
-                            Card(
-                              child: ListTile(
-                                leading: Icon(Icons.help),
-                                title: Text(S.current.label_help),
-                              ),
-                            ),
-                            Card(
-                              child: ListTile(
-                                leading: Icon(Icons.logout),
-                                onTap: () {
-                                  Utilities.logoutUser(null);
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginScreen()));
-                                },
-                                title: Text(S.current.label_logout),
-                              ),
-                            ),
+                             )
                           ]),
                         );
                       },
