@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../models/book.dart';
 import 'scanner_logic.dart';
 
-Widget getManuallyWidget(BuildContext context) {
+Widget getManuallyWidget(BuildContext context, double containerWidth) {
   TextEditingController scannerText = new TextEditingController();
   ApiService apiService = new ApiService();
   ManualBookData _manualBook = new ManualBookData();
@@ -28,7 +28,7 @@ Widget getManuallyWidget(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 300,
+                  width: containerWidth,
                   child: TextField(
                     controller: scannerText,
                     decoration: InputDecoration(
@@ -64,7 +64,7 @@ Widget getManuallyWidget(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 300,
+                  width: containerWidth,
                   child: TextField(
                     decoration: InputDecoration(
                       labelText: S.of(context).label_scanner_title,
@@ -86,7 +86,7 @@ Widget getManuallyWidget(BuildContext context) {
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 300,
+              width: containerWidth,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: S.of(context).label_scanner_autor,
@@ -106,7 +106,7 @@ Widget getManuallyWidget(BuildContext context) {
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 300,
+              width: containerWidth,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: S.of(context).label_scanner_subtitle,
@@ -127,7 +127,7 @@ Widget getManuallyWidget(BuildContext context) {
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 300,
+              width: containerWidth,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: S.of(context).label_scanner_publisher,
@@ -149,7 +149,7 @@ Widget getManuallyWidget(BuildContext context) {
             Padding(padding: EdgeInsets.only(top: 5)),
             // TODO: Natives Datumspicker verwenden ==> dann richtigen ISO String mitschicken
             Container(
-              width: 300,
+              width: containerWidth,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: S.of(context).label_scanner_publishedDate,
@@ -170,7 +170,7 @@ Widget getManuallyWidget(BuildContext context) {
             ),
             Padding(padding: EdgeInsets.only(top: 5)),
             Container(
-              width: 300,
+              width: containerWidth,
               child: TextField(
                 decoration: InputDecoration(
                   labelText: "Language",
