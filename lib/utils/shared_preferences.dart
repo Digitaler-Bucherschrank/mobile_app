@@ -43,6 +43,13 @@ class SharedPrefs {
     _sharedPrefs!.setBool("loggedIn", loggedIn);
   }
 
+  bool get finishedIntro =>
+      _sharedPrefs!.getBool("finishedIntro", defaultValue: false).getValue();
+
+  set finishedIntro(bool loggedIn) {
+    _sharedPrefs!.setBool("finishedIntro", loggedIn);
+  }
+
   String get language =>
       _sharedPrefs!.getString("language", defaultValue: "de").getValue();
 

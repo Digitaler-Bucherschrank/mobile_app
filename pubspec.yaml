@@ -73,6 +73,7 @@ dependencies:
       path: dio_retry
       ref: null-safety-migration
   flutter_bcrypt: ^1.0.7
+  introduction_screen: ^2.1.0
   streaming_shared_preferences: ^2.0.0
   flutter_localizations:
     sdk: flutter
@@ -98,6 +99,7 @@ flutter:
      - assets/icons/
      - assets/google_fonts/
      - assets/map_styles/
+     - assets/intro/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

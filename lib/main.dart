@@ -8,6 +8,7 @@ import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
+import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:digitaler_buecherschrank/widgets/inventory.dart';
 import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isLoggedIn = SharedPrefs().isLoggedIn;
+    var finishedIntro = SharedPrefs().finishedIntro;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -63,7 +65,7 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: isLoggedIn ? MyHomePage() : LoginScreen(),
+      home: finishedIntro ? isLoggedIn ? MyHomePage() : LoginScreen() : IntroScreen(),
     );
   }
 }
