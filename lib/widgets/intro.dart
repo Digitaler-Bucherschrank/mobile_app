@@ -99,12 +99,9 @@ class IntroScreen extends StatelessWidget {
       done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
       next: const Icon(Icons.arrow_forward),
       onDone: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => LoginScreen()),
-        );
-
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => LoginScreen(),
+        ));
         SharedPrefs().finishedIntro = true;
       },
     );

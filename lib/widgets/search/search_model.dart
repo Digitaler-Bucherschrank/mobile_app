@@ -46,7 +46,9 @@ class SearchModel extends ChangeNotifier {
           temp.add(bookCase);
         }
       }
+
       temp.addAll(books);
+
       for (var item in temp) {
         if (item.runtimeType == BookCase) {
           result.add({
@@ -103,11 +105,14 @@ class SearchModel extends ChangeNotifier {
       List<Map<String, dynamic>> convertedBookCases = [];
 
       bookCases.forEach((element) {
-        var book = element.toJson();
-        book.addAll({
+        convertedBookCases.add({
+          'title': element.title,
+          'subtitle': element.address,
+          'icon': "asset",
+          'lat': element.lat,
+          'lon': element.lon,
           'icon': 'asset'
         });
-        convertedBookCases.add(book);
       });
 
       var trimmed = convertedBookCases.sublist(0, 5);

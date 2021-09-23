@@ -194,7 +194,7 @@ class ListItem extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        data['address'],
+                        data['subtitle'],
                         style: textTheme.bodyText2!
                             .copyWith(color: Colors.grey.shade600),
                       ),
