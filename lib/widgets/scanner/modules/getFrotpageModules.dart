@@ -68,13 +68,7 @@ Widget getScannerWidget(
                         borderSide: new BorderSide(),
                       ),
                     ),
-                    onChanged: (String str) {
-                      if (_book.isbn != null) {
-                        print(
-                            'old value of isbn before update: ' + _book.isbn!);
-                      }
-                      _book.isbn = str;
-                      print('updated isbn: ' + _book.isbn!);
+                    onSubmitted: (str) {
                       apiService.getBookData([_book]).then((value) {
                         print(value.toString());
                         txt.text = "${value[0].title}";
@@ -82,6 +76,14 @@ Widget getScannerWidget(
                         txt2.text = "${value[0].author}";
                         print(txt2.text);
                       });
+                    },
+                    onChanged: (String str) {
+                      if (_book.isbn != null) {
+                        print(
+                            'old value of isbn before update: ' + _book.isbn!);
+                      }
+                      _book.isbn = str;
+                      print('updated isbn: ' + _book.isbn!);
                     },
                   ),
                 ),
