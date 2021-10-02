@@ -33,7 +33,6 @@ export 'src/providers/login_theme.dart';
  * !! Enter at own risk !!
  */
 
-
 class LoginProvider {
   final IconData icon;
   final ProviderAuthCallback callback;
@@ -490,7 +489,7 @@ class _FlutterLoginState extends State<FlutterLogin>
     final primaryColorDark = primaryDarkShades.length >= 3
         ? primaryDarkShades[2]
         : primaryDarkShades.last;
-    final accentColor = loginTheme.accentColor ?? theme.accentColor;
+    final accentColor = loginTheme.accentColor ?? theme.colorScheme.secondary;
     final errorColor = loginTheme.errorColor ?? theme.errorColor;
     // the background is a dark gradient, force to use white text if detect default black text color
     final isDefaultBlackText = theme.textTheme.headline3!.color ==
@@ -524,7 +523,7 @@ class _FlutterLoginState extends State<FlutterLogin>
     return theme.copyWith(
       primaryColor: primaryColor,
       primaryColorDark: primaryColorDark,
-      accentColor: accentColor,
+      colorScheme: theme.colorScheme.copyWith(secondary: accentColor),
       errorColor: errorColor,
       cardTheme: theme.cardTheme.copyWith(
         clipBehavior: cardTheme.clipBehavior,
@@ -573,7 +572,7 @@ class _FlutterLoginState extends State<FlutterLogin>
       ),
       floatingActionButtonTheme: theme.floatingActionButtonTheme.copyWith(
         backgroundColor: buttonTheme.backgroundColor ?? primaryColor,
-        splashColor: buttonTheme.splashColor ?? theme.accentColor,
+        splashColor: buttonTheme.splashColor ?? theme.colorScheme.secondary,
         elevation: buttonTheme.elevation ?? 4.0,
         highlightElevation: buttonTheme.highlightElevation ?? 2.0,
         shape: buttonTheme.shape ?? StadiumBorder(),

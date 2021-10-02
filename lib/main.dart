@@ -20,7 +20,6 @@ import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'models/book_case.dart';
 import 'widgets/gmap.dart';
@@ -65,7 +64,11 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: finishedIntro ? isLoggedIn ? MyHomePage() : LoginScreen() : IntroScreen(),
+      home: finishedIntro
+          ? isLoggedIn
+              ? MyHomePage()
+              : LoginScreen()
+          : IntroScreen(),
     );
   }
 }
@@ -161,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
         panel: Column(
           children: [
             Container(
-              height: 66,
+                height: 66,
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.only(
@@ -211,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               left: constraints.maxWidth * 0.04,
                               right: constraints.maxWidth * 0.04),
                           child:
-                          Column(mainAxisSize: MainAxisSize.min, children: [
+                              Column(mainAxisSize: MainAxisSize.min, children: [
                             SizedBox(height: constraints.maxHeight * 0.05),
                             Row(children: [
                               Flexible(
@@ -249,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             // TODO: Ripple Effect for buttons
                             Flexible(
                               fit: FlexFit.loose,
-                               child: Column(
+                              child: Column(
                                 children: [
                                   Card(
                                     child: ListTile(
@@ -284,14 +287,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => LoginScreen()));
+                                                builder: (context) =>
+                                                    LoginScreen()));
                                       },
                                       title: Text(S.current.label_logout),
                                     ),
                                   ),
                                 ],
-                            ),
-                             )
+                              ),
+                            )
                           ]),
                         );
                       },

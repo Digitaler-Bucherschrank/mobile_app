@@ -7,7 +7,7 @@ import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
 import './../gmap.dart';
-import '../bookcasemodal.dart';
+import '../bookcasemodel.dart';
 import 'search_model.dart';
 
 class Search extends StatefulWidget {
@@ -146,7 +146,7 @@ class ListItem extends StatelessWidget {
                             Theme.of(context).cardColor.withOpacity(0.6),
                         context: context,
                         builder: (builder) {
-                          return BookCaseModal(data['bookCase']);
+                          return BookCaseModel(data['bookCase']);
                         }));
               });
             } else {
@@ -164,7 +164,7 @@ class ListItem extends StatelessWidget {
                             Theme.of(context).cardColor.withOpacity(0.6),
                         context: context,
                         builder: (builder) {
-                          return BookCaseModal(data['location']);
+                          return BookCaseModel(data['location']);
                         }));
               });
             }

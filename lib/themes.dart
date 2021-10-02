@@ -27,7 +27,7 @@ ThemeData lightThemeData() {
             ),
           ),
           textTheme: GoogleFonts.notoSansTextTheme());
-  return ThemeData(
+  /*return ThemeData(
       colorScheme: new ColorScheme.light(
           primary: Color(0xFF1890C9), secondary: Color(0xFF423C3A)),
       brightness: Brightness.light,
@@ -42,7 +42,7 @@ ThemeData lightThemeData() {
             ),
           )),
       textTheme: GoogleFonts.notoSansTextTheme(),
-      accentColor: Colors.blue);
+      accentColor: Colors.blue);*/
 }
 
 ThemeData darkThemeData() {
@@ -54,20 +54,25 @@ ThemeData darkThemeData() {
           appBarStyle: FlexAppBarStyle.primary)
       .toTheme
       .copyWith(
-          bottomSheetTheme: new BottomSheetThemeData(
-              shape: RoundedRectangleBorder(
+        bottomSheetTheme: new BottomSheetThemeData(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.0),
               topRight: Radius.circular(20.0),
             ),
-          )),
-          cardTheme: CardTheme(
-            margin: EdgeInsets.all(4),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
           ),
-          inputDecorationTheme: ThemeData.dark().inputDecorationTheme,
-          textTheme: GoogleFonts.notoSansTextTheme(
-              new TextTheme(button: TextStyle(color: Colors.black))));
+        ),
+        cardTheme: CardTheme(
+          margin: EdgeInsets.all(4),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+        ),
+        inputDecorationTheme: ThemeData.dark().inputDecorationTheme,
+        textTheme: GoogleFonts.notoSansTextTheme(
+          new TextTheme(
+            button: TextStyle(color: Colors.black),
+          ),
+        ),
+      );
 }

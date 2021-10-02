@@ -136,7 +136,7 @@ Future<Widget> getUserInventoryWidget(
               width: 60,
               height: 60,
               child: CircularProgressIndicator(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           );
@@ -182,7 +182,7 @@ Widget getBookCaseInventoryWidget(String bookCaseID, BuildContext context) {
               width: 60,
               height: 60,
               child: CircularProgressIndicator(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             ),
           );

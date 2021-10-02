@@ -6,10 +6,10 @@ import 'package:digitaler_buecherschrank/widgets/scanner/scanner_pickup_form.dar
 import 'package:flutter/material.dart';
 import 'scanner/donatebook.dart';
 
-class BookCaseModal extends StatelessWidget {
+class BookCaseModel extends StatelessWidget {
   final BookCase bookcase;
 
-  BookCaseModal(this.bookcase);
+  BookCaseModel(this.bookcase);
 
   @override
   Widget build(BuildContext context) {

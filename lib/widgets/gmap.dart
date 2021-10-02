@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import '../models/book_case.dart';
-import 'bookcasemodal.dart';
+import 'bookcasemodel.dart';
 
 String _darkMapStyle = "";
 String _lightMapStyle = "";
@@ -95,7 +95,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
                 backgroundColor: Theme.of(context).cardColor.withOpacity(0.6),
                 context: context,
                 builder: (builder) {
-                  return BookCaseModal(bookCase);
+                  return BookCaseModel(bookCase);
                 });
           }));
     }

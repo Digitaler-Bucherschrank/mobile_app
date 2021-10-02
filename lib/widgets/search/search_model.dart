@@ -111,7 +111,6 @@ class SearchModel extends ChangeNotifier {
           'icon': "asset",
           'lat': element.lat,
           'lon': element.lon,
-          'icon': 'asset'
         });
       });
 

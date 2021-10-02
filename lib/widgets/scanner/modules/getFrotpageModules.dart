@@ -299,7 +299,7 @@ class _GetFromWidgetState extends State<GetFromWidget> {
                     S.of(context).label_scanner_fromInventory,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
-                  activeColor: Theme.of(context).accentColor,
+                  activeColor: Theme.of(context).colorScheme.secondary,
                   onChanged: (dynamic val) {
                     setState(() {
                       selectedRadio = val;
@@ -317,7 +317,7 @@ class _GetFromWidgetState extends State<GetFromWidget> {
                     S.of(context).label_scanner_newBook,
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
-                  activeColor: Theme.of(context).accentColor,
+                  activeColor: Theme.of(context).colorScheme.secondary,
                   onChanged: (dynamic val) {
                     setState(() {
                       selectedRadio = val;

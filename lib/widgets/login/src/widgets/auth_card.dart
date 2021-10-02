@@ -252,7 +252,7 @@ class AuthCardState extends State<AuthCard> with TickerProviderStateMixin {
           ),
         ),
         child: DecoratedBox(
-          decoration: BoxDecoration(color: theme.accentColor),
+          decoration: BoxDecoration(color: theme.colorScheme.secondary),
         ),
       ),
     );
@@ -379,7 +379,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
 
   final _passwordFocusNode = FocusNode();
   final _confirmPasswordFocusNode = FocusNode();
-  final _EmailNode = FocusNode();
+  final _emailNode = FocusNode();
 
   TextEditingController? _nameController;
   TextEditingController? _passController;
@@ -670,7 +670,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       textInputAction: TextInputAction.done,
       focusNode: _confirmPasswordFocusNode,
       onFieldSubmitted: (value) {
-        FocusScope.of(context).requestFocus(_EmailNode);
+        FocusScope.of(context).requestFocus(_emailNode);
       },
       validator: auth.isSignup
           ? (value) {
@@ -695,7 +695,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
       prefixIcon: Icon(FontAwesomeIcons.envelope),
       labelText: messages.mailHint,
       textInputAction: TextInputAction.done,
-      focusNode: _EmailNode,
+      focusNode: _emailNode,
       onFieldSubmitted: (value) => _submit(),
       onSaved: (value) => auth.email = value!,
     );
@@ -830,7 +830,7 @@ class _LoginCardState extends State<_LoginCard> with TickerProviderStateMixin {
             ),
           ),
           ExpandableContainer(
-            backgroundColor: theme.accentColor,
+            backgroundColor: theme.colorScheme.secondary,
             controller: _switchAuthController,
             initialState: isLogin
                 ? ExpandableContainerState.shrunk

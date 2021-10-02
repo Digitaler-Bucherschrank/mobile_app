@@ -72,7 +72,7 @@ class _InventoryListState extends State<InventoryList>
                       width: 60,
                       height: 60,
                       child: CircularProgressIndicator(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       )));
             }
           },
