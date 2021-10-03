@@ -38,41 +38,43 @@ class _SearchState extends State<Search> {
         MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Consumer<SearchModel>(
-        builder: (context, model, _) => FloatingSearchBar(
-            hint: S.current.label_search,
-            implicitCurve: Curves.bounceInOut,
-            backgroundColor: Theme.of(context).cardColor,
-            scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
-            transitionDuration: const Duration(milliseconds: 400),
-            transitionCurve: Curves.easeInOut,
-            physics: const BouncingScrollPhysics(),
-            axisAlignment: isPortrait ? 0.0 : -1.0,
-            borderRadius: BorderRadius.circular(12),
-            openAxisAlignment: 0.0,
-            clearQueryOnClose: true,
-            isScrollControlled: false,
-            width: isPortrait ? 600 : 500,
-            progress: model.isLoading,
-            padding: EdgeInsets.only(left: 15, right: 15),
-            insets: EdgeInsets.zero,
-            textInputAction: TextInputAction.search,
-            debounceDelay: const Duration(milliseconds: 500),
-            onQueryChanged: model.onQueryChanged,
-            // Specify a custom transition to be used for
-            // animating between opened and closed stated.
-            transition: CircularFloatingSearchBarTransition(spacing: 16),
-            actions: [
-              FloatingSearchBarAction(
-                child: CircularButton(
-                  icon: const Icon(Icons.place),
-                  onPressed: currentLocation,
-                ),
-              ),
-              FloatingSearchBarAction.searchToClear(
-                showIfClosed: false,
-              ),
-            ],
-            builder: (context, transition) => ExpandableSearchBody(model)));
+      builder: (context, model, _) => FloatingSearchBar(
+        hint: S.current.label_search,
+        implicitCurve: Curves.bounceInOut,
+        backgroundColor: Theme.of(context).cardColor,
+        scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
+        transitionDuration: const Duration(milliseconds: 400),
+        transitionCurve: Curves.easeInOut,
+        physics: const BouncingScrollPhysics(),
+        axisAlignment: isPortrait ? 0.0 : -1.0,
+        borderRadius: BorderRadius.circular(12),
+        openAxisAlignment: 0.0,
+        clearQueryOnClose: true,
+        isScrollControlled: false,
+        width: isPortrait ? 600 : 500,
+        progress: model.isLoading,
+        padding: EdgeInsets.only(left: 15, right: 15),
+        insets: EdgeInsets.zero,
+        textInputAction: TextInputAction.search,
+        debounceDelay: const Duration(milliseconds: 500),
+        onQueryChanged: model.onQueryChanged,
+        // Specify a custom transition to be used for
+        // animating between opened and closed stated.
+        transition: CircularFloatingSearchBarTransition(spacing: 16),
+        actions: [
+          FloatingSearchBarAction(
+            child: CircularButton(
+              icon: const Icon(Icons.place),
+              onPressed: currentLocation,
+            ),
+          ),
+          FloatingSearchBarAction.searchToClear(
+            showIfClosed: false,
+          ),
+        ],
+        builder: (context, transition) => ExpandableSearchBody(model),
+      ),
+    );
   }
 }
 
@@ -103,12 +105,14 @@ class ExpandableSearchBody extends StatelessWidget {
                   areItemsTheSame: (a, b) => a == b,
                   itemBuilder: (context, animation, bookCase, i) {
                     return SizeFadeTransition(
-                        animation: animation, child: ListItem(bookCase));
+                      animation: animation,
+                      child: ListItem(bookCase, model),
+                    );
                   },
                   updateItemBuilder: (context, animation, bookCase) {
                     return FadeTransition(
                       opacity: animation,
-                      child: ListItem(bookCase),
+                      child: ListItem(bookCase, model),
                     );
                   },
                 ),
@@ -119,8 +123,9 @@ class ExpandableSearchBody extends StatelessWidget {
 
 class ListItem extends StatelessWidget {
   final Map data;
+  final SearchModel model;
 
-  ListItem(this.data);
+  ListItem(this.data, this.model);
 
   @override
   Widget build(BuildContext context) {
@@ -131,43 +136,22 @@ class ListItem extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            // dirty way of checking if we have a bookcase or book
-            if (data['bookCase'] != null) {
-              FloatingSearchBar.of(context)!.close();
-              goToLocation(
-                double.parse(data['bookCase'].lat),
-                double.parse(data['bookCase'].lon),
-              ).then((value) {
-                // Dirty workaround as we don't have another way to control it
-                Timer(
-                    Duration(milliseconds: 1100),
-                    () => showModalBottomSheet(
-                        backgroundColor:
-                            Theme.of(context).cardColor.withOpacity(0.6),
-                        context: context,
-                        builder: (builder) {
-                          return BookCaseModel(data['bookCase']);
-                        }));
-              });
-            } else {
-              FloatingSearchBar.of(context)!.close();
-
-              goToLocation(
-                double.parse(data['location'].lat),
-                double.parse(data['location'].lon),
-              ).then((value) {
-                // Dirty workaround as we don't have another way to control it
-                Timer(
-                    Duration(milliseconds: 1100),
-                    () => showModalBottomSheet(
-                        backgroundColor:
-                            Theme.of(context).cardColor.withOpacity(0.6),
-                        context: context,
-                        builder: (builder) {
-                          return BookCaseModel(data['location']);
-                        }));
-              });
-            }
+            FloatingSearchBar.of(context)!.close();
+            goToLocation(
+              double.parse(data['location'].lat),
+              double.parse(data['location'].lon),
+            ).then((value) {
+              // Dirty workaround as we don't have another way to control it
+              Timer(
+                  Duration(milliseconds: 1100),
+                  () => showModalBottomSheet(
+                      backgroundColor:
+                          Theme.of(context).cardColor.withOpacity(0.6),
+                      context: context,
+                      builder: (builder) {
+                        return BookCaseModel(data['location']);
+                      }));
+            });
           },
           child: Padding(
             padding: const EdgeInsets.all(16),

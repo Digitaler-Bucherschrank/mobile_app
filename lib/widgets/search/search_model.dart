@@ -22,6 +22,8 @@ class SearchModel extends ChangeNotifier {
 
   List<Map<dynamic, dynamic>> get suggestions => _suggestions;
 
+  //List<Map<dynamic, dynamic>> suggestions = [];
+
   String _query = '';
 
   String get query => _query;
@@ -55,8 +57,7 @@ class SearchModel extends ChangeNotifier {
             'title': item.title,
             'subtitle': item.address,
             'icon': "asset",
-            'lat': item.lat,
-            'lon': item.lon
+            'location': item,
           });
         } else {
           // Only add not borrowed Books to the search (for now, until we have a working Book info view
@@ -109,8 +110,7 @@ class SearchModel extends ChangeNotifier {
           'title': element.title,
           'subtitle': element.address,
           'icon': "asset",
-          'lat': element.lat,
-          'lon': element.lon,
+          'location': element,
         });
       });
 
