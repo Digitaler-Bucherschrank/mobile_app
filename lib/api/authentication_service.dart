@@ -119,6 +119,7 @@ class AuthenticationService {
 
   Future<bool?> logout() async {
     try {
+      // ignore: unused_local_variable
       var res = await client.post('/api/logout',
           options: Options(headers: {
             HttpHeaders.authorizationHeader:
@@ -143,8 +144,6 @@ class AuthenticationService {
     }
   }
 
-  ///
-  ///
   Future<String?> signUp(String username, String password, String email) async {
     var hashedPw = await FlutterBcrypt.hashPw(
         password: password, salt: await FlutterBcrypt.salt());

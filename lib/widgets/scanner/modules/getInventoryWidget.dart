@@ -21,6 +21,7 @@ void _onRefreshUser() async {
   // monitor network fetch
   await Future.delayed(Duration(milliseconds: 1000));
 
+  // ignore: unused_local_variable
   var itemsUser = await ApiService().getUserInventory(SharedPrefs().user);
 
   _refreshControllerBorrowed.refreshCompleted();

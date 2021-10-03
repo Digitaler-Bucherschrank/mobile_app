@@ -28,10 +28,8 @@ export 'src/models/login_data.dart';
 export 'src/providers/login_messages.dart';
 export 'src/providers/login_theme.dart';
 
-/**
- * This is not part of our source code! I imported this for some little changes in the login screen.
- * !! Enter at own risk !!
- */
+/// This is not part of our source code! I imported this for some little changes in the login screen.
+/// !! Enter at own risk !!
 
 class LoginProvider {
   final IconData icon;

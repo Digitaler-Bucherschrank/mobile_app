@@ -198,9 +198,9 @@ Widget getManuallyWidget(BuildContext context, double containerWidth) {
         onPressed: () {
           print(_book);
           Navigator.pop(context);
-          /*apiService.donateBook(_book, true, _manualBook).then((value) {
+          apiService.donateBook(_book, true, _manualBook).then((value) {
             print("donateBook: $value");
-          });*/
+          });
         },
         child: Text(
           S.of(context).label_scanner_confirm,
