@@ -10,7 +10,6 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 ApiService apiService = new ApiService();
 Map<String, List<Book>> itemsUser = {"": []};
 List itemsBookcase = [];
-String? bookCaseIDrefresher;
 RefreshController _refreshControllerBorrowed =
     RefreshController(initialRefresh: false);
 RefreshController _refreshControllerBookcase =
@@ -19,30 +18,23 @@ var initialBuild = true;
 
 void _onRefreshUser() async {
   // monitor network fetch
-  await Future.delayed(Duration(milliseconds: 1000));
-
-  // ignore: unused_local_variable
-  var itemsUser = await ApiService().getUserInventory(SharedPrefs().user);
-
+  //await Future.delayed(Duration(milliseconds: 1000));
+  itemsUser = await ApiService().getUserInventory(SharedPrefs().user);
   _refreshControllerBorrowed.refreshCompleted();
 }
 
-void _onRefreshBookcase() async {
+void _onRefreshBookcase(String bookCaseID) async {
   // monitor network fetch
-  await Future.delayed(Duration(milliseconds: 1000));
-  print("_onRefreshBookcase completed1");
-  itemsBookcase = await ApiService().getBookCaseInventory(bookCaseIDrefresher!);
-  print("_onRefreshBookcase completed2");
-  _refreshControllerBorrowed.refreshCompleted();
-  print("_onRefreshBookcase completed3");
+  //await Future.delayed(Duration(milliseconds: 1000));
+  itemsBookcase = await ApiService().getBookCaseInventory(bookCaseID);
+  _refreshControllerBookcase.refreshCompleted();
 }
 
-SmartRefresher _buildSmartRefresherUser(
-    RefreshController _refreshController, BookCase bookcase) {
+SmartRefresher _buildSmartRefresherUser(BookCase bookcase) {
   return SmartRefresher(
     enablePullDown: true,
     header: ClassicHeader(),
-    controller: _refreshController,
+    controller: _refreshControllerBorrowed,
     onRefresh: _onRefreshUser,
     child: ListView.builder(
       itemCount: itemsUser['borrowed']!.length,
@@ -65,7 +57,6 @@ SmartRefresher _buildSmartRefresherUser(
                   trailing: ElevatedButton(
                     child: Text(S.of(context).label_dropbook),
                     onPressed: () {
-                      bookCaseIDrefresher = bookcase.iId!.oid!;
                       apiService.returnBook(
                           itemsUser['borrowed']![index], bookcase);
                       _onRefreshUser();
@@ -81,14 +72,14 @@ SmartRefresher _buildSmartRefresherUser(
   );
 }
 
-SmartRefresher _buildSmartRefresherBookcase(
-    RefreshController _refreshController, String bookCaseID) {
-  bookCaseIDrefresher = bookCaseID;
+SmartRefresher _buildSmartRefresherBookcase(String bookCaseID) {
   return SmartRefresher(
     enablePullDown: true,
     header: ClassicHeader(),
-    controller: _refreshController,
-    onRefresh: _onRefreshBookcase,
+    controller: _refreshControllerBookcase,
+    onRefresh: () {
+      _onRefreshBookcase(bookCaseID);
+    },
     child: ListView.builder(
       itemCount: itemsBookcase.length,
       itemBuilder: (BuildContext context, int index) {
@@ -111,7 +102,7 @@ SmartRefresher _buildSmartRefresherBookcase(
                     child: Text(S.of(context).label_borrowbook),
                     onPressed: () {
                       ApiService().getBookCaseInventory(bookCaseID);
-                      _onRefreshBookcase();
+                      _onRefreshBookcase(bookCaseID);
                     },
                   ),
                 ),
@@ -141,12 +132,7 @@ Future<Widget> getUserInventoryWidget(
               ),
             ),
           );
-        } else if (snapshot.data["donated"].isEmpty &&
-            snapshot.data["borrowed"].isEmpty) {
-          print(
-              "snapshot.data['donated'].length: ${snapshot.data["donated"].length}");
-          print(
-              "snapshot.data['borrowed'].length: ${snapshot.data["borrowed"].length}");
+        } else if (snapshot.data["borrowed"].isEmpty) {
           return Container(
             height: 50,
             child: ListTile(
@@ -156,14 +142,11 @@ Future<Widget> getUserInventoryWidget(
           );
         } else {
           print(
-              "snapshot.data['donated'].length: ${snapshot.data["donated"].length}");
-          print(
               "snapshot.data['borrowed'].length: ${snapshot.data["borrowed"].length}");
           itemsUser = snapshot.data!;
           return Container(
-            height: 600,
-            child:
-                _buildSmartRefresherUser(_refreshControllerBorrowed, bookcase),
+            height: MediaQuery.of(context).size.height * 0.92,
+            child: _buildSmartRefresherUser(bookcase),
           );
         }
       },
@@ -191,9 +174,8 @@ Widget getBookCaseInventoryWidget(String bookCaseID, BuildContext context) {
           print("snapshot.data['donated'].length: ${snapshot.data.length}");
           itemsBookcase = snapshot.data!;
           return Container(
-              height: 600,
-              child: _buildSmartRefresherBookcase(
-                  _refreshControllerBookcase, bookCaseID));
+              height: MediaQuery.of(context).size.height * 0.92,
+              child: _buildSmartRefresherBookcase(bookCaseID));
         }
       },
     ),
