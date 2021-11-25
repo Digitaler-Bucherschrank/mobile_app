@@ -1,4 +1,5 @@
 import 'package:digitaler_buecherschrank/api/api_service.dart';
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class BookcasePopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Loading",
+                  S.of(context).label_loading,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Padding(padding: EdgeInsets.only(top: 10)),
@@ -50,7 +51,7 @@ class BookcasePopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Succes",
+                  S.of(context).label_scanner_success,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 ElevatedButton(
@@ -72,7 +73,7 @@ class BookcasePopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Error! Try again later.",
+                  S.of(context).error_try_later,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 ElevatedButton(
@@ -110,7 +111,7 @@ class UserPopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Loading",
+                  S.of(context).label_loading,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Padding(padding: EdgeInsets.only(top: 10)),
@@ -128,7 +129,7 @@ class UserPopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Succes",
+                  S.of(context).label_scanner_success,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 ElevatedButton(
@@ -150,7 +151,7 @@ class UserPopUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Error! Try again later.",
+                  S.of(context).error_try_later,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 ElevatedButton(

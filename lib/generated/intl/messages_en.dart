@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Username or Password invalid!"),
         "error_mail_taken": MessageLookupByLibrary.simpleMessage(
             "Email already used by another user!\n"),
+        "error_try_later":
+            MessageLookupByLibrary.simpleMessage("Error! Try again later."),
         "error_username_taken":
             MessageLookupByLibrary.simpleMessage("Username already taken!"),
         "error_username_too_long":
@@ -62,7 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Your Inventory"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Login"),
-        "label_logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "label_logout": MessageLookupByLibrary.simpleMessage("Logout\n"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Map"),
         "label_password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -94,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Publisher"),
         "label_scanner_subtitle":
             MessageLookupByLibrary.simpleMessage("Subtitle"),
+        "label_scanner_success":
+            MessageLookupByLibrary.simpleMessage("Success!"),
         "label_scanner_title": MessageLookupByLibrary.simpleMessage("Title"),
         "label_search": MessageLookupByLibrary.simpleMessage("Search"),
         "label_searchprocess":

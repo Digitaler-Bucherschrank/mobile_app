@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Fehler! Versuchen Sie es später nochmal.`
+  String get error_try_later {
+    return Intl.message(
+      'Fehler! Versuchen Sie es später nochmal.',
+      name: 'error_try_later',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nutzername wird bereits verwendet!`
   String get error_username_taken {
     return Intl.message(
@@ -455,6 +465,16 @@ class S {
     return Intl.message(
       'Untertitel',
       name: 'label_scanner_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fertig!`
+  String get label_scanner_success {
+    return Intl.message(
+      'Fertig!',
+      name: 'label_scanner_success',
       desc: '',
       args: [],
     );

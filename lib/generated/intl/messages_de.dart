@@ -39,6 +39,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nutzername oder Passwort ungültig!"),
         "error_mail_taken": MessageLookupByLibrary.simpleMessage(
             "Email wird bereits verwendet!"),
+        "error_try_later": MessageLookupByLibrary.simpleMessage(
+            "Fehler! Versuchen Sie es später nochmal."),
         "error_username_taken": MessageLookupByLibrary.simpleMessage(
             "Nutzername wird bereits verwendet!"),
         "error_username_too_long":
@@ -94,6 +96,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Verlag"),
         "label_scanner_subtitle":
             MessageLookupByLibrary.simpleMessage("Untertitel"),
+        "label_scanner_success":
+            MessageLookupByLibrary.simpleMessage("Fertig!"),
         "label_scanner_title": MessageLookupByLibrary.simpleMessage("Titel"),
         "label_search": MessageLookupByLibrary.simpleMessage("Suchen"),
         "label_searchprocess":
