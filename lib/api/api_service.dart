@@ -216,6 +216,7 @@ class ApiService {
 
       return true;
     } on DioError catch (e) {
+      print(e);
       // Show user: "Please try again later" and refresh the List to fix up some issues with not being synced to the server
       return false;
     }
@@ -232,6 +233,7 @@ class ApiService {
 
       return true;
     } on DioError catch (e) {
+      print(e);
       // Show user: "Please try again later" and refresh the List to fix up some issues with not being synced to the server
       return false;
     }

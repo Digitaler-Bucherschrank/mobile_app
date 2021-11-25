@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:flutter/material.dart';
-import '../../../models/book.dart';
 import 'scanner_logic.dart';
 
 double cardBorderRadius = 20.0;
