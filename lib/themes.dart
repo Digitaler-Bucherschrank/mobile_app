@@ -26,7 +26,9 @@ ThemeData lightThemeData() {
               borderRadius: BorderRadius.circular(15.0),
             ),
           ),
-          textTheme: GoogleFonts.notoSansTextTheme());
+          textTheme: GoogleFonts.notoSansTextTheme(),
+          inputDecorationTheme: ThemeData.light().inputDecorationTheme
+  );
   /*return ThemeData(
       colorScheme: new ColorScheme.light(
           primary: Color(0xFF1890C9), secondary: Color(0xFF423C3A)),
