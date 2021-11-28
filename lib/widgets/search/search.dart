@@ -41,6 +41,7 @@ class _SearchState extends State<Search> {
       builder: (context, model, _) => FloatingSearchBar(
         hint: S.current.label_search,
         implicitCurve: Curves.bounceInOut,
+        automaticallyImplyBackButton: false,
         backgroundColor: Theme.of(context).cardColor,
         scrollPadding: const EdgeInsets.only(top: 10, bottom: 100),
         transitionDuration: const Duration(milliseconds: 400),
