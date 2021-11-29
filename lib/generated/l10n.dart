@@ -130,6 +130,26 @@ class S {
     );
   }
 
+  /// `Bitte starten Sie die App neu und versuchen es später noch einmal.\n`
+  String get error_maintenance_desc {
+    return Intl.message(
+      'Bitte starten Sie die App neu und versuchen es später noch einmal.\n',
+      name: 'error_maintenance_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Der Server ist derzeit in Wartung!`
+  String get error_maintenance_title {
+    return Intl.message(
+      'Der Server ist derzeit in Wartung!',
+      name: 'error_maintenance_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Fehler! Versuchen Sie es später nochmal.`
   String get error_try_later {
     return Intl.message(

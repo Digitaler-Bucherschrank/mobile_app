@@ -6,14 +6,17 @@ import 'dart:io';
 
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/config.dart';
+import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/models/user.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
 import 'package:dio/dio.dart';
-import 'package:dio_retry/dio_retry.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
 
 import '../main.dart';
 
@@ -86,12 +89,11 @@ class ApiService {
     }));
 
     client.interceptors.add(RetryInterceptor(
-        options: RetryOptions(
           retries: 3,
           // Number of retries before a failure
-          retryInterval: const Duration(seconds: 1),
+          retryDelays: [const Duration(seconds: 1)],
           // Interval between each retry
-          retryEvaluator: (error) async {
+          retryEvaluator: (error, attempt) async {
             var data = error.requestOptions.responseType == ResponseType.json
                 ? error.response!.data
                 : jsonDecode(error.response!.data);
@@ -116,11 +118,35 @@ class ApiService {
               }
 
               return true;
+            } else if (error.response?.statusCode == 503) {
+              // Server is in Maintenance Mode
+              showDialog(
+                barrierDismissible: false,
+                context: MyApp.globalKey.currentContext!,
+                builder: (BuildContext context) {
+                  // TODO: LOCALIZATION ALSO IN API_SERVICE
+                  return new WillPopScope(
+                      onWillPop: () async => false,
+                      child: AlertDialog(
+                        title: Text(S.current.error_maintenance_title),
+                        content: Text(S.current.error_maintenance_desc),
+                        actions: [
+                          TextButton(
+                            child: Text("Restart app"),
+                            onPressed: () {
+                              Restart.restartApp();
+                            },
+                          )
+                        ],
+                      )
+                  );
+                },
+              );
+              return false;
             } else {
               return false;
             }
           }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
-        ),
         dio: client));
   }
 

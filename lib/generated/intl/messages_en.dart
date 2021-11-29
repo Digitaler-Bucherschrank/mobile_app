@@ -39,6 +39,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Username or Password invalid!"),
         "error_mail_taken": MessageLookupByLibrary.simpleMessage(
             "Email already used by another user!\n"),
+        "error_maintenance_desc": MessageLookupByLibrary.simpleMessage(
+            "Please restart the app and try later again."),
+        "error_maintenance_title": MessageLookupByLibrary.simpleMessage(
+            "Server is currently in maintenance!"),
         "error_try_later":
             MessageLookupByLibrary.simpleMessage("Error! Try again later."),
         "error_username_taken":
