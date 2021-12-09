@@ -127,6 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Be sure to cancel subscription after you are done
     @override
+    // ignore: unused_element
     dispose() {
       super.dispose();
       subscription.cancel();

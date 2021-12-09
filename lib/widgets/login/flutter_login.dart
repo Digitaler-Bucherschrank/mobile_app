@@ -192,10 +192,10 @@ class __HeaderState extends State<_Header> {
         viewState: ViewState.enlarged,
       );
     } else if (!DartHelper.isNullOrEmpty(widget.title)) {
-      double c_width = MediaQuery.of(context).size.width * 0.8;
+      double cWidth = MediaQuery.of(context).size.width * 0.8;
 
       title = new Container(
-          width: c_width,
+          width: cWidth,
           child: Text(
             widget.title!,
             softWrap: true,

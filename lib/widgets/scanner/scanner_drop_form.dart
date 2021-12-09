@@ -7,7 +7,6 @@ import 'package:digitaler_buecherschrank/widgets/scanner/modules/popUps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:quiver/core.dart';
 
 class ScannerDropForm extends StatefulWidget {
   final BookCase bookcase;
