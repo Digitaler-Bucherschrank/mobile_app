@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nutzername zu lang!"),
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
+        "label_accept": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Buch-Infos"),
         "label_borrowbook": MessageLookupByLibrary.simpleMessage("Buch nehmen"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Schließen"),
@@ -72,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Karte"),
         "label_password": MessageLookupByLibrary.simpleMessage("Passwort"),
+        "label_read_data_protection": MessageLookupByLibrary.simpleMessage(
+            "Ich habe die Datenschutzerklärung gelesen und verstanden!"),
         "label_scanner_autor": MessageLookupByLibrary.simpleMessage("Autor"),
         "label_scanner_bookcase":
             MessageLookupByLibrary.simpleMessage("Bücherschrank:"),
@@ -115,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
             MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
+        "label_welcome": MessageLookupByLibrary.simpleMessage("Willkommen"),
         "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
       };

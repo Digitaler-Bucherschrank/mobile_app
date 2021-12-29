@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `Akzeptieren`
+  String get label_accept {
+    return Intl.message(
+      'Akzeptieren',
+      name: 'label_accept',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch-Infos`
   String get label_bookinfo {
     return Intl.message(
@@ -345,6 +355,16 @@ class S {
     return Intl.message(
       'Passwort',
       name: 'label_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ich habe die Datenschutzerklärung gelesen und verstanden!`
+  String get label_read_data_protection {
+    return Intl.message(
+      'Ich habe die Datenschutzerklärung gelesen und verstanden!',
+      name: 'label_read_data_protection',
       desc: '',
       args: [],
     );
@@ -585,6 +605,16 @@ class S {
     return Intl.message(
       'Siehe Bücher',
       name: 'label_view_books',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Willkommen`
+  String get label_welcome {
+    return Intl.message(
+      'Willkommen',
+      name: 'label_welcome',
       desc: '',
       args: [],
     );

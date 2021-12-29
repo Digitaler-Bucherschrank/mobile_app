@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Username too long!"),
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Username too short"),
+        "label_accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Book-Info"),
         "label_borrowbook": MessageLookupByLibrary.simpleMessage("Take Book"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Close"),
@@ -68,10 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Your Inventory"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Login"),
-        "label_logout": MessageLookupByLibrary.simpleMessage("Logout\n"),
+        "label_logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Map"),
         "label_password": MessageLookupByLibrary.simpleMessage("Password"),
+        "label_read_data_protection": MessageLookupByLibrary.simpleMessage(
+            "I have read and understood the privacy policy!"),
         "label_scanner_autor": MessageLookupByLibrary.simpleMessage("Author"),
         "label_scanner_bookcase":
             MessageLookupByLibrary.simpleMessage("Bookcase:"),
@@ -114,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Registrieren"),
         "label_username": MessageLookupByLibrary.simpleMessage("Username"),
         "label_view_books": MessageLookupByLibrary.simpleMessage("Show books"),
+        "label_welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
         "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digital Bookcase")
       };

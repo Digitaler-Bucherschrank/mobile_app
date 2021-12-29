@@ -8,6 +8,7 @@ import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
+import 'package:digitaler_buecherschrank/widgets/dataProtection.dart';
 import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:digitaler_buecherschrank/widgets/inventory.dart';
 import 'package:digitaler_buecherschrank/widgets/login.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
           ? isLoggedIn
               ? MyHomePage()
               : LoginScreen()
-          : IntroScreen(),
+          : DataProtectionPage(),
     );
   }
 }
