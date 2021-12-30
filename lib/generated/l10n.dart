@@ -200,6 +200,16 @@ class S {
     );
   }
 
+  /// `Die offenen Bücherschränke - nun digital`
+  String get label_bookcase_now_digital {
+    return Intl.message(
+      'Die offenen Bücherschränke - nun digital',
+      name: 'label_bookcase_now_digital',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch-Infos`
   String get label_bookinfo {
     return Intl.message(
@@ -250,6 +260,16 @@ class S {
     );
   }
 
+  /// `Fertig`
+  String get label_done {
+    return Intl.message(
+      'Fertig',
+      name: 'label_done',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch ablegen`
   String get label_dropbook {
     return Intl.message(
@@ -275,6 +295,26 @@ class S {
     return Intl.message(
       'Ihr Inventar ist leer!',
       name: 'label_empty_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Funktionsweise`
+  String get label_functionality {
+    return Intl.message(
+      'Funktionsweise',
+      name: 'label_functionality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In dieser App kannst du die verschiedenen offenen Bücherschränke deiner Stadt kompakt auf einer Karte finden. Du kannst die jeweiligen Inventare betrachten, Bücher ausleihen & Bücher spenden bzw. zurücklegen!`
+  String get label_functionality_text {
+    return Intl.message(
+      'In dieser App kannst du die verschiedenen offenen Bücherschränke deiner Stadt kompakt auf einer Karte finden. Du kannst die jeweiligen Inventare betrachten, Bücher ausleihen & Bücher spenden bzw. zurücklegen!',
+      name: 'label_functionality_text',
       desc: '',
       args: [],
     );
@@ -345,6 +385,26 @@ class S {
     return Intl.message(
       'Karte',
       name: 'label_map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sowohl online als auch offline!`
+  String get label_online_and_offline {
+    return Intl.message(
+      'Sowohl online als auch offline!',
+      name: 'label_online_and_offline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Die App kannst du sowohl offline als auch online nutzen. Funktionen wie das Betrachten der Inventare funktionieren nur im Online-Modus, allerdings funktionieren Funktionen wie die Karte auch ohne Internet.`
+  String get label_online_and_offline_text {
+    return Intl.message(
+      'Die App kannst du sowohl offline als auch online nutzen. Funktionen wie das Betrachten der Inventare funktionieren nur im Online-Modus, allerdings funktionieren Funktionen wie die Karte auch ohne Internet.',
+      name: 'label_online_and_offline_text',
       desc: '',
       args: [],
     );
@@ -610,11 +670,41 @@ class S {
     );
   }
 
+  /// `Wir sind auf dich angewiesen!`
+  String get label_we_depend_on_you {
+    return Intl.message(
+      'Wir sind auf dich angewiesen!',
+      name: 'label_we_depend_on_you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diese App lebt davon, dass so viele Bücherschränkler*innen wie möglich diese nutzen, damit die bei uns verfügbaren Informationen aktuell & nützlich sind. Daher bitten wir dich: Spread the Word! Je mehr diese App nutzen, desto mehr hat jeder davon.`
+  String get label_we_depend_on_you_text {
+    return Intl.message(
+      'Diese App lebt davon, dass so viele Bücherschränkler*innen wie möglich diese nutzen, damit die bei uns verfügbaren Informationen aktuell & nützlich sind. Daher bitten wir dich: Spread the Word! Je mehr diese App nutzen, desto mehr hat jeder davon.',
+      name: 'label_we_depend_on_you_text',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Willkommen`
   String get label_welcome {
     return Intl.message(
       'Willkommen',
       name: 'label_welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Willkommen zum Projekt Digitaler Bücherschrank!`
+  String get label_welcome_to {
+    return Intl.message(
+      'Willkommen zum Projekt Digitaler Bücherschrank!',
+      name: 'label_welcome_to',
       desc: '',
       args: [],
     );

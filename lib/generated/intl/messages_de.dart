@@ -52,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
         "label_accept": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
+        "label_bookcase_now_digital": MessageLookupByLibrary.simpleMessage(
+            "Die offenen Bücherschränke - nun digital"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Buch-Infos"),
         "label_borrowbook": MessageLookupByLibrary.simpleMessage("Buch nehmen"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Schließen"),
@@ -59,11 +61,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password bestätigen"),
         "label_donate_book":
             MessageLookupByLibrary.simpleMessage("Buch spenden"),
+        "label_done": MessageLookupByLibrary.simpleMessage("Fertig"),
         "label_dropbook": MessageLookupByLibrary.simpleMessage("Buch ablegen"),
         "label_empty_bookcase": MessageLookupByLibrary.simpleMessage(
             "Inventar des Bücherschranks ist leer!"),
         "label_empty_user":
             MessageLookupByLibrary.simpleMessage("Ihr Inventar ist leer!"),
+        "label_functionality":
+            MessageLookupByLibrary.simpleMessage("Funktionsweise"),
+        "label_functionality_text": MessageLookupByLibrary.simpleMessage(
+            "In dieser App kannst du die verschiedenen offenen Bücherschränke deiner Stadt kompakt auf einer Karte finden. Du kannst die jeweiligen Inventare betrachten, Bücher ausleihen & Bücher spenden bzw. zurücklegen!"),
         "label_help": MessageLookupByLibrary.simpleMessage("Hilfe"),
         "label_inventory":
             MessageLookupByLibrary.simpleMessage("Dein Inventar"),
@@ -72,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_logout": MessageLookupByLibrary.simpleMessage("Ausloggen"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Karte"),
+        "label_online_and_offline": MessageLookupByLibrary.simpleMessage(
+            "Sowohl online als auch offline!"),
+        "label_online_and_offline_text": MessageLookupByLibrary.simpleMessage(
+            "Die App kannst du sowohl offline als auch online nutzen. Funktionen wie das Betrachten der Inventare funktionieren nur im Online-Modus, allerdings funktionieren Funktionen wie die Karte auch ohne Internet."),
         "label_password": MessageLookupByLibrary.simpleMessage("Passwort"),
         "label_read_data_protection": MessageLookupByLibrary.simpleMessage(
             "Ich habe die Datenschutzerklärung gelesen und verstanden!"),
@@ -118,7 +129,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
             MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
+        "label_we_depend_on_you": MessageLookupByLibrary.simpleMessage(
+            "Wir sind auf dich angewiesen!"),
+        "label_we_depend_on_you_text": MessageLookupByLibrary.simpleMessage(
+            "Diese App lebt davon, dass so viele Bücherschränkler*innen wie möglich diese nutzen, damit die bei uns verfügbaren Informationen aktuell & nützlich sind. Daher bitten wir dich: Spread the Word! Je mehr diese App nutzen, desto mehr hat jeder davon."),
         "label_welcome": MessageLookupByLibrary.simpleMessage("Willkommen"),
+        "label_welcome_to": MessageLookupByLibrary.simpleMessage(
+            "Willkommen zum Projekt Digitaler Bücherschrank!"),
         "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digitaler Bücherschrank")
       };

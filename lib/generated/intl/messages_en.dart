@@ -52,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Username too short"),
         "label_accept": MessageLookupByLibrary.simpleMessage("Accept"),
+        "label_bookcase_now_digital": MessageLookupByLibrary.simpleMessage(
+            "The open bookcases - now digital"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Book-Info"),
         "label_borrowbook": MessageLookupByLibrary.simpleMessage("Take Book"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Close"),
@@ -59,11 +61,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "label_donate_book":
             MessageLookupByLibrary.simpleMessage("Donate book"),
+        "label_done": MessageLookupByLibrary.simpleMessage("Done"),
         "label_dropbook": MessageLookupByLibrary.simpleMessage("Return book"),
         "label_empty_bookcase": MessageLookupByLibrary.simpleMessage(
             "Bookcase inventory is empty!"),
         "label_empty_user":
             MessageLookupByLibrary.simpleMessage("Your inventory is empty!"),
+        "label_functionality":
+            MessageLookupByLibrary.simpleMessage("functionality"),
+        "label_functionality_text": MessageLookupByLibrary.simpleMessage(
+            "You can find your city\'s open bookcases compact on one map in the App. You can take a look at the bookcases\' Inventories and borrow, return and donate books."),
         "label_help": MessageLookupByLibrary.simpleMessage("Help"),
         "label_inventory":
             MessageLookupByLibrary.simpleMessage("Your Inventory"),
@@ -72,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "label_mail": MessageLookupByLibrary.simpleMessage("E-mail"),
         "label_map": MessageLookupByLibrary.simpleMessage("Map"),
+        "label_online_and_offline":
+            MessageLookupByLibrary.simpleMessage("Online as well as offline!"),
+        "label_online_and_offline_text": MessageLookupByLibrary.simpleMessage(
+            "The App can be used with and without an internet connection. Functions like taking a look at the bookcases\' Inventories are only accessible in online mode, but functions like the map can always be used."),
         "label_password": MessageLookupByLibrary.simpleMessage("Password"),
         "label_read_data_protection": MessageLookupByLibrary.simpleMessage(
             "I have read and understood the privacy policy!"),
@@ -117,7 +128,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Registrieren"),
         "label_username": MessageLookupByLibrary.simpleMessage("Username"),
         "label_view_books": MessageLookupByLibrary.simpleMessage("Show books"),
+        "label_we_depend_on_you":
+            MessageLookupByLibrary.simpleMessage("We depend on you!"),
+        "label_we_depend_on_you_text": MessageLookupByLibrary.simpleMessage(
+            "The App depends on having many users to keep the information displayed as useful and reliable as possible. Therefore we ask you to spread the word! The more people use the App, the more it\'s useful for everyone."),
         "label_welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "label_welcome_to": MessageLookupByLibrary.simpleMessage(
+            "Welcome to the Digital Bookcase Project!"),
         "label_welcome_user": m0,
         "title": MessageLookupByLibrary.simpleMessage("Digital Bookcase")
       };
