@@ -61,7 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "label_donate_book":
             MessageLookupByLibrary.simpleMessage("Donate book"),
-        "label_done": MessageLookupByLibrary.simpleMessage("Done"),
+        "label_done": MessageLookupByLibrary.simpleMessage("Done!"),
         "label_dropbook": MessageLookupByLibrary.simpleMessage("Return book"),
         "label_empty_bookcase": MessageLookupByLibrary.simpleMessage(
             "Bookcase inventory is empty!"),
@@ -123,6 +123,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_server_unavailable": MessageLookupByLibrary.simpleMessage(
             "Server not available right now. Please try later again"),
         "label_settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "label_settings_about": MessageLookupByLibrary.simpleMessage("About"),
+        "label_settings_general":
+            MessageLookupByLibrary.simpleMessage("General"),
+        "label_settings_language":
+            MessageLookupByLibrary.simpleMessage("Language"),
         "label_show_books": MessageLookupByLibrary.simpleMessage("Show books"),
         "label_signup_button":
             MessageLookupByLibrary.simpleMessage("Registrieren"),

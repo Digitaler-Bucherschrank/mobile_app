@@ -1,4 +1,5 @@
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:flutter/material.dart';
 
@@ -45,13 +46,14 @@ class DataProtectionPageState extends State<DataProtectionPage> {
                       style: TextStyle(
                           color: makeColorRed
                               ? Colors.redAccent
-                              : Theme.of(context).textTheme.bodyText1!.color!),
+                              : Theme.of(context).textTheme.bodyText1!.color),
                     )),
               ],
             ),
             OutlinedButton(
                 onPressed: () {
                   if (checkBoxValue) {
+                    SharedPrefs().acceptedDataDeclaration = true;
                     Navigator.push(
                       context,
                       MaterialPageRoute(

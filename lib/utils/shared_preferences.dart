@@ -46,8 +46,15 @@ class SharedPrefs {
   bool get finishedIntro =>
       _sharedPrefs!.getBool("finishedIntro", defaultValue: false).getValue();
 
-  set finishedIntro(bool loggedIn) {
-    _sharedPrefs!.setBool("finishedIntro", loggedIn);
+  set finishedIntro(bool finishedIntro) {
+    _sharedPrefs!.setBool("finishedIntro", finishedIntro);
+  }
+
+  bool get acceptedDataDeclaration =>
+      _sharedPrefs!.getBool("acceptedDataDeclaration", defaultValue: false).getValue();
+
+  set acceptedDataDeclaration(bool acceptedDataDeclaration) {
+    _sharedPrefs!.setBool("acceptedDataDeclaration", acceptedDataDeclaration);
   }
 
   String get language =>

@@ -260,10 +260,10 @@ class S {
     );
   }
 
-  /// `Fertig`
+  /// `Fertig!`
   String get label_done {
     return Intl.message(
-      'Fertig',
+      'Fertig!',
       name: 'label_done',
       desc: '',
       args: [],
@@ -625,6 +625,36 @@ class S {
     return Intl.message(
       'Einstellungen',
       name: 'label_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Über`
+  String get label_settings_about {
+    return Intl.message(
+      'Über',
+      name: 'label_settings_about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allgemein`
+  String get label_settings_general {
+    return Intl.message(
+      'Allgemein',
+      name: 'label_settings_general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sprache`
+  String get label_settings_language {
+    return Intl.message(
+      'Sprache',
+      name: 'label_settings_language',
       desc: '',
       args: [],
     );

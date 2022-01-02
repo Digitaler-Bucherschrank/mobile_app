@@ -14,6 +14,7 @@ import 'package:digitaler_buecherschrank/widgets/inventory.dart';
 import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search.dart';
 import 'package:digitaler_buecherschrank/widgets/search/search_model.dart';
+import 'package:digitaler_buecherschrank/widgets/settings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,8 +50,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isLoggedIn = SharedPrefs().isLoggedIn;
-    var finishedIntro = SharedPrefs().finishedIntro;
+    var sp = SharedPrefs();
+    var isLoggedIn = sp.isLoggedIn;
+    var acceptedDataDeclaration = sp.acceptedDataDeclaration;
+    var finishedIntro = sp.finishedIntro;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -58,6 +61,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: globalKey,
       darkTheme: darkThemeData(),
       themeMode: ThemeMode.system,
+      locale: sp.language == "" ? Locale(sp.language) : null,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -65,11 +69,13 @@ class MyApp extends StatelessWidget {
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: finishedIntro
-          ? isLoggedIn
-              ? MyHomePage()
-              : LoginScreen()
-          : DataProtectionPage(),
+      home: acceptedDataDeclaration
+          ? finishedIntro
+                ? isLoggedIn
+                  ? MyHomePage()
+                  : LoginScreen()
+            : IntroScreen()
+        : DataProtectionPage()
     );
   }
 }
@@ -144,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
         renderPanelSheet: false,
         minHeight: 66,
         backdropEnabled: true,
-        maxHeight: 400,
+        maxHeight: 334,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
@@ -272,6 +278,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Card(
                                     child: ListTile(
                                       leading: Icon(Icons.settings),
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Settings()));
+                                      },
                                       title: Text(S.current.label_settings),
                                     ),
                                   ),
@@ -280,21 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       leading: Icon(Icons.help),
                                       title: Text(S.current.label_help),
                                     ),
-                                  ),
-                                  Card(
-                                    child: ListTile(
-                                      leading: Icon(Icons.logout),
-                                      onTap: () {
-                                        Utilities.logoutUser(null);
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoginScreen()));
-                                      },
-                                      title: Text(S.current.label_logout),
-                                    ),
-                                  ),
+                                  )
                                 ],
                               ),
                             )
