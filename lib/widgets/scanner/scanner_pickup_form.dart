@@ -90,11 +90,13 @@ class _ScannerPickupFormState extends State<ScannerPickupForm> {
                                     borderRadius: BorderRadius.circular(15.0),
                                   ),
                                   child: ListTile(
-                                    leading:
-                                        itemsBookcase[index].thumbnail != null
-                                            ? Image.network(
-                                                itemsBookcase[index].thumbnail!)
-                                            : Icon(Icons.book),
+                                    leading: itemsBookcase[index].thumbnail !=
+                                                null &&
+                                            itemsBookcase[index].thumbnail !=
+                                                "null"
+                                        ? Image.network(
+                                            itemsBookcase[index].thumbnail!)
+                                        : Icon(Icons.book),
                                     title: Text(itemsBookcase[index].title!),
                                     trailing: ElevatedButton(
                                       child:

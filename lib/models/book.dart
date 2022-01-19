@@ -129,13 +129,13 @@ class VolumeData {
       image: json['image'] as String?,
       titleLong: json['title_long'] as String?,
       dimensions: json['dimensions'] as String?,
-      datePublished: json['date_published'] == null
+      /*datePublished: json['date_published'] == null
           ? null
-          : DateTime.parse(json['date_published'] as String),
+          : DateTime.parse(json['date_published'] as String),*/
       authors: json['authors'] as List<dynamic>?,
       title: json['title'] as String?,
       isbn13: json['isbn13'] as String?,
-      msrp: json['msrp'] as String?,
+      msrp: "${json['msrp']}",
       binding: json['binding'] as String?,
       isbn: json['isbn'] as String?,
     );

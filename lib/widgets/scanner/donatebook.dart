@@ -47,8 +47,7 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
       child: new Container(
         child: Column(
           children: [
-            getScannerWidget(
-                context, _book, txt, txt2, apiService, containerWidth),
+            ScannerWidget(_book, txt, txt2, apiService, containerWidth),
             getBookinfo(context, txt, txt2, containerWidth),
             getBookcase(markersId, context, containerWidth),
             ElevatedButton(
@@ -117,7 +116,7 @@ class _DonateWidgetState extends State<DonateWidget>
             controller: _tabController,
             children: [
               _GetISBNScannWidget(markersId, containerWidth),
-              getManuallyWidget(context, containerWidth),
+              ManuallyWidget(containerWidth),
             ],
           ),
         ),
