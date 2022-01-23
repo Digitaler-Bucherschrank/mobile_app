@@ -1,27 +1,27 @@
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
-import 'package:digitaler_buecherschrank/widgets/scanner/modules/popUps.dart';
+import 'package:digitaler_buecherschrank/widgets/input/modules/popUps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class ScannerPickupForm extends StatefulWidget {
+class ShowBooks extends StatefulWidget {
   final BookCase bookcase;
 
-  ScannerPickupForm(this.bookcase);
+  ShowBooks(this.bookcase);
 
   @override
-  _ScannerPickupFormState createState() => _ScannerPickupFormState(bookcase);
+  _ShowBooksState createState() => _ShowBooksState(bookcase);
 }
 
-class _ScannerPickupFormState extends State<ScannerPickupForm> {
+class _ShowBooksState extends State<ShowBooks> {
   BookCase bookcase;
   List itemsBookcase = [];
   ApiService apiService = new ApiService();
   RefreshController _refreshControllerBookcase =
       RefreshController(initialRefresh: false);
-  _ScannerPickupFormState(this.bookcase);
+  _ShowBooksState(this.bookcase);
 
   void onRefreshBookcase(String bookCaseID, int? index) async {
     // monitor network fetch

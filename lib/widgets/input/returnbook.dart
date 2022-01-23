@@ -3,28 +3,28 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
-import 'package:digitaler_buecherschrank/widgets/scanner/modules/popUps.dart';
+import 'package:digitaler_buecherschrank/widgets/input/modules/popUps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class ScannerDropForm extends StatefulWidget {
+class ReturnBook extends StatefulWidget {
   final BookCase bookcase;
 
-  ScannerDropForm(this.bookcase);
+  ReturnBook(this.bookcase);
 
   @override
-  _ScannerDropFormState createState() => _ScannerDropFormState(bookcase);
+  _ReturnBookState createState() => _ReturnBookState(bookcase);
 }
 
-class _ScannerDropFormState extends State<ScannerDropForm> {
+class _ReturnBookState extends State<ReturnBook> {
   BookCase bookcase;
   ApiService apiService = new ApiService();
   Map<String, List<Book>> itemsUser = {"": []};
 
   RefreshController _refreshControllerBorrowed =
       RefreshController(initialRefresh: false);
-  _ScannerDropFormState(this.bookcase);
+  _ReturnBookState(this.bookcase);
 
   void onRefreshUser(int? index) async {
     // monitor network fetch

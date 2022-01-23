@@ -89,64 +89,63 @@ class ApiService {
     }));
 
     client.interceptors.add(RetryInterceptor(
-          retries: 3,
-          // Number of retries before a failure
-          retryDelays: [const Duration(seconds: 1)],
-          // Interval between each retry
-          retryEvaluator: (error, attempt) async {
-            var data = error.requestOptions.responseType == ResponseType.json
-                ? error.response!.data
-                : jsonDecode(error.response!.data);
-            if (error.type != DioErrorType.cancel &&
-                error.type != DioErrorType.response) {
-              return true;
-            } else if (error.response!.statusCode == 401) {
-              switch (data["message"]) {
-                case ("token_expired"):
-                case ("invalid_access_token"):
-                case ("client_not_found"):
-                case ("user_not_found"):
-                case ("access_token_outdated"):
-                  {
-                    await AuthenticationService().refreshTokens();
-                    client.options.headers.clear();
-                    client.options.headers.addAll({
-                      HttpHeaders.authorizationHeader:
-                          "Bearer ${SharedPrefs().user.tokens!.accessToken!.token}"
-                    });
-                  }
-              }
-
-              return true;
-            } else if (error.response?.statusCode == 503) {
-              // Server is in Maintenance Mode
-              showDialog(
-                barrierDismissible: false,
-                context: MyApp.globalKey.currentContext!,
-                builder: (BuildContext context) {
-                  // TODO: LOCALIZATION ALSO IN API_SERVICE
-                  return new WillPopScope(
-                      onWillPop: () async => false,
-                      child: AlertDialog(
-                        title: Text(S.current.error_maintenance_title),
-                        content: Text(S.current.error_maintenance_desc),
-                        actions: [
-                          TextButton(
-                            child: Text("Restart app"),
-                            onPressed: () {
-                              Restart.restartApp();
-                            },
-                          )
-                        ],
-                      )
-                  );
-                },
-              );
-              return false;
-            } else {
-              return false;
+        retries: 3,
+        // Number of retries before a failure
+        retryDelays: [const Duration(seconds: 1)],
+        // Interval between each retry
+        retryEvaluator: (error, attempt) async {
+          var data = error.requestOptions.responseType == ResponseType.json
+              ? error.response!.data
+              : jsonDecode(error.response!.data);
+          if (error.type != DioErrorType.cancel &&
+              error.type != DioErrorType.response) {
+            return true;
+          } else if (error.response!.statusCode == 401) {
+            switch (data["message"]) {
+              case ("token_expired"):
+              case ("invalid_access_token"):
+              case ("client_not_found"):
+              case ("user_not_found"):
+              case ("access_token_outdated"):
+                {
+                  await AuthenticationService().refreshTokens();
+                  client.options.headers.clear();
+                  client.options.headers.addAll({
+                    HttpHeaders.authorizationHeader:
+                        "Bearer ${SharedPrefs().user.tokens!.accessToken!.token}"
+                  });
+                }
             }
-          }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
+
+            return true;
+          } else if (error.response?.statusCode == 503) {
+            // Server is in Maintenance Mode
+            showDialog(
+              barrierDismissible: false,
+              context: MyApp.globalKey.currentContext!,
+              builder: (BuildContext context) {
+                // TODO: LOCALIZATION ALSO IN API_SERVICE
+                return new WillPopScope(
+                    onWillPop: () async => false,
+                    child: AlertDialog(
+                      title: Text(S.current.error_maintenance_title),
+                      content: Text(S.current.error_maintenance_desc),
+                      actions: [
+                        TextButton(
+                          child: Text("Restart app"),
+                          onPressed: () {
+                            Restart.restartApp();
+                          },
+                        )
+                      ],
+                    ));
+              },
+            );
+            return false;
+          } else {
+            return false;
+          }
+        }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
         dio: client));
   }
 
