@@ -1,5 +1,6 @@
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/widgets/scanner/modules/popUps.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/book.dart';
@@ -27,18 +28,26 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
 
   _GetISBNScannWidgetState(this.markersId, this.containerWidth);
 
-  TextEditingController txt = TextEditingController();
-  TextEditingController txt2 = TextEditingController();
-
   Book _book = new Book();
 
   ApiService apiService = new ApiService();
+  String txt = "";
+  String txt2 = "";
 
   @override
   void initState() {
     super.initState();
     _book.bookData = new VolumeData();
     _book.location = markersId;
+    txt = "";
+    txt2 = "";
+  }
+
+  void callback(String t1, String t2) {
+    setState(() {
+      txt = t1;
+      txt2 = t2;
+    });
   }
 
   @override
@@ -47,17 +56,22 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
       child: new Container(
         child: Column(
           children: [
-            ScannerWidget(_book, txt, txt2, apiService, containerWidth),
-            getBookinfo(context, txt, txt2, containerWidth),
+            ScannerWidget(
+                txt, txt2, callback, _book, apiService, containerWidth),
+            getBookinfo(txt, txt2, context, containerWidth),
             getBookcase(markersId, context, containerWidth),
             ElevatedButton(
               style: Theme.of(context).outlinedButtonTheme.style,
-              onPressed: () async {
-                print(_book);
-                Navigator.pop(context);
-                apiService.donateBook(_book, false, null).then((value) {
-                  print("donateBook: $value");
-                });
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext dialogContext) {
+                    return DonatePopUp(
+                      book: _book,
+                      manual: false,
+                    );
+                  },
+                ).then((value) => Navigator.pop(context));
               },
               child: Text(S.of(context).label_scanner_confirm),
             ),
@@ -95,7 +109,6 @@ class _DonateWidgetState extends State<DonateWidget>
     double containerWidth = MediaQuery.of(context).size.width * 0.8;
     return new Scaffold(
       appBar: new AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * 0.15,
         title: new Text(S.of(context).label_donate_book),
         bottom: TabBar(
           controller: _tabController,

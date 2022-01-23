@@ -168,3 +168,83 @@ class UserPopUp extends StatelessWidget {
     );
   }
 }
+
+class DonatePopUp extends StatelessWidget {
+  final Book book;
+  final bool manual;
+  final ManualBookData? data;
+
+  DonatePopUp({required this.book, required this.manual, this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: ApiService().donateBook(book, manual, data),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+              horizontal: _horizontalPadding(context),
+              vertical: _verticalPadding(context),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  S.of(context).label_loading,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                Padding(padding: EdgeInsets.only(top: 10)),
+                CircularProgressIndicator()
+              ],
+            ),
+          );
+        } else if (snapshot.data) {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+              horizontal: _horizontalPadding(context),
+              vertical: _verticalPadding(context),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  S.of(context).label_scanner_success,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                ElevatedButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            ),
+          );
+        } else {
+          return Dialog(
+            insetPadding: EdgeInsets.symmetric(
+              horizontal: _horizontalPadding(context),
+              vertical: _verticalPadding(context),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  S.of(context).error_try_later,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                ElevatedButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            ),
+          );
+        }
+      },
+    );
+  }
+}

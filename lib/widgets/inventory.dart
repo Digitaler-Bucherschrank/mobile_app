@@ -122,7 +122,8 @@ class _InventoryListState extends State<InventoryList>
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: ListTile(
-                      leading: items['donated']![index].thumbnail != null
+                      leading: items['donated']![index].thumbnail != null &&
+                              items['donated']![index].thumbnail != "null"
                           ? Image.network(items['donated']![index].thumbnail!)
                           : Icon(Icons.book),
                       title: Text(items['donated']![index].title!),

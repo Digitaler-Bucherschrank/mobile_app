@@ -101,7 +101,10 @@ class _ScannerDropFormState extends State<ScannerDropForm> {
                                 child: ListTile(
                                   leading:
                                       itemsUser['borrowed']![index].thumbnail !=
-                                              null
+                                                  null &&
+                                              itemsUser['borrowed']![index]
+                                                      .thumbnail !=
+                                                  "null"
                                           ? Image.network(
                                               itemsUser['borrowed']![index]
                                                   .thumbnail!)

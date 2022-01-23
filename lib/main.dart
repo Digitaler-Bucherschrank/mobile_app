@@ -7,7 +7,6 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
-import 'package:digitaler_buecherschrank/utils/utils.dart';
 import 'package:digitaler_buecherschrank/widgets/dataProtection.dart';
 import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:digitaler_buecherschrank/widgets/inventory.dart';
@@ -56,27 +55,26 @@ class MyApp extends StatelessWidget {
     var finishedIntro = sp.finishedIntro;
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightThemeData(),
-      navigatorKey: globalKey,
-      darkTheme: darkThemeData(),
-      themeMode: ThemeMode.system,
-      locale: sp.language == "" ? Locale(sp.language) : null,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        S.delegate
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      home: acceptedDataDeclaration
-          ? finishedIntro
+        debugShowCheckedModeBanner: false,
+        theme: lightThemeData(),
+        navigatorKey: globalKey,
+        darkTheme: darkThemeData(),
+        themeMode: ThemeMode.system,
+        locale: sp.language == "" ? Locale(sp.language) : null,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          S.delegate
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        home: acceptedDataDeclaration
+            ? finishedIntro
                 ? isLoggedIn
-                  ? MyHomePage()
-                  : LoginScreen()
-            : IntroScreen()
-        : DataProtectionPage()
-    );
+                    ? MyHomePage()
+                    : LoginScreen()
+                : IntroScreen()
+            : DataProtectionPage());
   }
 }
 

@@ -10,26 +10,28 @@ import 'scanner_logic.dart';
 double cardBorderRadius = 20.0;
 
 class ScannerWidget extends StatefulWidget {
-  ScannerWidget(
-      this._book, this.txt, this.txt2, this.apiService, this.containerWidth);
-  Book _book;
-  TextEditingController txt;
-  TextEditingController txt2;
-  ApiService apiService;
-  double containerWidth;
+  ScannerWidget(this.txt, this.txt2, this.callback, this._book, this.apiService,
+      this.containerWidth);
+  final String txt;
+  final String txt2;
+  final Function callback;
+  final Book _book;
+  final ApiService apiService;
+  final double containerWidth;
   @override
   _ScannerWidgetState createState() =>
-      _ScannerWidgetState(_book, txt, txt2, apiService, containerWidth);
+      _ScannerWidgetState(txt, txt2, _book, apiService, containerWidth);
 }
 
 class _ScannerWidgetState extends State<ScannerWidget> {
+  _ScannerWidgetState(
+      this.txt, this.txt2, this._book, this.apiService, this.containerWidth);
   Book _book;
-  TextEditingController txt;
-  TextEditingController txt2;
+  String txt;
+  String txt2;
   ApiService apiService;
   double containerWidth;
-  _ScannerWidgetState(
-      this._book, this.txt, this.txt2, this.apiService, this.containerWidth);
+
   TextEditingController scannerText = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -71,14 +73,15 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                             builder: (context) => getScannerScreen(
                                 context, _book, scannerText))).then(
                       (value) {
+                        apiService.getBookData([_book]).then((value) {
+                          this.widget.callback(
+                              "${value[0].title}", "${value[0].author}");
+
+                          print("${value[0].title}");
+                          print("${value[0].author}");
+                        });
                         setState(
                           () {
-                            apiService.getBookData([_book]).then((value) {
-                              txt.text = "${value[0].title}";
-                              print(txt.text);
-                              txt2.text = "${value[0].author}";
-                              print(txt2.text);
-                            });
                             scannerText.text = _book.isbn!;
                           },
                         );
@@ -99,10 +102,10 @@ class _ScannerWidgetState extends State<ScannerWidget> {
                 print('updated isbn: ' + _book.isbn!);
                 apiService.getBookData([_book]).then((value) {
                   print(value.toString());
-                  txt.text = "${value[0].title}";
-                  print(txt.text);
-                  txt2.text = "${value[0].author}";
-                  print(txt2.text);
+                  txt = "${value[0].title}";
+                  print(txt);
+                  txt2 = "${value[0].author}";
+                  print(txt2);
                 });
               },
             ),
@@ -114,8 +117,8 @@ class _ScannerWidgetState extends State<ScannerWidget> {
   }
 }
 
-Widget getBookinfo(BuildContext context, TextEditingController txt,
-    TextEditingController txt2, double containerWidth) {
+Widget getBookinfo(
+    String txt, String txt2, BuildContext context, double containerWidth) {
   double testFieldWidth = MediaQuery.of(context).size.width * 0.6;
   return Card(
     shape: RoundedRectangleBorder(
@@ -148,27 +151,17 @@ Widget getBookinfo(BuildContext context, TextEditingController txt,
                 Column(
                   children: [
                     Container(
-                      child: TextField(
-                        selectionHeightStyle: BoxHeightStyle.tight,
-                        controller: txt,
+                      child: Text(
+                        txt,
                         style: Theme.of(context).textTheme.bodyText1,
-                        decoration: InputDecoration(
-                          fillColor: Colors.transparent,
-                          border: InputBorder.none,
-                        ),
                       ),
                       width: testFieldWidth,
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
+                    Padding(padding: EdgeInsets.only(top: 35)),
                     Container(
-                      child: TextField(
-                        selectionHeightStyle: BoxHeightStyle.tight,
-                        controller: txt2,
+                      child: Text(
+                        txt2,
                         style: Theme.of(context).textTheme.bodyText1,
-                        decoration: InputDecoration(
-                          fillColor: Colors.transparent,
-                          border: InputBorder.none,
-                        ),
                       ),
                       width: testFieldWidth,
                     ),

@@ -32,9 +32,11 @@ class _ScannerPickupFormState extends State<ScannerPickupForm> {
       });
     }
     List i = await ApiService().getBookCaseInventory(bookCaseID);
-    setState(() {
-      itemsBookcase = i;
-    });
+    if (mounted) {
+      setState(() {
+        itemsBookcase = i;
+      });
+    }
     print(itemsBookcase.toString());
     _refreshControllerBookcase.refreshCompleted();
   }
