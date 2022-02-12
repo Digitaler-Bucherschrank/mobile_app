@@ -248,3 +248,30 @@ class DonatePopUp extends StatelessWidget {
     );
   }
 }
+
+class ValidISBNPopUp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      insetPadding: EdgeInsets.symmetric(
+        horizontal: _horizontalPadding(context),
+        vertical: _verticalPadding(context),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            S.of(context).label_isbn_unvalid,
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          ElevatedButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
+        ],
+      ),
+    );
+  }
+}

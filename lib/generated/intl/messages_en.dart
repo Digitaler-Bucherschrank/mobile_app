@@ -68,12 +68,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_empty_user":
             MessageLookupByLibrary.simpleMessage("Your inventory is empty!"),
         "label_functionality":
-            MessageLookupByLibrary.simpleMessage("functionality"),
+            MessageLookupByLibrary.simpleMessage("Functionality"),
         "label_functionality_text": MessageLookupByLibrary.simpleMessage(
             "You can find your city\'s open bookcases compact on one map in the App. You can take a look at the bookcases\' Inventories and borrow, return and donate books."),
         "label_help": MessageLookupByLibrary.simpleMessage("Help"),
         "label_inventory":
             MessageLookupByLibrary.simpleMessage("Your Inventory"),
+        "label_isbn_test":
+            MessageLookupByLibrary.simpleMessage("Testing ISBN..."),
+        "label_isbn_unvalid":
+            MessageLookupByLibrary.simpleMessage("ISBN is unvalid!"),
+        "label_isbn_valid":
+            MessageLookupByLibrary.simpleMessage("ISBN is valid!"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Login"),
         "label_logout": MessageLookupByLibrary.simpleMessage("Logout"),
@@ -93,6 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Book information:"),
         "label_scanner_confirm":
             MessageLookupByLibrary.simpleMessage("Confirm"),
+        "label_scanner_description":
+            MessageLookupByLibrary.simpleMessage("Description"),
         "label_scanner_distance":
             MessageLookupByLibrary.simpleMessage("Distance: "),
         "label_scanner_enterISBN":
@@ -104,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_scanner_manual_explanation":
             MessageLookupByLibrary.simpleMessage(
                 "Enter the key data of the book!"),
+        "label_scanner_necessary": MessageLookupByLibrary.simpleMessage(
+            "*Strictly necessary for processing."),
         "label_scanner_newBook":
             MessageLookupByLibrary.simpleMessage("Add new book"),
         "label_scanner_notYourBook": MessageLookupByLibrary.simpleMessage(
@@ -112,8 +122,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date of publishment"),
         "label_scanner_publisher":
             MessageLookupByLibrary.simpleMessage("Publisher"),
-        "label_scanner_subtitle":
-            MessageLookupByLibrary.simpleMessage("Subtitle"),
         "label_scanner_success":
             MessageLookupByLibrary.simpleMessage("Success!"),
         "label_scanner_title": MessageLookupByLibrary.simpleMessage("Title"),

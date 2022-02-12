@@ -74,6 +74,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_help": MessageLookupByLibrary.simpleMessage("Hilfe"),
         "label_inventory":
             MessageLookupByLibrary.simpleMessage("Dein Inventar"),
+        "label_isbn_test":
+            MessageLookupByLibrary.simpleMessage("Prüfe ISBN..."),
+        "label_isbn_unvalid":
+            MessageLookupByLibrary.simpleMessage("ISBN ist nicht valide!"),
+        "label_isbn_valid":
+            MessageLookupByLibrary.simpleMessage("ISBN ist valide!"),
         "label_loading": MessageLookupByLibrary.simpleMessage("Lade..."),
         "label_login_button": MessageLookupByLibrary.simpleMessage("Anmelden"),
         "label_logout": MessageLookupByLibrary.simpleMessage("Ausloggen"),
@@ -93,6 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Buchinformationen:"),
         "label_scanner_confirm":
             MessageLookupByLibrary.simpleMessage("Bestätigen"),
+        "label_scanner_description":
+            MessageLookupByLibrary.simpleMessage("Beschreibung"),
         "label_scanner_distance":
             MessageLookupByLibrary.simpleMessage("Entfernung: "),
         "label_scanner_enterISBN": MessageLookupByLibrary.simpleMessage(
@@ -104,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_scanner_manual_explanation":
             MessageLookupByLibrary.simpleMessage(
                 "Eckdaten des Buchs eingeben!"),
+        "label_scanner_necessary": MessageLookupByLibrary.simpleMessage(
+            "*Zwingend notwendig zur Verarbeitung."),
         "label_scanner_newBook":
             MessageLookupByLibrary.simpleMessage("Neues Buch ablegen"),
         "label_scanner_notYourBook": MessageLookupByLibrary.simpleMessage(
@@ -112,8 +122,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Erscheinungsdatum"),
         "label_scanner_publisher":
             MessageLookupByLibrary.simpleMessage("Verlag"),
-        "label_scanner_subtitle":
-            MessageLookupByLibrary.simpleMessage("Untertitel"),
         "label_scanner_success":
             MessageLookupByLibrary.simpleMessage("Fertig!"),
         "label_scanner_title": MessageLookupByLibrary.simpleMessage("Titel"),

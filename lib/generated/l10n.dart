@@ -340,6 +340,36 @@ class S {
     );
   }
 
+  /// `Prüfe ISBN...`
+  String get label_isbn_test {
+    return Intl.message(
+      'Prüfe ISBN...',
+      name: 'label_isbn_test',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ISBN ist nicht valide!`
+  String get label_isbn_unvalid {
+    return Intl.message(
+      'ISBN ist nicht valide!',
+      name: 'label_isbn_unvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ISBN ist valide!`
+  String get label_isbn_valid {
+    return Intl.message(
+      'ISBN ist valide!',
+      name: 'label_isbn_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lade...`
   String get label_loading {
     return Intl.message(
@@ -470,6 +500,16 @@ class S {
     );
   }
 
+  /// `Beschreibung`
+  String get label_scanner_description {
+    return Intl.message(
+      'Beschreibung',
+      name: 'label_scanner_description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Entfernung: `
   String get label_scanner_distance {
     return Intl.message(
@@ -520,6 +560,16 @@ class S {
     );
   }
 
+  /// `*Zwingend notwendig zur Verarbeitung.`
+  String get label_scanner_necessary {
+    return Intl.message(
+      '*Zwingend notwendig zur Verarbeitung.',
+      name: 'label_scanner_necessary',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Neues Buch ablegen`
   String get label_scanner_newBook {
     return Intl.message(
@@ -555,16 +605,6 @@ class S {
     return Intl.message(
       'Verlag',
       name: 'label_scanner_publisher',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Untertitel`
-  String get label_scanner_subtitle {
-    return Intl.message(
-      'Untertitel',
-      name: 'label_scanner_subtitle',
       desc: '',
       args: [],
     );

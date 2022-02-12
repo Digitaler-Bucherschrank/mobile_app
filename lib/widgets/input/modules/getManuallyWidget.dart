@@ -24,6 +24,7 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
   ManualBookData _manualBook = new ManualBookData();
   VolumeData _bookData = new VolumeData();
   Book _book = new Book();
+  TextStyle? textStyleNecessary;
 
   @override
   Widget build(BuildContext context) {
@@ -57,20 +58,29 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                           borderSide: new BorderSide(),
                         ),
                       ),
-                      onSubmitted: (val) {
+                      onSubmitted: (val) async {
                         _book.isbn = val;
                         print(_book.isbn);
-                        setState(
-                          () {
-                            apiService.getBookData([_book]).then((value) {
-                              titleText.text = "${value[0].title}";
-                              print(titleText.text);
-                              authorText.text = "${value[0].author}";
-                              print(authorText.text);
+                        try {
+                          var value = await apiService.getBookData([_book]);
+                          setState(() {
+                            titleText.text = "${value[0].title}";
+                            print(titleText.text);
+                            authorText.text = "${value[0].author}";
+                            print(authorText.text);
+                          });
+                        } catch (e) {
+                          print(e);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext dialogContext) {
+                                return ValidISBNPopUp();
+                              }).then((value) {
+                            setState(() {
+                              scannerText.text = "";
                             });
-                            scannerText.text = _book.isbn!;
-                          },
-                        );
+                          });
+                        }
                       },
                     ),
                   ),
@@ -85,7 +95,8 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                     child: TextField(
                       controller: titleText,
                       decoration: InputDecoration(
-                        labelText: S.of(context).label_scanner_title,
+                        labelText: "${S.of(context).label_scanner_title}*",
+                        labelStyle: textStyleNecessary,
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 20),
                         fillColor: Theme.of(context).backgroundColor,
@@ -108,7 +119,8 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                 child: TextField(
                   controller: authorText,
                   decoration: InputDecoration(
-                    labelText: S.of(context).label_scanner_autor,
+                    labelText: "${S.of(context).label_scanner_autor}*",
+                    labelStyle: textStyleNecessary,
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 20),
                     fillColor: Theme.of(context).backgroundColor,
@@ -120,27 +132,6 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                   onSubmitted: (val) {
                     _book.author = val;
                     print(_book.author);
-                  },
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 5)),
-              Container(
-                width: containerWidth,
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: S.of(context).label_scanner_subtitle,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
-                    fillColor: Theme.of(context).backgroundColor,
-                    border: new OutlineInputBorder(
-                      borderRadius: new BorderRadius.circular(50.0),
-                      borderSide: new BorderSide(),
-                    ),
-                  ),
-                  onSubmitted: (val) {
-                    _bookData.titleLong = val;
-                    print(_book.bookData!.titleLong);
-                    _manualBook.description = val;
                   },
                 ),
               ),
@@ -192,7 +183,7 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                 width: containerWidth,
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: "Language",
+                    labelText: S.of(context).label_settings_language,
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 20),
                     fillColor: Theme.of(context).backgroundColor,
@@ -208,6 +199,34 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
                   },
                 ),
               ),
+              Padding(padding: EdgeInsets.only(top: 5)),
+              Container(
+                width: containerWidth,
+                child: TextField(
+                  keyboardType: TextInputType.multiline,
+                  minLines: 2,
+                  maxLines: 10,
+                  decoration: InputDecoration(
+                    labelText: S.of(context).label_scanner_description,
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    fillColor: Theme.of(context).backgroundColor,
+                    border: new OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(50.0),
+                      borderSide: new BorderSide(),
+                    ),
+                  ),
+                  onSubmitted: (val) {
+                    _manualBook.description = val;
+                    print(_manualBook.description);
+                  },
+                ),
+              ),
+              Padding(padding: EdgeInsets.only(top: 10)),
+              Text(
+                S.of(context).label_scanner_necessary,
+                style: textStyleNecessary,
+              ),
               Padding(padding: EdgeInsets.only(top: 10)),
             ],
           ),
@@ -216,19 +235,23 @@ class _ManuallyWidgetState extends State<ManuallyWidget> {
           style: Theme.of(context).outlinedButtonTheme.style,
           onPressed: () {
             _book.bookData = _bookData;
-            _book.bookData!.titleLong =
-                "${_book.title} - ${_book.bookData!.titleLong}";
             print(_book);
-            showDialog(
-              context: context,
-              builder: (BuildContext dialogContext) {
-                return DonatePopUp(
-                  book: _book,
-                  manual: true,
-                  data: _manualBook,
-                );
-              },
-            ).then((value) => Navigator.pop(context));
+            if (_book.author == null || _book.title == null) {
+              setState(() {
+                textStyleNecessary = TextStyle(color: Colors.red);
+              });
+            } else {
+              showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return DonatePopUp(
+                    book: _book,
+                    manual: true,
+                    data: _manualBook,
+                  );
+                },
+              ).then((value) => Navigator.pop(context));
+            }
           },
           child: Text(
             S.of(context).label_scanner_confirm,
