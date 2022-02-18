@@ -53,31 +53,28 @@ class _GetISBNScannWidgetState extends State<_GetISBNScannWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: new Container(
-        child: Column(
-          children: [
-            ScannerWidget(
-                txt, txt2, callback, _book, apiService, containerWidth),
-            getBookinfo(txt, txt2, context, containerWidth),
-            getBookcase(markersId, context, containerWidth),
-            ElevatedButton(
-              style: Theme.of(context).outlinedButtonTheme.style,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext dialogContext) {
-                    return DonatePopUp(
-                      book: _book,
-                      manual: false,
-                    );
-                  },
-                ).then((value) => Navigator.pop(context));
-              },
-              child: Text(S.of(context).label_scanner_confirm),
-            ),
-            Padding(padding: EdgeInsets.only(top: 50)),
-          ],
-        ),
+      child: Column(
+        children: [
+          ScannerWidget(txt, txt2, callback, _book, apiService, containerWidth),
+          getBookinfo(txt, txt2, context, containerWidth),
+          getBookcase(markersId, context, containerWidth),
+          ElevatedButton(
+            style: Theme.of(context).outlinedButtonTheme.style,
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext dialogContext) {
+                  return DonatePopUp(
+                    book: _book,
+                    manual: false,
+                  );
+                },
+              ).then((value) => Navigator.pop(context));
+            },
+            child: Text(S.of(context).label_scanner_confirm),
+          ),
+          Padding(padding: EdgeInsets.only(top: 50)),
+        ],
       ),
     );
   }
@@ -124,7 +121,7 @@ class _DonateWidgetState extends State<DonateWidget>
       ),
       body: SingleChildScrollView(
         child: new Container(
-          height: MediaQuery.of(context).size.height * 0.85,
+          height: MediaQuery.of(context).size.height * 0.8,
           child: TabBarView(
             controller: _tabController,
             children: [
