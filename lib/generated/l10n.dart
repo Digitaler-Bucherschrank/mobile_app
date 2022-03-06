@@ -220,6 +220,96 @@ class S {
     );
   }
 
+  /// `Manuell eingetragen:`
+  String get label_book_info_addedManual {
+    return Intl.message(
+      'Manuell eingetragen:',
+      name: 'label_book_info_addedManual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Einband:`
+  String get label_book_info_binding {
+    return Intl.message(
+      'Einband:',
+      name: 'label_book_info_binding',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Erschienen:`
+  String get label_book_info_datePublished {
+    return Intl.message(
+      'Erschienen:',
+      name: 'label_book_info_datePublished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dimensionen:`
+  String get label_book_info_dimensions {
+    return Intl.message(
+      'Dimensionen:',
+      name: 'label_book_info_dimensions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ISBN 13:`
+  String get label_book_info_ISBN13 {
+    return Intl.message(
+      'ISBN 13:',
+      name: 'label_book_info_ISBN13',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sprache:`
+  String get label_book_info_language {
+    return Intl.message(
+      'Sprache:',
+      name: 'label_book_info_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ort:`
+  String get label_book_info_location {
+    return Intl.message(
+      'Ort:',
+      name: 'label_book_info_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verlag:`
+  String get label_book_info_publisher {
+    return Intl.message(
+      'Verlag:',
+      name: 'label_book_info_publisher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nutzer:`
+  String get label_book_info_user {
+    return Intl.message(
+      'Nutzer:',
+      name: 'label_book_info_user',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buch nehmen`
   String get label_borrowbook {
     return Intl.message(

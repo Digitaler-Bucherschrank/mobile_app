@@ -52,6 +52,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Username too short"),
         "label_accept": MessageLookupByLibrary.simpleMessage("Accept"),
+        "label_book_info_ISBN13":
+            MessageLookupByLibrary.simpleMessage("ISBN 13:"),
+        "label_book_info_addedManual":
+            MessageLookupByLibrary.simpleMessage("Added manuelly:"),
+        "label_book_info_binding":
+            MessageLookupByLibrary.simpleMessage("Binding:"),
+        "label_book_info_datePublished":
+            MessageLookupByLibrary.simpleMessage("Published:"),
+        "label_book_info_dimensions":
+            MessageLookupByLibrary.simpleMessage("Dimensions:"),
+        "label_book_info_language":
+            MessageLookupByLibrary.simpleMessage("Language:"),
+        "label_book_info_location":
+            MessageLookupByLibrary.simpleMessage("Location"),
+        "label_book_info_publisher":
+            MessageLookupByLibrary.simpleMessage("Publisher"),
+        "label_book_info_user": MessageLookupByLibrary.simpleMessage("User:"),
         "label_bookcase_now_digital": MessageLookupByLibrary.simpleMessage(
             "The open bookcases - now digital"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Book-Info"),

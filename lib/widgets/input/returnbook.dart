@@ -3,6 +3,7 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/models/book_case.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+import 'package:digitaler_buecherschrank/widgets/bookInfoWidget.dart';
 import 'package:digitaler_buecherschrank/widgets/input/modules/popUps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -93,6 +94,14 @@ class _ReturnBookState extends State<ReturnBook> {
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           child: ListTile(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BookInfoWidget(
+                                        itemsUser['borrowed']![index]),
+                                  ));
+                            },
                             leading: itemsUser['borrowed']![index].thumbnail !=
                                         null &&
                                     itemsUser['borrowed']![index].thumbnail !=
