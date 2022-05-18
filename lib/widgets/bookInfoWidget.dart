@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class BookInfoWidget extends StatelessWidget {
   BookInfoWidget(this.book);
-  Book book;
+  final Book book;
 
   @override
   Widget build(BuildContext context) {

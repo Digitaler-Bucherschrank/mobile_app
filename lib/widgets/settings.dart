@@ -1,3 +1,4 @@
+import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:digitaler_buecherschrank/utils/utils.dart';
@@ -19,14 +20,15 @@ class Settings extends StatelessWidget {
       ),
       body: Center(
         child:
-        // Settings UI with listTiles and dividers as well as titles
-        ListView(
+            // Settings UI with listTiles and dividers as well as titles
+            ListView(
           children: <Widget>[
             SettingsDivider(title: S.current.label_settings_general),
             ListTile(
-              title: Text(S.current.label_settings_language,
+              title: Text(
+                S.current.label_settings_language,
                 style: new TextStyle(
-                fontSize: 17.0,
+                  fontSize: 17.0,
                 ),
               ),
               leading: Icon(Icons.language, size: 35),
@@ -39,13 +41,14 @@ class Settings extends StatelessWidget {
                   LangModel('German', 'de')
                 ];
 
-                LangModel selectedLanguage = languages.firstWhere((element) => element.code == sp.language, orElse: () => languages[0]);
+                LangModel selectedLanguage = languages.firstWhere(
+                    (element) => element.code == sp.language,
+                    orElse: () => languages[0]);
 
                 showMaterialRadioPicker<LangModel>(
                   context: context,
                   title: 'App-' + S.current.label_settings_language,
                   items: languages,
-
                   selectedItem: selectedLanguage,
                   onChanged: (value) => {
                     sp.language = value.code,
@@ -56,7 +59,8 @@ class Settings extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(S.current.label_settings_about,
+              title: Text(
+                S.current.label_settings_about,
                 style: new TextStyle(
                   fontSize: 17.0,
                 ),
@@ -67,23 +71,43 @@ class Settings extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text(S.current.label_logout,
+              title: Text(
+                S.current.label_logout,
                 style: new TextStyle(
                   fontSize: 17.0,
                 ),
               ),
-              leading : Icon(Icons.exit_to_app, size: 35,),
+              leading: Icon(
+                Icons.exit_to_app,
+                size: 35,
+              ),
               onTap: () {
                 Utilities.logoutUser(null);
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LoginScreen()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              },
+            ),
+            ListTile(
+              title: Text(
+                "Delete Account",
+                style: new TextStyle(
+                  fontSize: 17.0,
+                ),
+              ),
+              leading: Icon(
+                Icons.delete_forever,
+                size: 35,
+              ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return sureDeleteAccountPopUp(context);
+                  },
+                );
               },
             ),
             // ListTile with bigger leading Icon
-
           ],
         ),
       ),
@@ -108,7 +132,8 @@ class SettingsDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 22.0, bottom: 5.0),
+      padding: const EdgeInsets.only(
+          top: 16.0, left: 16.0, right: 22.0, bottom: 5.0),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
@@ -128,3 +153,59 @@ class SettingsDivider extends StatelessWidget {
   }
 }
 
+Dialog sureDeleteAccountPopUp(BuildContext context) {
+  return Dialog(
+    insetPadding: EdgeInsets.symmetric(
+      horizontal: MediaQuery.of(context).size.width * 0.2,
+      vertical: MediaQuery.of(context).size.height * 0.35,
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Are you sure you want to delete your Account? Deleting your Account is not reversable!",
+          textAlign: TextAlign.center,
+        ),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return deleteAccountPopUp(context);
+                },
+              );
+            },
+            child: Text("Delete Account")),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text("Cancel"),
+        ),
+      ],
+    ),
+  );
+}
+
+Dialog deleteAccountPopUp(BuildContext context) {
+  return Dialog(
+    child: FutureBuilder(
+      future: ApiService().deleteUser(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          return Column(
+            children: [
+              Text("Deliting User-Data"),
+              CircularProgressIndicator(),
+            ],
+          );
+        } else if (snapshot.data) {
+          return Text("Succes!");
+        } else {
+          return Text("Fail!");
+        }
+      },
+    ),
+  );
+}

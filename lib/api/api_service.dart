@@ -262,4 +262,10 @@ class ApiService {
       return false;
     }
   }
+
+  //just a place holder
+  Future<bool> deleteUser() async {
+    Duration(seconds: 20);
+    return true;
+  }
 }
