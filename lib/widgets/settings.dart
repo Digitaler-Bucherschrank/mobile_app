@@ -89,7 +89,7 @@ class Settings extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "Delete Account",
+                S.of(context).label_delete_account,
                 style: new TextStyle(
                   fontSize: 17.0,
                 ),
@@ -163,25 +163,26 @@ Dialog sureDeleteAccountPopUp(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Are you sure you want to delete your Account? Deleting your Account is not reversable!",
+          S.of(context).label_sure_delete_account,
           textAlign: TextAlign.center,
         ),
         ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return deleteAccountPopUp(context);
-                },
-              );
-            },
-            child: Text("Delete Account")),
+          onPressed: () {
+            Navigator.pop(context);
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return deleteAccountPopUp(context);
+              },
+            );
+          },
+          child: Text(S.of(context).label_delete_account),
+        ),
         ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text("Cancel"),
+          child: Text(S.of(context).label_cancel),
         ),
       ],
     ),
@@ -196,14 +197,14 @@ Dialog deleteAccountPopUp(BuildContext context) {
         if (snapshot.data == null) {
           return Column(
             children: [
-              Text("Deliting User-Data"),
+              Text(S.of(context).label_deleting_account),
               CircularProgressIndicator(),
             ],
           );
         } else if (snapshot.data) {
-          return Text("Succes!");
+          return Text(S.of(context).label_scanner_success);
         } else {
-          return Text("Fail!");
+          return Text(S.of(context).error_try_later);
         }
       },
     ),

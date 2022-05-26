@@ -320,6 +320,16 @@ class S {
     );
   }
 
+  /// `Abbrechen`
+  String get label_cancel {
+    return Intl.message(
+      'Abbrechen',
+      name: 'label_cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Schließen`
   String get label_close_sheet {
     return Intl.message(
@@ -335,6 +345,26 @@ class S {
     return Intl.message(
       'Password bestätigen',
       name: 'label_confirm_pw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account löschen`
+  String get label_delete_account {
+    return Intl.message(
+      'Account löschen',
+      name: 'label_delete_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account wird gelöscht...`
+  String get label_deleting_account {
+    return Intl.message(
+      'Account wird gelöscht...',
+      name: 'label_deleting_account',
       desc: '',
       args: [],
     );
@@ -805,6 +835,16 @@ class S {
     return Intl.message(
       'Signup',
       name: 'label_signup_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar.`
+  String get label_sure_delete_account {
+    return Intl.message(
+      'Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar.',
+      name: 'label_sure_delete_account',
       desc: '',
       args: [],
     );

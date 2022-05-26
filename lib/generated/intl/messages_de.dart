@@ -73,9 +73,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Die offenen Bücherschränke - nun digital"),
         "label_bookinfo": MessageLookupByLibrary.simpleMessage("Buch-Infos"),
         "label_borrowbook": MessageLookupByLibrary.simpleMessage("Buch nehmen"),
+        "label_cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
         "label_close_sheet": MessageLookupByLibrary.simpleMessage("Schließen"),
         "label_confirm_pw":
             MessageLookupByLibrary.simpleMessage("Password bestätigen"),
+        "label_delete_account":
+            MessageLookupByLibrary.simpleMessage("Account löschen"),
+        "label_deleting_account":
+            MessageLookupByLibrary.simpleMessage("Account wird gelöscht..."),
         "label_donate_book":
             MessageLookupByLibrary.simpleMessage("Buch spenden"),
         "label_done": MessageLookupByLibrary.simpleMessage("Fertig!"),
@@ -156,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "label_show_books":
             MessageLookupByLibrary.simpleMessage("Bücher anzeigen"),
         "label_signup_button": MessageLookupByLibrary.simpleMessage("Signup"),
+        "label_sure_delete_account": MessageLookupByLibrary.simpleMessage(
+            "Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar."),
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
             MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
