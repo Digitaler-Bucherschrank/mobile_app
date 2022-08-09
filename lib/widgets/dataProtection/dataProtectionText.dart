@@ -15,7 +15,7 @@ Johannes P. Kroneisen
 
 Adresse bzw. eventuell Adresse der Stiftung 
 
-Telefon: 
+
 
 E-Mail: 
 

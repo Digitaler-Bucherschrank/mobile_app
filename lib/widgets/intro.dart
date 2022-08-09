@@ -1,9 +1,8 @@
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/main.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-
-import 'login.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -156,7 +155,7 @@ class IntroScreen extends StatelessWidget {
       next: const Icon(Icons.arrow_forward),
       onDone: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => LoginScreen(),
+          builder: (context) => MyHomePage(),
         ));
         SharedPrefs().finishedIntro = true;
       },

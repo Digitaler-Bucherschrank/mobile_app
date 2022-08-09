@@ -1,11 +1,15 @@
 import 'package:digitaler_buecherschrank/api/authentication_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
+import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
 import 'login/flutter_login.dart';
 
 class LoginScreen extends StatelessWidget {
+  var sp = SharedPrefs();
+
   Future<String?> _authUserLogin(LoginData data) async {
     print(
         'Name: ${data.name}, Password: ${data.password}, mail: ${data.email ?? "GG"}');
@@ -99,7 +103,13 @@ class LoginScreen extends StatelessWidget {
       onSignup: _authUserSignUp,
       onSubmitAnimationCompleted: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => MyHomePage(),
+          builder: (context) {
+            if (sp.finishedIntro) {
+              return MyHomePage();
+            } else {
+              return IntroScreen();
+            }
+          },
         ));
       },
       onRecoverPassword: (String s) {},

@@ -1,7 +1,7 @@
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
-import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:digitaler_buecherschrank/widgets/dataProtection/dataProtectionText.dart';
+import 'package:digitaler_buecherschrank/widgets/login.dart';
 import 'package:flutter/material.dart';
 
 class DataProtectionPage extends StatefulWidget {
@@ -73,7 +73,7 @@ class DataProtectionPageState extends State<DataProtectionPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => IntroScreen(),
+                          builder: (context) => LoginScreen(),
                         ),
                       );
                     } else {

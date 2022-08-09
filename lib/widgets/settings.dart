@@ -60,18 +60,6 @@ class Settings extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                S.current.label_settings_about,
-                style: new TextStyle(
-                  fontSize: 17.0,
-                ),
-              ),
-              leading: Icon(Icons.info, size: 35),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text(
                 S.current.label_logout,
                 style: new TextStyle(
                   fontSize: 17.0,

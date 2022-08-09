@@ -7,6 +7,7 @@ import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/themes.dart';
 import 'package:digitaler_buecherschrank/utils/location.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
+import 'package:digitaler_buecherschrank/widgets/about.dart';
 import 'package:digitaler_buecherschrank/widgets/dataProtection/dataProtection.dart';
 import 'package:digitaler_buecherschrank/widgets/intro.dart';
 import 'package:digitaler_buecherschrank/widgets/inventory.dart';
@@ -69,11 +70,11 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         home: acceptedDataDeclaration
-            ? finishedIntro
-                ? isLoggedIn
+            ? isLoggedIn
+                ? finishedIntro
                     ? MyHomePage()
-                    : LoginScreen()
-                : IntroScreen()
+                    : IntroScreen()
+                : LoginScreen()
             : DataProtectionPage());
   }
 }
@@ -148,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
         renderPanelSheet: false,
         minHeight: 66,
         backdropEnabled: true,
-        maxHeight: 334,
+        maxHeight: 383,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
@@ -222,38 +223,40 @@ class _MyHomePageState extends State<MyHomePage> {
                           child:
                               Column(mainAxisSize: MainAxisSize.min, children: [
                             SizedBox(height: constraints.maxHeight * 0.05),
-                            Row(children: [
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: Theme.of(context)
-                                          .cardTheme
-                                          .margin!
-                                          .horizontal),
-                                  child: FractionallySizedBox(
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Theme.of(context)
+                                            .cardTheme
+                                            .margin!
+                                            .horizontal),
+                                    child: FractionallySizedBox(
                                       alignment: Alignment.center,
                                       widthFactor: 0.6,
                                       child: FittedBox(
                                         fit: BoxFit.contain,
                                         child: RichText(
-                                            textAlign: TextAlign.center,
-                                            text: TextSpan(
-                                                text: S.current
-                                                    .label_welcome_user(
-                                                        SharedPrefs()
-                                                            .user
-                                                            .username!),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .subtitle2!
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w300))),
-                                      )),
-                                ),
-                                fit: FlexFit.loose,
-                              )
-                            ]),
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                            text: S.current.label_welcome_user(
+                                                SharedPrefs().user.username!),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle2!
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w300),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  fit: FlexFit.loose,
+                                )
+                              ],
+                            ),
                             SizedBox(height: constraints.maxHeight * 0.03),
                             // TODO: Ripple Effect for buttons
                             Flexible(
@@ -278,12 +281,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                       leading: Icon(Icons.settings),
                                       onTap: () {
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Settings()));
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Settings(),
+                                          ),
+                                        );
                                       },
                                       title: Text(S.current.label_settings),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: ListTile(
+                                      title: Text(
+                                        S.current.label_settings_about,
+                                        style: new TextStyle(
+                                          fontSize: 17.0,
+                                        ),
+                                      ),
+                                      leading: Icon(Icons.info, size: 35),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => About(),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ),
                                   Card(
