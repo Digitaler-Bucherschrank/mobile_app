@@ -28,7 +28,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     Future.wait([
       rootBundle.loadString('assets/map_styles/dark.json'),
@@ -43,7 +43,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
   Future _setMapStyle() async {
     final controller = await _controller.future;
-    final theme = WidgetsBinding.instance!.window.platformBrightness;
+    final theme = WidgetsBinding.instance.window.platformBrightness;
     if (theme == Brightness.dark) {
       await controller.setMapStyle(_darkMapStyle);
     } else
@@ -59,7 +59,7 @@ class _GMapState extends State<GMap> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
