@@ -37,6 +37,13 @@
 		<string>This app needs access to location when open.</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>This app needs access to location when in the background.</string>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+    		<string>https</string>
+    		<string>http</string>
+			<string>sms</string>
+  			<string>tel</string>
+		</array> 
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>

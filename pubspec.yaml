@@ -99,6 +99,7 @@ flutter:
      - assets/google_fonts/
      - assets/map_styles/
      - assets/intro/
+     - assets/SPTGLogos/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -190,6 +190,26 @@ class S {
     );
   }
 
+  /// `Die Arbeiten an dieser App begannen im Oktober 2020 im Zuge der zweiten Generation des Digitechnikums, einem Projekt der der Stiftung Polytechnische Gesellschaft. Innerhalb der ein jähren Laufzeit des Digitechnikums entwickelte das vierköpfige Team einen funktionstüchtigen Prototypen. Mehr zum Digitechnikum finden Sie unter dem folgenden Link: `
+  String get label_about_digitechnikum {
+    return Intl.message(
+      'Die Arbeiten an dieser App begannen im Oktober 2020 im Zuge der zweiten Generation des Digitechnikums, einem Projekt der der Stiftung Polytechnische Gesellschaft. Innerhalb der ein jähren Laufzeit des Digitechnikums entwickelte das vierköpfige Team einen funktionstüchtigen Prototypen. Mehr zum Digitechnikum finden Sie unter dem folgenden Link: ',
+      name: 'label_about_digitechnikum',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nach dem Ende der zweiten Generation des Digitechnikums wurde die Entwicklung der App fortgeführt. Dabei unterstützte die Stiftung Polytechnische Gesellschaft das Team bei der Erstellung der Datenschutzerklärung und auf finanzieller Ebene. Mehr Informationen über die SPTG finden Sie unter dem folgenden Link: `
+  String get label_about_SPTG {
+    return Intl.message(
+      'Nach dem Ende der zweiten Generation des Digitechnikums wurde die Entwicklung der App fortgeführt. Dabei unterstützte die Stiftung Polytechnische Gesellschaft das Team bei der Erstellung der Datenschutzerklärung und auf finanzieller Ebene. Mehr Informationen über die SPTG finden Sie unter dem folgenden Link: ',
+      name: 'label_about_SPTG',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Akzeptieren`
   String get label_accept {
     return Intl.message(
@@ -840,10 +860,10 @@ class S {
     );
   }
 
-  /// `Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar.`
+  /// `Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschung kann nicht rückgängig gemacht werden.`
   String get label_sure_delete_account {
     return Intl.message(
-      'Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar.',
+      'Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschung kann nicht rückgängig gemacht werden.',
       name: 'label_sure_delete_account',
       desc: '',
       args: [],

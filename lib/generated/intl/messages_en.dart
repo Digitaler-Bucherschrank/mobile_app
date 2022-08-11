@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Username too long!"),
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Username too short"),
+        "label_about_SPTG": MessageLookupByLibrary.simpleMessage(
+            "After the official end of the second Generation of the Digitechnikum development on the App continued. During this phase of development, the Stiftung Polytechnische Gesellschaft offered vital support in the creation of the Privacy policy as well as in financial manners. More information on the SPTG can be found under the following link: "),
+        "label_about_digitechnikum": MessageLookupByLibrary.simpleMessage(
+            "Work on this App was started in October 2020 as part of the second generation of the Digitechnikum, a project by Stiftung Polytechnische Gesellschaft. During the following year, the team of four managed to produce a working prototype. More information on the Digitechnikum can be found under the following link: "),
         "label_accept": MessageLookupByLibrary.simpleMessage("Accept"),
         "label_book_info_ISBN13":
             MessageLookupByLibrary.simpleMessage("ISBN 13:"),

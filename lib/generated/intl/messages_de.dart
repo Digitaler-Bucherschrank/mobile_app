@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nutzername zu lang!"),
         "error_username_too_short":
             MessageLookupByLibrary.simpleMessage("Nutzername zu kurz!"),
+        "label_about_SPTG": MessageLookupByLibrary.simpleMessage(
+            "Nach dem Ende der zweiten Generation des Digitechnikums wurde die Entwicklung der App fortgeführt. Dabei unterstützte die Stiftung Polytechnische Gesellschaft das Team bei der Erstellung der Datenschutzerklärung und auf finanzieller Ebene. Mehr Informationen über die SPTG finden Sie unter dem folgenden Link: "),
+        "label_about_digitechnikum": MessageLookupByLibrary.simpleMessage(
+            "Die Arbeiten an dieser App begannen im Oktober 2020 im Zuge der zweiten Generation des Digitechnikums, einem Projekt der der Stiftung Polytechnische Gesellschaft. Innerhalb der ein jähren Laufzeit des Digitechnikums entwickelte das vierköpfige Team einen funktionstüchtigen Prototypen. Mehr zum Digitechnikum finden Sie unter dem folgenden Link: "),
         "label_accept": MessageLookupByLibrary.simpleMessage("Akzeptieren"),
         "label_book_info_ISBN13":
             MessageLookupByLibrary.simpleMessage("ISBN 13:"),
@@ -162,7 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bücher anzeigen"),
         "label_signup_button": MessageLookupByLibrary.simpleMessage("Signup"),
         "label_sure_delete_account": MessageLookupByLibrary.simpleMessage(
-            "Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschen ist nicht umkehrbar."),
+            "Sind Sie sich sicher, dass sie den Account löschen wollen? Die Löschung kann nicht rückgängig gemacht werden."),
         "label_username": MessageLookupByLibrary.simpleMessage("Nutzername"),
         "label_view_books":
             MessageLookupByLibrary.simpleMessage("Siehe Bücher"),
