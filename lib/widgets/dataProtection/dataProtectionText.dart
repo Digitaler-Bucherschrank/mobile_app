@@ -13,11 +13,11 @@ Verantwortlicher im Sinne des Art. 13 Abs. 1a DSGVO:
 
 Johannes P. Kroneisen
 
-Adresse bzw. eventuell Adresse der Stiftung 
+Stiftung Polytechnische Gesellschaft Frankfurt am Main
+Postfach 15 03 55
+60063 Frankfurt am Main
 
-
-
-E-Mail: 
+digitalbookcase.dataprotection@gmail.com
 
 Zuständige Datenschutz-Aufsichtsbehörde: 
 Der Hessische Datenschutzbeauftragte
