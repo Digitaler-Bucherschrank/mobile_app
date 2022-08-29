@@ -49,10 +49,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var sp = SharedPrefs();
-    var isLoggedIn = sp.isLoggedIn;
-    var acceptedDataDeclaration = sp.acceptedDataDeclaration;
-    var finishedIntro = sp.finishedIntro;
+    var _sp = SharedPrefs();
+    var _isLoggedIn = _sp.isLoggedIn;
+    var _acceptedDataDeclaration = _sp.acceptedDataDeclaration;
+    var _finishedIntro = _sp.finishedIntro;
 
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: globalKey,
         darkTheme: darkThemeData(),
         themeMode: ThemeMode.system,
-        locale: sp.language == "" ? Locale(sp.language) : null,
+        locale: _sp.language == "" ? Locale(_sp.language) : null,
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -68,9 +68,9 @@ class MyApp extends StatelessWidget {
           S.delegate
         ],
         supportedLocales: S.delegate.supportedLocales,
-        home: acceptedDataDeclaration
-            ? isLoggedIn
-                ? finishedIntro
+        home: _acceptedDataDeclaration
+            ? _isLoggedIn
+                ? _finishedIntro
                     ? MyHomePage()
                     : IntroScreen()
                 : LoginScreen()

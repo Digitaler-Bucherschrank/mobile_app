@@ -50,8 +50,9 @@ class SharedPrefs {
     _sharedPrefs!.setBool("finishedIntro", finishedIntro);
   }
 
-  bool get acceptedDataDeclaration =>
-      _sharedPrefs!.getBool("acceptedDataDeclaration", defaultValue: false).getValue();
+  bool get acceptedDataDeclaration => _sharedPrefs!
+      .getBool("acceptedDataDeclaration", defaultValue: false)
+      .getValue();
 
   set acceptedDataDeclaration(bool acceptedDataDeclaration) {
     _sharedPrefs!.setBool("acceptedDataDeclaration", acceptedDataDeclaration);
@@ -65,6 +66,9 @@ class SharedPrefs {
   }
 
   clearSettings() {
-    _sharedPrefs!.clear();
+    //clears client related data
+    _sharedPrefs?.remove("user");
+    _sharedPrefs?.remove("loggedIn");
+    _sharedPrefs?.remove("user");
   }
 }

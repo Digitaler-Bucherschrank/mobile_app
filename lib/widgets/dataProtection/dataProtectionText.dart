@@ -2,7 +2,7 @@ String title = "Datenschutzerklärung";
 String indruduction = """
 Wie in den AGB festgelegt ist, musst du zur Nutzung der App „Digitaler Bücherschrank“ mindestens 18 Jahre alt sein. Zur Einwilligung in die Speicherung deiner Daten gemäß DSGVO musst du mindestens 16 Jahre alt sein. Wenn du noch nicht 16 bzw. 18 Jahre alt bist, bestätigst du mit der Einwilligung, dass du deine Eltern oder eine/n andere/n Erziehungsberechtigte/n um Erlaubnis gefragt hast.
 
-Die App „Digitaler Bücherschrank“ speichert, was du eingibst. Anders kann unsere App nicht funktionieren. Du kannst anonym bleiben, indem du einen Spitznamen angibst. Dennoch musst du deine E-Mail-Adresse angeben. Diese wird ausschließlich zur Authentifizierung deines Accounts genutzt. Sie ist zu keinen Punkt durch andere Nutzer einsehbar. Wir speichern diese Daten. Wir nutzen diese Daten ausschließlich, um dir die Nutzung von der App „Digitaler Bücherschrank“ zu ermöglichen. Wir möchten dich dazu trotzdem um Erlaubnis bitten. Wir möchten, dass du so gut wie möglich informiert bist, was deine Daten angeht. Dir sollen hier deine Rechte an deinen Daten erklärt werden. Du kannst deine Daten zum Beispiel jederzeit löschen oder berichtigen lassen.   Dafür haben wir diese Datenschutzerklärung entwickelt, die technisch und gesetzlich verpflichtend ist. Wenn Du nach der Lektüre trotzdem Fragen haben solltest, kannst Du gerne uns Fragen stellen unter EMAIL.
+Die App „Digitaler Bücherschrank“ speichert, was du eingibst. Anders kann unsere App nicht funktionieren. Du kannst anonym bleiben, indem du einen Spitznamen angibst. Dennoch musst du deine E-Mail-Adresse angeben. Diese wird ausschließlich zur Authentifizierung deines Accounts genutzt. Sie ist zu keinen Punkt durch andere Nutzer einsehbar. Wir speichern diese Daten. Wir nutzen diese Daten ausschließlich, um dir die Nutzung von der App „Digitaler Bücherschrank“ zu ermöglichen. Wir möchten dich dazu trotzdem um Erlaubnis bitten. Wir möchten, dass du so gut wie möglich informiert bist, was deine Daten angeht. Dir sollen hier deine Rechte an deinen Daten erklärt werden. Du kannst deine Daten zum Beispiel jederzeit löschen oder berichtigen lassen.   Dafür haben wir diese Datenschutzerklärung entwickelt, die technisch und gesetzlich verpflichtend ist. Wenn Du nach der Lektüre trotzdem Fragen haben solltest, kannst Du gerne uns Fragen stellen unter digitalbookcase.dataprotection@gmail.com.
 
 Deine Daten werden von uns nicht verkauft oder anderweitig an Dritte weitergegeben. Einzige Ausnahme sind Standortdaten zur Nutzung des Google-Maps-Plugins.
 
@@ -31,20 +31,20 @@ Art der Daten bzw. Datenkategorien
 Personenbezogene Daten sind Informationen, mit deren Hilfe eine Person bestimmbar ist, also Angaben, die zurück zu einer Person verfolgt werden können. Dazu gehören der Name, die E-Mail-Adresse oder die Telefonnummer. Aber auch Daten über Vorlieben, Hobbies, Mitgliedschaften oder welche Webseiten von jemandem angesehen wurden zählen zu personenbezogenen Daten. Personenbezogene Daten werden von dem Anbieter nur dann erhoben, genutzt und weiter gegeben, wenn dies gesetzlich erlaubt ist oder die Nutzer in die Datenerhebung einwilligen.
 
 Folgende personenbezogenen Daten können bei der Nutzung der App Digitaler Bücherschrank verarbeitet werden:  
-•	E-Mail-Adresse
-•	Kameraaufnahmen (zum scannen von BAR-codes)
-•	Standortdaten
+• E-Mail-Adresse
+• Kameraaufnahmen (zum scannen von BAR-codes)
+• Standortdaten
 
 Zugriffsdaten/ Server-Logfiles
 Der Anbieter (beziehungsweise sein Webspace-Provider) erhebt Daten über jeden Zugriff auf das Angebot (so genannte Serverlogfiles). Zu den Zugriffsdaten gehören:
-•	Name der abgerufenen Webseite
-•	Datei, Datum und Uhrzeit des Abrufs
-•	übertragene Datenmenge
-•	Meldung über erfolgreichen Abruf
-•	Browsertyp nebst Version
-•	das Betriebssystem des Nutzers
-•	Referrer URL (die zuvor besuchte Seite)
-•	IP-Adresse und der anfragende Provider
+• Name der abgerufenen Webseite
+• Datei, Datum und Uhrzeit des Abrufs
+• übertragene Datenmenge
+• Meldung über erfolgreichen Abruf
+• Browsertyp nebst Version
+• das Betriebssystem des Nutzers
+• Referrer URL (die zuvor besuchte Seite)
+• IP-Adresse und der anfragende Provider
 
 Der Anbieter verwendet die Protokolldaten nur für statistische Auswertungen zum Zweck des Betriebs, der Sicherheit und der Optimierung des Angebotes. Der Anbieter behält sich jedoch vor, die Protokolldaten nachträglich zu überprüfen, wenn auf Grund konkreter Anhaltspunkte der berechtigte Verdacht einer rechtswidrigen Nutzung besteht.
 
@@ -59,22 +59,22 @@ Beim Spenden, Ausleihen und Zurückgeben, sowie beim Löschen von Büchern wird 
 
 Verwendungszwecke 
 Die Daten werden für folgende Zwecke genutzt:
-•	Bereitstellung der App
-•	Identifizierung der Nutzer
-•	Kommunikation im Rahmen der App Nutzung
+• Bereitstellung der App
+• Identifizierung der Nutzer
+• Kommunikation im Rahmen der App Nutzung
 
 Rechtsgrundlage der Verarbeitung 
-•	Art. 6 Abs. 1 lit. f DSGVO - berechtigtes Interesse
-•	Art. 6 Abs. 1 lit. b DSGVO – Vertragsverarbeitung im Rahmen der App-Nutzung 
+• Art. 6 Abs. 1 lit. f DSGVO - berechtigtes Interesse
+• Art. 6 Abs. 1 lit. b DSGVO – Vertragsverarbeitung im Rahmen der App-Nutzung 
 
 Dauer der Speicherung
 Die alle gespeicherten Daten werden beim Löschen des Accounts anonymisiert und alle personenbezogenen Daten gelöscht.  
 
 Kategorien von Empfängern der personenbezogenen Daten)
-•	an Dienstleister gem. Art. 28 DSGVO, sofern sie diese zur Erfüllung ihrer jeweiligen Aufgabe benötigen (z.B. Software-Wartungsvertrag, Programmierung, Druckaufträge)  
-•	an Förderer   
-•	an Dritte im Rahmen der Öffentlichkeitsarbeit und Berichterstattung der Stiftung Polytechnische Gesellschaft Frankfurt am Main (z.B. gedruckte und digitale Zeitungen und Zeitschriften, Radio, TV)
-•	an die anderen Nutzer der App  
+• an Dienstleister gem. Art. 28 DSGVO, sofern sie diese zur Erfüllung ihrer jeweiligen Aufgabe benötigen (z.B. Software-Wartungsvertrag, Programmierung, Druckaufträge)  
+• an Förderer   
+• an Dritte im Rahmen der Öffentlichkeitsarbeit und Berichterstattung der Stiftung Polytechnische Gesellschaft Frankfurt am Main (z.B. gedruckte und digitale Zeitungen und Zeitschriften, Radio, TV)
+• an die anderen Nutzer der App  
 
 Google
 Mit Google LLC. wurde ein Vertrag mit EU-Standardvertragsklauseln geschlossen. Die Zusammenarbeit mit Google LLC in datenschutzrechtlicher Hinsicht erfolgt auf der Grundlage eines abgeschlossenen Vertrags über die gemeinsame Verantwortlichkeit nach Art. 26 DSGVO, abrufbar unter https://privacy.google.com/intl/de/businesses/mapscontrollerterms/.
@@ -95,12 +95,12 @@ Ihre Rechte
 Sie haben als betroffene Person dieser Datenverarbeitung folgende Rechte, die Sie gegenüber uns und/oder unseren Dienstleistern wahrnehmen können:
 Sie haben das Recht
 1.) auf Auskunft über
-•	die Verarbeitungszwecke;
-•	die Kategorien personenbezogener Daten, die verarbeitet werden;
-•	die Empfänger oder Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch offengelegt werden, insbesondere bei Empfängern in Drittländern oder bei internationalen Organisationen;
-•	falls möglich die geplante Dauer, für die Ihre personenbezogenen Daten gespeichert werden, oder, falls dies nicht möglich ist, die Kriterien für die Festlegung dieser Dauer;
-•	das Bestehen eines Rechts auf Berichtigung oder Löschung der sie betreffenden personenbezogenen
-•	Daten oder auf Einschränkung der Verarbeitung durch uns oder eines Widerspruchsrechts gegen eine Verarbeitung;
+• die Verarbeitungszwecke;
+• die Kategorien personenbezogener Daten, die verarbeitet werden;
+• die Empfänger oder Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch offengelegt werden, insbesondere bei Empfängern in Drittländern oder bei internationalen Organisationen;
+• falls möglich die geplante Dauer, für die Ihre personenbezogenen Daten gespeichert werden, oder, falls dies nicht möglich ist, die Kriterien für die Festlegung dieser Dauer;
+• das Bestehen eines Rechts auf Berichtigung oder Löschung der sie betreffenden personenbezogenen
+• Daten oder auf Einschränkung der Verarbeitung durch uns oder eines Widerspruchsrechts gegen eine Verarbeitung;
 2.) sich bei der zuständigen Aufsichtsbehörde (Adresse siehe oben) zu beschweren.
 3.) auf eine Kopie der personenbezogenen Daten, die Gegenstand der Verarbeitung sind, direkt bei der Erhebung Ihrer Daten.
 4.) auf Datenübertragbarkeit, d.h. Sie können einen vollständigen Satz aller Daten, die wir im Rahmen unserer Zusammenarbeit erhoben, verarbeitet oder genutzt haben, mitnehmen, wenn Sie das Projekt verlassen oder unsere Kooperation endet.

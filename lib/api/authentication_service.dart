@@ -33,47 +33,46 @@ class AuthenticationService {
     client.options.responseType = ResponseType.json;
 
     client.interceptors.add(RetryInterceptor(
-          dio: client,
-          retries: 3,
-          // Number of retries before a failure
-          retryDelays: [const Duration(seconds: 1)],
-          // Interval between each retry
-          retryEvaluator: (error, attempt) async {
-            // TODO: Show user the server is unavailable
-            if (error.type != DioErrorType.cancel &&
-                error.type != DioErrorType.response) {
-              return true;
-            } else if (error.response?.statusCode == 503) {
-              // Server is in Maintenance Mode
-              showDialog(
-                barrierDismissible: false,
-                context: MyApp.globalKey.currentContext!,
-                builder: (BuildContext context) {
-                  // TODO: LOCALIZATION ALSO IN API_SERVICE
-                  return new WillPopScope(
-                    onWillPop: () async => false,
-                    child: AlertDialog(
-                      title: Text(S.current.error_maintenance_title),
-                      content: Text(S.current.error_maintenance_desc),
-                      actions: [
-                        TextButton(
-                          child: Text("Restart app"),
-                          onPressed: () {
-                            Restart.restartApp();
-                          },
-                        )
-                      ],
-                    )
-                  );
-                },
-              );
-              return false;
-            } else {
-              // Server seems to be down
-              return false;
-            }
-          }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
-        ));
+      dio: client,
+      retries: 3,
+      // Number of retries before a failure
+      retryDelays: [const Duration(seconds: 1)],
+      // Interval between each retry
+      retryEvaluator: (error, attempt) async {
+        // TODO: Show user the server is unavailable
+        if (error.type != DioErrorType.cancel &&
+            error.type != DioErrorType.response) {
+          return true;
+        } else if (error.response?.statusCode == 503) {
+          // Server is in Maintenance Mode
+          showDialog(
+            barrierDismissible: false,
+            context: MyApp.globalKey.currentContext!,
+            builder: (BuildContext context) {
+              // TODO: LOCALIZATION ALSO IN API_SERVICE
+              return new WillPopScope(
+                  onWillPop: () async => false,
+                  child: AlertDialog(
+                    title: Text(S.current.error_maintenance_title),
+                    content: Text(S.current.error_maintenance_desc),
+                    actions: [
+                      TextButton(
+                        child: Text("Restart app"),
+                        onPressed: () {
+                          Restart.restartApp();
+                        },
+                      )
+                    ],
+                  ));
+            },
+          );
+          return false;
+        } else {
+          // Server seems to be down
+          return false;
+        }
+      }, // Evaluating if a retry is necessary regarding the error. It is a good candidate for updating authentication token in case of a unauthorized error (be careful with concurrency though)
+    ));
 
     // Checks if the server is in maintenance mode when launching the app
     // ==> Interceptor above will handle the logic
@@ -152,11 +151,16 @@ class AuthenticationService {
   Future<bool?> logout() async {
     try {
       // ignore: unused_local_variable
-      var res = await client.post('/api/logout',
-          options: Options(headers: {
+      var res = await client.post(
+        '/api/logout',
+        options: Options(
+          headers: {
             HttpHeaders.authorizationHeader:
                 "Bearer ${_user.tokens!.accessToken!.token}"
-          }));
+          },
+        ),
+      );
+      SharedPrefs().isLoggedIn = false;
 
       Utilities.logoutUser(MyApp.globalKey.currentContext);
     } on DioError catch (e) {
