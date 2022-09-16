@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/helpers/show_radio_picker.dart';
 import 'package:restart_app/restart_app.dart';
 
+import '../api/authentication_service.dart';
 import 'login.dart';
 
 class Settings extends StatelessWidget {
@@ -70,7 +71,8 @@ class Settings extends StatelessWidget {
                 size: 35,
               ),
               onTap: () {
-                Utilities.logoutUser(null);
+                var _auth = new AuthenticationService();
+                _auth.logout();
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => LoginScreen()));
               },

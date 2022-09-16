@@ -70,5 +70,6 @@ class SharedPrefs {
     _sharedPrefs?.remove("user");
     _sharedPrefs?.remove("loggedIn");
     _sharedPrefs?.remove("user");
+    _sharedPrefs?.remove("client_id");
   }
 }
