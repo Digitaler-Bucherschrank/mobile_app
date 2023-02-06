@@ -2,7 +2,6 @@ import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
 import 'package:digitaler_buecherschrank/utils/shared_preferences.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

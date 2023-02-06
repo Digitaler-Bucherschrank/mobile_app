@@ -1,6 +1,5 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // TODO: import better color schemes
@@ -27,8 +26,7 @@ ThemeData lightThemeData() {
             ),
           ),
           textTheme: GoogleFonts.notoSansTextTheme(),
-          inputDecorationTheme: ThemeData.light().inputDecorationTheme
-  );
+          inputDecorationTheme: ThemeData.light().inputDecorationTheme);
   /*return ThemeData(
       colorScheme: new ColorScheme.light(
           primary: Color(0xFF1890C9), secondary: Color(0xFF423C3A)),

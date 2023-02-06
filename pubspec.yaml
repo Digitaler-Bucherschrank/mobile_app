@@ -70,7 +70,7 @@ dependencies:
   dio: ^4.0.0
   responsive_framework: ^0.1.4
   dio_smart_retry: ^1.0.2
-  flutter_bcrypt: ^1.0.7
+  flutter_bcrypt: ^1.0.8
   introduction_screen: ^2.1.0
   streaming_shared_preferences: ^2.0.0
   url_launcher: ^6.1.5

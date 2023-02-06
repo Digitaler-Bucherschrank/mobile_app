@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:digitaler_buecherschrank/api/api_service.dart';
 import 'package:digitaler_buecherschrank/generated/l10n.dart';
 import 'package:digitaler_buecherschrank/models/book.dart';
