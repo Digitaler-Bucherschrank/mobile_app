@@ -45,15 +45,13 @@ dependencies:
   dependency_validator: ^3.1.0
   material_floating_search_bar: ^0.3.4
   sliding_up_panel: ^2.0.0+1
-  flutter_native_splash: ^1.1.8+4
+  
   blur: ^3.0.0
   flex_color_scheme: ^4.1.1
-  implicitly_animated_reorderable_list: ^0.4.0
+  implicitly_animated_reorderable_list_2: ^0.5.0
   grouped_list: ^4.0.0
   pull_to_refresh: ^2.0.0
-  maps_toolkit:
-    git:
-      url: git://github.com/edgarfroes/maps_toolkit.git
+  maps_toolkit: ^2.0.1
 
   # Diverse Utilities
   google_fonts: ^2.0.0
